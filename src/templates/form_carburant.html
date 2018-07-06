@@ -1,0 +1,43 @@
+<main class="col-sm-12 col-md-12" ng-controller="FormCtrl">
+  <h1>Commande de carburant</h1>
+
+  <div ng-if="status==1"> Message envoyé </div>
+  <div ng-if="status==2"> Erreur de traitement, veuillez réessayer dans un moment</div>
+  <div ng-if="status==3"> Chargement en cours </div>
+
+
+  <form ng-submit="submit('carburant')" ng-if="status==0">
+    <div class="form-group">
+      <label for="formGroupNom">Nom</label>
+      <input type="text" ng-model="form.nom" class="form-control" id="formGroupNom" placeholder="Nom et Prénom" required>
+    </div>
+    <div class="form-group">
+      <label for="formGroupChantier">chantier</label>
+      <select class="form-control" id="formGroupChantier" ng-model="form.chantier" ng-options="chantier.title as chantier.title for chantier in chantiers" required>
+        <option value="">-- Selection chantier --</option>
+
+   </div>
+   <div class="form-group">
+     <label for="formGroupNom">Diesel</label>
+     <input type="number" class="form-control" id="formGroupNom" ng-model="form.nbLitresDiesel" placeholder="Diesel (nbr litres)">
+   </div>
+   <div class="form-group">
+     <label for="formGroupNom">Essence</label>
+     <input type="number" class="form-control" id="formGroupNom" ng-model="form.nbLitresEssence" placeholder="Essence (nbr litres)">
+   </div>
+   <div class="form-group">
+     <label for="formGroupNom">Essence 2T</label>
+     <input type="number" class="form-control" id="formGroupNom" ng-model="form.nbLitresEssence2T" placeholder="Essence 2T (nbr litres)">
+   </div>
+   <div class="form-group">
+     <label for="formGroupNom">commentaires</label>
+     <input type="text" class="form-control" id="formGroupNom" ng-model="form.commentaire" placeholder="commentaires">
+   </div>
+   <button  type="submit" class="btn btn-primary" >Envoyer</button>
+
+  </form>
+
+</main>
+
+
+<!-- -->

@@ -1,0 +1,33 @@
+<main class="col-sm-9 col-md-12" ng-controller="FormCtrl">
+  <h1>Etat de circulation</h1>
+
+  <div ng-if="status==1"> Message envoyé </div>
+  <div ng-if="status==2"> Erreur de traitement, veuillez réessayer dans un moment</div>
+  <div ng-if="status==3"> Chargement en cours </div>
+
+
+  <form ng-submit="submit('etatcirculation')" ng-if="status==0">
+    <div class="form-group">
+      <label for="formGroupNom">Nom</label>
+      <input type="text" ng-model="form.nom" class="form-control" id="formGroupNom" placeholder="Nom" required>
+    </div>
+    <div class="form-group">
+      <label for="formGroupChantier">chantier</label>
+      <select class="form-control" id="formGroupChantier" ng-model="form.chantier" ng-options="chantier.title as chantier.title for chantier in chantiers" required>
+        <option value="">-- Selection chantier --</option>
+   </div>
+   <div class="form-group">
+     <label for="formGroupEtat">Etat</label>
+     <select class="form-control" id="formGroupEtat" ng-model="form.etat" required>
+       <option value="vert">Vert - fluide</option>
+       <option value="orange">Orange - saturé</option>
+       <option value="rouge">Rouge - bloqué</option>
+   </div>
+   <div class="form-group">
+     <label for="formGroupNom">Détails si nécessaire</label>
+     <input type="text" class="form-control" id="formGroupNom" ng-model="form.detail" placeholder="Détails">
+   </div>
+   <button type="submit" class="btn btn-primary" >Envoyer</button>
+  </form>
+
+</main>

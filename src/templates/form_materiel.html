@@ -1,0 +1,49 @@
+<main class="col-sm-9 col-md-12" ng-controller="FormCtrl">
+  <h1>Commande de matériel</h1>
+
+  <div ng-if="status==1"> Message envoyé </div>
+  <div ng-if="status==2"> Erreur de traitement, veuillez réessayer dans un moment</div>
+  <div ng-if="status==3"> Chargement en cours </div>
+
+
+  <form ng-submit="submit('materiel')" ng-if="status==0">
+    <div class="form-group">
+      <label for="formGroupNom">Nom</label>
+      <input type="text" ng-model="form.nom" class="form-control" id="formGroupNom" placeholder="Nom" required>
+    </div>
+    <div class="form-group">
+      <label for="formGroupChantier">chantier</label>
+      <select class="form-control" id="formGroupChantier" ng-model="form.chantier" ng-options="chantier.title as chantier.title for chantier in chantiers" required>
+        <option value="">-- Selection chantier --</option>
+    </div>
+    <div class="form-group">
+      <label for="formGroupNom"> Date de livraison souhaitée </label>
+      <input type="text" class="form-control" id="formDate" ng-model="form.dateLivraison" required>
+   </div>
+   <div class="form-group">
+     <label for="formGroupNom">Heures</label>
+     <select class="form-control" id="formGroupChantier" ng-model="form.heure" required>
+       <option value="matin">matin</option>
+       <option value="midi">midi</option>
+       <option value="soir">soir</option>
+     </div>
+     <div class="form-group">
+       <label for="formGroupNom">Matériel 1</label>
+       <input type="text" class="form-control" id="formGroupNom" ng-model="form.mat1" placeholder="Matériel 1">
+     </div>
+     <div class="form-group">
+       <label for="formGroupNom">Matériel 2</label>
+       <input type="text" class="form-control" id="formGroupNom" ng-model="form.mat2" placeholder="Matériel 2">
+     </div>
+     <div class="form-group">
+       <label for="formGroupNom">matériel 3</label>
+       <input type="text" class="form-control" id="formGroupNom" ng-model="form.mat3" placeholder="Matériel 3">
+     </div>
+     <div class="form-group">
+       <label for="formGroupNom">commentaires</label>
+       <input type="text" class="form-control" id="formGroupNom" ng-model="form.commentaire"  placeholder="commentaires">
+     </div>
+     <button type="submit" class="btn btn-primary" >Envoyer</button>
+  </form>
+
+</main>

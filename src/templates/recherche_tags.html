@@ -1,0 +1,19 @@
+<main class="col-sm-9 col-md-12" ng-controller="RechercheContactsCtrl">
+
+  <h1>Recherche par tag</h1>
+
+    <div class="form-group">
+        <label for="formGroupCategorie">Tag</label>
+        <input ng-change="loadSocPeople(form.categorie)" type="text" class="form-control" id="formGroupCategorie" ng-model="form.categorie" required>
+      </div>
+
+ <div ng-if="tiers.length > 0">
+    <ul class="list-group" ng-repeat="tier in tiers">
+      <li class="list-group-item active">{{tier.nom}}</li>
+      <li class="list-group-item">{{tier.zip}} {{tier.town}}</li>
+      <li class="list-group-item"><a href=" mailto:{{tier.email}}">{{tier.email}} </a></li>
+      <li class="list-group-item"><a href=" tel:{{tier.phone}}">{{tier.phone}} </a></li>
+      <li class="list-group-item">{{tier.label}} </li>
+   </ul>
+</div>
+</main>

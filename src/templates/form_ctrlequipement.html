@@ -1,0 +1,130 @@
+<main class="col-sm-9 col-md-12" ng-controller="FormCtrl">
+  <h1>Contrôle d'équipement</h1>
+
+  <div ng-if="status==1"> Message envoyé </div>
+  <div ng-if="status==2"> Erreur de traitement, veuillez réessayer dans un moment</div>
+  <div ng-if="status==3"> Chargement en cours </div>
+
+
+  <form ng-submit="submit('ctrlequipement')" ng-if="status==0">
+
+    <div class="form-group">
+      <label for="formGroupNom">Nom du lieutenant</label>
+      <input type="text" ng-model="form.nomLieut" class="form-control" id="formGroupNom" placeholder="Nom" required>
+    </div>
+
+    <div class="form-group">
+      <label for="formGroupNom">Nom du soldat</label>
+      <input type="text" ng-model="form.nomSoldat" class="form-control" id="formGroupNom" placeholder="Nom" required>
+    </div>
+
+<!--   Prévu pour entrer le nom de l'astreint   -->
+
+<div class="form-group">
+        <label for="formGroupCheck">Sac</label>
+        <select class="form-control" id="formGroupCheck" ng-model="form.sac" required>
+          <option value="Oui">Oui</option>
+          <option value="Non">Non</option>
+</div>
+<div class="form-group">
+       <label for="formGroupCheck">Veste de pluie</label>
+       <select class="form-control" id="formGroupCheck" ng-model="form.vestepluie" required>
+         <option value="Oui">Oui</option>
+         <option value="Non">Non</option>
+      </div>
+<div class="form-group">
+       <label for="formGroupCheck">Pantalon de pluie</label>
+      <select class="form-control" id="formGroupCheck" ng-model="form.pantalonpluie" required>
+        <option value="Oui">Oui</option>
+        <option value="Non">Non</option>
+     </div>
+<div class="form-group">
+       <label for="formGroupCheck">Chapeau de pluie</label>
+       <select class="form-control" id="formGroupCheck" ng-model="form.chapeaupluie" required>
+       <option value="Oui">Oui</option>
+       <option value="Non">Non</option>
+      </div>
+<div class="form-group">
+    <label for="formGroupCheck">Polaire</label>
+    <select class="form-control" id="formGroupCheck" ng-model="form.polaire" required>
+      <option value="Oui">Oui</option>
+      <option value="Non">Non</option>
+     </div>
+<div class="form-group">
+   <label for="formGroupCheck">Veste</label>
+   <select class="form-control" id="formGroupCheck" ng-model="form.veste" required>
+     <option value="Oui">Oui</option>
+     <option value="Non">Non</option>
+   </div>
+<div class="form-group">
+  <label for="formGroupCheck">Pantalon</label>
+  <select class="form-control" id="formGroupCheck" ng-model="form.pantalon" required>
+    <option value="Oui">Oui</option>
+    <option value="Non">Non</option>
+</div>
+<div class="form-group">
+  <label for="formGroupCheck">Ceinture</label>
+  <select class="form-control" id="formGroupCheck" ng-model="form.ceinture" required>
+    <option value="Oui">Oui</option>
+    <option value="Non">Non</option>
+</div>
+<div class="form-group">
+  <label for="formGroupCheck">Casquette</label>
+  <select class="form-control" id="formGroupCheck" ng-model="form.casquette" required>
+    <option value="Oui">Oui</option>
+    <option value="Non">Non</option>
+</div>
+<div class="form-group">
+  <label for="formGroupCheck">Gants</label>
+  <select class="form-control" id="formGroupCheck" ng-model="form.gants" required>
+    <option value="Oui">Oui</option>
+    <option value="Non">Non</option>
+</div>
+<div class="form-group">
+  <label for="formGroupCheck">Casque</label>
+  <select class="form-control" id="formGroupCheck" ng-model="form.casque" required>
+    <option value="Oui">Oui</option>
+    <option value="Non">Non</option>
+</div>
+<div class="form-group">
+  <label for="formGroupCheck">4 T-shirt</label>
+  <select class="form-control" id="formGroupCheck" ng-model="form.tshirts" required>
+    <option value="Oui">Oui</option>
+    <option value="Non">Non</option>
+</div>
+<div class="form-group">
+  <label for="formGroupCheck">Sous pull</label>
+  <select class="form-control" id="formGroupCheck" ng-model="form.souspull" required>
+    <option value="Oui">Oui</option>
+    <option value="Non">Non</option>
+</div>
+<div class="form-group">
+  <label for="formGroupCheck">Chaussures</label>
+  <select class="form-control" id="formGroupCheck" ng-model="form.chaussures" required>
+    <option value="Oui">Oui</option>
+    <option value="Non">Non</option>
+</div>
+<div class="form-group">
+  <label for="formGroupCheck">PPI</label>
+  <select class="form-control" id="formGroupCheck" ng-model="form.ppi" required>
+    <option value="Oui">Oui</option>
+    <option value="Non">Non</option>
+  </div>
+<div class="form-group">
+  <label for="formGroupCheck">Badge PCi</label>
+  <select class="form-control" id="formGroupCheck" ng-model="form.badge" required>
+    <option value="Oui">Oui</option>
+    <option value="Non">Non</option>
+</div>
+<div class="form-group">
+  <label for="formGroupCheck">Bonnet</label>
+  <select class="form-control" id="formGroupCheck" ng-model="form.bonnet" required>
+    <option value="Oui">Oui</option>
+    <option value="Non">Non</option>
+</div>
+<button type="submit" class="btn btn-primary"> Envoyer </button>
+</form>
+
+
+
+</main>

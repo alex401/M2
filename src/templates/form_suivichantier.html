@@ -1,0 +1,47 @@
+<main class="col-sm-9 col-md-12" ng-controller="FormCtrl">
+  <h1>Suivi de chantier</h1>
+
+  <div ng-if="status==1"> Message envoyé </div>
+  <div ng-if="status==2"> Erreur de traitement, veuillez réessayer dans un moment</div>
+  <div ng-if="status==3"> Chargement en cours </div>
+
+
+  <form ng-submit="submit('suivichantier')" ng-if="status==0">
+    <div class="form-group">
+      <label for="formGroupNom">Nom</label>
+      <input type="text" ng-model="form.nom" class="form-control" id="formGroupNom" placeholder="Nom et Prénom" required>
+    </div>
+    <div class="form-group">
+      <label for="formGroupChantier">chantier</label>
+      <select class="form-control" id="formGroupChantier" ng-model="form.chantier" ng-options="chantier.title as chantier.title for chantier in chantiers" required>
+        <option value="">-- Selection chantier --</option>
+
+   </div>
+   <div class="form-group">
+     <label for="formGroupAvancement">Avancement</label>
+     <select class="form-control" id="formGroupAvancement" ng-model="form.avancement" required>
+       <option value="">--AVANCEMENT --</option>
+       <option value="100%">100%</option>
+       <option value="90%">90%</option>
+       <option value="80%">80%</option>
+       <option value="70%">70%</option>
+       <option value="60%">60%</option>
+       <option value="50%">50%</option>
+       <option value="40%">40%</option>
+       <option value="30%">30%</option>
+       <option value="20%">20%</option>
+       <option value="10%">10%</option>
+       <option value="0%">0%</option>
+     </div>
+   <div class="form-group">
+     <label for="formGroupNom">Estimation du temps restant</label>
+     <input type="text" class="form-control" id="formGroupNom" ng-model="form.tempsRestant" placeholder="Estimation du temps restant (en minutes)">
+   </div>
+   <div class="form-group">
+     <label for="formGroupNom">Tâche restantes à effectuer</label>
+     <input type="text" class="form-control" id="formGroupNom" ng-model="form.tachesRestantes" placeholder="Tâche restantes à effectuer ">
+   </div>
+   <button type="submit" class="btn btn-primary" >Envoyer</button>
+  </form>
+
+</main>

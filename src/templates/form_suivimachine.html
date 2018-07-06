@@ -1,0 +1,58 @@
+<main class="col-sm-9 col-md-12" ng-controller="FormCtrl">
+  <h1>Suivi de machine</h1>
+
+  <div ng-if="status==1"> Message envoyé </div>
+  <div ng-if="status==2"> Erreur de traitement, veuillez réessayer dans un moment</div>
+  <div ng-if="status==3"> Chargement en cours </div>
+
+
+  <form ng-submit="submit('suivimachine')" ng-if="status==0">
+    <div class="form-group">
+      <label for="formGroupNom">Nom</label>
+      <input type="text" ng-model="form.nom" class="form-control" id="formGroupNom" placeholder="Nom et Prénom" required>
+    </div>
+    <div class="form-group">
+      <label for="formGroupChantier">chantier</label>
+      <select class="form-control" id="formGroupChantier" ng-model="form.chantier" ng-options="chantier.title as chantier.title for chantier in chantiers" required>
+        <option value="">-- Selection chantier --</option>
+   </div>
+   <div class="form-group">
+     <label for="formGroupNom">Numéro de téléphone de la personne de contact</label>
+     <input type="text" class="form-control" id="formGroupNom" ng-model="form.telContact" placeholder="Téléphone du contact" required>
+   </div>
+   <div class="form-group">
+     <label for="formGroupTypeDemande">Type de demande</label>
+     <select class="form-control" id="formGroupTypeDemande" ng-model="form.typeDemande" required>
+       <option value="demande machine">Demande de machine</option>
+       <option value="reception de machine">Réception de la machine</option>
+       <option value="panne">Panne</option>
+       <option value="deplacement de machine">Demande de déplacement de la machine</option>
+       <option value="retour de machine">Retour de la machine</option>
+   </div>
+   <!-- ng-options suivant à régler -->
+   <div class="form-group">
+     <label for="formGroupMachine">Machine</label>
+     <input type="text" class="form-control" id="formGroupNom" ng-model="form.machine" placeholder="Machine" required>
+
+  </div>
+  <div class="form-group">
+    <label for="formGroupNom">Numéro de série</label>
+    <input type="text" class="form-control" id="formGroupNom" ng-model="form.numSerie" placeholder="Numéro de série" required>
+  </div>
+   <div class="form-group">
+    <label for="formGroupChantier">Chantier de destination</label>
+    <select class="form-control" id="formGroupChantier" ng-model="form.chantierDest" ng-options="chantier.title as chantier.title for chantier in chantiers" required>
+      <option value="">-- Selection chantier --</option>
+   </div>
+   <div class="form-group">
+     <label for="formGroupNom">Nombre d'heures de la machine</label>
+     <input type="text" class="form-control" id="formGroupNom" ng-model="form.heuresMachine" placeholder="Heures de la machine" required>
+   </div>
+   <div class="form-group">
+     <label for="formGroupNom">commentaires</label>
+     <input type="text" class="form-control" id="formGroupNom" ng-model="form.commentaire" placeholder="commentaires">
+   </div>
+   <button type="submit" class="btn btn-primary" >Envoyer</button>
+  </form>
+
+</main>

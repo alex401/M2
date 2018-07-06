@@ -1,0 +1,58 @@
+<main class="col-sm-9 col-md-12" ng-controller="FormCtrl">
+  <h1>Rapport de parking</h1>
+
+  <div ng-if="status==1"> Message envoyé </div>
+  <div ng-if="status==2"> Erreur de traitement, veuillez réessayer dans un moment</div>
+  <div ng-if="status==3"> Chargement en cours </div>
+
+
+  <form ng-submit="submit('rapportparking')" ng-if="status==0">
+    <div class="form-group">
+      <label for="formGroupNom">Nom</label>
+      <input type="text" ng-model="form.nom" class="form-control" id="formGroupNom" placeholder="Nom" required>
+    </div>
+    <!-- ng-options à définir -->
+    <div class="form-group">
+      <label for="formGroupParking">Parking</label>
+      <select class="form-control" id="formGroupParking" ng-model="form.parking" ng-options="chantier.title as chantier.title for chantier in chantiers | filter: 'Parking'" required>
+        <option value="">-- Selection parking --</option>
+   </div>
+   <div class="form-group">
+     <label for="formGroupEtat">Etat</label>
+     <select class="form-control" id="formGroupEtat" ng-model="form.etat" required>
+       <option value="Bon">Bon</option>
+       <option value="Moyen">Moyen</option>
+       <option value="Mauvais">Mauvais</option>
+       <option value="Impraticable">Impraticable</option>
+   </div>
+   <div class="form-group">
+     <label for="formGroupNom">Détail pour l'état si nécessaire</label>
+     <input type="text" class="form-control" id="formGroupNom" ng-model="form.detailEtat" placeholder="Détail état">
+   </div>
+   <div class="form-group">
+     <label for="formGroupRemplissage">Remplissage</label>
+     <select class="form-control" id="formGroupRemplissage" ng-model="form.remplissage" required>
+       <option value="0">0%</option>
+       <option value="25">25%</option>
+       <option value="50">50%</option>
+       <option value="75">75%</option>
+       <option value="100">100%</option>
+   </div>
+   <div class="form-group">
+     <label for="formGroupNom">Détail pour le remplissage si nécessaire</label>
+     <input type="text" class="form-control" id="formGroupNom" ng-model="form.detailRemplissage" placeholder="Détail remplissage">
+   </div>
+   <div class="form-group">
+     <label for="formGroupEclairage">Eclairage</label>
+     <select class="form-control" id="formGroupEclairage" ng-model="form.eclairage" required>
+       <option value="Expistant">Existant</option>
+       <option value="Inexistant">Inexistant</option>
+   </div>
+   <div class="form-group">
+     <label for="formGroupNom">commentaires</label>
+     <input type="text" class="form-control" id="formGroupNom" ng-model="form.commentaire" placeholder="commentaires">
+   </div>
+   <button type="submit" class="btn btn-primary" >Envoyer</button>
+  </form>
+
+</main>
