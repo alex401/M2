@@ -313,7 +313,7 @@ $app->post('/v1/admin/insertcommand', function ($request, $response) {
   array_splice($data, 0, 3);
   $data = json_encode($data);
 
-  $sth = $this->dbm2->prepare("INSERT INTO commandes (type, nom, chantier, statut, data) VALUES ('$type', '$nom', $chantier, '$status', '$data')");
+  $sth = $this->dbm2->prepare("INSERT INTO commandes (type, nom, chantier, statut, data) VALUES ('$type', '$nom', '$chantier', '$status', '$data')");
 
   try {
     $succes = $sth->execute();
