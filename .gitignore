@@ -10,3 +10,4 @@ src/config.ini
 src/login/config.php
 src/login/config.ini
 package-lock.json
+package.json
