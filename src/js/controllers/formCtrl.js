@@ -49,23 +49,9 @@ function FormCtrl($scope, $http) {
       });
   }
 
-//POST to API : will save in database
-  var sendCommand = function(dataSent) {
-    $http({
-      method: 'POST',
-      url: 'api/index.php/v1/admin/insertcommand',
-      data : dataSent
-      }).then(function successCallback(response) {
-        console.log("success");
-        $scope.status = 1;
-      }, function errorCallback(response) {
-        console.log("error inserting new command.");
-        $scope.status = 2;
-      });
-  }
-
   $scope.submit = function (type) {
     switch(type) {
+<<<<<<< HEAD
             case "repas":
                 var temp = $scope.form;
                 var dataSent = {'type':type,'nom':temp.nom,'chantier':temp.chantier,'dateLivraison':temp.dateLivraison, 'nbDej':temp.nbDej, 'nbDiner':temp.nbDiner, 'nbSouper':temp.nbSouper, 'nbCollationNuit':temp.nbCollationNuit, 'nbVegetariens':temp.nbVegetariens, 'commentaire':temp.commentaire};
@@ -81,15 +67,20 @@ function FormCtrl($scope, $http) {
                 var dataSent = {'type':type,'nom':temp.nom,'chantier':temp.chantier,'dateLivraison':temp.dateLivraison,'mat1':temp.mat1, 'mat2':temp.mat2, 'mat3':temp.mat3, 'commentaire':temp.commentaire};
 //                sendCommand(dataSent);
                 break;
+=======
+>>>>>>> Reorganisation of the files hierarchy.
             case "demandeconge":
                 var temp = $scope.form;
                 var dataSent = {'nomLieut':temp.nomLieut, 'nomPers':temp.nomPers,'dateEnvoi':new Date().toLocaleString(),'date':temp.date, 'raison':temp.raison, 'commentaire':temp.commentaire};
                 break;
+<<<<<<< HEAD
             case "transport":
                 var temp = $scope.form;
                 var dataSent = {'type':type,'nom':temp.nom,'chantier':temp.chantier,'dateLivraison':temp.dateLivraison, 'destination':temp.destination, 'heure':temp.heure, 'detailsHeure':temp.detailsHeure, 'nbHomme':temp.nbHomme,'matTransport':temp.matTransport, 'commentaire':temp.commentaire};
 //                sendCommand(dataSent);
                 break;
+=======
+>>>>>>> Reorganisation of the files hierarchy.
             case "suivichantier":
                 var temp = $scope.form;
                 var dataSent = {'nom':temp.nom,'chantier':temp.chantier,'dateEnvoi':new Date().toLocaleString(),'avancement':temp.avancement, 'tempsRestant':temp.tempsRestant, 'tachesRestantes':temp.tachesRestantes, 'commentaire':temp.commentaire};
@@ -144,7 +135,11 @@ function FormCtrl($scope, $http) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
       });
+<<<<<<< HEAD
 //    console.log($scope.formRepas);
+=======
+  //  console.log($scope.formRepas);
+>>>>>>> Reorganisation of the files hierarchy.
   }
 
 

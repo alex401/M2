@@ -24,25 +24,25 @@ angular.module('PCIM2').config(['$stateProvider', '$urlRouterProvider','$locatio
                 url: '/menu/demandes',
                 templateUrl: 'templates/menu_demandes.html'
             })
-            .state('formrepas', {
-                url: '/form/repas',
-                templateUrl: 'templates/form_repas.html'
+            .state('cmdrepas', {
+                url: '/commande/repas',
+                templateUrl: 'templates/commandes/cmd_repas.html'
             })
-            .state('formcarburant', {
-                url: '/form/carburant',
-                templateUrl: 'templates/form_carburant.html'
+            .state('cmdcarburant', {
+                url: '/commande/carburant',
+                templateUrl: 'templates/commandes/cmd_carburant.html'
             })
-            .state('formmateriel', {
-                url: '/form/materiel',
-                templateUrl: 'templates/form_materiel.html'
+            .state('cmdmateriel', {
+                url: '/commande/materiel',
+                templateUrl: 'templates/commandes/cmd_materiel.html'
             })
             .state('formsuivichantier', {
                 url: '/form/suivichantier',
                 templateUrl: 'templates/form_suivichantier.html'
             })
-            .state('formtransport', {
-                url: '/form/transport',
-                templateUrl: 'templates/form_transport.html'
+            .state('cmdtransport', {
+                url: '/commande/transport',
+                templateUrl: 'templates/commandes/cmd_transport.html'
             })
             .state('recherchetiers', {
                 url: '/admin/recherchetiers',
@@ -116,9 +116,9 @@ angular.module('PCIM2').config(['$stateProvider', '$urlRouterProvider','$locatio
                 url: '/rapport/sppam',
                 templateUrl: 'templates/rapport_sppam.php'
             })
-            .state('commande', {
-                url: '/administration/{type}',
-                templateUrl: 'templates/administration/commandes.html'
+            .state('tracking', {
+                url: '/commandes/tracking/{type}',
+                templateUrl: 'templates/commandes/cmd_tracking.html'
             })
             .state('radios', {
                 url: '/form/radios',
@@ -127,6 +127,17 @@ angular.module('PCIM2').config(['$stateProvider', '$urlRouterProvider','$locatio
             .state('administration', {
                 url: '/administration',
                 templateUrl: 'templates/administration/main.html'
+            .state('trackingmenu', {
+                url: '/commandes/tracking',
+                templateUrl: 'templates/commandes/menu_tracking.html'
+            })
+            .state('gestion', {
+                url: '/commandes/gestion',
+                templateUrl: 'templates/commandes/menu_gestion.html'
+            })
+            .state('gestioncmdt', {
+                url: '/commandes/gestion/aidecmdt',
+                templateUrl: 'templates/commandes/aidecmdt_gestion.html'
             });
     }
 ]);
