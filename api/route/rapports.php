@@ -11,9 +11,18 @@
 $app->post('/v1/rapport/journalier', function ($request,$response) {
 
    $data = $request->getParsedBody();
-   $data = (json_encode($data));
+   $dataT = (json_encode($data));
 
-   echo "$data";
+   echo "$dataT";
+
+   //$formation = $data[''];
+   $situation = $data['situationActuelle'];
+   $hommes = $data['hommes'];
+   $missions = $data['missions'];
+   $missionTransmises = $data['missionsTransmises'];
+   echo json_encode($missionTransmises);
+
+   buildHtmlReport($situation, "test3", $hommes, $missions, $missionTransmises);
 
    try{
      //append to file named year-month
@@ -34,12 +43,9 @@ $app->post('/v1/rapport/journalier', function ($request,$response) {
 
 
 // Créer rapport journalier en HTML
-function buildHtmlReport($formation, $heure, $data, $args){
+function buildHtmlReport($situation, $filename, $hommes, $missions, $missionTransmises){
 
-$content .= '
-
-
-<!doctype html>
+$content = '<!doctype html>
 
 <html lang="fr">
 
@@ -209,8 +215,8 @@ h1, h2, h3, h4, h5, h6 {
 
       <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
         <div class="col-md-6 px-0">
-          <h1 class="display-4 font-italic">Mission</h1>
-          <p class="lead my-3">Mission description</p>
+          <h1 class="display-4 font-italic">Mission : '.$formation .'</h1>
+          <p class="lead my-3">'.$situation .'</p>
         </div>
       </div>
 
@@ -236,7 +242,7 @@ h1, h2, h3, h4, h5, h6 {
                 <a class="text-dark" href="#">Situation</a>
               </h3>
               <div class="mb-1 text-muted">Nov 12</div>
-              <p class="card-text mb-auto">Situation sur le terrain </p>
+              <p class="card-text mb-auto">  </p>
             </div>
             <img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb" alt="Card image cap">
           </div>
@@ -251,48 +257,31 @@ h1, h2, h3, h4, h5, h6 {
             Description des missions
           </h3>
 
-          <div class="blog-post">
-            <h2 class="blog-post-title">Escaliers </h2>
-            <p class="blog-post-meta">25 Janvier 2018 </p>
 
-            <p>Description mission 1 Description mission 1 Description mission 1 Description mission 1 Description mission 1 Description mission 1 </p>
-            <hr>
+          ';
 
-          </div><!-- /.blog-post -->
-
-          <div class="blog-post">
-            <h2 class="blog-post-title">Escaliers </h2>
-            <p class="blog-post-meta">25 Janvier 2018 </p>
-
-            <p>Description mission 1 Description mission 1 Description mission 1 Description mission 1 Description mission 1 Description mission 1 </p>
-            <hr>
-
-          </div><!-- /.blog-post -->
-
-          <div class="blog-post">
-            <h2 class="blog-post-title">Escaliers </h2>
-            <p class="blog-post-meta">25 Janvier 2018 </p>
-
-            <p>Description mission 1 Description mission 1 Description mission 1 Description mission 1 Description mission 1 Description mission 1 </p>
-            <hr>
-
-          </div><!-- /.blog-post -->
-
-          <div class="blog-post">
-            <h2 class="blog-post-title">Escaliers </h2>
-            <p class="blog-post-meta">25 Janvier 2018 </p>
-
-            <p>Description mission 1 Description mission 1 Description mission 1 Description mission 1 Description mission 1 Description mission 1 </p>
-            <hr>
-
-          </div><!-- /.blog-post -->
-
-
-
+          foreach ($missions as $key => $value) {
+            $content .=  '<div class="blog-post">';
+            $content .=  '  <h2 class="blog-post-title">'. $value["section"]  .' </h2>';
+            $content .=  '  <p class="blog-post-meta"> '. $value["lieu"].' </p>';
+            $content .=  '  <p> Description '. $value["description"] .' </p>';
+            $content .=  '  <hr> </div>';
+          }
+          $content .= '
 
           <h3 class="pb-3 mb-4 font-italic border-bottom">
             Missions transmises
-          </h3>
+          </h3>';
+
+          foreach ($missionTransmises as $key => $value) {
+            $content .=  '<div class="blog-post">';
+            $content .=  '  <h2 class="blog-post-title">'. $value["lieu"] .' </h2>';
+            $content .=  '  <p class="blog-post-meta">25 Janvier 2018 </p>';
+            $content .=  '  <p> Description '. $value["description"] .' </p>';
+            $content .=  '  <hr> </div>';
+          }
+
+          $content .= '
 
           <div class="blog-post">
             <h2 class="blog-post-title">Escaliers </h2>
@@ -301,13 +290,17 @@ h1, h2, h3, h4, h5, h6 {
             <p>Description mission 1 Description mission 1 Description mission 1 Description mission 1 Description mission 1 Description mission 1 </p>
             <hr>
 
-          </div><!-- /.blog-post -->
+          </div>
 
         </div><!-- /.blog-main -->
 
         <aside class="col-md-4 blog-sidebar">
           <div class="p-3 mb-3 bg-light rounded">
             <h4 class="font-italic">Moyens engagés </h4>
+            ';
+
+
+            $content.= '
             <p class="mb-0"> Assistance  </p>
             <p class="mb-0"> EtatMajor</p>
 
@@ -345,9 +338,8 @@ h1, h2, h3, h4, h5, h6 {
 ';
 
 
-  $file = "rapports/".date("Ym")."-$filename.html";
+  $file = "../rapports/".date("Ym")."-$filename.html";
   //Build HTML
-  $content = $args. "\n";
   return file_put_contents($file,$content, FILE_APPEND);
 
 }

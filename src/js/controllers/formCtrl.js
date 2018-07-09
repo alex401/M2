@@ -35,6 +35,7 @@ function FormCtrl($scope, $http) {
       });
   }
 
+//POST to API : will save in database
   var sendCommand = function(dataSent) {
     $http({
       method: 'POST',
