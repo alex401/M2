@@ -12,7 +12,7 @@ $app->post('/v1/rapport/journalier', function ($request,$response) {
 
    $data = $request->getParsedBody();
    $dataT = (json_encode($data));
-   echo "$dataT";
+   //echo "$dataT";
 
    $situation = $data['situationActuelle'];
    $hommes = $data['hommes'];
@@ -23,14 +23,15 @@ $app->post('/v1/rapport/journalier', function ($request,$response) {
    $vehicules = $data['vehicules'];
 
    echo json_encode($missionTransmises);
-   buildHtmlReport($situation, $vehicules, $matos ,$formation, "rapport-journalier", $hommes, $missions, $missionTransmises);
+   $report = buildHtmlReport($situation, $vehicules, $matos ,$formation, "rapport-journalier", $hommes, $missions, $missionTransmises);
+   echo "$report";
    try{
    // append to file named year-month
    // $result = setContent("rapJour",$data);
    // $report = buildHtmlReport();
    // if someting was inserted .
      if($report != null){
-       return $response->withJson(array('status' => 'OK'),200);
+       return $response->withJson(array('status' => 'OK', 'url' => "$report"),200);
      }
      else {
      return $response->withJson(array('status' => 'Erreur pendant traitement du rapport '),422);
@@ -325,8 +326,9 @@ h1, h2, h3, h4, h5, h6 {
 </html>';
 
 
-  $file = "../rapports/".date("Ymd-h:i:s")."-$filename.html";
+  $file = "rapports/".date("Ymd-h:i:s")."-$filename.html";
   //Build HTML
-  return file_put_contents($file,$content, FILE_APPEND);
+   file_put_contents("../$file",$content, FILE_APPEND);
+   return "https://pci-fr.ch/m2/$file";
 
 }
