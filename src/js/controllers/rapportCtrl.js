@@ -15,6 +15,7 @@ function RapportCtrl($scope, $http) {
   $scope.status = 0;
 
   $scope.rapport = {};
+  $scope.rapport.formation = "";
   $scope.rapport.situationActuelle = "";
   $scope.rapport.hommes = [{id: 'h1'}];
   $scope.rapport.vehicules = [{id: 'v1'}];

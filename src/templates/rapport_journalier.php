@@ -10,7 +10,7 @@
 
     <div class="form-group">
       <label for="formGroupChantier">Formation</label>
-      <select name="formation" class="form-control" id="formGroupChantier" ng-model="form.formation" ng-options="formation.intitule as formation.intitule for formation in formations" >
+      <select name="formation" class="form-control" id="formGroupChantier" ng-model="rapport.formation" ng-options="formation.intitule as formation.intitule for formation in formations" >
         <option value="">-- Selection formation --</option>
    </div>
 
