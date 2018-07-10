@@ -21,17 +21,14 @@ $app->post('/v1/rapport/journalier', function ($request,$response) {
    $formation = $data['formation'];
    $matos = $data['matos'];
    $vehicules = $data['vehicules'];
+   $meteo = $data['meteo'];
 
-   echo json_encode($missionTransmises);
-   $report = buildHtmlReport($situation, $vehicules, $matos ,$formation, "rapport-journalier", $hommes, $missions, $missionTransmises);
-   echo "$report";
+   $report = buildHtmlReport($meteo, $situation, $vehicules, $matos ,$formation, "rapport-journalier", $hommes, $missions, $missionTransmises);
+   $mail = mailReport("Rapport du jour ", $report, "sud.commandement@pci-fr.ch", "sud.commandement@pci-fr.ch");
+
    try{
-   // append to file named year-month
-   // $result = setContent("rapJour",$data);
-   // $report = buildHtmlReport();
-   // if someting was inserted .
      if($report != null){
-       return $response->withJson(array('status' => 'OK', 'url' => "$report"),200);
+       return $response->withJson(array('status' => 'OK', 'url' => $report),200);
      }
      else {
      return $response->withJson(array('status' => 'Erreur pendant traitement du rapport '),422);
@@ -43,7 +40,7 @@ $app->post('/v1/rapport/journalier', function ($request,$response) {
 });
 
 // Créer rapport journalier en HTML
-function buildHtmlReport($situation, $vehicules, $matos ,$formation, $filename, $hommes, $missions, $missionTransmises){
+function buildHtmlReport($meteo, $situation, $vehicules, $matos ,$formation, $filename, $hommes, $missions, $missionTransmises){
 
 $content = '<!doctype html>
 
@@ -227,10 +224,10 @@ h1, h2, h3, h4, h5, h6 {
             <div class="card-body d-flex flex-column align-items-start">
               <strong class="d-inline-block mb-2 text-primary">Météo</strong>
               <h3 class="mb-0">
-                <a class="text-dark" href="#">Météo de Bulle</a>
-              </h3>
-              <div class="mb-1 text-muted">Nov 12</div>
-              <p class="card-text mb-auto">Meteo description court </p>
+                    <a class="text-dark" href="#">Météo de '. $meteo["ville"] .' </a>
+                  </h3>
+                  <div class="mb-1 text-muted"> '. $meteo["court"] .'</div>
+                  <p class="card-text mb-auto">  '. $meteo["desc"] .' </p>
             </div>
             <img class="card-img-right flex-auto d-none d-lg-block"> <!-- data-src=" " alt="Card image cap"-->
           </div>
@@ -243,7 +240,9 @@ h1, h2, h3, h4, h5, h6 {
               ';
 
               foreach ($hommes as $value) {
+                if($value["name"] != null){
                 $content .=  ' <p class="card-text mb-auto">  '. $value["grade"] .' - '. $value["name"] .' + '. $value["nombre"] .' </p>';
+                }
               }
               $content .= '
               <p class="card-text mb-auto">  </p>
@@ -265,12 +264,15 @@ h1, h2, h3, h4, h5, h6 {
           ';
 
           foreach ($missions as $key => $value) {
+            if($value["section"] != "" && $value["description"] != "" && $value["lieu"] != ""){
+
             $content .=  '<div class="blog-post">';
             $content .=  '  <h2 class="blog-post-title">'. $value["section"]  .' </h2>';
             $content .=  '  <p class="blog-post-meta"> '. $value["lieu"].'  - avancement '. $value["avancement"].' </p>';
             $content .=  '  <p> Description '. $value["description"] .' </p>';
             $content .=  '  <hr> </div>';
           }
+        }
           $content .= '
 
           <h3 class="pb-3 mb-4 font-italic border-bottom">
@@ -278,11 +280,14 @@ h1, h2, h3, h4, h5, h6 {
           </h3>';
 
           foreach ($missionTransmises as $key => $value) {
+            if($value["description"] != "" && $value["lieu"] != ""){
+
             $content .=  '<div class="blog-post">';
             $content .=  '  <h2 class="blog-post-title">'. $value["lieu"] .' </h2>';
             $content .=  '  <p class="blog-post-meta">25 Janvier 2018 </p>';
             $content .=  '  <p> Description '. $value["description"] .' </p>';
             $content .=  '  <hr> </div>';
+          }
           }
 
           $content .= '
@@ -294,13 +299,18 @@ h1, h2, h3, h4, h5, h6 {
             <h4 class="font-italic">Moyens engagés </h4>
             <h5 class="font-italic"> Vehicules </h5>
             '; foreach ($vehicules as $key => $value) {
+              if($value["nombre"] != "" && $value["modele"] != ""){
               $content .=  ' <p class="mb-0">  '. $value["nombre"] .': '. $value["modele"] .' </p>';
+            }
             }
             $content .= ' <h5 class="font-italic"> Matériel </h5>';
 
             foreach ($matos as $key => $value) {
+              if($value["nombre"] != "" && $value["modele"] != ""){
               $content .=  ' <p class="mb-0">  '. $value["nombre"] .': '. $value["modele"] .' </p>';
             }
+          }
+
 
             $content .= '  </div>
 

@@ -53,6 +53,24 @@ include 'route/qualifications.php';
 //
 //******************************
 
+function mailReport($mailSubject, $mailContent, $emailFrom, $emailTo){
+  $sujet = $mailSubject;
+  $message = "";
+  $message .=" Lien direct pour le rapport :  $mailContent";
+
+    $headers = "From: $emailFrom\n";
+    $headers .= "Reply-To: $emailFrom\n";
+    $headers .= "Content-Type: text/html; charset=\"utf-8\"";
+    if (mail($emailTo, $sujet, $message, $headers)) {
+        return 0;
+    } else {
+      mail($emailTo, $sujet, $message, $headers);
+        return 1;
+    }
+
+}
+
+
 //TODO : Format e-mail sent
 function mailSender($mailSubject, $mailContent, $emailFrom, $emailTo) {
   $sujet = $mailSubject;

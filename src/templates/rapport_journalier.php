@@ -1,9 +1,13 @@
 
 <main class="col-sm-12  col-md-12 " ng-controller="RapportCtrl">
 
+  <div ng-if="status==1"> Rapport créé ; {{ url }}</div>
+  <div ng-if="status==2"> Erreur de traitement, veuillez réessayer dans un moment</div>
+  <div ng-if="status==3"> Chargement en cours </div>
 
-<h3 name="datejour">Rapport journalier <?php echo $date = date('m/d/Y - H:i', time());?></h3>
-<form name="formRapport" >
+
+<form ng-if="status==0" name="formRapport" >
+  <h3 name="datejour">Rapport journalier <?php echo $date = date('m/d/Y - H:i', time());?></h3>
 
 
     <label for="jumpMenu" class="ui-hidden-accessible">Formation</label>
@@ -30,6 +34,22 @@
     <label for="situationActuelle" class="ui-hidden-accessible">Situation actuelle</label>
     <textarea ng-model="rapport.situationActuelle" class="form-control" name="situationActuelle" id="situationActuelle" cols="30" rows="10" placeholder="Situation Actuelle" data-theme="e"></textarea>
 
+    <h2> Meteo </h2>
+
+    <fieldset>
+       <select ng-model="rapport.meteo.court">
+         <option value='Averses / pluie forte'>Averses / pluie forte</option>
+         <option value='Rare averses'>Rare averses</option>
+         <option value='Orageux'>Orageux</option>
+         <option value='Nuageux/couvert'>Nuageux/couvert</option>
+         <option value='Peu nuageux'>Peu nuageux</option>
+         <option value='Ensoleillé'>Ensoleillé</option>
+       </select>
+       <input type="text" ng-model="rapport.meteo.desc" name="" placeholder="Description météo">
+       <input type="text" ng-model="rapport.meteo.ville" name="" placeholder="Ville">
+
+    </fieldset>
+
     <h2>Moyens engagés </h2>
 
     <h3> Hommes </h3>
@@ -52,10 +72,6 @@
     </fieldset>
     <button class="btn" ng-click="addNewHomme()">Add fields</button>
 
-    <div id="choicesDisplay">
-       {{ rapport.hommes }}
-    </div>
-
 
         <h3> Vehicules </h3>
         <fieldset data-ng-repeat="vehicule in rapport.vehicules">
@@ -65,9 +81,7 @@
         </fieldset>
         <button class="btn" ng-click="addNewVehicule()">Add fields</button>
 
-        <div id="choicesDisplay">
-           {{ rapport.vehicules }}
-        </div>
+
 
         <h3> Matériel </h3>
         <fieldset data-ng-repeat="mat in rapport.matos">
@@ -77,9 +91,7 @@
         <br>
         <button class="btn" ng-click="addNewMateriel()">Add fields</button>
 
-        <div id="choicesDisplay">
-           {{ rapport.matos }}
-        </div>
+
 
         <h3> Missions </h3>
         <fieldset data-ng-repeat="mission in rapport.missions">
@@ -113,9 +125,6 @@
         </fieldset>
         <button class="btn" ng-click="addNewMission()">Add fields</button>
 
-        <div id="choicesDisplay">
-           {{ rapport.missions }}
-        </div>
 
         <h3> Missions transmises </h3>
         <fieldset data-ng-repeat="missionsTransmise in rapport.missionsTransmises">
@@ -124,10 +133,6 @@
         </fieldset>
 
         <button class="btn" ng-click="addNewMissionTransmise()">Add fields</button>
-
-        <div id="choicesDisplay">
-           {{ rapport.missionsTransmises }}
-        </div>
 
         <button ng-click="submit()" type="submit" class="btn btn-primary" >Envoyer</button>
 

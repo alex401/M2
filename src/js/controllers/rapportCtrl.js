@@ -13,6 +13,7 @@ function RapportCtrl($scope, $http) {
 
   $scope.form = {};
   $scope.status = 0;
+  $scope.url = "";
 
   $scope.rapport = {};
   $scope.rapport.formation = "";
@@ -87,7 +88,8 @@ function RapportCtrl($scope, $http) {
       url: 'api/index.php/v1/rapport/journalier',
       data : $scope.rapport
       }).then(function successCallback(response) {
-        console.log(response.data.message);
+        $scope.url = response.data.url;
+        console.log($scope.url);
         //if API answers "Not found" quick workaround - API need to send correct code for not found
         if(response.data.message === 'Not found'){
           $scope.status = 2;
