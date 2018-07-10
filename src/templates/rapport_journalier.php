@@ -1,7 +1,7 @@
 
 <main class="col-sm-12  col-md-12 " ng-controller="RapportCtrl">
 
-  <div ng-if="status==1"> Rapport créé ; {{ url }}</div>
+  <div ng-if="status==1"> Rapport créé, mail envoyé  {{ url }}</div>
   <div ng-if="status==2"> Erreur de traitement, veuillez réessayer dans un moment</div>
   <div ng-if="status==3"> Chargement en cours </div>
 
