@@ -1,4 +1,30 @@
 <?php
+//******************************
+// Rapports
+//-----------------
+//
+// Rapport
+//
+//******************************
+
+$app->get('/v1/rapport/getall', function ($request,$response) {
+
+
+
+   try{
+     if($report != null){
+       $filejson = "log/".date("Ymd")."-formation.log";
+       file_put_contents("$filejson",$dataT, FILE_APPEND);
+       return $response->withJson(array('status' => 'OK', 'url' => $report),200);
+     }
+     else {
+     return $response->withJson(array('status' => 'Erreur pendant traitement du rapport '),422);
+     }
+   }
+   catch(\Exception $ex){
+     return $response->withJson(array('error' => $ex->getMessage()),422);
+   }
+});
 
 //******************************
 // Rapports
@@ -28,6 +54,8 @@ $app->post('/v1/rapport/journalier', function ($request,$response) {
 
    try{
      if($report != null){
+       $filejson = "log/".date("Ymd")."-formation.log";
+       file_put_contents("$filejson",$dataT, FILE_APPEND);
        return $response->withJson(array('status' => 'OK', 'url' => $report),200);
      }
      else {
@@ -333,6 +361,7 @@ h1, h2, h3, h4, h5, h6 {
     </footer>
   </body>
 </html>';
+
 
 
   $file = "rapports/".date("Ymd-h:i:s")."-$filename.html";

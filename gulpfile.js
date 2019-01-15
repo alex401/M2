@@ -17,6 +17,7 @@ var paths = {
     images: 'src/img/**/*.*',
     templates: 'src/templates/**',
     index: 'src/index.php',
+    logo: 'src/*.png',
     bower_fonts: 'src/components/**/*.{ttf,woff,eof,svg}',
 };
 
@@ -104,7 +105,7 @@ gulp.task('webserver', function() {
     connect.server({
         root: 'dist',
         livereload: true,
-        port: 8888
+        port: 8080
     });
 });
 
