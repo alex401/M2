@@ -1,0 +1,56 @@
+<main class="col-sm-12 col-md-12" ng-controller="CommandeDetailsCtrl">
+  <h1>Détails de la commande</h1>
+
+  <ul class="list-group">
+    <li class="list-group-item active">Commande numéro: {{commande.rowid}}</li>
+    <li class="list-group-item">Client: {{commande.nom}}</li>
+    <li class="list-group-item">Type: {{commande.type}}</li>
+    <li class="list-group-item">Statut: {{commande.statut}}</li>
+    <li class="list-group-item">Date: {{commande.timestampDate}}</li>
+    <li class="list-group-item">Chantier: {{commande.chantier}}</li>
+    <li class="list-group-item">Date d'envoi: {{cmdData.dateEnvoi}}</li>
+
+    <span ng-if="commande.type === 'materiel'">
+      <li class="list-group-item">Matériel 1: {{cmdData.mat1}}</li>
+      <li class="list-group-item">Matériel 2: {{cmdData.mat2}}</li>
+      <li class="list-group-item">Matériel 3: {{cmdData.mat3}}</li>
+      <li class="list-group-item">Commentaire: {{cmdData.commentaire}}</li>
+      <li class="list-group-item">Date livraison: {{cmdData.dateLivraison}}</li>
+    </span>
+
+    <span ng-if="commande.type === 'carburant'">
+      <li class="list-group-item">Litres diesel: {{cmdData.nbLitresDiesel}}</li>
+      <li class="list-group-item">Litres essence: {{cmdData.nbLitresEssence}}</li>
+      <li class="list-group-item">Litres essence T2: {{cmdData.nbLitresEssence2T}}</li>
+    </span>
+
+    <span ng-if="commande.type === 'repas'">
+      <li class="list-group-item">Nbr déjeuners: {{cmdData.nbDej}}</li>
+      <li class="list-group-item">Nbr dîners: {{cmdData.nbDiner}}</li>
+      <li class="list-group-item">Nbr soupers: {{cmdData.nbSouper}}</li>
+      <li class="list-group-item">Nbr collation nuit: {{cmdData.nbCollationNuit}}</li>
+      <li class="list-group-item">Nbr végétariens: {{cmdData.nbVegetariens}}</li>
+      <li class="list-group-item">Commentaire: {{cmdData.commentaire}}</li>
+      <li class="list-group-item">Date livraison: {{cmdData.dateLivraison}}</li>
+    </span>
+
+    <span ng-if="commande.type === 'transport'">
+      <li class="list-group-item">Destination: {{cmdData.destination}}</li>
+      <li class="list-group-item">Heures: {{cmdData.heure}}</li>
+      <li class="list-group-item">Détails pour heure: {{cmdData.detailsHeure}}</li>
+      <li class="list-group-item">Nombre d'hommes: {{cmdData.nbHomme}}</li>
+      <li class="list-group-item">Matériel à transporter: {{cmdData.matTransport}}</li>
+      <li class="list-group-item">Commentaire: {{cmdData.commentaire}}</li>
+      <li class="list-group-item">Date livraison: {{cmdData.dateLivraison}}</li>
+    </span>
+
+    <span ng-if="commande.type === 'aidecmdt'">
+      <li class="list-group-item">Litres diesel: {{cmdData.nbLitresDiesel}}</li>
+      <li class="list-group-item">Litres essence: {{cmdData.nbLitresEssence}}</li>
+      <li class="list-group-item">Litres essence T2: {{cmdData.nbLitresEssence2T}}</li>
+    </span>
+  </ul>
+
+
+
+</main>

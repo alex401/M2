@@ -8,6 +8,17 @@ function CommandeGestionCtrl($scope, $stateParams, $http) {
   $scope.commandes = {};
   $scope.t = $stateParams.type;
 
+  $scope.filterFn = function(cmd) {
+    console.log(cmd.statut);
+
+    // Put condition in db query ?
+    if(($scope.t === 'aidecmdt' || $scope.t === cmd.type ) && cmd.statut != 'attente de validation') {
+        return true;
+    }
+
+    return false;
+};
+
   // ****************************
   // Load
   // ****************************

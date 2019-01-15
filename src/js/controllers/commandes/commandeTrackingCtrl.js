@@ -8,6 +8,16 @@ function CommandeTrackingCtrl($scope, $stateParams, $http) {
   $scope.commandes = {};
   $scope.t = $stateParams.type;
 
+  $scope.filterFn = function(cmd) {
+    console.log(cmd.status);
+
+    // Put condition in db queries.
+    if($scope.t === 'aidecmdt' || ($scope.t === cmd.type)) {
+        return true;
+    }
+
+    return false;
+};
   // ****************************
   // Load
   // ****************************
