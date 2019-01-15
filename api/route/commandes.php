@@ -14,7 +14,7 @@ $app->post('/v1/commande/{type}', function ($request,$response, $args) {
   $type = $data['type'];
   $nom = $data['nom'];
   $chantier = $data['chantier'];
-  $status = "en attente validation";
+  $status = "attente de validation";
 
   // Remove already taken fields.
   array_splice($data, 0, 3);
@@ -57,6 +57,25 @@ $app->get('/v1/select/commandes', function ($request,$response) {
     return $response->withJson(array('error' => $ex->getMessage()), 422);
   }
   return $response->withJson($result, 200);
+});
+
+$app->post('/v1/commande/update/{id}', function ($request,$response, $args) {
+
+  $id = $args['id'];
+  $data = $request->getParsedBody();
+
+  $status = $data['statut'];
+
+  //$data = json_encode($data);
+
+  $sth = $this->dbm2->prepare("UPDATE commandes SET statut = '$status' WHERE rowid = $id;");
+
+  try {
+    $succes = $sth->execute();
+
+  } catch(\Exception $ex){
+    return $response->withJson(array('error' => $ex->getMessage()), 422);
+  }
 });
 
 // Insert a new command in the database. TODO move this in the route above.
