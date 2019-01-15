@@ -43,14 +43,9 @@
       <li class="list-group-item">Commentaire: {{cmdData.commentaire}}</li>
       <li class="list-group-item">Date livraison: {{cmdData.dateLivraison}}</li>
     </span>
-
-    <span ng-if="commande.type === 'aidecmdt'">
-      <li class="list-group-item">Litres diesel: {{cmdData.nbLitresDiesel}}</li>
-      <li class="list-group-item">Litres essence: {{cmdData.nbLitresEssence}}</li>
-      <li class="list-group-item">Litres essence T2: {{cmdData.nbLitresEssence2T}}</li>
-    </span>
   </ul>
 
+  <button ng-show="cat === 'gestion'" class="btn btn-primary" ng-click="updateStatus(commande.rowid)">{{buttonText()}}</button>
 
 
 </main>
