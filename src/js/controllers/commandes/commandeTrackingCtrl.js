@@ -31,7 +31,6 @@ function CommandeTrackingCtrl($scope, $stateParams, $http) {
       url: 'api/index.php/v1/select/commandes'
     }).then(function successCallback(response) {
       $scope.commandes = response.data;
-      console.log(response.data);
       }, function errorCallback(response) {
         console.log("error");
       });

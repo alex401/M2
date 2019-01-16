@@ -18,7 +18,7 @@ angular.module('PCIM2').config(['$stateProvider', '$urlRouterProvider','$locatio
             })
             .state('commandes', {
                 url: '/menu/commandes',
-                templateUrl: 'templates/menu_commandes.html'
+                templateUrl: 'templates/commandes/creation/menu_commandes.html'
             })
             .state('demande', {
                 url: '/menu/demandes',
@@ -26,15 +26,15 @@ angular.module('PCIM2').config(['$stateProvider', '$urlRouterProvider','$locatio
             })
             .state('cmdrepas', {
                 url: '/commande/repas',
-                templateUrl: 'templates/commandes/cmd_repas.html'
+                templateUrl: 'templates/commandes/creation/cmd_repas.html'
             })
             .state('cmdcarburant', {
                 url: '/commande/carburant',
-                templateUrl: 'templates/commandes/cmd_carburant.html'
+                templateUrl: 'templates/commandes/creation/cmd_carburant.html'
             })
             .state('cmdmateriel', {
                 url: '/commande/materiel',
-                templateUrl: 'templates/commandes/cmd_materiel.html'
+                templateUrl: 'templates/commandes/creation/cmd_materiel.html'
             })
             .state('formsuivichantier', {
                 url: '/form/suivichantier',
@@ -42,7 +42,7 @@ angular.module('PCIM2').config(['$stateProvider', '$urlRouterProvider','$locatio
             })
             .state('cmdtransport', {
                 url: '/commande/transport',
-                templateUrl: 'templates/commandes/cmd_transport.html'
+                templateUrl: 'templates/commandes/creation/cmd_transport.html'
             })
             .state('recherchetiers', {
                 url: '/admin/recherchetiers',
