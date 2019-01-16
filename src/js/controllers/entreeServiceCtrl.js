@@ -85,7 +85,7 @@ $scope.onClick = function (personne)  {
             for (var j = 0; j < $scope.existingTags.length; j++) {
               if($scope.tags[i].label === $scope.existingTags[j].label){
                 var t = $scope.tags[i];
-                t.checked = true;
+                t.checked = "true";
                 $scope.tagged.push(t);
               }
               //break;
