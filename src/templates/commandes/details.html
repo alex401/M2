@@ -45,8 +45,9 @@
     </span>
   </ul>
 
-  <button ng-show="cat === 'gestion'" class="btn btn-primary" ng-click="updateStatus(commande.rowid)">{{buttonText()}}</button>
-  <button ng-disabled="currentStatus != 'en traitement'" ng-show="cat === 'gestion'" class="btn btn-primary" ng-click="updateStatusRefuse(commande.rowid)">Refuser</button>
-
+<div ng-if="currentStatus != 'livree'">
+  <button ng-disabled="(currentStatus === 'attente de transport') && (t != 'transport')" ng-show="cat === 'gestion'" class="btn btn-primary" ng-click="updateStatus(commande.rowid)">{{buttonText()}}</button>
+  <button ng-disabled="(currentStatus != 'en traitement') && (currentStatus != 'en transport') && (currentStatus != 'attente de validation')" ng-show="cat === 'gestion'" class="btn btn-primary" ng-click="updateStatusRefuse(commande.rowid)">Refuser</button>
+</div>
 
 </main>

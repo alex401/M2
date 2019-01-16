@@ -11,7 +11,10 @@ function CommandeGestionCtrl($scope, $stateParams, $http) {
   $scope.filterFn = function(cmd) {
 
     // Put condition in db query ?
-    if(($scope.t === 'aidecmdt' && cmd.statut === 'attente de validation') || ($scope.t === cmd.type && cmd.statut != 'attente de validation')) {
+    if(($scope.t === 'aidecmdt' && cmd.statut === 'attente de validation')
+        || ($scope.t === cmd.type && cmd.statut != 'attente de validation' && cmd.statut != 'attente de transport')
+        || ($scope.t === 'transport' && cmd.statut === 'attente de transport')
+      ) {
         return true;
     }
 

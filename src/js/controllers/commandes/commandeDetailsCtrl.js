@@ -12,10 +12,9 @@ function CommandeDetailsCtrl($scope, $stateParams, $http) {
 
   $scope.buttonText = function() {
     var text = 'test';
-    if($scope.currentStatus === 'en traitement' && $scope.commande.type === 'transport') {
+    if($scope.currentStatus === 'en transport') {
       text = 'Livrée';
-    }
-    if($scope.currentStatus === 'en traitement') {
+    } else if($scope.currentStatus === 'en traitement') {
       text = 'Traitée';
     } else {
       text = $scope.t === 'aidecmdt' ? 'Valider' : 'Accepter';
@@ -24,7 +23,12 @@ function CommandeDetailsCtrl($scope, $stateParams, $http) {
   }
 
   $scope.updateStatusRefuse = function(id) {
-    var newStatus = 'attente de traitement';
+    var newStatus = '';
+    if($scope.currentStatus === 'attente de validation') {
+      newStatus = 'livree';
+    } else {
+      newStatus = $scope.currentStatus === 'en transport' ? 'attente de transport' : 'attente de traitement';
+    }  
 
     updateDB(newStatus, id);
   }
@@ -33,8 +37,12 @@ function CommandeDetailsCtrl($scope, $stateParams, $http) {
     var newStatus = '';
     var dat = {};
 
-    if($scope.currentStatus === 'en traitement') {
-      newStatus = 'traitee';
+    if(($scope.currentStatus === 'en transport')) {
+      newStatus = 'livree';
+    } else if($scope.currentStatus === 'en traitement') {
+      newStatus = 'attente de transport';
+    } else if($scope.currentStatus === 'attente de transport') {
+      newStatus = 'en transport';
     } else {
       newStatus = $scope.t === 'aidecmdt' ? 'attente de traitement' : 'en traitement';
     }
