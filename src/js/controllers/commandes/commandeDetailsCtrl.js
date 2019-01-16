@@ -1,6 +1,6 @@
 angular.module('PCIM2')
-    .controller('CommandeDetailsCtrl', ['$scope','$stateParams', '$http', CommandeDetailsCtrl]);
-function CommandeDetailsCtrl($scope, $stateParams, $http) {
+    .controller('CommandeDetailsCtrl', ['$scope','$stateParams', '$http', 'config', CommandeDetailsCtrl]);
+function CommandeDetailsCtrl($scope, $stateParams, $http, config) {
   // ****************************
   // Initialise variables & scope
   // ****************************
@@ -10,11 +10,13 @@ function CommandeDetailsCtrl($scope, $stateParams, $http) {
   $scope.cmdData = JSON.parse($stateParams.cmd.data);
   $scope.currentStatus = $scope.commande.statut;
 
+  $scope.config = config;
+
   $scope.buttonText = function() {
     var text = 'test';
-    if($scope.currentStatus === 'en transport') {
+    if($scope.currentStatus === config.transportStatus) {
       text = 'Livrée';
-    } else if($scope.currentStatus === 'en traitement') {
+    } else if($scope.currentStatus === config.treatmentStatus) {
       text = 'Traitée';
     } else {
       text = $scope.t === 'aidecmdt' ? 'Valider' : 'Accepter';
@@ -24,11 +26,11 @@ function CommandeDetailsCtrl($scope, $stateParams, $http) {
 
   $scope.updateStatusRefuse = function(id) {
     var newStatus = '';
-    if($scope.currentStatus === 'attente de validation') {
-      newStatus = 'livree';
+    if($scope.currentStatus === config.validationStatus) {
+      newStatus = config.deliveredStatus;
     } else {
-      newStatus = $scope.currentStatus === 'en transport' ? 'attente de transport' : 'attente de traitement';
-    }  
+      newStatus = $scope.currentStatus === config.transportStatus ? config.waitingTransportStatus : config.waitingStatus;
+    }
 
     updateDB(newStatus, id);
   }
@@ -37,14 +39,14 @@ function CommandeDetailsCtrl($scope, $stateParams, $http) {
     var newStatus = '';
     var dat = {};
 
-    if(($scope.currentStatus === 'en transport')) {
-      newStatus = 'livree';
-    } else if($scope.currentStatus === 'en traitement') {
-      newStatus = 'attente de transport';
-    } else if($scope.currentStatus === 'attente de transport') {
-      newStatus = 'en transport';
+    if(($scope.currentStatus === config.transportStatus)) {
+      newStatus = config.deliveredStatus;
+    } else if($scope.currentStatus === config.treatmentStatus) {
+      newStatus = config.waitingTransportStatus;
+    } else if($scope.currentStatus === config.waitingTransportStatus) {
+      newStatus = config.transportStatus;
     } else {
-      newStatus = $scope.t === 'aidecmdt' ? 'attente de traitement' : 'en traitement';
+      newStatus = $scope.t === 'aidecmdt' ? config.waitingStatus : config.treatmentStatus;
     }
 
     updateDB(newStatus, id);
