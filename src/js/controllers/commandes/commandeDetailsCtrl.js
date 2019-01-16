@@ -23,6 +23,12 @@ function CommandeDetailsCtrl($scope, $stateParams, $http) {
      return text;
   }
 
+  $scope.updateStatusRefuse = function(id) {
+    var newStatus = 'attente de traitement';
+
+    updateDB(newStatus, id);
+  }
+
   $scope.updateStatus = function(id) {
     var newStatus = '';
     var dat = {};
@@ -32,8 +38,12 @@ function CommandeDetailsCtrl($scope, $stateParams, $http) {
     } else {
       newStatus = $scope.t === 'aidecmdt' ? 'attente de traitement' : 'en traitement';
     }
+
+    updateDB(newStatus, id);
+  }
+
+  var updateDB = function(newStatus, id) {
     dat = {statut: newStatus};
-    $scope.currentStatus = newStatus;
 
     $http({
       method: 'POST',
@@ -42,6 +52,7 @@ function CommandeDetailsCtrl($scope, $stateParams, $http) {
       }).then(function successCallback() {
           console.log("success");
           $scope.status = 1;
+          $scope.currentStatus = newStatus;
 
             }, function errorCallback() {
               console.log("something went wrong but DB updated");

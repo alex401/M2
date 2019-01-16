@@ -5,7 +5,7 @@
     <li class="list-group-item active">Commande numéro: {{commande.rowid}}</li>
     <li class="list-group-item">Client: {{commande.nom}}</li>
     <li class="list-group-item">Type: {{commande.type}}</li>
-    <li class="list-group-item">Statut: {{commande.statut}}</li>
+    <li class="list-group-item">Statut: {{currentStatus}}</li>
     <li class="list-group-item">Date: {{commande.timestampDate}}</li>
     <li class="list-group-item">Chantier: {{commande.chantier}}</li>
     <li class="list-group-item">Date d'envoi: {{cmdData.dateEnvoi}}</li>
@@ -46,6 +46,7 @@
   </ul>
 
   <button ng-show="cat === 'gestion'" class="btn btn-primary" ng-click="updateStatus(commande.rowid)">{{buttonText()}}</button>
+  <button ng-disabled="currentStatus != 'en traitement'" ng-show="cat === 'gestion'" class="btn btn-primary" ng-click="updateStatusRefuse(commande.rowid)">Refuser</button>
 
 
 </main>
