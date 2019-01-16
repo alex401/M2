@@ -104,11 +104,23 @@ $app->post('/v1/admin/entreeservice/tags/{personneid}', function ($request,$resp
 
   $result  = "";
   $personneid = $args['personneid'];
-
   $data = $request->getParsedBody();
   $data = (json_encode($data));
 
   $data = json_decode($data, true);
+
+  //15.01.2019
+
+  $dataLieu = $data['lieu'];
+  $dataAdresse = $data['adresse'];
+  $dataZip = $data['zip'];
+  $dataMail = $data['mail'];
+  $dataPhone = $data['phone'];
+  $sth = $this->dbdoll->prepare("UPDATE llx_socpeople SET town = '$dataLieu', address = '$dataAdresse', zip = '$dataZip', email = '$dataMail', phone = '$dataPhone' WHERE rowid = $personneid");
+  $sth->execute();
+
+
+  //Pre 15.01.2019
   $data = $data['tagged'];
 
 //  var_dump($data);

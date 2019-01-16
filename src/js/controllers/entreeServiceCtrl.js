@@ -118,11 +118,15 @@ $scope.onClick = function (personne)  {
     //
     console.log(personne);
     console.log(personne.rowid);
+    console.log($scope.personne.zip);
+
     //upload
     $http({
       method: 'POST',
       url: 'api/index.php/v1/admin/entreeservice/tags/'+ Number(personne.rowid),
-      data: { tagged: $scope.tagged }
+      //15.01.2019
+      data: { lieu: $scope.personne.town, adresse: $scope.personne.address, zip: $scope.personne.zip, tagged: $scope.tagged, mail: $scope.personne.email, phone: $scope.personne.phone }
+  //    data: {tagged: $scope.tagged }
 
     }).then(function successCallback() {
     //  console.log(response.data);
