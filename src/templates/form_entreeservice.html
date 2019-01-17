@@ -52,12 +52,6 @@
 </div>
 </div>
 
-<div ng-if="existingTags">
-  <ul>
-    <li ng-repeat="existing in existingTags">{{existing.label}}</li>
-  </ul>
-</div>
-
 <div role="alert" ng-repeat="tag in tags" >
   <p class="alert" ng-class="{'alert-success': tag.checked == 'true' }" ng-click="actionTag(tag, $index)" ng-model="tagged" class="mb-0">{{ tag.label }}</p>
 </div>
