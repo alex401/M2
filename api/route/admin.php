@@ -118,7 +118,8 @@ $app->post('/v1/admin/entreeservice/tags/{personneid}', function ($request,$resp
   $dataPhone = $data['phone'];
   $sth = $this->dbdoll->prepare("UPDATE llx_socpeople SET town = '$dataLieu', address = '$dataAdresse', zip = '$dataZip', email = '$dataMail', phone = '$dataPhone' WHERE rowid = $personneid");
   $sth->execute();
-
+  $sth = $this->dbdoll->prepare("UPDATE llx_societe, llx_socpeople SET llx_societe.address = '$dataAdresse', llx_societe.zip = '$dataZip', llx_societe.town = '$dataLieu', llx_societe.email = '$dataMail', llx_societe.phone = '$dataPhone' WHERE llx_societe.rowid = llx_socpeople.fk_soc AND llx_socpeople.rowid = $personneid");
+  $sth->execute();
 
   //Pre 15.01.2019
   $data = $data['tagged'];
