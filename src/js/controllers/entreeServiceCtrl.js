@@ -19,6 +19,7 @@ function EntreeServiceCtrl($scope, $http) {
   $scope.tiers = {};
   $scope.tags = {};
   $scope.tagged = [];
+  $scope.existingTags = {};
 
 // ****************************
 // Load
@@ -33,7 +34,6 @@ function EntreeServiceCtrl($scope, $http) {
   // ****************************
 
   $scope.actionTag = function (tag, ind) {
-    console.log(tag);
     if ($scope.tagged.indexOf(tag) === -1) {
       console.log(tag);
       //update the tags array with checked=true and push to tagged array.
@@ -41,13 +41,13 @@ function EntreeServiceCtrl($scope, $http) {
       $scope.tagged.push(tag);
     } else {
       var index = $scope.tagged.indexOf(tag);
-   if (index !== -1) {
-     //when the tag is clicked again, remove it from the tagged array and set checked=false in the tags array.
-     console.log(tag);
-     $scope.tagged.splice(index, 1);
-     $scope.tags[ind].checked="false";
+      if (index !== -1) {
+        //when the tag is clicked again, remove it from the tagged array and set checked=false in the tags array.
+        console.log(tag);
+        $scope.tagged.splice(index, 1);
+        $scope.tags[ind].checked="false";
+      }
     }
-  }
     console.log($scope.tagged);
   }
 
@@ -60,6 +60,7 @@ $scope.onClick = function (personne)  {
   $scope.tiers = null;
   $scope.personne = personne;
   $scope.tags = null;
+  $scope.existingTags = null;
 
         $http({
           method: 'GET',
@@ -67,6 +68,29 @@ $scope.onClick = function (personne)  {
         }).then(function successCallback(response) {
           console.log(response.data);
           $scope.tags = response.data;
+          }, function errorCallback(response) {
+            console.log("error");
+          });
+
+
+        $http({
+          method: 'GET',
+          url: 'api/index.php/v1/admin/tags/' + personne.rowid
+        }).then(function successCallback(response) {
+          $scope.existingTags = response.data;
+          // TODO: do this another way...
+          for (var i = 0; i < $scope.tags.length; i++) {
+            for (var j = 0; j < $scope.existingTags.length; j++) {
+              if($scope.tags[i].label === $scope.existingTags[j].label){
+                var t = $scope.tags[i];
+                t.checked = "true";
+                $scope.tagged.push(t);
+              }
+              //break;
+            }
+          }
+          console.log("tagged init");
+          console.log($scope.tagged);
           }, function errorCallback(response) {
             console.log("error");
           });

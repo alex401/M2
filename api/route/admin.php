@@ -47,6 +47,26 @@ $sth = $this->dbdoll->prepare("SELECT CONCAT(lastname, ' ', firstname) as nom, a
     }
 });
 
+$app->get('/v1/admin/tags/{personneid}', function($request,$response, $args) {
+
+  $rowid = $args['personneid'];
+  $sth = $this->dbdoll->prepare("SELECT llx_categorie.rowid, llx_categorie.label, llx_categorie.color, 'true' as checked FROM llx_categorie_contact INNER JOIN llx_categorie ON llx_categorie_contact.fk_categorie = llx_categorie.rowid WHERE llx_categorie_contact.fk_socpeople like '$rowid'");
+  try{
+    $sth->execute();
+    $result = $sth->fetchAll();
+
+  if($result){
+      return $response->withJson($result,200);
+    }
+    else {
+    return $response->withJson(array('status' => 'Erreur'),422);
+    }
+  }
+  catch(\Exception $ex){
+    return $response->withJson(array('error' => $ex->getMessage()),422);
+  }
+});
+
 // return a list of contacts searched by tags
 $app->get('/v1/admin/socpeople/tags/{tagid}', function ($request,$response, $args) {
 
