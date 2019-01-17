@@ -43,8 +43,12 @@ $logout="";
                 <form class="form-signin">
                 <input  type="text" name="login" id='login' class="form-control" placeholder="login" required autofocus> <br>
                 <input type="password" name="motdepasse" id='motdepasse'  class="form-control" placeholder="Password" required> <br>
+                <input type="checkbox" name="acceptation" id='acceptation' class="form-control" placeholder="Acceptation" required> <label> Je confirme avoir respecté la condition ci-dessous. </label> <br>
+                <!-- <textarea rows="4" cols="50"> -->
+                  Au début de chaque service, tout astreint ayant contact avec des données ou documents sensibles doit être instruit sur les principes et prescriptions en vigueur concernant la protection des données et la sécurité des documents.
+                <!-- </textarea> <br> -->
                 <button class="btn btn-lg btn-primary btn-block" type="submit">
-                    Connection</button>
+                    Connexion</button>
 
                 </form>
             </div>
