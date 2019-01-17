@@ -35,7 +35,6 @@ function EntreeServiceCtrl($scope, $http) {
 
   $scope.actionTag = function (tag, ind) {
     if ($scope.tagged.indexOf(tag) === -1) {
-      console.log("first if");
       console.log(tag);
       //update the tags array with checked=true and push to tagged array.
       $scope.tags[ind].checked="true";
@@ -44,7 +43,6 @@ function EntreeServiceCtrl($scope, $http) {
       var index = $scope.tagged.indexOf(tag);
       if (index !== -1) {
         //when the tag is clicked again, remove it from the tagged array and set checked=false in the tags array.
-        console.log("second if");
         console.log(tag);
         $scope.tagged.splice(index, 1);
         $scope.tags[ind].checked="false";
