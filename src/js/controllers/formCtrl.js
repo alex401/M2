@@ -51,22 +51,21 @@ function FormCtrl($scope, $http) {
   }
 
   $scope.submit = function (type) {
-
     switch(type) {
             case "repas":
                 var temp = $scope.form;
                 var dataSent = {'type':type,'nom':temp.nom,'chantier':temp.chantier,'dateLivraison':temp.dateLivraison, 'nbDej':temp.nbDej, 'nbDiner':temp.nbDiner, 'nbSouper':temp.nbSouper, 'nbCollationNuit':temp.nbCollationNuit, 'nbVegetariens':temp.nbVegetariens, 'commentaire':temp.commentaire};
-                sendCommand(dataSent);
+//                sendCommand(dataSent);
                 break;
             case "carburant":
                 var temp = $scope.form;
                 var dataSent = {'type':type,'nom':temp.nom, 'chantier':temp.chantier,'nbLitresDiesel':temp.nbLitresDiesel, 'nbLitresEssence':temp.nbLitresEssence, 'nbLitresEssence2T':temp.nbLitresEssence2T, 'commentaire':temp.commentaire};
-                sendCommand(dataSent);
+//                sendCommand(dataSent);
                 break;
             case "materiel":
                 var temp = $scope.form;
                 var dataSent = {'type':type,'nom':temp.nom,'chantier':temp.chantier,'dateLivraison':temp.dateLivraison,'mat1':temp.mat1, 'mat2':temp.mat2, 'mat3':temp.mat3, 'commentaire':temp.commentaire};
-                sendCommand(dataSent);
+//                sendCommand(dataSent);
                 break;
             case "demandeconge":
                 var temp = $scope.form;
@@ -75,7 +74,7 @@ function FormCtrl($scope, $http) {
             case "transport":
                 var temp = $scope.form;
                 var dataSent = {'type':type,'nom':temp.nom,'chantier':temp.chantier,'dateLivraison':temp.dateLivraison, 'destination':temp.destination, 'heure':temp.heure, 'detailsHeure':temp.detailsHeure, 'nbHomme':temp.nbHomme,'matTransport':temp.matTransport, 'commentaire':temp.commentaire};
-                sendCommand(dataSent);
+//                sendCommand(dataSent);
                 break;
             case "suivichantier":
                 var temp = $scope.form;
@@ -109,7 +108,7 @@ function FormCtrl($scope, $http) {
 
         $scope.status = 3;
 
-    /*$http({
+    $http({
       method: 'POST',
       url: 'api/index.php/v1/form/'+type,
       data : dataSent
@@ -127,8 +126,8 @@ function FormCtrl($scope, $http) {
         $scope.status = 2;
         // called asynchronously if an error occurs
         // or server returns response with an error status.
-      });*/
-  //  console.log($scope.formRepas);
+      });
+//    console.log($scope.formRepas);
   }
 
 

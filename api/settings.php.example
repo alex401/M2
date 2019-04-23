@@ -6,15 +6,15 @@ return [
 
         "dbdoll" => [
           "host" => "localhost",
-          "dbname" => "pci_dolibar",
+          "dbname" => "8k4b7_dolib5",
           "user" => "root",
           "pass" => "root"
       ],
         "dbm2" => [
-          "host" => "",
-          "dbname" => "",
-          "user" => "",
-          "pass" => ""
+          "host" => "localhost",
+          "dbname" => "8k4b7_dolib10",
+          "user" => "root",
+          "pass" => "root"
       ],
       "emails" => [
         "fourriers" => "",
