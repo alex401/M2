@@ -2,13 +2,22 @@
 
   <h1>Liste d'appel</h1>
 
+    <input ng-model="disclaimer" type="checkbox" name="acceptation" id='acceptation' class="form-control" placeholder="Acceptation" required>  Je confirme avoir respecté la condition ci-dessous.  <br>
+    Tous les astreints ont été sensibilisés sur les points suivants : <br>
+     Protection des données <br>
+     Matériel doit être complet  <br>
+     Changement d'adresse doit être communiqué <br>
+     Changement de compte pour la solde <br>
+    <br>
+
+
   <div ng-if="status==1"> Message envoyé </div>
   <div ng-if="status==2"> Erreur de traitement, veuillez réessayer dans un moment</div>
   <div ng-if="status==3"> Chargement en cours </div>
   <div ng-if="status==4" class="loader"></div>
 
 
-<form ng-show="status==0" ng-submit="submit('listeappel')">
+<form ng-show="status==0 && disclaimer==true" ng-submit="submit('listeappel')">
 
       <div class="form-group">
         <label for="formGroupFormation">Formation</label>
