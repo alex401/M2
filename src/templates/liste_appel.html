@@ -2,13 +2,15 @@
 
   <h1>Liste d'appel</h1>
 
-    <input ng-model="disclaimer" type="checkbox" name="acceptation" id='acceptation' class="form-control" placeholder="Acceptation" required>  Je confirme avoir respecté la condition ci-dessous.  <br>
-    Tous les astreints ont été sensibilisés sur les points suivants : <br>
-     Protection des données <br>
-     Matériel doit être complet  <br>
-     Changement d'adresse doit être communiqué <br>
-     Changement de compte pour la solde <br>
-    <br>
+    <input ng-model="disclaimer" type="checkbox" name="acceptation" id='acceptation' class="form-control" placeholder="Acceptation" required>
+    En cochant je confirme que tous les astreints ont été sensibilisés sur les points suivants :
+     <ul>
+      <li> Protection des données </li>
+      <li> Matériel doit être complet  </li>
+      <li> Changement d'adresse doit être communiqué </li>
+      <li> Changement de compte pour la solde </li>
+      <br>
+    </ul>
 
 
   <div ng-if="status==1"> Message envoyé </div>
