@@ -89,8 +89,8 @@ $scope.onClick = function (personne)  {
               //break;
             }
           }
-          console.log("tagged init");
-          console.log($scope.tagged);
+          // console.log("tagged init");
+          // console.log($scope.tagged);
           }, function errorCallback(response) {
             console.log("error");
           });
@@ -130,7 +130,6 @@ $scope.onClick = function (personne)  {
           method: 'GET',
           url: 'api/index.php/v1/admin/personnes/'+Number(session)
         }).then(function successCallback(response) {
-          console.log(response.data);
           $scope.personnes = response.data;
           }, function errorCallback(response) {
             console.log("error");
@@ -139,10 +138,6 @@ $scope.onClick = function (personne)  {
 
 
   $scope.submit = function (personne) {
-    //
-    //console.log(personne);
-    console.log(personne.rowid);
-    //console.log($scope.personne.zip);
 
     //upload
     $http({
@@ -150,38 +145,30 @@ $scope.onClick = function (personne)  {
       url: 'api/index.php/v1/admin/entreeservice/tags/'+ Number(personne.rowid),
       //15.01.2019
       data: { lieu: $scope.personne.town, adresse: $scope.personne.address, zip: $scope.personne.zip, tagged: $scope.tagged, mail: $scope.personne.email, phone: $scope.personne.phone }
-  //    data: {tagged: $scope.tagged }
-
     }).then(function successCallback() {
-    //  console.log(response.data);
-    console.log("success");
-    $scope.status = 1;
+      console.log("success");
+      $scope.status = 1;
 
-  //    $scope.personnes = response.data;
-      }, function errorCallback() {
-        console.log("something went wrong but DB updated-");
-        $scope.status = 1;
-      });
+    }, function errorCallback() {
+      console.log("something went wrong but DB updated-");
+      $scope.status = 1;
+    });
 
 
     // Mapping tags languages to ECV languages.
     var langs = getLangs($scope.tagged);
-    $http({
-      method: 'POST',
-      url: 'api/index.php/v1/admin/entreeservice/tags/ecv/'+ Number(personne.rowid),
-      data: {langs: langs}
-    }).then(function successCallback() {
-    //  console.log(response.data);
-    console.log("success in ecv");
-    $scope.status = 1;
-
-    }, function errorCallback() {
-      console.log("something went wrong but DB updated in ecv");
-      $scope.status = 1;
-    });
-    // for(var i = 0; i < langs.length; i++) {
-    //   console.log(langs[i]);
-    // }
+    if(langs.length > 0) {
+      $http({
+        method: 'POST',
+        url: 'api/index.php/v1/admin/entreeservice/tags/ecv/'+ Number(personne.rowid),
+        data: {langs: langs}
+      }).then(function successCallback(response) {
+        $scope.status = 0;
+      }, function errorCallback(response) {
+        console.log(response.data.error);
+        $scope.status = 1;
+      });
+    }
 
   }
 

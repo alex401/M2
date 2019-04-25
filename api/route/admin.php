@@ -172,7 +172,7 @@ $app->post('/v1/admin/entreeservice/tags/{personneid}', function ($request,$resp
 
 });
 
-// Update languages in ecv module.
+// Update languages in ecv module. TODO maybe transactions...
 $app->post('/v1/admin/entreeservice/tags/ecv/{personneid}', function ($request,$response, $args) {
 
   $result  = "";
@@ -186,8 +186,12 @@ $app->post('/v1/admin/entreeservice/tags/ecv/{personneid}', function ($request,$
 
   // Get the user fk and ecv fk.
   $sth = $this->dbdoll->prepare("SELECT user.rowid as userRowid, ecv.rowid as ecvRowid FROM llx_user user JOIN llx_ecv ecv ON user.rowid = ecv.fk_user AND user.fk_socpeople = $personneid");
-  $sth->execute();
-  $result = $sth->fetchAll();
+  try {
+    $sth->execute();
+    $result = $sth->fetchAll();
+  } catch (\Exception $ex) {
+    return $response->withJson(array('error' => 'Failed to find foreign keys:' . $ex->getMessage()), 422);
+  }
 
   // If there is no ecv for the user, do nothing.
   if(!$result) {
@@ -199,14 +203,23 @@ $app->post('/v1/admin/entreeservice/tags/ecv/{personneid}', function ($request,$
 
   //  Delete existing entries if any.
   $sth = $this->dbdoll->prepare("DELETE FROM `llx_ecvlangues` WHERE fk_user = $userRowid AND fk_ecv = $ecvRowid");
-  $sth->execute();
+  try {
+    $sth->execute();
+  } catch (\Exception $ex) {
+    return $response->withJson(array('error' => 'Failed to delete tags in ecv: ' . $ex->getMessage()), 422);
+  }
+
 
   // For each language, add it.
   foreach ($data as $key => $value) {
 
     // Add new ecv languages.
     $sth = $this->dbdoll->prepare("INSERT INTO `llx_ecvlangues`(`name`, `value`, `fk_ecv`, `fk_user`) VALUES ('$value', 1, $ecvRowid, $userRowid)");
-    $sth->execute();
+    try {
+      $sth->execute();
+    } catch (\Exception $ex) {
+      return $response->withJson(array('error' => 'Failed to insert tags in ecv: ' . $ex->getMessage()), 422);
+    }
   }
 
   return $response->withJson(array('status' => 'OK'),200);
