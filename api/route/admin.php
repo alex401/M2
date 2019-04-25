@@ -172,7 +172,7 @@ $app->post('/v1/admin/entreeservice/tags/{personneid}', function ($request,$resp
 
 });
 
-// Update languages in ecv module. TODO maybe transactions...
+// Update languages in ecv module.
 $app->post('/v1/admin/entreeservice/tags/ecv/{personneid}', function ($request,$response, $args) {
 
   $result  = "";
@@ -190,40 +190,40 @@ $app->post('/v1/admin/entreeservice/tags/ecv/{personneid}', function ($request,$
     $sth->execute();
     $result = $sth->fetchAll();
   } catch (\Exception $ex) {
-    return $response->withJson(array('error' => 'Failed to find foreign keys:' . $ex->getMessage()), 422);
+    return $response->withJson(array('error' => 'Failed to find foreign keys: ' . $ex->getMessage()), 422);
   }
 
   // If there is no ecv for the user, do nothing.
   if(!$result) {
-    return $response->withJson(array('status' => 'OK'),200);
+    return $response->withJson(array('status' => 'No entry found in ecv. Nothing will be added.'), 200);
   }
 
   $userRowid = $result[0]['userRowid'];
   $ecvRowid = $result[0]['ecvRowid'];
 
-  //  Delete existing entries if any.
-  $sth = $this->dbdoll->prepare("DELETE FROM `llx_ecvlangues` WHERE fk_user = $userRowid AND fk_ecv = $ecvRowid");
   try {
+    $this->dbdoll->beginTransaction();
+
+    //  Delete existing entries if any.
+    $sth = $this->dbdoll->prepare("DELETE FROM `llx_ecvlangues` WHERE fk_user = $userRowid AND fk_ecv = $ecvRowid");
     $sth->execute();
-  } catch (\Exception $ex) {
-    return $response->withJson(array('error' => 'Failed to delete tags in ecv: ' . $ex->getMessage()), 422);
-  }
 
-
-  // For each language, add it.
-  foreach ($data as $key => $value) {
-
-    // Add new ecv languages.
-    $sth = $this->dbdoll->prepare("INSERT INTO `llx_ecvlangues`(`name`, `value`, `fk_ecv`, `fk_user`) VALUES ('$value', 1, $ecvRowid, $userRowid)");
-    try {
+    foreach ($data as $key => $value) {
+      // Add new ecv languages.
+      $sth = $this->dbdoll->prepare("INSERT INTO `llx_ecvlangues`(`name`, `value`, `fk_ecv`, `fk_user`) VALUES ('$value', 1, $ecvRowid, $userRowid)");
       $sth->execute();
-    } catch (\Exception $ex) {
-      return $response->withJson(array('error' => 'Failed to insert tags in ecv: ' . $ex->getMessage()), 422);
     }
+
+    $this->dbdoll->commit();
+
+  } catch (\Exception $ex) {
+
+    $this->dbdoll->rollback();
+
+    return $response->withJson(array('error' => 'Failed to insert tags in ecv: ' . $ex->getMessage()), 422);
   }
 
   return $response->withJson(array('status' => 'OK'),200);
-
 });
 
 
