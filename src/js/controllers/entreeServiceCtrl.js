@@ -89,8 +89,8 @@ $scope.onClick = function (personne)  {
               //break;
             }
           }
-          console.log("tagged init");
-          console.log($scope.tagged);
+          // console.log("tagged init");
+          // console.log($scope.tagged);
           }, function errorCallback(response) {
             console.log("error");
           });
@@ -130,7 +130,6 @@ $scope.onClick = function (personne)  {
           method: 'GET',
           url: 'api/index.php/v1/admin/personnes/'+Number(session)
         }).then(function successCallback(response) {
-          console.log(response.data);
           $scope.personnes = response.data;
           }, function errorCallback(response) {
             console.log("error");
@@ -139,10 +138,6 @@ $scope.onClick = function (personne)  {
 
 
   $scope.submit = function (personne) {
-    //
-    console.log(personne);
-    console.log(personne.rowid);
-    console.log($scope.personne.zip);
 
     //upload
     $http({
@@ -150,21 +145,78 @@ $scope.onClick = function (personne)  {
       url: 'api/index.php/v1/admin/entreeservice/tags/'+ Number(personne.rowid),
       //15.01.2019
       data: { lieu: $scope.personne.town, adresse: $scope.personne.address, zip: $scope.personne.zip, tagged: $scope.tagged, mail: $scope.personne.email, phone: $scope.personne.phone }
-  //    data: {tagged: $scope.tagged }
-
     }).then(function successCallback() {
-    //  console.log(response.data);
-    console.log("success");
-    $scope.status = 1;
+      console.log("success");
+      $scope.status = 1;
 
-  //    $scope.personnes = response.data;
-      }, function errorCallback() {
-        console.log("something went wrong but DB updated");
+    }, function errorCallback() {
+      console.log("something went wrong but DB updated-");
+      $scope.status = 1;
+    });
+
+
+    // Mapping tags languages to ECV languages.
+    var langs = getLangs($scope.tagged);
+    if(langs.length > 0) {
+      $http({
+        method: 'POST',
+        url: 'api/index.php/v1/admin/entreeservice/tags/ecv/'+ Number(personne.rowid),
+        data: {langs: langs}
+      }).then(function successCallback(response) {
+        $scope.status = 0;
+      }, function errorCallback(response) {
+        console.log(response.data.error);
         $scope.status = 1;
       });
+    }
+
   }
 
 // Unused
 // Load();
 
+}
+
+function getLangs(tagged) {
+  var arrayLength = tagged.length;
+  var langs = [];
+  for (var i = 0; i < arrayLength; i++) {
+      var lang = mapLang(tagged[i].label);
+      if(lang != "") {
+        langs.push(lang);
+      }
+  }
+
+  return langs;
+}
+
+function mapLang(lang) {
+  switch(lang) {
+  case "LANGUE FRANCAIS":
+    return "fr_FR";
+  case "LANGUE ALLEMAND":
+    return "de_DE";
+  case "LANGUE ANGLAIS":
+    return "en_EN";
+  case "LANGUE ITALIEN":
+    return "it_IT";
+  case "LANGUE ESPAGNOL":
+    return "es_ES";
+  case "LANGUE PORTUGAIS":
+    return "pt_PT";
+  case "LANGUE TURC":
+    return "tr_TR";
+  case "LANGUE POLONAIS":
+    return "pl_PL";
+  case "LANGUE RUSSE":
+    return "ru_RU";
+  case "LANGUE HOLLANDAIS":
+    return "nl_NL";
+  case "LANGUE ALBANAIS":
+    return "sq_AL";
+  case "LANGUE BOSNIAQUE":
+    return "bs_BA";
+  default:
+    return "";
+  }
 }

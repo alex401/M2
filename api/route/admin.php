@@ -172,6 +172,59 @@ $app->post('/v1/admin/entreeservice/tags/{personneid}', function ($request,$resp
 
 });
 
+// Update languages in ecv module.
+$app->post('/v1/admin/entreeservice/tags/ecv/{personneid}', function ($request,$response, $args) {
+
+  $result  = "";
+  $personneid = $args['personneid'];
+  $data = $request->getParsedBody();
+  $data = (json_encode($data));
+  $data = json_decode($data, true);
+
+  // Get the languages.
+  $data = $data['langs'];
+
+  // Get the user fk and ecv fk.
+  $sth = $this->dbdoll->prepare("SELECT user.rowid as userRowid, ecv.rowid as ecvRowid FROM llx_user user JOIN llx_ecv ecv ON user.rowid = ecv.fk_user AND user.fk_socpeople = $personneid");
+  try {
+    $sth->execute();
+    $result = $sth->fetchAll();
+  } catch (\Exception $ex) {
+    return $response->withJson(array('error' => 'Failed to find foreign keys: ' . $ex->getMessage()), 422);
+  }
+
+  // If there is no ecv for the user, do nothing.
+  if(!$result) {
+    return $response->withJson(array('status' => 'No entry found in ecv. Nothing will be added.'), 200);
+  }
+
+  $userRowid = $result[0]['userRowid'];
+  $ecvRowid = $result[0]['ecvRowid'];
+
+  try {
+    $this->dbdoll->beginTransaction();
+
+    //  Delete existing entries if any.
+    $sth = $this->dbdoll->prepare("DELETE FROM `llx_ecvlangues` WHERE fk_user = $userRowid AND fk_ecv = $ecvRowid");
+    $sth->execute();
+
+    foreach ($data as $key => $value) {
+      // Add new ecv languages.
+      $sth = $this->dbdoll->prepare("INSERT INTO `llx_ecvlangues`(`name`, `value`, `fk_ecv`, `fk_user`) VALUES ('$value', 1, $ecvRowid, $userRowid)");
+      $sth->execute();
+    }
+
+    $this->dbdoll->commit();
+
+  } catch (\Exception $ex) {
+
+    $this->dbdoll->rollback();
+
+    return $response->withJson(array('error' => 'Failed to insert tags in ecv: ' . $ex->getMessage()), 422);
+  }
+
+  return $response->withJson(array('status' => 'OK'),200);
+});
 
 
 
