@@ -140,9 +140,9 @@ $scope.onClick = function (personne)  {
 
   $scope.submit = function (personne) {
     //
-    console.log(personne);
+    //console.log(personne);
     console.log(personne.rowid);
-    console.log($scope.personne.zip);
+    //console.log($scope.personne.zip);
 
     //upload
     $http({
@@ -159,12 +159,77 @@ $scope.onClick = function (personne)  {
 
   //    $scope.personnes = response.data;
       }, function errorCallback() {
-        console.log("something went wrong but DB updated");
+        console.log("something went wrong but DB updated-");
         $scope.status = 1;
       });
+
+
+    // Mapping tags languages to ECV languages.
+    var langs = getLangs($scope.tagged);
+    $http({
+      method: 'POST',
+      url: 'api/index.php/v1/admin/entreeservice/tags/ecv/'+ Number(personne.rowid),
+      data: {langs: langs}
+    }).then(function successCallback() {
+    //  console.log(response.data);
+    console.log("success in ecv");
+    $scope.status = 1;
+
+    }, function errorCallback() {
+      console.log("something went wrong but DB updated in ecv");
+      $scope.status = 1;
+    });
+    // for(var i = 0; i < langs.length; i++) {
+    //   console.log(langs[i]);
+    // }
+
   }
 
 // Unused
 // Load();
 
+}
+
+function getLangs(tagged) {
+  var arrayLength = tagged.length;
+  var langs = [];
+  for (var i = 0; i < arrayLength; i++) {
+      var lang = mapLang(tagged[i].label);
+      if(lang != "") {
+        langs.push(lang);
+      }
+  }
+
+  return langs;
+}
+
+function mapLang(lang) {
+  switch(lang) {
+  case "LANGUE FRANCAIS":
+    return "fr_FR";
+  case "LANGUE ALLEMAND":
+    return "de_DE";
+  case "LANGUE ANGLAIS":
+    return "en_EN";
+  case "LANGUE ITALIEN":
+    return "it_IT";
+  case "LANGUE ESPAGNOL":
+    return "es_ES";
+  case "LANGUE PORTUGAIS":
+    return "pt_PT";
+  case "LANGUE TURC":
+    return "tr_TR";
+  case "LANGUE POLONAIS":
+    return "pl_PL";
+  case "LANGUE RUSSE":
+    return "ru_RU";
+  case "LANGUE HOLLANDAIS":
+    return "nl_NL";
+  case "LANGUE ALBANAIS":
+    return "sq_AL";
+  case "LANGUE BOSNIAQUE":
+    return "bs_BA";
+  default:
+    return "";
+  }
 }
