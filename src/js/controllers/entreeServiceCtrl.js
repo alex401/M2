@@ -197,7 +197,7 @@ function mapLang(lang) {
   case "LANGUE ALLEMAND":
     return "de_DE";
   case "LANGUE ANGLAIS":
-    return "en_EN";
+    return "en_GB";
   case "LANGUE ITALIEN":
     return "it_IT";
   case "LANGUE ESPAGNOL":
