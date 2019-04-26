@@ -20,6 +20,7 @@ function EntreeServiceCtrl($scope, $http) {
   $scope.tags = {};
   $scope.tagged = [];
   $scope.existingTags = {};
+  $scope.langsInit = [];
 
 // ****************************
 // Load
@@ -43,12 +44,12 @@ function EntreeServiceCtrl($scope, $http) {
       var index = $scope.tagged.indexOf(tag);
       if (index !== -1) {
         //when the tag is clicked again, remove it from the tagged array and set checked=false in the tags array.
-        console.log(tag);
+        //console.log(tag);
         $scope.tagged.splice(index, 1);
         $scope.tags[ind].checked="false";
       }
     }
-    console.log($scope.tagged);
+    //console.log($scope.tagged);
   }
 
 // *****
@@ -61,6 +62,8 @@ $scope.onClick = function (personne)  {
   $scope.personne = personne;
   $scope.tags = null;
   $scope.existingTags = null;
+  $scope.langsInit = [];
+  $scope.tagged = [];
 
         $http({
           method: 'GET',
@@ -89,8 +92,9 @@ $scope.onClick = function (personne)  {
               //break;
             }
           }
-          // console.log("tagged init");
-          // console.log($scope.tagged);
+          $scope.langsInit = getLangs($scope.tagged);
+          // console.log("tlangs agged init");
+          // console.log($scope.langsInit);
           }, function errorCallback(response) {
             console.log("error");
           });
@@ -157,7 +161,7 @@ $scope.onClick = function (personne)  {
 
     // Mapping tags languages to ECV languages.
     var langs = getLangs($scope.tagged);
-    if(langs.length > 0) {
+    if(langs.length > 0 && !compareArray(langs, $scope.langsInit)) {
       $http({
         method: 'POST',
         url: 'api/index.php/v1/admin/entreeservice/tags/ecv/'+ Number(personne.rowid),
@@ -175,6 +179,10 @@ $scope.onClick = function (personne)  {
 // Unused
 // Load();
 
+}
+
+function compareArray(array1, array2) {
+  return array1.length === array2.length && array1.sort().every(function(value, index) { return value === array2.sort()[index]});
 }
 
 function getLangs(tagged) {
