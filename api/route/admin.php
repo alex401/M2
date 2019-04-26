@@ -1,5 +1,6 @@
 <?php
-
+// Allows to only work (SELECT, DELETE) with languages present in M2. Languages from dolibarr will not be touched.
+const LANGS = array('fr_FR', 'de_DE', 'en_GB', 'it_IT', 'es_ES', 'pt_PT', 'tr_TR', 'pl_PL', 'ru_RU', 'nl_NL', 'sq_AL', 'bs_BA');
 
 // return a list of tiers searched by name
 $app->get('/v1/admin/tiers/{name}', function ($request,$response, $args) {
@@ -175,6 +176,8 @@ $app->post('/v1/admin/entreeservice/tags/{personneid}', function ($request,$resp
 // Update languages in ecv module.
 $app->post('/v1/admin/entreeservice/tags/ecv/{personneid}', function ($request,$response, $args) {
 
+
+
   $result  = "";
   $personneid = $args['personneid'];
   $data = $request->getParsedBody();
@@ -200,17 +203,37 @@ $app->post('/v1/admin/entreeservice/tags/ecv/{personneid}', function ($request,$
 
   $userRowid = $result[0]['userRowid'];
   $ecvRowid = $result[0]['ecvRowid'];
+  // For the IN clause.
+  $langsStr = implode("', '", LANGS);
 
   try {
     $this->dbdoll->beginTransaction();
 
+    // Retrieve previous levels since we can not set them from M2.
+    $sth = $this->dbdoll->prepare("SELECT rowid, name, value FROM `llx_ecvlangues` WHERE fk_user = $userRowid AND fk_ecv = $ecvRowid
+      AND name IN('$langsStr')");
+    $sth->execute();
+    $result = $sth->fetchAll();
+
     //  Delete existing entries if any.
-    $sth = $this->dbdoll->prepare("DELETE FROM `llx_ecvlangues` WHERE fk_user = $userRowid AND fk_ecv = $ecvRowid");
+    $sth = $this->dbdoll->prepare("DELETE FROM `llx_ecvlangues` WHERE fk_user = $userRowid AND fk_ecv = $ecvRowid
+      AND name IN('$langsStr')");
     $sth->execute();
 
     foreach ($data as $key => $value) {
-      // Add new ecv languages.
-      $sth = $this->dbdoll->prepare("INSERT INTO `llx_ecvlangues`(`name`, `value`, `fk_ecv`, `fk_user`) VALUES ('$value', 1, $ecvRowid, $userRowid)");
+
+      $level = 1;
+
+      // See if we have a previous level for the current language.
+      foreach($result as &$row) {
+        if($row['name'] == $value) {
+          $level = $row['value'];
+          break;
+        }
+      }
+
+      // Add new ecv language.
+      $sth = $this->dbdoll->prepare("INSERT INTO `llx_ecvlangues`(`name`, `value`, `fk_ecv`, `fk_user`) VALUES ('$value', $level, $ecvRowid, $userRowid)");
       $sth->execute();
     }
 
