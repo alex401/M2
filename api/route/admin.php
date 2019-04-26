@@ -205,12 +205,29 @@ $app->post('/v1/admin/entreeservice/tags/ecv/{personneid}', function ($request,$
     $this->dbdoll->beginTransaction();
 
     //  Delete existing entries if any.
-    $sth = $this->dbdoll->prepare("DELETE FROM `llx_ecvlangues` WHERE fk_user = $userRowid AND fk_ecv = $ecvRowid");
-    $sth->execute();
+    // $sth = $this->dbdoll->prepare("DELETE FROM `llx_ecvlangues` WHERE fk_user = $userRowid AND fk_ecv = $ecvRowid");
+    // $sth->execute();
 
     foreach ($data as $key => $value) {
+
+      $level = 1;
+      $rowid = 0;
+
+      $sth = $this->dbdoll->prepare("SELECT rowid, value FROM `llx_ecvlangues` WHERE  name = '$value' AND fk_user = $userRowid AND fk_ecv = $ecvRowid");
+      $sth->execute();
+      $result = $sth->fetchAll();
+      if(sizeof($result) > 1) {
+        throw new Exception('Multiple entries found.');
+      } elseif (sizeof($result) == 1) {
+        $level = $result[0]['value'];
+        $rowid = $result[0]['rowid'];
+      }
+
+      $sth = $this->dbdoll->prepare("DELETE FROM `llx_ecvlangues` WHERE rowid = $rowid");
+      $sth->execute();
+
       // Add new ecv languages.
-      $sth = $this->dbdoll->prepare("INSERT INTO `llx_ecvlangues`(`name`, `value`, `fk_ecv`, `fk_user`) VALUES ('$value', 1, $ecvRowid, $userRowid)");
+      $sth = $this->dbdoll->prepare("INSERT INTO `llx_ecvlangues`(`name`, `value`, `fk_ecv`, `fk_user`) VALUES ('$value', $level, $ecvRowid, $userRowid)");
       $sth->execute();
     }
 
