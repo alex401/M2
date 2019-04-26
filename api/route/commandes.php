@@ -59,6 +59,55 @@ $app->get('/v1/select/commandes', function ($request,$response) {
   return $response->withJson($result, 200);
 });
 
+$app->post('/v1/search/commandes', function ($request,$response) {
+  $data = $request->getParsedBody();
+  $data = (json_encode($data));
+  $data = json_decode($data, true);
+
+  $command = $data['command'];
+  $rowid = $command['id'];
+  $type = $command['type'];
+  $nom = $command['client'];
+  $date = $command['date'];
+
+  $sth;
+
+  // If rowid is specified, there should be only one result.
+  if($rowid != "" && $date !="") {
+    $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE rowid = $rowid AND type like '%$type%'
+      AND nom like '%$nom%' AND DATE(timestampDate) >= '$date' AND DATE(timestampDate) < DATE_ADD('$date', INTERVAL 1 DAY)");
+  } else if($rowid != "") {
+    $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE rowid = $rowid AND type like '%$type%'
+      AND nom like '%$nom%'");
+  } else if($date !="") {
+    $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE type like '%$type%'
+      AND nom like '%$nom%' AND DATE(timestampDate) >= '$date' AND DATE(timestampDate) < DATE_ADD('$date', INTERVAL 1 DAY)");
+  } else {
+    $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE type like '%$type%' AND nom like '%$nom%'");
+  }
+
+  try {
+    $sth->execute();
+    $result = $sth->fetchAll();
+  } catch(\Exception $ex) {
+    return $response->withJson(array('error' => 'Failed to find command: ' . $ex->getMessage()), 422);
+  }
+  return $response->withJson($result, 200);
+
+
+  // $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE type like '%$type%' AND nom like '%$nom%'
+  //   AND DATE(timestampDate) >= '$date' AND DATE(timestampDate) < DATE_ADD('$date', INTERVAL 1 DAY)");
+  // try {
+  //   $sth->execute();
+  //   $result = $sth->fetchAll();
+  // } catch(\Exception $ex) {
+  //   return $response->withJson(array('error' => 'Failed to find command: ' . $ex->getMessage()), 422);
+  // }
+  // return $response->withJson($result, 200);
+
+
+});
+
 $app->post('/v1/commande/update/{id}', function ($request,$response, $args) {
 
   $id = $args['id'];

@@ -143,6 +143,10 @@ angular.module('PCIM2').config(['$stateProvider', '$urlRouterProvider','$locatio
                 url: "/commandes/details",
                 params: {cmd: null, cat: null, t: null},
                 templateUrl: 'templates/commandes/details.html'
+            })
+            .state('cmdsearch', {
+                url: "/commandes/search",
+                templateUrl: 'templates/commandes/menu_search.html'
             });
     }
 ]);
