@@ -36,7 +36,6 @@ function EntreeServiceCtrl($scope, $http) {
 
   $scope.actionTag = function (tag, ind) {
     if ($scope.tagged.indexOf(tag) === -1) {
-      console.log(tag);
       //update the tags array with checked=true and push to tagged array.
       $scope.tags[ind].checked="true";
       $scope.tagged.push(tag);
@@ -44,19 +43,16 @@ function EntreeServiceCtrl($scope, $http) {
       var index = $scope.tagged.indexOf(tag);
       if (index !== -1) {
         //when the tag is clicked again, remove it from the tagged array and set checked=false in the tags array.
-        //console.log(tag);
         $scope.tagged.splice(index, 1);
         $scope.tags[ind].checked="false";
       }
     }
-    //console.log($scope.tagged);
   }
 
 // *****
 // When user click on a tier/person. Will resest some arrays to null which will then reorganize the interface based on data on $scope.
 //
 $scope.onClick = function (personne)  {
-  console.log(personne);
   $scope.personnes = null;
   $scope.tiers = null;
   $scope.personne = personne;
@@ -65,39 +61,41 @@ $scope.onClick = function (personne)  {
   $scope.langsInit = [];
   $scope.tagged = [];
 
+        // First get all tags (to display them).
         $http({
           method: 'GET',
           url: 'api/index.php/v1/select/entreeservice/tags'
         }).then(function successCallback(response) {
-          console.log(response.data);
           $scope.tags = response.data;
-          }, function errorCallback(response) {
-            console.log("error");
-          });
 
-
-        $http({
-          method: 'GET',
-          url: 'api/index.php/v1/admin/tags/' + personne.rowid
-        }).then(function successCallback(response) {
-          $scope.existingTags = response.data;
-          // TODO: do this another way...
-          for (var i = 0; i < $scope.tags.length; i++) {
-            for (var j = 0; j < $scope.existingTags.length; j++) {
-              if($scope.tags[i].label === $scope.existingTags[j].label){
-                var t = $scope.tags[i];
-                t.checked = "true";
-                $scope.tagged.push(t);
+          // Get the tags for the current person. TODO put this elswhere maybe.
+          $http({
+            method: 'GET',
+            url: 'api/index.php/v1/admin/tags/' + personne.rowid
+          }).then(function successCallback(response) {
+            $scope.existingTags = response.data;
+            // TODO: do this another way...
+            for (var i = 0; i < $scope.tags.length; i++) {
+              for (var j = 0; j < $scope.existingTags.length; j++) {
+                if($scope.tags[i].label === $scope.existingTags[j].label){
+                  var t = $scope.tags[i];
+                  t.checked = "true";
+                  $scope.tagged.push(t);
+                }
+                //break;
               }
-              //break;
             }
-          }
-          $scope.langsInit = getLangs($scope.tagged);
-          // console.log("tlangs agged init");
-          // console.log($scope.langsInit);
+            $scope.langsInit = getLangs($scope.tagged);
+            }, function errorCallback(response) {
+              console.log("error");
+            });
+
           }, function errorCallback(response) {
             console.log("error");
           });
+
+
+
   }
 
   // ******
@@ -105,13 +103,11 @@ $scope.onClick = function (personne)  {
   // ******
   $scope.loadTiers = function (nom) {
     if(nom != null && nom.length > 3){
-    console.log(nom);
 
     $http({
       method: 'GET',
       url: 'api/index.php/v1/admin/socpeople/'+nom
     }).then(function successCallback(response) {
-      console.log(response.data);
       $scope.tiers = response.data;
       $scope.status = 0;
       }, function errorCallback(response) {
@@ -181,10 +177,16 @@ $scope.onClick = function (personne)  {
 
 }
 
+// =============================================================================
+// Check if two arrays contain the same values (order not important).
+// =============================================================================
 function compareArray(array1, array2) {
   return array1.length === array2.length && array1.sort().every(function(value, index) { return value === array2.sort()[index]});
 }
 
+// =============================================================================
+// Convert tags to array of names matching ecv languages name.
+// =============================================================================
 function getLangs(tagged) {
   var arrayLength = tagged.length;
   var langs = [];
@@ -198,6 +200,9 @@ function getLangs(tagged) {
   return langs;
 }
 
+// =============================================================================
+// Map a language tag to a ecv language name.
+// =============================================================================
 function mapLang(lang) {
   switch(lang) {
   case "LANGUE FRANCAIS":
