@@ -11,6 +11,19 @@ function CommandeDetailsCtrl($scope, $stateParams, $http, config) {
   $scope.currentStatus = $scope.commande.statut;
 
   $scope.config = config;
+  $scope.hist = [];
+
+  $http({
+    method: 'GET',
+    url: 'api/index.php/v1/commande/hist/' + $scope.commande.rowid
+  }).then(function successCallback(response) {
+    console.log("success");
+    $scope.status = 1;
+    $scope.hist = response.data;
+  }, function errorCallback(response) {
+    console.log(response.data.error);
+    $scope.status = 1;
+  });
 
   $scope.buttonText = function() {
     var text = 'test';
@@ -59,15 +72,15 @@ function CommandeDetailsCtrl($scope, $stateParams, $http, config) {
       method: 'POST',
       url: 'api/index.php/v1/commande/update/' + id,
       data: dat
-      }).then(function successCallback() {
-          console.log("success");
-          $scope.status = 1;
-          $scope.currentStatus = newStatus;
+    }).then(function successCallback(response) {
+      console.log("success");
+      $scope.status = 1;
+      $scope.currentStatus = newStatus;
+    }, function errorCallback(response) {
+      console.log(response.data.error);
+      $scope.status = 1;
+    });
 
-            }, function errorCallback() {
-              console.log("something went wrong but DB updated");
-              $scope.status = 1;
-            });
   }
 
   // ****************************

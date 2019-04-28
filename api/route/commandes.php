@@ -20,32 +20,43 @@ $app->post('/v1/commande/{type}', function ($request,$response, $args) {
   array_splice($data, 0, 3);
   $data = json_encode($data);
 
-  $sth = $this->dbm2->prepare("INSERT INTO commandes (type, nom, chantier, statut, data) VALUES ('$type', '$nom', '$chantier', '$status', '$data')");
-
   try {
+    $this->dbm2->beginTransaction();
+
+    $sth = $this->dbm2->prepare("INSERT INTO commandes (type, nom, chantier, statut, data) VALUES ('$type', '$nom', '$chantier', '$status', '$data')");
     $succes = $sth->execute();
 
+    // Insert new history entry.
+    $id = $this->dbm2->lastInsertId();
+    $sth = $this->dbm2->prepare("INSERT INTO `commandes_hist`(`cmd_id`, `statut`) VALUES ($id, '$status')");
+    $sth->execute();
+
+    $this->dbm2->commit();
+
   } catch(\Exception $ex){
+
+    $this->dbm2->roolback();
+
     return $response->withJson(array('error' => $ex->getMessage()), 422);
   }
 
   // Logging and mailing.
-  $data = (json_encode($data));
-  try {
-    //append to file named year-month
-    $result = setContent("repas", $data);
-    $mail = mailSender("repas", $data, "sud.commandement@pci-fr.ch", "sud.commandement@pci-fr.ch");
-
-    //if someting was inserted
-    if($result > 1 & $mail == 0) {
-      return $response->withJson(array('status' => 'OK'),200);
-    } else {
-      return $response->withJson(array('status' => 'Erreur lors du logging ou mailing'),422);
-    }
-
-    } catch(\Exception $ex){
-      return $response->withJson(array('error' => $ex->getMessage()),422);
-    }
+  // $data = (json_encode($data));
+  // try {
+  //   //append to file named year-month
+  //   $result = setContent("repas", $data);
+  //   $mail = mailSender("repas", $data, "sud.commandement@pci-fr.ch", "sud.commandement@pci-fr.ch");
+  //
+  //   //if someting was inserted
+  //   if($result > 1 & $mail == 0) {
+  //     return $response->withJson(array('status' => 'OK'),200);
+  //   } else {
+  //     return $response->withJson(array('status' => 'Erreur lors du logging ou mailing'),422);
+  //   }
+  //
+  //   } catch(\Exception $ex){
+  //     return $response->withJson(array('error' => $ex->getMessage()),422);
+  //   }
 });
 
 $app->get('/v1/select/commandes', function ($request,$response) {
@@ -115,16 +126,43 @@ $app->post('/v1/commande/update/{id}', function ($request,$response, $args) {
 
   $status = $data['statut'];
 
-  //$data = json_encode($data);
-
-  $sth = $this->dbm2->prepare("UPDATE commandes SET statut = '$status' WHERE rowid = $id;");
 
   try {
-    $succes = $sth->execute();
+    $this->dbm2->beginTransaction();
+
+    // Update command status.
+    $sth = $this->dbm2->prepare("UPDATE commandes SET statut = '$status' WHERE rowid = $id;");
+    $sth->execute();
+
+    // Insert new history entry.
+    $sth = $this->dbm2->prepare("INSERT INTO `commandes_hist`(`cmd_id`, `statut`) VALUES ($id, '$status')");
+    $sth->execute();
+
+    $this->dbm2->commit();
 
   } catch(\Exception $ex){
+
+    $this->dbm2->rollback();
+
     return $response->withJson(array('error' => $ex->getMessage()), 422);
   }
+
+  return $response->withJson(array('status' => 'OK'), 200);
+});
+
+// Get command history
+$app->get('/v1/commande/hist/{id}', function ($request, $response, $args) {
+
+  $id = $args['id'];
+
+  $sth = $this->dbm2->prepare("SELECT * FROM commandes_hist WHERE `cmd_id` = $id ORDER BY `date` ASC");
+  try {
+    $sth->execute();
+    $result = $sth->fetchAll();
+  } catch(\Exception $ex) {
+    return $response->withJson(array('error' => $ex->getMessage()), 422);
+  }
+  return $response->withJson($result, 200);
 });
 
 // Insert a new command in the database. TODO move this in the route above.
