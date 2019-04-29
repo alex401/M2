@@ -388,15 +388,25 @@ $app->post('/v1/form/radios', function ($request,$response) {
 
    $data = $request->getParsedBody();
    $data = (json_encode($data));
-   var_dump($data);
+   $data = json_decode($data, TRUE);
+
+   $dataForMail = array('Section' => $data['section'], 'Du' => $data['dateDe'], 'Au' => $data['dateA'], 'Pour' => '');
+   foreach($data->homme as $homme) {
+     $name = $homme->grade.' '.$hommes['name'];
+     $dataForMail[$name] = $hommes['tel'];
+   }
+   $dataForMail['Commentaires'] = $data['commentaires'];
+   $dataForMail = (json_encode($dataForMail));
+
+
    try{
      //append to file named year-month
-     $result = setContent("Radios",$data);
-     $mail = mailSender("Radios", $data, "sud.commandement@pci-fr.ch", "sud.commandement@pci-fr.ch");
+     $result = setContent("Radios",$dataForMail);
+     $mail = mailSender("Radios", $dataForMail, "sud.commandement@pci-fr.ch", "sud.commandement@pci-fr.ch");
 
      //if someting was inserted
      if($result > 1 & $mail == 0){
-       return $response->withJson(array('status' => 'OK'),200);
+       return $response->withJson(array('status' => $dataForMail),200);
      }
      else {
      return $response->withJson(array('status' => 'Erreur pendant commande de repas'),422);

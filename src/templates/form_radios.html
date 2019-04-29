@@ -13,14 +13,17 @@
     </div>
 
    <div class="form-group">
-     <label for="formGroupDate"> Date de besoin </label>
-     <input type="text" class="form-control" id="formGroupDate" ng-model="form.date">
+     <label for="formGroupDate"> Depuis le </label>
+     <input type="text" class="form-control" id="formGroupDate" ng-model="form.dateDe">
+   </div>
+   <div class="form-group">
+     <label for="formGroupDate"> Jusqu'au </label>
+     <input type="text" class="form-control" id="formGroupDate" ng-model="form.dateA">
    </div>
 
 
-
     <h3> Personnes à qui une radio doit être attribuée </h3>
-     <fieldset data-ng-repeat="homme in hommes">
+     <fieldset data-ng-repeat="homme in form.hommes">
         <select ng-model="homme.grade">
           <option value=''>Choisissez un grade</option>
           <option value='Hors-PC'>Non-PCiste</option>
@@ -35,11 +38,17 @@
           <option value='Capitaine'>Cap - Capitaine</option>
           <option value='Major'>Maj - Major</option>
         </select>
-        <input type="text" ng-model="homme.name"   placeholder="Nom et prénom">
+        <input type="text" ng-model="homme.name" placeholder="Nom et prénom">
         <input type="text" ng-model="homme.tel" placeholder="Numéro de téléphone">
-        
+
      </fieldset>
+
      <button class="btn" ng-click="addNewHomme()">Add fields</button>
+
+     <div class="form-group">
+       <label for="formGroupCommentaire"> Commentaires </label>
+       <input type="text" class="form-control" id="formGroupCommentaire" ng-model="form.commentaires">
+     </div>
 
    <button ng-click="submit('radios')" class="btn btn-primary">Envoyer</button>
 
