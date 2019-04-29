@@ -13,6 +13,19 @@ function FormCtrl($scope, $http) {
 
   $scope.form = {};
   $scope.status = 0;
+  $scope.hommes = [{id: 'h1'}];
+
+
+  // ****************************
+  // Ajoute une radio
+  // ****************************
+
+
+  $scope.addNewHomme = function() {
+    var newItemNo = $scope.hommes.length+1;
+    $scope.hommes.push({'id':'h'+newItemNo});
+  };
+
 
 // ****************************
 // Load
@@ -96,6 +109,10 @@ function FormCtrl($scope, $http) {
             case "etatcirculation":
                 var temp = $scope.form;
                 var dataSent = {'nom':temp.nom,'chantier':temp.chantier,'dateEnvoi':new Date().toLocaleString(),'etat':temp.etat, 'detail':temp.detail};
+                break;
+            case "radios":
+                var temp = $scope.form;
+                var dataSent = {'section':temp.section, 'date':temp.date, 'nombre':$scope.hommes.length, 'hommes': $scope.hommes};
                 break;
             case "ctrlequipement":
                 var temp = $scope.form;

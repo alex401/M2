@@ -146,6 +146,7 @@ $app->post('/v1/form/demandeconge', function ($request,$response) {
      //append to file named year-month
      $result = setContent($typeCommande, $data);
      $mail = mailSender($typeCommande, $data, "sud.commandement@pci-fr.ch", "sud.commandement@pci-fr.ch");
+
      //if someting was inserted
      if($result > 1 & $mail == 0){
        return $response->withJson(array('status' => 'OK'),200);
@@ -209,7 +210,7 @@ $app->post('/v1/form/ctrlequipement', function ($request,$response) {
    try{
      //append to file named year-month
      $result = setContent($typeCommande, $data);
-     $mail = mailSender($typeCommande, $data, "sud.commandement@pci-fr.ch", "sud.commandement@pci-fr.ch");
+     $mail = mailSender($typeCommande, $data, "sud.commandement@pci-fr.ch", "sud.materiel@pci-fr.ch");
      //if someting was inserted
      if($result > 1 & $mail == 0){
        return $response->withJson(array('status' => 'OK'),200);
@@ -375,6 +376,30 @@ $app->post('/v1/form/rapportparking', function ($request,$response) {
      }
      else {
      return $response->withJson(array('status' => 'Erreur pendant commande de'+ $typeCommande),422);
+     }
+   }
+   catch(\Exception $ex){
+     return $response->withJson(array('error' => $ex->getMessage()),422);
+   }
+});
+
+
+$app->post('/v1/form/radios', function ($request,$response) {
+
+   $data = $request->getParsedBody();
+   $data = (json_encode($data));
+   var_dump($data);
+   try{
+     //append to file named year-month
+     $result = setContent("Radios",$data);
+     $mail = mailSender("Radios", $data, "sud.commandement@pci-fr.ch", "sud.commandement@pci-fr.ch");
+
+     //if someting was inserted
+     if($result > 1 & $mail == 0){
+       return $response->withJson(array('status' => 'OK'),200);
+     }
+     else {
+     return $response->withJson(array('status' => 'Erreur pendant commande de repas'),422);
      }
    }
    catch(\Exception $ex){

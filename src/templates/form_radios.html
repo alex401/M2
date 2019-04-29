@@ -1,0 +1,48 @@
+<main class="col-sm-12 col-md-12" ng-controller="FormCtrl">
+  <h1>Commande de radios</h1>
+
+  <div ng-if="status==1"> Message envoyé </div>
+  <div ng-if="status==2"> Erreur de traitement, veuillez réessayer dans un moment</div>
+  <div ng-if="status==3"> Chargement en cours </div>
+
+
+  <form ng-if="status==0">
+    <div class="form-group">
+      <label for="formGroupSection"> Section </label>
+      <input type="text" ng-model="form.section" class="form-control" id="formGroupSection" placeholder="Nom">
+    </div>
+
+   <div class="form-group">
+     <label for="formGroupDate"> Date de besoin </label>
+     <input type="text" class="form-control" id="formGroupDate" ng-model="form.date">
+   </div>
+
+
+
+    <h3> Personnes à qui une radio doit être attribuée </h3>
+     <fieldset data-ng-repeat="homme in hommes">
+        <select ng-model="homme.grade">
+          <option value=''>Choisissez un grade</option>
+          <option value='Hors-PC'>Non-PCiste</option>
+          <option value='Soldat'>Std - Soldat</option>
+          <option value='Appointe'>App - Appointé</option>
+          <option value='Caporal'>Cpl - Caporal</option>
+          <option value='Sergent'>Sgt - Sergent</option>
+          <option value='Sergent-major'>Sgtm - Sergent-major</option>
+          <option value='Fourrier'>Four - Fourrier</option>
+          <option value='Lieutenant'>Lt - Lieutenant</option>
+          <option value='Premier-Lieutenant'>PLt - Premier-Lieutenant</option>
+          <option value='Capitaine'>Cap - Capitaine</option>
+          <option value='Major'>Maj - Major</option>
+        </select>
+        <input type="text" ng-model="homme.name"   placeholder="Nom et prénom">
+        <input type="text" ng-model="homme.tel" placeholder="Numéro de téléphone">
+        
+     </fieldset>
+     <button class="btn" ng-click="addNewHomme()">Add fields</button>
+
+   <button ng-click="submit('radios')" class="btn btn-primary">Envoyer</button>
+
+  </form>
+
+</main>
