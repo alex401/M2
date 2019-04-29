@@ -7,7 +7,7 @@ $app->get('/v1/chantiers', function ($request,$response) {
 
 //TODO connection to DB  GET data from llx_projet
 
-$sth = $this->dbdoll->prepare("SELECT `rowid`, `title`, `date_close` FROM `llx_projet`;");
+$sth = $this->dbdoll->prepare("SELECT `rowid`, `title`, `date_close` FROM `llx_projet` WHERE fk_statut = 1;");
 
 $sth->execute();
 $result = $sth->fetchAll();
