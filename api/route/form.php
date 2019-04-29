@@ -146,6 +146,7 @@ $app->post('/v1/form/demandeconge', function ($request,$response) {
      //append to file named year-month
      $result = setContent($typeCommande, $data);
      $mail = mailSender($typeCommande, $data, "sud.commandement@pci-fr.ch", "sud.commandement@pci-fr.ch");
+
      //if someting was inserted
      if($result > 1 & $mail == 0){
        return $response->withJson(array('status' => 'OK'),200);
