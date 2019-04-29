@@ -210,7 +210,7 @@ $app->post('/v1/form/ctrlequipement', function ($request,$response) {
    try{
      //append to file named year-month
      $result = setContent($typeCommande, $data);
-     $mail = mailSender($typeCommande, $data, "sud.materiel@pci-fr.ch", "sud.materiel@pci-fr.ch");
+     $mail = mailSender($typeCommande, $data, "sud.commandement@pci-fr.ch", "sud.materiel@pci-fr.ch");
      //if someting was inserted
      if($result > 1 & $mail == 0){
        return $response->withJson(array('status' => 'OK'),200);
