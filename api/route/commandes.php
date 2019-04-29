@@ -165,6 +165,23 @@ $app->get('/v1/commande/hist/{id}', function ($request, $response, $args) {
   return $response->withJson($result, 200);
 });
 
+// Get command by id.
+$app->get('/v1/commandes/{id}', function ($request, $response, $args) {
+
+  $id = $args['id'];
+
+  $sth = $this->dbm2->prepare("SELECT * FROM `commandes` WHERE `rowid` = $id");
+
+  try {
+    $sth->execute();
+    $result = $sth->fetch();
+  } catch(\Exception $ex) {
+    return $response->withJson(array('error' => 'Failed to get command: ' . $id . '. ' . $ex->getMessage()), 422);
+  }
+
+  return $response->withJson($result, 200);
+});
+
 // Insert a new command in the database. TODO move this in the route above.
 /*$app->post('/v1/commandes/insertcommand', function ($request, $response) {
 

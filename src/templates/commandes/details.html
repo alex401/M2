@@ -2,15 +2,15 @@
   <h1>Détails de la commande</h1>
 
   <ul class="list-group">
-    <li class="list-group-item active">Commande numéro: {{commande.rowid}}</li>
-    <li class="list-group-item">Client: {{commande.nom}}</li>
-    <li class="list-group-item">Type: {{commande.type}}</li>
+    <li class="list-group-item active">Commande numéro: {{command.rowid}}</li>
+    <li class="list-group-item">Client: {{command.nom}}</li>
+    <li class="list-group-item">Type: {{command.type}}</li>
     <li class="list-group-item">Statut: {{currentStatus}}</li>
-    <li class="list-group-item">Date: {{commande.timestampDate}}</li>
-    <li class="list-group-item">Chantier: {{commande.chantier}}</li>
-    <li class="list-group-item">Date d'envoi: {{cmdData.dateEnvoi}}</li>
+    <li class="list-group-item">Date: {{command.timestampDate}}</li>
+    <li class="list-group-item">Chantier: {{command.chantier}}</li>
+    <li class="list-group-item">Date d'envoi: {{command.timestampDate}}</li>
 
-    <span ng-if="commande.type === 'materiel'">
+    <span ng-if="command.type === 'materiel'">
       <li class="list-group-item">Matériel 1: {{cmdData.mat1}}</li>
       <li class="list-group-item">Matériel 2: {{cmdData.mat2}}</li>
       <li class="list-group-item">Matériel 3: {{cmdData.mat3}}</li>
@@ -18,13 +18,13 @@
       <li class="list-group-item">Date livraison: {{cmdData.dateLivraison}}</li>
     </span>
 
-    <span ng-if="commande.type === 'carburant'">
+    <span ng-if="command.type === 'carburant'">
       <li class="list-group-item">Litres diesel: {{cmdData.nbLitresDiesel}}</li>
       <li class="list-group-item">Litres essence: {{cmdData.nbLitresEssence}}</li>
       <li class="list-group-item">Litres essence T2: {{cmdData.nbLitresEssence2T}}</li>
     </span>
 
-    <span ng-if="commande.type === 'repas'">
+    <span ng-if="command.type === 'repas'">
       <li class="list-group-item">Nbr déjeuners: {{cmdData.nbDej}}</li>
       <li class="list-group-item">Nbr dîners: {{cmdData.nbDiner}}</li>
       <li class="list-group-item">Nbr soupers: {{cmdData.nbSouper}}</li>
@@ -34,7 +34,7 @@
       <li class="list-group-item">Date livraison: {{cmdData.dateLivraison}}</li>
     </span>
 
-    <span ng-if="commande.type === 'transport'">
+    <span ng-if="command.type === 'transport'">
       <li class="list-group-item">Destination: {{cmdData.destination}}</li>
       <li class="list-group-item">Heures: {{cmdData.heure}}</li>
       <li class="list-group-item">Détails pour heure: {{cmdData.detailsHeure}}</li>
@@ -49,12 +49,12 @@
     <button ng-disabled="(currentStatus === config.waitingTransportStatus) && (t != 'transport')"
             ng-show="cat === 'gestion'"
             class="btn btn-primary"
-            ng-click="updateStatus(commande.rowid)">{{buttonText()}}
+            ng-click="updateStatus(command.rowid)">{{buttonText()}}
     </button>
     <button ng-disabled="(currentStatus != config.treatmentStatus) && (currentStatus != config.transportStatus) && (currentStatus != config.validationStatus)"
             ng-show="cat === 'gestion'"
             class="btn btn-primary"
-            ng-click="updateStatusRefuse(commande.rowid)">Refuser
+            ng-click="updateStatusRefuse(command.rowid)">Refuser
     </button>
   </div>
 
