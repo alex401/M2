@@ -16,6 +16,7 @@ function CommandeGestionCtrl($scope, $stateParams, $http, config) {
     if(($scope.t === 'aidecmdt' && cmd.statut === config.validationStatus)
         || ($scope.t === cmd.type && cmd.statut != config.validationStatus && cmd.statut != config.waitingTransportStatus)
         || ($scope.t === 'transport' && cmd.statut === config.waitingTransportStatus)
+        || ($scope.t === 'transport' && cmd.statut === config.treatmentStatus)
       ) {
         return true;
     }
