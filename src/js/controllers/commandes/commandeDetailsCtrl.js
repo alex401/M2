@@ -1,7 +1,7 @@
 angular.module('PCIM2')
-    .controller('CommandeDetailsCtrl', ['$scope','$stateParams', '$http', 'config', CommandeDetailsCtrl]);
+    .controller('CommandeDetailsCtrl', ['$scope','$location', '$stateParams', '$http', 'config', CommandeDetailsCtrl]);
 
-function CommandeDetailsCtrl($scope, $stateParams, $http, config) {
+function CommandeDetailsCtrl($scope, $location, $stateParams, $http, config) {
   // ****************************
   // Initialise variables & scope
   // ****************************
@@ -11,6 +11,8 @@ function CommandeDetailsCtrl($scope, $stateParams, $http, config) {
   $scope.currentStatus = '';
   $scope.config = config;
   $scope.hist = [];
+  $scope.cat = $location.path().indexOf("gestion") !== -1 ? "gestion" : "";
+  $scope.t = $location.path().substring($location.path().indexOf("gestion")+8, $location.path().indexOf("details")-1);
 
   var Load = function () {
     loadCommand();
@@ -52,6 +54,21 @@ function CommandeDetailsCtrl($scope, $stateParams, $http, config) {
       $scope.status = 1;
     });
   }
+
+  $scope.filterFn = function() {
+
+    // Put condition in db query ?
+    if(($scope.t === 'aidecmdt' && $scope.currentStatus === config.validationStatus)
+        || ($scope.t === $scope.command.type && $scope.currentStatus != config.validationStatus && $scope.currentStatus != config.waitingTransportStatus)
+        || ($scope.t === 'transport' && $scope.currentStatus === config.waitingTransportStatus)
+        // || ($scope.t === 'transport' && $scope.currentStatus === config.treatmentStatus)
+        || ($scope.t === 'transport' && $scope.currentStatus === config.transportStatus)
+      ) {
+        return true;
+    }
+
+    return false;
+};
 
   $scope.buttonText = function() {
     var text = 'test';

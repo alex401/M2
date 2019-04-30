@@ -14,9 +14,10 @@ function CommandeGestionCtrl($scope, $stateParams, $http, config) {
 
     // Put condition in db query ?
     if(($scope.t === 'aidecmdt' && cmd.statut === config.validationStatus)
-        || ($scope.t === cmd.type && cmd.statut != config.validationStatus && cmd.statut != config.waitingTransportStatus)
-        || ($scope.t === 'transport' && cmd.statut === config.waitingTransportStatus)
+        || ($scope.t === cmd.type && cmd.statut != config.validationStatus && cmd.statut != config.waitingTransportStatus && cmd.statut != config.transportStatus)
+        || ($scope.t === 'transport' && cmd.statut === config.waitingTransportStatus) //TODO
         || ($scope.t === 'transport' && cmd.statut === config.treatmentStatus)
+        || ($scope.t === 'transport' && cmd.statut === config.transportStatus)
       ) {
         return true;
     }

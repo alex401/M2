@@ -143,6 +143,26 @@ angular.module('PCIM2').config(['$stateProvider', '$urlRouterProvider','$locatio
                 url: '/commandes/details/{id}',
                 templateUrl: 'templates/commandes/details.html'
             })
+            .state('gestioncmddetailsaidecmdt', {
+                url: '/commandes/gestion/aidecmdt/details/{id}',
+                templateUrl: 'templates/commandes/details.html'
+            })
+            .state('gestioncmddetailsrepas', {
+                url: '/commandes/gestion/repas/details/{id}',
+                templateUrl: 'templates/commandes/details.html'
+            })
+            .state('gestioncmddetailstransport', {
+                url: '/commandes/gestion/transport/details/{id}',
+                templateUrl: 'templates/commandes/details.html'
+            })
+            .state('gestioncmddetailscarburant', {
+                url: '/commandes/gestion/carburant/details/{id}',
+                templateUrl: 'templates/commandes/details.html'
+            })
+            .state('gestioncmddetailsmateriel', {
+                url: '/commandes/gestion/materiel/details/{id}',
+                templateUrl: 'templates/commandes/details.html'
+            })
             .state('cmdsearch', {
                 url: "/commandes/search",
                 templateUrl: 'templates/commandes/menu_search.html'

@@ -46,12 +46,12 @@
   </ul>
 
   <div ng-if="currentStatus != 'livree'">
-    <button ng-disabled="(currentStatus === config.waitingTransportStatus) && (t != 'transport')"
+    <button ng-disabled="!filterFn() || ((currentStatus === config.waitingTransportStatus) && (t != 'transport'))"
             ng-show="cat === 'gestion'"
             class="btn btn-primary"
             ng-click="updateStatus(command.rowid)">{{buttonText()}}
     </button>
-    <button ng-disabled="(currentStatus != config.treatmentStatus) && (currentStatus != config.transportStatus) && (currentStatus != config.validationStatus)"
+    <button ng-disabled="!filterFn() || (currentStatus != config.treatmentStatus) && (currentStatus != config.transportStatus) && (currentStatus != config.validationStatus)"
             ng-show="cat === 'gestion'"
             class="btn btn-primary"
             ng-click="updateStatusRefuse(command.rowid)">Refuser
