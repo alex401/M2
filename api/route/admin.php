@@ -30,22 +30,39 @@ $app->get('/v1/admin/socpeople/{name}', function ($request,$response, $args) {
 
   $name = $args['name'];
 
-$sth = $this->dbdoll->prepare("SELECT CONCAT(lastname, ' ', firstname) as nom, address, zip, town, phone, email, rowid FROM llx_socpeople WHERE CONCAT(lastname, ' ', firstname) like '%$name%'");
+  $sth = $this->dbdoll->prepare("SELECT CONCAT(lastname, ' ', firstname) as nom, address, zip, town, phone, email, rowid FROM llx_socpeople WHERE CONCAT(lastname, ' ', firstname) like '%$name%'");
 
-    try{
-      $sth->execute();
-      $result = $sth->fetchAll();
+  try{
+    $sth->execute();
+    $result = $sth->fetchAll();
 
     if($result){
-        return $response->withJson($result,200);
-      }
-      else {
+      return $response->withJson($result,200);
+    } else {
       return $response->withJson(array('status' => 'Erreur'),422);
-      }
     }
-    catch(\Exception $ex){
-      return $response->withJson(array('error' => $ex->getMessage()),422);
-    }
+  } catch(\Exception $ex){
+    return $response->withJson(array('error' => $ex->getMessage()),422);
+  }
+
+});
+
+// Return the extra field for a soc people.
+$app->get('/v1/admin/socpeople/extra/{rowid}', function ($request,$response, $args) {
+
+  $id = $args['rowid'];
+
+  $sth = $this->dbdoll->prepare("SELECT nb, lp FROM llx_socpeople_extrafields WHERE fk_object = $id");
+
+  try{
+    $sth->execute();
+    $result = $sth->fetch();
+
+  } catch(\Exception $ex){
+    return $response->withJson(array('error' => $ex->getMessage()),422);
+  }
+
+  return $response->withJson($result, 200);
 });
 
 $app->get('/v1/admin/tags/{personneid}', function($request,$response, $args) {
@@ -56,16 +73,11 @@ $app->get('/v1/admin/tags/{personneid}', function($request,$response, $args) {
     $sth->execute();
     $result = $sth->fetchAll();
 
-  if($result){
-      return $response->withJson($result,200);
-    }
-    else {
-    return $response->withJson(array('status' => 'Erreur'),422);
-    }
-  }
-  catch(\Exception $ex){
+  } catch(\Exception $ex){
     return $response->withJson(array('error' => $ex->getMessage()),422);
   }
+
+  return $response->withJson($result, 200);
 });
 
 // return a list of contacts searched by tags
@@ -120,14 +132,13 @@ $app->post('/v1/admin/listeappel', function ($request,$response) {
 
 
 // update the tags for one user
-//TODO add TRY CATCH logic to catch error in case of.
+//TODO add TRY CATCH logic to catch error in case of and add transaction, delete tags logic.
 $app->post('/v1/admin/entreeservice/tags/{personneid}', function ($request,$response, $args) {
 
   $result  = "";
   $personneid = $args['personneid'];
   $data = $request->getParsedBody();
   $data = (json_encode($data));
-
   $data = json_decode($data, true);
 
   //15.01.2019
@@ -137,6 +148,9 @@ $app->post('/v1/admin/entreeservice/tags/{personneid}', function ($request,$resp
   $dataZip = $data['zip'];
   $dataMail = $data['mail'];
   $dataPhone = $data['phone'];
+  $dataUrgence = $data['urgence'];
+  $dataParent = $data['parent'];
+
   $sth = $this->dbdoll->prepare("UPDATE llx_socpeople SET town = '$dataLieu', address = '$dataAdresse', zip = '$dataZip', email = '$dataMail', phone = '$dataPhone' WHERE rowid = $personneid");
   $sth->execute();
   $sth = $this->dbdoll->prepare("UPDATE llx_societe, llx_socpeople SET llx_societe.address = '$dataAdresse', llx_societe.zip = '$dataZip', llx_societe.town = '$dataLieu', llx_societe.email = '$dataMail', llx_societe.phone = '$dataPhone' WHERE llx_societe.rowid = llx_socpeople.fk_soc AND llx_socpeople.rowid = $personneid");
@@ -149,24 +163,32 @@ $app->post('/v1/admin/entreeservice/tags/{personneid}', function ($request,$resp
 
   //for each element sent to API
   foreach ($data as $key => $value) {
-  //get tag id
-  $tagid =  $value['rowid'];
-  // Verifiy that relation doens't exist by looking number of rows returned by SELECT
-  $sth = $this->dbdoll->prepare("SELECT fk_categorie, fk_socpeople FROM llx_categorie_contact WHERE fk_socpeople = $personneid AND fk_categorie = $tagid");
-  $sth->execute();
-  $result = $sth->fetchAll();
-  var_dump($result);
-  $temp = sizeof($result);
-  echo "size of first request $temp";
-
-  //if relation doesn't exist, INSERT
-  if ($temp == 0){
-    $sth = $this->dbdoll->prepare("INSERT INTO `llx_categorie_contact`(`fk_categorie`, `fk_socpeople`) VALUES ($tagid ,$personneid)");
+    //get tag id
+    $tagid =  $value['rowid'];
+    // Verifiy that relation doens't exist by looking number of rows returned by SELECT
+    $sth = $this->dbdoll->prepare("SELECT fk_categorie, fk_socpeople FROM llx_categorie_contact WHERE fk_socpeople = $personneid AND fk_categorie = $tagid");
     $sth->execute();
-    echo "executed and inserted";
-  } else {
-    echo " not inserted";
+    $result = $sth->fetchAll();
+    var_dump($result);
+    $temp = sizeof($result);
+    echo "size of first request $temp";
+
+    //if relation doesn't exist, INSERT
+    if ($temp == 0){
+      $sth = $this->dbdoll->prepare("INSERT INTO `llx_categorie_contact`(`fk_categorie`, `fk_socpeople`) VALUES ($tagid ,$personneid)");
+      $sth->execute();
+      echo "executed and inserted";
+    } else {
+      echo " not inserted";
     }
+  }
+
+  // Update parent link and emergency number.
+  try {
+    $sth = $this->dbdoll->prepare("UPDATE llx_socpeople_extrafields SET nb = '$dataUrgence', lp = '$dataParent' WHERE fk_object = $personneid");
+    $sth->execute();
+  } catch(\Exception $ex) {
+    return $response->withJson(array('error' => 'Failed to modify emergency data: ' . $ex->getMessage()), 422);
   }
 
   return $response->withJson(array('status' => 'OK'),200);
