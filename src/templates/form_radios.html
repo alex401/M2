@@ -6,25 +6,25 @@
   <div ng-if="status==3"> Chargement en cours </div>
 
 
-  <form ng-if="status==0">
+  <form ng-submit="submit('radios')" ng-if="status==0">
     <div class="form-group">
       <label for="formGroupSection"> Section </label>
-      <input type="text" ng-model="form.section" class="form-control" id="formGroupSection" placeholder="Nom">
+      <input type="text" ng-model="form.section" class="form-control" id="formGroupSection" placeholder="Nom" required>
     </div>
 
    <div class="form-group">
      <label for="formGroupDate"> Depuis le </label>
-     <input type="text" class="form-control" id="formGroupDate" ng-model="form.dateDe">
+     <input type="text" class="form-control" id="formGroupDate" ng-model="form.dateDe" required>
    </div>
    <div class="form-group">
      <label for="formGroupDate"> Jusqu'au </label>
-     <input type="text" class="form-control" id="formGroupDate" ng-model="form.dateA">
+     <input type="text" class="form-control" id="formGroupDate" ng-model="form.dateA" required>
    </div>
 
 
     <h3> Personnes à qui une radio doit être attribuée </h3>
      <fieldset data-ng-repeat="homme in form.hommes">
-        <select ng-model="homme.grade">
+        <select class="form-control" ng-model="homme.grade" required>
           <option value=''>Choisissez un grade</option>
           <option value='Hors-PC'>Non-PCiste</option>
           <option value='Soldat'>Std - Soldat</option>
@@ -38,7 +38,7 @@
           <option value='Capitaine'>Cap - Capitaine</option>
           <option value='Major'>Maj - Major</option>
         </select>
-        <input type="text" ng-model="homme.name" placeholder="Nom et prénom">
+        <input type="text" ng-model="homme.name" placeholder="Nom et prénom" required>
         <input type="text" ng-model="homme.tel" placeholder="Numéro de téléphone">
 
      </fieldset>
@@ -50,7 +50,7 @@
        <input type="text" class="form-control" id="formGroupCommentaire" ng-model="form.commentaires">
      </div>
 
-   <button ng-click="submit('radios')" class="btn btn-primary">Envoyer</button>
+   <button type="submit" class="btn btn-primary">Envoyer</button>
 
   </form>
 

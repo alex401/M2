@@ -391,28 +391,31 @@ $app->post('/v1/form/radios', function ($request,$response) {
    $data = json_decode($data, TRUE);
 
    $dataForMail = array('Section' => $data['section'], 'Du' => $data['dateDe'], 'Au' => $data['dateA'], 'Pour' => '');
-   foreach($data->homme as $homme) {
-     $name = $homme->grade.' '.$hommes['name'];
-     $dataForMail[$name] = $hommes['tel'];
+   foreach($data['hommes'] as $homme) {
+     $name = $homme['grade'] .' '. $homme['name'];
+     $dataForMail[$name] = $homme['tel'];
    }
-   $dataForMail['Commentaires'] = $data['commentaires'];
-   $dataForMail = (json_encode($dataForMail));
 
+   if(array_key_exists("commentaires", $data)) {
+     $dataForMail['Commentaires'] = $data['commentaires'];
+   }
+
+   $dataForMail = (json_encode($dataForMail));
 
    try{
      //append to file named year-month
-     $result = setContent("Radios",$dataForMail);
+     $result = setContent("Radios", $dataForMail);
      $mail = mailSender("Radios", $dataForMail, "sud.commandement@pci-fr.ch", "sud.commandement@pci-fr.ch");
 
      //if someting was inserted
      if($result > 1 & $mail == 0){
-       return $response->withJson(array('status' => $dataForMail),200);
+       return $response->withJson(array('status' => 'OK'), 200);
+     } else {
+       return $response->withJson(array('error' => 'Erreur pendant commande de radios: echec envoie mail ou log.'), 422);
      }
-     else {
-     return $response->withJson(array('status' => 'Erreur pendant commande de repas'),422);
-     }
+
+   } catch(\Exception $ex){
+     return $response->withJson(array('error' => 'Erreur pendant commande de radios: ' . $ex->getMessage()), 422);
    }
-   catch(\Exception $ex){
-     return $response->withJson(array('error' => $ex->getMessage()),422);
-   }
+
 });
