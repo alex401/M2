@@ -155,7 +155,8 @@ $app->get('/v1/commande/hist/{id}', function ($request, $response, $args) {
 
   $id = $args['id'];
 
-  $sth = $this->dbm2->prepare("SELECT * FROM commandes_hist WHERE `cmd_id` = $id ORDER BY `date` ASC");
+  $sth = $this->dbm2->prepare("SELECT cmd_id, statut, max(date) as date FROM `commandes_hist` WHERE cmd_id = $id group by cmd_id, statut order by date asc");
+  // $sth = $this->dbm2->prepare("SELECT * FROM commandes_hist WHERE `cmd_id` = $id ORDER BY `date` ASC");
   try {
     $sth->execute();
     $result = $sth->fetchAll();

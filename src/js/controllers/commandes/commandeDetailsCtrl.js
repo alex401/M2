@@ -1,7 +1,7 @@
 angular.module('PCIM2')
-    .controller('CommandeDetailsCtrl', ['$scope','$location', '$stateParams', '$http', 'config', CommandeDetailsCtrl]);
+    .controller('CommandeDetailsCtrl', ['$scope','$location','$state', '$stateParams', '$http', 'config', CommandeDetailsCtrl]);
 
-function CommandeDetailsCtrl($scope, $location, $stateParams, $http, config) {
+function CommandeDetailsCtrl($scope, $location, $state, $stateParams, $http, config) {
   // ****************************
   // Initialise variables & scope
   // ****************************
@@ -13,6 +13,15 @@ function CommandeDetailsCtrl($scope, $location, $stateParams, $http, config) {
   $scope.hist = [];
   $scope.cat = $location.path().indexOf("gestion") !== -1 ? "gestion" : "";
   $scope.t = $stateParams.t;
+  $scope.histStatus = {
+    validationStatus: config.validationStatus,
+    waitingStatus: config.waitingStatus,
+    treatmentStatus: config.treatmentStatus,
+    waitingTransportStatus: config.waitingTransportStatus,
+    transportStatus: config.transportStatus,
+    deliveredStatus: config.deliveredStatus
+  };
+  $scope.activeIndex = -1;
 
   var Load = function () {
     loadCommand();
@@ -55,6 +64,30 @@ function CommandeDetailsCtrl($scope, $location, $stateParams, $http, config) {
     });
   }
 
+  $scope.getDate = function(s) {
+    let arrayLength = $scope.hist.length;
+    for (var i = 0; i < arrayLength; i++) {
+      let h = $scope.hist[i];
+      if(h.statut == s) {
+          return h.date;
+      }
+    }
+    return "";
+  }
+
+  $scope.getActive = function(s, index) {
+    if(s == $scope.hist[$scope.hist.length-1].statut) {
+      $scope.indexActive = index;
+      return 'list-group-item active';
+    } else {
+      return 'list-group-item';
+    }
+  }
+
+  let reloadRoute = function() {
+    $state.reload();
+  }
+
   $scope.filterFn = function() {
 
     // Put condition in db query ?
@@ -66,9 +99,8 @@ function CommandeDetailsCtrl($scope, $location, $stateParams, $http, config) {
       ) {
         return true;
     }
-
     return false;
-};
+  };
 
   $scope.buttonText = function() {
     var text = 'test';
@@ -121,6 +153,7 @@ function CommandeDetailsCtrl($scope, $location, $stateParams, $http, config) {
       console.log("success");
       $scope.status = 1;
       $scope.currentStatus = newStatus;
+      reloadRoute();
     }, function errorCallback(response) {
       console.log(response.data.error);
       $scope.status = 1;

@@ -62,9 +62,12 @@
 
   <h3>Historique</h3>
   <div ng-if="hist.length > 0">
-     <ul class="list-group col-md-3" ng-repeat="h in hist">
-       <li class="list-group-item">Date: {{h.date}} -- Statut: {{h.statut}}</li>
-     </ul>
+    <ul class="list-group col-md-4" ng-repeat="s in histStatus">
+      <li ng-class="getActive(s, $index)"
+          ng-style="{'background-color' : ($index < indexActive) ? 'lightgrey' : ''}">
+          Statut: {{s}} - Date: {{getDate(s)}}
+      </li>
+    </ul>
   </div>
 
 </main>
