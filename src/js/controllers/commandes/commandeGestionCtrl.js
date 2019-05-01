@@ -43,7 +43,7 @@ function CommandeGestionCtrl($scope, $stateParams, $state, $interval, $window,$h
     if(!angular.isDefined(reload) && $scope.autoReload == 'ON') {
       reload = $interval(function() {
         $state.reload();
-      }, 10000);
+      }, 60000);
     } else {
       if (angular.isDefined(reload)) {
         $interval.cancel(reload);
