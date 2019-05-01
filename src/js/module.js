@@ -6,7 +6,8 @@ app.constant('config', {
   treatmentStatus: 'en traitement',
   transportStatus: 'en transport',
   waitingTransportStatus: 'attente de transport',
-  deliveredStatus: 'livree'
+  deliveredStatus: 'livree',
+  refusedStatus: 'refusée'
 });
 
 

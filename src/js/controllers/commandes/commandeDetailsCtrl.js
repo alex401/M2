@@ -85,7 +85,7 @@ function CommandeDetailsCtrl($scope, $location, $stateParams, $http, config) {
   $scope.updateStatusRefuse = function(id) {
     var newStatus = '';
     if($scope.currentStatus === config.validationStatus) {
-      newStatus = config.deliveredStatus;
+      newStatus = config.refusedStatus;
     } else {
       newStatus = $scope.currentStatus === config.transportStatus ? config.waitingTransportStatus : config.waitingStatus;
     }

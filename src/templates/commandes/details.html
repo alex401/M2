@@ -45,7 +45,7 @@
     </span>
   </ul>
 
-  <div ng-if="currentStatus != 'livree'">
+  <div ng-if="currentStatus != config.deliveredStatus || currentStatus != config.refusedStatus">
     <button ng-disabled="!filterFn() || ((currentStatus === config.waitingTransportStatus) && (t != 'transport'))"
             ng-show="cat === 'gestion'"
             class="btn btn-primary"

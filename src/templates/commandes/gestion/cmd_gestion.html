@@ -2,7 +2,7 @@
   <h1>Commandes pour {{t}} attente de traitement</h1>
 
   <div ng-if="commandes.length > 0">
-     <ul class="list-group" ng-repeat="commande in commandes | filter:filterFn | filter : {statut: '!livree'}">
+     <ul class="list-group" ng-repeat="commande in commandes | filter:filterFn | filter : {statut: '!livree'} | filter : {statut: '!refusée'}">
        <li class="list-group-item active">Commande numéro: {{commande.rowid}}</li>
        <li class="list-group-item">Client: {{commande.nom}}</li>
        <li class="list-group-item">Type: {{commande.type}}</li>
