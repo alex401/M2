@@ -12,7 +12,7 @@ function CommandeDetailsCtrl($scope, $location, $stateParams, $http, config) {
   $scope.config = config;
   $scope.hist = [];
   $scope.cat = $location.path().indexOf("gestion") !== -1 ? "gestion" : "";
-  $scope.t = $location.path().substring($location.path().indexOf("gestion")+8, $location.path().indexOf("details")-1);
+  $scope.t = $stateParams.t;
 
   var Load = function () {
     loadCommand();
