@@ -145,7 +145,7 @@ angular.module('PCIM2').config(['$stateProvider', '$urlRouterProvider','$locatio
                 templateUrl: 'templates/commandes/details.html'
             })
             .state('gestioncmddetailsaidecmdt', {
-                url: '/commandes/gestion/{{t}}/details/{id}',
+                url: '/commandes/gestion/{t}/details/{id}',
                 templateUrl: 'templates/commandes/details.html'
             })
             .state('cmdsearch', {
