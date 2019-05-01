@@ -394,6 +394,7 @@ $app->post('/v1/form/radios', function ($request,$response) {
    foreach($data['hommes'] as $homme) {
      $name = $homme['grade'] .' '. $homme['name'];
      $dataForMail[$name] = $homme['tel'];
+     $dataForMail['Nombre de radios:'] = $homme['nombre'];
    }
 
    if(array_key_exists("commentaires", $data)) {
