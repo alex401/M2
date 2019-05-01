@@ -37,7 +37,7 @@ function RechercheCtrl($scope, $http) {
   }
 
   $scope.loadTiers = function (nom) {
-    if(nom != null && nom.length > 3){
+    if(nom != null && nom.length > 2){
     console.log(nom);
 
     $http({
