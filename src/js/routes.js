@@ -127,6 +127,7 @@ angular.module('PCIM2').config(['$stateProvider', '$urlRouterProvider','$locatio
             .state('administration', {
                 url: '/administration',
                 templateUrl: 'templates/administration/main.html'
+            })
             .state('trackingmenu', {
                 url: '/commandes/tracking',
                 templateUrl: 'templates/commandes/tracking/menu_tracking.html'
