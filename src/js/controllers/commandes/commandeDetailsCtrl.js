@@ -1,5 +1,5 @@
 angular.module('PCIM2')
-    .controller('CommandeDetailsCtrl', ['$scope','$location','$state', '$stateParams', '$http', 'config', CommandeDetailsCtrl]);
+    .controller('CommandeDetailsCtrl', ['$scope','$location', '$state', '$stateParams', '$http', 'config', CommandeDetailsCtrl]);
 
 function CommandeDetailsCtrl($scope, $location, $state, $stateParams, $http, config) {
   // ****************************
@@ -22,6 +22,7 @@ function CommandeDetailsCtrl($scope, $location, $state, $stateParams, $http, con
     deliveredStatus: config.deliveredStatus
   };
   $scope.activeIndex = -1;
+
 
   var Load = function () {
     loadCommand();
@@ -82,10 +83,6 @@ function CommandeDetailsCtrl($scope, $location, $state, $stateParams, $http, con
     } else {
       return 'list-group-item';
     }
-  }
-
-  let reloadRoute = function() {
-    $state.reload();
   }
 
   $scope.filterFn = function() {
@@ -153,7 +150,7 @@ function CommandeDetailsCtrl($scope, $location, $state, $stateParams, $http, con
       console.log("success");
       $scope.status = 1;
       $scope.currentStatus = newStatus;
-      reloadRoute();
+      $state.reload();
     }, function errorCallback(response) {
       console.log(response.data.error);
       $scope.status = 1;

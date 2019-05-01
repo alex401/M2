@@ -1,6 +1,12 @@
 <main class="col-sm-12 col-md-12" ng-controller="CommandeGestionCtrl">
   <h1>Commandes pour {{t}} attente de traitement</h1>
 
+  <label for="reload">Auto reload</label>
+  <div id="reload" class="btn-group">
+    <label class="btn btn-primary" ng-model="autoReload" uib-btn-radio="'ON'" ng-click="onAutoReload()">ON</label>
+    <label class="btn btn-primary" ng-model="autoReload" uib-btn-radio="'OFF'" ng-click="onAutoReload()">OFF</label>
+  </div>
+
   <div ng-if="commandes.length > 0">
      <ul class="list-group" ng-repeat="commande in commandes | filter:filterFn | filter : {statut: '!livree'} | filter : {statut: '!refusée'}">
        <li class="list-group-item active">Commande numéro: {{commande.rowid}}</li>

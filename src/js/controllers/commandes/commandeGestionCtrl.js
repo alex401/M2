@@ -1,14 +1,16 @@
 angular.module('PCIM2')
-    .controller('CommandeGestionCtrl', ['$scope','$stateParams', '$http', 'config', CommandeGestionCtrl]);
+    .controller('CommandeGestionCtrl', ['$scope','$stateParams', '$state', '$interval', '$window', '$http', 'config', CommandeGestionCtrl]);
 
-function CommandeGestionCtrl($scope, $stateParams, $http, config) {
+function CommandeGestionCtrl($scope, $stateParams, $state, $interval, $window,$http, config) {
   // ****************************
   // Initialise variables & scope
   // ****************************
   $scope.commandes = {};
   $scope.t = $stateParams.type;
-
   $scope.config = config;
+  $scope.autoReload = 'OFF';
+
+  var reload;
 
   $scope.filterFn = function(cmd) {
 
@@ -23,13 +25,44 @@ function CommandeGestionCtrl($scope, $stateParams, $http, config) {
     }
 
     return false;
-};
+  };
+
+  $scope.$on('$destroy', function() {
+    if (angular.isDefined(reload)) {
+      $interval.cancel(reload);
+      reload = undefined;
+    }
+  });
+
+  $scope.onAutoReload = function() {
+    reloadFunc();
+  }
+
+  var reloadFunc = function() {
+    // Reload page every 1min to update commands list.
+    if(!angular.isDefined(reload) && $scope.autoReload == 'ON') {
+      reload = $interval(function() {
+        $state.reload();
+      }, 10000);
+    } else {
+      if (angular.isDefined(reload)) {
+        $interval.cancel(reload);
+        reload = undefined;
+      }
+    }
+    $window.localStorage.setItem("autoReload", $scope.autoReload);
+  }
 
   // ****************************
   // Load
   // ****************************
   var Load = function () {
     getAllCommands();
+    if(!$window.localStorage.getItem("autoReload")) {
+      $window.localStorage.setItem("autoReload", $scope.autoReload);
+    } else {
+      $scope.autoReload = $window.localStorage.getItem("autoReload");
+    }
   }
 
   var getAllCommands = function () {
@@ -38,11 +71,12 @@ function CommandeGestionCtrl($scope, $stateParams, $http, config) {
       url: 'api/index.php/v1/select/commandes'
     }).then(function successCallback(response) {
       $scope.commandes = response.data;
-      }, function errorCallback(response) {
-        console.log("error");
-      });
+    }, function errorCallback(response) {
+      console.log("error");
+    });
   }
 
   Load();
+  reloadFunc();
 
 }
