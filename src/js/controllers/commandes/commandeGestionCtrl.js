@@ -14,6 +14,11 @@ function CommandeGestionCtrl($scope, $stateParams, $state, $interval, $window,$h
 
   $scope.filterFn = function(cmd) {
 
+    if(cmd.statut === config.deliveredStatus || cmd.statut === config.refusedStatus
+        || cmd.statut === config.cancelledStatus) {
+      return false;
+    }
+
     // Put condition in db query ?
     if(($scope.t === 'aidecmdt' && cmd.statut === config.validationStatus)
         || ($scope.t === cmd.type && cmd.statut != config.validationStatus && cmd.statut != config.waitingTransportStatus && cmd.statut != config.transportStatus)
