@@ -12,14 +12,40 @@
       <input type="text" ng-model="form.section" class="form-control" id="formGroupSection" placeholder="Nom" required>
     </div>
 
-   <div class="form-group">
-     <label for="formGroupDate"> Depuis le </label>
-     <input type="text" class="form-control" id="formGroupDate" ng-model="form.dateDe" required>
-   </div>
-   <div class="form-group">
-     <label for="formGroupDate"> Jusqu'au </label>
-     <input type="text" class="form-control" id="formGroupDate" ng-model="form.dateA" required>
-   </div>
+    <div class="form-group">
+      <label for="formGroupDateDe"> Depuis le </label>
+      <p class="input-group">
+        <input  type="text"
+                class="form-control"
+                uib-datepicker-popup="{{format}}" ng-model="form.dateDe"
+                is-open="popup1.opened"
+                datepicker-options="dateOptions"
+                ng-required="true"
+                close-text="Close"
+                id="formGroupDateDe"
+                alt-input-formats="altInputFormats" />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+      </p>
+    </div>
+    <div class="form-group">
+      <label for="formGroupDateA"> Jusqu'au </label>
+      <p class="input-group">
+        <input  type="text"
+                class="form-control"
+                uib-datepicker-popup="{{format}}" ng-model="form.dateA"
+                is-open="popup2.opened"
+                datepicker-options="dateOptions"
+                ng-required="true"
+                close-text="Close"
+                id="formGroupDateA"
+                alt-input-formats="altInputFormats" />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+      </p>
+    </div>
 
 
     <h3> Personnes à qui une radio doit être attribuée </h3>
