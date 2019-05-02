@@ -1,7 +1,7 @@
 angular.module('PCIM2')
-    .controller('CommandeDetailsCtrl', ['$scope','$location', '$state', '$stateParams', '$http', 'config', CommandeDetailsCtrl]);
+    .controller('CommandeDetailsCtrl', ['$scope','$location', '$state', '$uibModal', '$stateParams', '$http', 'config', CommandeDetailsCtrl]);
 
-function CommandeDetailsCtrl($scope, $location, $state, $stateParams, $http, config) {
+function CommandeDetailsCtrl($scope, $location, $state, $uibModal, $stateParams, $http, config) {
   // ****************************
   // Initialise variables & scope
   // ****************************
@@ -65,6 +65,32 @@ function CommandeDetailsCtrl($scope, $location, $state, $stateParams, $http, con
     });
   }
 
+  $scope.openModal = function (rowid) {
+    var modalInstance = $uibModal.open({
+      animation: false,
+      ariaLabelledBy: 'modal-title',
+      ariaDescribedBy: 'modal-body',
+      templateUrl: 'templates/commandes/myModalContent.html',
+      controller: 'ModalInstanceCtrl',
+      controllerAs: 'pc',
+      size: 'sm',
+      resolve: {
+        data: function () {
+          return "Êtes-vous sûr de vouloir annuler la commande ?";
+        },
+        id: function() {
+          return rowid;
+        }
+      }
+    });
+
+    modalInstance.result.then(function (id) {
+      cancel(id);
+    }, function() {
+      // Do nothing.
+    });
+  };
+
   $scope.getDate = function(s) {
     let arrayLength = $scope.hist.length;
     for (var i = 0; i < arrayLength; i++) {
@@ -99,6 +125,7 @@ function CommandeDetailsCtrl($scope, $location, $state, $stateParams, $http, con
     return false;
   };
 
+  // The text displayed on the accept/refuse/validate... buttons.
   $scope.buttonText = function() {
     var text = 'test';
     if($scope.currentStatus === config.transportStatus) {
@@ -111,6 +138,7 @@ function CommandeDetailsCtrl($scope, $location, $state, $stateParams, $http, con
      return text;
   }
 
+  // Update status when refusing a command.
   $scope.updateStatusRefuse = function(id) {
     var newStatus = '';
     if($scope.currentStatus === config.validationStatus) {
@@ -122,6 +150,7 @@ function CommandeDetailsCtrl($scope, $location, $state, $stateParams, $http, con
     updateDB(newStatus, id);
   }
 
+  // Update status when accepting a command.
   $scope.updateStatus = function(id) {
     var newStatus = '';
     var dat = {};
@@ -139,10 +168,12 @@ function CommandeDetailsCtrl($scope, $location, $state, $stateParams, $http, con
     updateDB(newStatus, id);
   }
 
-  $scope.cancel = function(id) {
+  // Update command status to cancelled.
+  var cancel = function(id) {
     updateDB(config.cancelledStatus, id);
   }
 
+  // Update command status.
   var updateDB = function(newStatus, id) {
     dat = {statut: newStatus};
 
@@ -163,3 +194,18 @@ function CommandeDetailsCtrl($scope, $location, $state, $stateParams, $http, con
   }
 
 }
+
+// Confirmation modal when cancelling a command.
+angular.module('PCIM2').controller('ModalInstanceCtrl', function ($uibModalInstance, data, id) {
+  var pc = this;
+  pc.data = data;
+  pc.id = id;
+
+  pc.ok = function () {
+    $uibModalInstance.close(id);
+  };
+
+  pc.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
+});

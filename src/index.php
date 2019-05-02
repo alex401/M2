@@ -24,7 +24,7 @@
     <script src="components/tether/dist/js/tether.min.js"></script>
     <script src="components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="components/angular/dist/angular.js"></script>
-    <script src="components/angular-bootstrap/dist/ui-bootstrap.min.js"></script>
+    <script src="components/angular-bootstrap/dist/ui-bootstrap-tpls.min.js"></script>
     <script src="components/angular-ui-router/dist/angular-ui-router.js"></script>
     <script src="js/dashboard.min.js"></script>
 
