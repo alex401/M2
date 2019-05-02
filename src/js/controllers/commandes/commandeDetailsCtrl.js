@@ -139,6 +139,10 @@ function CommandeDetailsCtrl($scope, $location, $state, $stateParams, $http, con
     updateDB(newStatus, id);
   }
 
+  $scope.cancel = function(id) {
+    updateDB(config.cancelledStatus, id);
+  }
+
   var updateDB = function(newStatus, id) {
     dat = {statut: newStatus};
 

@@ -45,7 +45,7 @@
     </span>
   </ul>
 
-  <div ng-if="currentStatus != config.deliveredStatus || currentStatus != config.refusedStatus">
+  <div ng-if="currentStatus != config.deliveredStatus && currentStatus != config.refusedStatus && currentStatus != config.cancelledStatus">
     <button ng-disabled="!filterFn() || ((currentStatus === config.waitingTransportStatus) && (t != 'transport'))"
             ng-show="cat === 'gestion'"
             class="btn btn-primary"
@@ -55,6 +55,13 @@
             ng-show="cat === 'gestion'"
             class="btn btn-primary"
             ng-click="updateStatusRefuse(command.rowid)">Refuser
+    </button>
+    <button ng-disabled="currentStatus == config.deliveredStatus || currentStatus == config.cancelledStatus"
+            ng-show="cat === 'gestion'"
+            class="btn btn-primary"
+            type="button"
+            ng-click="cancel(command.rowid)"
+            name="button">Annuler
     </button>
   </div>
 
@@ -68,6 +75,9 @@
           Statut: {{s}} - Date: {{getDate(s)}}
       </li>
     </ul>
+  </div>
+  <div ng-if="currentStatus == config.refusedStatus || currentStatus == config.cancelledStatus">
+    <span style="color:#FF0000">La commande a été {{currentStatus}}.</span>
   </div>
 
 </main>
