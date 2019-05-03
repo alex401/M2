@@ -44,8 +44,8 @@ $app->post('/v1/commande/{type}', function ($request,$response, $args) {
   $data = (json_encode($data));
   try {
     //append to file named year-month
-    $result = setContent("repas", $data);
-    $mail = mailSender("repas", $data, "sud.commandement@pci-fr.ch", "sud.commandement@pci-fr.ch");
+    $result = setContent($type, $data);
+    $mail = mailSender($type, $data, "sud.commandement@pci-fr.ch", "sud.commandement@pci-fr.ch");
 
     //if someting was inserted
     if($result > 1 & $mail == 0) {
