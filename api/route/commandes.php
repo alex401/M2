@@ -24,12 +24,18 @@ $app->post('/v1/commande/{type}', function ($request,$response, $args) {
   try {
     $this->dbm2->beginTransaction();
 
-    $sth = $this->dbm2->prepare("INSERT INTO commandes (type, nom, chantier, statut, data) VALUES ('$type', '$nom', '$chantier', '$status', '$data')");
+    $sth = $this->dbm2->prepare("INSERT INTO commandes (type, nom, chantier, statut, data) VALUES (:type, :nom, :chantier, :status, :data)");
+    $sth->bindParam(':type', $type, PDO::PARAM_STR);
+    $sth->bindParam(':nom', $nom, PDO::PARAM_STR);
+    $sth->bindParam(':chantier', $chantier, PDO::PARAM_STR);
+    $sth->bindParam(':status', $status, PDO::PARAM_STR);
+    $sth->bindParam(':data', $data, PDO::PARAM_STR);
     $succes = $sth->execute();
 
     // Insert new history entry.
     $id = $this->dbm2->lastInsertId();
-    $sth = $this->dbm2->prepare("INSERT INTO `commandes_hist`(`cmd_id`, `statut`) VALUES ($id, '$status')");
+    $sth = $this->dbm2->prepare("INSERT INTO `commandes_hist`(`cmd_id`, `statut`) VALUES ($id, :status)");
+    $sth->bindParam(':status', $status, PDO::PARAM_STR);
     $sth->execute();
 
     $this->dbm2->commit();
