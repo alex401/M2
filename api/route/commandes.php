@@ -9,6 +9,7 @@ $app->post('/v1/commande/{type}', function ($request,$response, $args) {
   }
 
   $data = $request->getParsedBody();
+  $mailData = $data;
 
   // Inserting command in DB.
   $type = $data['type'];
@@ -41,11 +42,11 @@ $app->post('/v1/commande/{type}', function ($request,$response, $args) {
   }
 
   // Logging and mailing.
-  $data = (json_encode($data));
+  $mailData = (json_encode($mailData));
   try {
     //append to file named year-month
-    $result = setContent($type, $data);
-    $mail = mailSender($type, $data, "sud.commandement@pci-fr.ch", "sud.commandement@pci-fr.ch");
+    $result = setContent($type, $mailData);
+    $mail = mailSender($type, $mailData, "sud.commandement@pci-fr.ch", "sud.commandement@pci-fr.ch");
 
     //if someting was inserted
     if($result > 1 & $mail == 0) {
