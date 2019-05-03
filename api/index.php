@@ -45,6 +45,8 @@ include 'route/select.php';
 include 'route/rapports.php';
 
 include 'route/qualifications.php';
+
+include 'route/commandes.php';
 //******************************
 // UTILS
 //-----------------

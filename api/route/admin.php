@@ -297,30 +297,3 @@ $sth = $this->dbdoll->prepare("SELECT stagiaire.nom, stagiaire.prenom, stagiaire
       return $response->withJson(array('error' => $ex->getMessage()),422);
     }
 });
-
-
-// Insert a new command in the database.
-$app->post('/v1/admin/insertcommand', function ($request, $response) {
-
-  $data = $request->getParsedBody();
-
-  $type = $data['type'];
-  $nom = $data['nom'];
-  $chantier = $data['chantier'];
-  $status = "attente de validation";
-
-  // Remove already taken fields.
-  array_splice($data, 0, 3);
-  $data = json_encode($data);
-
-  $sth = $this->dbm2->prepare("INSERT INTO commandes (type, nom, chantier, statut, data) VALUES ('$type', '$nom', $chantier, '$status', '$data')");
-
-  try {
-    $succes = $sth->execute();
-
-  } catch(\Exception $ex){
-    return $response->withJson(array('error' => $ex->getMessage()), 422);
-  }
-
-  return $response->withJson(array('status' => 'OK'), 200);
-});

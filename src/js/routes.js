@@ -18,31 +18,31 @@ angular.module('PCIM2').config(['$stateProvider', '$urlRouterProvider','$locatio
             })
             .state('commandes', {
                 url: '/menu/commandes',
-                templateUrl: 'templates/menu_commandes.html'
+                templateUrl: 'templates/commandes/creation/menu_commandes.html'
             })
             .state('demande', {
                 url: '/menu/demandes',
                 templateUrl: 'templates/menu_demandes.html'
             })
-            .state('formrepas', {
-                url: '/form/repas',
-                templateUrl: 'templates/form_repas.html'
+            .state('cmdrepas', {
+                url: '/commande/repas',
+                templateUrl: 'templates/commandes/creation/cmd_repas.html'
             })
-            .state('formcarburant', {
-                url: '/form/carburant',
-                templateUrl: 'templates/form_carburant.html'
+            .state('cmdcarburant', {
+                url: '/commande/carburant',
+                templateUrl: 'templates/commandes/creation/cmd_carburant.html'
             })
-            .state('formmateriel', {
-                url: '/form/materiel',
-                templateUrl: 'templates/form_materiel.html'
+            .state('cmdmateriel', {
+                url: '/commande/materiel',
+                templateUrl: 'templates/commandes/creation/cmd_materiel.html'
             })
             .state('formsuivichantier', {
                 url: '/form/suivichantier',
                 templateUrl: 'templates/form_suivichantier.html'
             })
-            .state('formtransport', {
-                url: '/form/transport',
-                templateUrl: 'templates/form_transport.html'
+            .state('cmdtransport', {
+                url: '/commande/transport',
+                templateUrl: 'templates/commandes/creation/cmd_transport.html'
             })
             .state('recherchetiers', {
                 url: '/admin/recherchetiers',
@@ -116,9 +116,9 @@ angular.module('PCIM2').config(['$stateProvider', '$urlRouterProvider','$locatio
                 url: '/rapport/sppam',
                 templateUrl: 'templates/rapport_sppam.php'
             })
-            .state('commande', {
-                url: '/administration/{type}',
-                templateUrl: 'templates/administration/commandes.html'
+            .state('tracking', {
+                url: '/commandes/tracking/{type}',
+                templateUrl: 'templates/commandes/tracking/cmd_tracking.html'
             })
             .state('radios', {
                 url: '/form/radios',
@@ -127,6 +127,30 @@ angular.module('PCIM2').config(['$stateProvider', '$urlRouterProvider','$locatio
             .state('administration', {
                 url: '/administration',
                 templateUrl: 'templates/administration/main.html'
+            })
+            .state('trackingmenu', {
+                url: '/commandes/tracking',
+                templateUrl: 'templates/commandes/tracking/menu_tracking.html'
+            })
+            .state('gestionmenu', {
+                url: '/commandes/gestion',
+                templateUrl: 'templates/commandes/gestion/menu_gestion.html'
+            })
+            .state('gestion', {
+                url: '/commandes/gestion/{type}',
+                templateUrl: 'templates/commandes/gestion/cmd_gestion.html'
+            })
+            .state('cmddetails', {
+                url: '/commandes/details/{id}',
+                templateUrl: 'templates/commandes/details.html'
+            })
+            .state('gestioncmddetailsaidecmdt', {
+                url: '/commandes/gestion/{t}/details/{id}',
+                templateUrl: 'templates/commandes/details.html'
+            })
+            .state('cmdsearch', {
+                url: "/commandes/search",
+                templateUrl: 'templates/commandes/menu_search.html'
             });
     }
 ]);

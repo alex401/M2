@@ -1,0 +1,83 @@
+<main class="col-sm-12 col-md-12" ng-controller="CommandeDetailsCtrl">
+  <h1>Détails de la commande</h1>
+
+  <ul class="list-group">
+    <li class="list-group-item active">Commande numéro: {{command.rowid}}</li>
+    <li class="list-group-item">Client: {{command.nom}}</li>
+    <li class="list-group-item">Type: {{command.type}}</li>
+    <li class="list-group-item">Statut: {{currentStatus}}</li>
+    <li class="list-group-item">Date: {{command.timestampDate}}</li>
+    <li class="list-group-item">Chantier: {{command.chantier}}</li>
+    <li class="list-group-item">Date d'envoi: {{command.timestampDate}}</li>
+
+    <span ng-if="command.type === 'materiel'">
+      <li class="list-group-item">Matériel 1: {{cmdData.mat1}}</li>
+      <li class="list-group-item">Matériel 2: {{cmdData.mat2}}</li>
+      <li class="list-group-item">Matériel 3: {{cmdData.mat3}}</li>
+      <li class="list-group-item">Commentaire: {{cmdData.commentaire}}</li>
+      <li class="list-group-item">Date livraison: {{cmdData.dateLivraison}}</li>
+    </span>
+
+    <span ng-if="command.type === 'carburant'">
+      <li class="list-group-item">Litres diesel: {{cmdData.nbLitresDiesel}}</li>
+      <li class="list-group-item">Litres essence: {{cmdData.nbLitresEssence}}</li>
+      <li class="list-group-item">Litres essence T2: {{cmdData.nbLitresEssence2T}}</li>
+    </span>
+
+    <span ng-if="command.type === 'repas'">
+      <li class="list-group-item">Nbr déjeuners: {{cmdData.nbDej}}</li>
+      <li class="list-group-item">Nbr dîners: {{cmdData.nbDiner}}</li>
+      <li class="list-group-item">Nbr soupers: {{cmdData.nbSouper}}</li>
+      <li class="list-group-item">Nbr collation nuit: {{cmdData.nbCollationNuit}}</li>
+      <li class="list-group-item">Nbr végétariens: {{cmdData.nbVegetariens}}</li>
+      <li class="list-group-item">Commentaire: {{cmdData.commentaire}}</li>
+      <li class="list-group-item">Date livraison: {{cmdData.dateLivraison}}</li>
+    </span>
+
+    <span ng-if="command.type === 'transport'">
+      <li class="list-group-item">Destination: {{cmdData.destination}}</li>
+      <li class="list-group-item">Heures: {{cmdData.heure}}</li>
+      <li class="list-group-item">Détails pour heure: {{cmdData.detailsHeure}}</li>
+      <li class="list-group-item">Nombre d'hommes: {{cmdData.nbHomme}}</li>
+      <li class="list-group-item">Matériel à transporter: {{cmdData.matTransport}}</li>
+      <li class="list-group-item">Commentaire: {{cmdData.commentaire}}</li>
+      <li class="list-group-item">Date livraison: {{cmdData.dateLivraison}}</li>
+    </span>
+  </ul>
+
+  <div ng-if="currentStatus != config.deliveredStatus && currentStatus != config.refusedStatus && currentStatus != config.cancelledStatus">
+    <button ng-disabled="!filterFn() || ((currentStatus === config.waitingTransportStatus) && (t != 'transport'))"
+            ng-show="cat === 'gestion'"
+            class="btn btn-primary"
+            ng-click="updateStatus(command.rowid)">{{buttonText()}}
+    </button>
+    <button ng-disabled="!filterFn() || (currentStatus != config.treatmentStatus) && (currentStatus != config.transportStatus) && (currentStatus != config.validationStatus)"
+            ng-show="cat === 'gestion'"
+            class="btn btn-primary"
+            ng-click="updateStatusRefuse(command.rowid)">Refuser
+    </button>
+    <button ng-disabled="currentStatus == config.deliveredStatus || currentStatus == config.cancelledStatus"
+            ng-show="cat === 'gestion'"
+            class="btn btn-primary"
+            type="button"
+            ng-click="openModal(command.rowid)"
+            name="button">Annuler
+    </button>
+  </div>
+
+  <hr>
+
+  <h3>Historique</h3>
+  <div ng-if="hist.length > 0">
+    <ul class="list-group col-md-4" ng-repeat="s in histStatus">
+      <li ng-class="getActive(s, $index)"
+          ng-style="{'background-color' : ($index < indexActive) ? 'lightgrey' : ''}">
+          Statut: {{s}} - Date: {{getDate(s)}}
+      </li>
+    </ul>
+  </div>
+  <div ng-if="currentStatus == config.refusedStatus || currentStatus == config.cancelledStatus">
+    <span style="color:#FF0000">La commande a été {{currentStatus}}.</span>
+  </div>
+
+</main>

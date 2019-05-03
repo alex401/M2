@@ -49,21 +49,6 @@ function FormCtrl($scope, $http) {
       });
   }
 
-//POST to API : will save in database
-  var sendCommand = function(dataSent) {
-    $http({
-      method: 'POST',
-      url: 'api/index.php/v1/admin/insertcommand',
-      data : dataSent
-      }).then(function successCallback(response) {
-        console.log("success");
-        $scope.status = 1;
-      }, function errorCallback(response) {
-        console.log("error inserting new command.");
-        $scope.status = 2;
-      });
-  }
-
   $scope.submit = function (type) {
     switch(type) {
             case "repas":

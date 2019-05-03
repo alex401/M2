@@ -1,0 +1,55 @@
+<main class="col-sm-12 col-md-12" ng-controller="CommandeSearchCtrl">
+<div class="row">
+  <div class="col-md-6">
+  <h1>Recherche de commande</h1>
+
+  </div>
+</div>
+<form class="simple-form">
+<div class="row">
+  <div class="col-md-2">
+    <label for="id">Commande ID</label>
+  </div>
+  <div class="col-md-2">
+    <input id="id" type="text" ng-model="command.id" name="" value="">
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-2">
+    <label for="client">Client</label>
+  </div>
+    <div class="col-md-2">
+    <input id="client" type="text" ng-model="command.client" name="" value="">
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-2">
+    <label for="type">Commande type</label>
+  </div>
+    <div class="col-md-2">
+    <input id="type" type="text" ng-model="command.type" name="" value="">
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-2">
+    <label for="date">Date</label>
+  </div>
+    <div class="col-md-2">
+    <input id="date" type="text" ng-model="command.date" name="" value="">
+  </div>
+</div>
+<button type="submit" class="btn btn-primary" ng-click="search(command)">Search</button>
+</form>
+
+<hr>
+
+<div ng-if="commandes.length > 0">
+   <ul class="list-group" ng-repeat="commande in commandes">
+     <li class="list-group-item active">Commande numéro: {{commande.rowid}}</li>
+     <li class="list-group-item">Client: {{commande.nom}}</li>
+     <li class="list-group-item">Type: {{commande.type}}</li>
+     <li class="list-group-item">Statut: {{commande.statut}}</li>
+     <li class="list-group-item">Date: {{commande.timestampDate}}</li>
+     <a class="btn btn-secondary btn-block" href="#/commandes/details/{{commande.rowid}}" role="button">Details</a>
+   </ul>
+</div>

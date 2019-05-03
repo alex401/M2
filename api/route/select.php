@@ -63,17 +63,3 @@ $sth = $this->dbdoll->prepare("SELECT rowId, intitule FROM llx_agefodd_formation
       return $response->withJson(array('error' => $ex->getMessage()),422);
     }
 });
-
-$app->get('/v1/select/commandes', function ($request,$response) {
-
-  $sth = $this->dbm2->prepare("SELECT * FROM commandes");
-
-  try {
-    $sth->execute();
-    $result = $sth->fetchAll();
-  } catch(\Exception $ex) {
-    return $response->withJson(array('error' => $ex->getMessage()), 422);
-  }
-
-  return $response->withJson($result, 200);
-});
