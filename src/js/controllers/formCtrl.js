@@ -16,6 +16,7 @@ function FormCtrl($scope, $http) {
   $scope.form.hommes = [{id: 'h1'}];
 
 
+
   // ****************************
   // Ajoute une radio
   // ****************************
@@ -114,9 +115,8 @@ function FormCtrl($scope, $http) {
                 var dataSent = $scope.form;
                 break;
             case "ctrlequipement":
-                var temp = $scope.form;
-                var dataSent = {'nom':temp.nomLieut,'astreint':temp.nomSoldat,'dateEnvoi':new Date().toLocaleString(),'sac':temp.sac, 'vestepluie':temp.vestepluie, 'pantalonpluie':temp.pantalonpluie,'chapeaupluie':temp.chapeaupluie,'polaire':temp.polaire,'veste':temp.veste,'pantalon':temp.pantalon,'ceinture':temp.ceinture,'casquette':temp.casquette,'gants':temp.gants,'casque':temp.casque,'tshirts':temp.tshirts, 'souspull':temp.souspull, 'chaussures':temp.chaussures, 'ppi':temp.ppi, 'badge':temp.badge,'bonnet':temp.bonnet};
-                console.log(temp);
+                var dataSent = $scope.form;
+                console.log(dataSent);
                 break;
             default:
                  console.log("do nothing");

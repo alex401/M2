@@ -207,10 +207,32 @@ $app->post('/v1/form/ctrlequipement', function ($request,$response) {
 
    $data = $request->getParsedBody();
    $data = (json_encode($data));
+   $data = json_decode($data, TRUE);
+   $dataForMail = array('Nom du lieutenant: ' => $data['nomLieut'], 'Nom du soldat: ' => $data['nomSoldat']);
+
+   foreach ($data['equipement'] as $key => $equipement) {
+     $index = $key;
+     // $result = setContent($typeCommande, $index);
+     $dataForMail[$index] = $equipement['statut'];
+     if (isset($equipement['nombre'])) {
+      $dataForMail[$index] .= ' x '.$equipement['nombre'];
+     }
+     if (isset($equipement['taille'])) {
+       $dataForMail[$index] .= ' Taille: '.$equipement['taille'];
+     }
+   }
+
+   if (isset($data['remarque'])) {
+      $dataForMail['Remarque: '] = $data['remarque'];
+   }
+
+
+   $dataForMail = (json_encode($dataForMail));
+
    try{
      //append to file named year-month
-     $result = setContent($typeCommande, $data);
-     $mail = mailSender($typeCommande, $data, "sud.commandement@pci-fr.ch", "sud.materiel@pci-fr.ch");
+     $result = setContent($typeCommande, $dataForMail);
+     $mail = mailSender($typeCommande, $dataForMail, "sud.commandement@pci-fr.ch", "sud.materiel@pci-fr.ch");
      //if someting was inserted
      if($result > 1 & $mail == 0){
        return $response->withJson(array('status' => 'OK'),200);

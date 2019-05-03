@@ -22,126 +22,223 @@
 
 <div class="form-group">
         <label for="formGroupSac">Sac</label>
-        <select class="form-control" id="formGroupSac" ng-model="form.sac" required>
+        <!-- <input type="hidden" ng-model="form.equipement.sac.nom" value="Sac"> -->
+        <select class="form-control" id="formGroupSac" ng-model="form.equipement.sac.statut" required>
           <option value="Oui">Oui</option>
-          <option value="Non">Non</option>
-          <option value="defectueux">defectueux</option></select>
+          <option value="Manquant">Manquant</option>
+          <option value="defectueux">Défectueux</option>
+        </select>
 </div>
+
 <div class="form-group">
        <label for="formGroupVestePluie">Veste de pluie</label>
-       <select class="form-control" id="formGroupVestePluie" ng-model="form.vestepluie" required>
+       <!-- <input type="hidden" ng-model="form.equipement.vestepluie.nom" value="Veste de pluie"> -->
+       <select class="form-control" id="formGroupVestePluie" ng-model="form.equipement.vestepluie.statut" required>
          <option value="Oui">Oui</option>
-         <option value="Non">Non</option>
-         <option value="defectueux">defectueux</option></select>
-      </div>
+         <option value="Manquant">Manquant</option>
+         <option value="defectueux">Défectueux</option>
+       </select>
+       <div ng-if="form.equipement.vestepluie.statut == 'Manquant' || form.equipement.vestepluie.statut == 'defectueux'">
+         <input type="text" ng-model="form.equipement.vestepluie.taille" class="form-control" placeholder="taille">
+       </div>
+</div>
+
 <div class="form-group">
        <label for="formGroupPantalonPluie">Pantalon de pluie</label>
-      <select class="form-control" id="formGroupPantalonPluie" ng-model="form.pantalonpluie" required>
+       <!-- <input type="hidden" ng-model="form.equipement.pantalonpluie.nom" value="Pantalon de pluie"> -->
+      <select class="form-control" id="formGroupPantalonPluie" ng-model="form.equipement.pantalonpluie.statut" required>
         <option value="Oui">Oui</option>
-        <option value="Non">Non</option>
-        <option value="defectueux">defectueux</option></select>
-     </div>
+        <option value="Manquant">Manquant</option>
+        <option value="defectueux">Défectueux</option>
+      </select>
+      <div ng-if="form.equipement.pantalonpluie.statut == 'Manquant' || form.equipement.pantalonpluie.statut == 'defectueux'">
+        <input type="text" ng-model="form.equipement.pantalonpluie.taille" class="form-control" placeholder="taille">
+      </div>
+</div>
+
 <div class="form-group">
        <label for="formGroupChapeauPluie">Chapeau de pluie</label>
-       <select class="form-control" id="formGroupChapeauPluie" ng-model="form.chapeaupluie" required>
+       <!-- <input type="hidden" ng-model="form.equipement.chapeaupluie.nom" value="Chapeau de pluie"> -->
+       <select class="form-control" id="formGroupChapeauPluie" ng-model="form.equipement.chapeaupluie.statut" required>
        <option value="Oui">Oui</option>
-       <option value="Non">Non</option>
-       <option value="defectueux">defectueux</option></select>
+       <option value="Manquant">Manquant</option>
+       <option value="defectueux">Défectueux</option>
+     </select>
+     <div ng-if="form.equipement.chapeaupluie.statut == 'Manquant' || form.equipement.chapeaupluie.statut == 'defectueux'">
+       <input type="text" ng-model="form.equipement.chapeaupluie.taille" class="form-control" placeholder="taille">
+     </div>
+</div>
 
-      </div>
 <div class="form-group">
     <label for="formGroupPolaire">Polaire</label>
-    <select class="form-control" id="formGroupPolaire" ng-model="form.polaire" required>
+    <!-- <input type="hidden" ng-model="form.equipement.polaire.nom" value="Polaire"> -->
+    <select class="form-control" id="formGroupPolaire" ng-model="form.equipement.polaire.statut" required>
       <option value="Oui">Oui</option>
-      <option value="Non">Non</option>
-      <option value="defectueux">defectueux</option></select>
-     </div>
+      <option value="Manquant">Manquant</option>
+      <option value="defectueux">Défectueux</option>
+    </select>
+    <div ng-if="form.equipement.polaire.statut == 'Manquant' || form.equipement.polaire.statut == 'defectueux'">
+      <input type="text" ng-model="form.equipement.polaire.taille" class="form-control" placeholder="taille">
+    </div>
+</div>
+
 <div class="form-group">
    <label for="formGroupVeste">Veste</label>
-   <select class="form-control" id="formGroupVeste" ng-model="form.veste" required>
+   <!-- <input type="hidden" ng-model="form.equipement.veste.nom" value="Veste"> -->
+   <select class="form-control" id="formGroupVeste" ng-model="form.equipement.veste.statut" required>
      <option value="Oui">Oui</option>
-     <option value="Non">Non</option>
-     <option value="defectueux">defectueux</option></select>
+     <option value="Manquant">Manquant</option>
+     <option value="defectueux">Défectueux</option>
+   </select>
+   <div ng-if="form.equipement.veste.statut == 'Manquant' || form.equipement.veste.statut == 'defectueux'">
+     <input type="text" ng-model="form.equipement.veste.taille" class="form-control" placeholder="taille">
    </div>
+</div>
+
 <div class="form-group">
   <label for="formGroupPantalon">Pantalon</label>
-  <select class="form-control" id="formGroupPantalon" ng-model="form.pantalon" required>
+  <!-- <input type="hidden" ng-model="form.equipement.pantalon.nom" value="Pantalon"> -->
+  <select class="form-control" id="formGroupPantalon" ng-model="form.equipement.pantalon.statut" required>
     <option value="Oui">Oui</option>
-    <option value="Non">Non</option>
-    <option value="defectueux">defectueux</option></select>
+    <option value="Manquant">Manquant</option>
+    <option value="defectueux">Défectueux</option>
+  </select>
+  <div ng-if="form.equipement.pantalon.statut == 'Manquant' || form.equipement.pantalon.statut == 'defectueux'">
+    <input type="text" ng-model="form.equipement.pantalon.taille" class="form-control" placeholder="taille">
+  </div>
 </div>
+
 <div class="form-group">
   <label for="formGroupCeinture">Ceinture</label>
-  <select class="form-control" id="formGroupCeinture" ng-model="form.ceinture" required>
+  <!-- <input type="hidden" ng-model="form.equipement.ceinture.nom" value="Ceinture"> -->
+  <select class="form-control" id="formGroupCeinture" ng-model="form.equipement.ceinture.statut" required>
     <option value="Oui">Oui</option>
-    <option value="Non">Non</option>
-    <option value="defectueux">defectueux</option></select>
+    <option value="Manquant">Manquant</option>
+    <option value="defectueux">Défectueux</option>
+  </select>
+  <div ng-if="form.equipement.ceinture.statut == 'Manquant' || form.equipement.ceinture.statut == 'defectueux'">
+    <input type="text" ng-model="form.equipement.ceinture.taille" class="form-control" placeholder="taille">
+  </div>
 </div>
+
 <div class="form-group">
   <label for="formGroupCasquette">Casquette</label>
-  <select class="form-control" id="formGroupCasquette" ng-model="form.casquette" required>
+  <!-- <input type="hidden" ng-model="form.equipement.casquette.nom" value="Casquette"> -->
+  <select class="form-control" id="formGroupCasquette" ng-model="form.equipement.casquette.statut" required>
     <option value="Oui">Oui</option>
-    <option value="Non">Non</option>
-    <option value="defectueux">defectueux</option></select>
+    <option value="Manquant">Manquant</option>
+    <option value="defectueux">Défectueux</option>
+  </select>
+  <div ng-if="form.equipement.casquette.statut == 'Manquant' || form.equipement.casquette.statut == 'defectueux'">
+    <input type="text" ng-model="form.equipement.casquette.taille" class="form-control" placeholder="taille">
+  </div>
 </div>
+
 <div class="form-group">
   <label for="formGroupGants">Gants</label>
-  <select class="form-control" id="formGroupGants" ng-model="form.gants" required>
+  <!-- <input type="hidden" ng-model="form.equipement.gants.nom" value="Gants"> -->
+  <select class="form-control" id="formGroupGants" ng-model="form.equipement.gants.statut" required>
     <option value="Oui">Oui</option>
-    <option value="Non">Non</option>
-    <option value="defectueux">defectueux</option></select>
+    <option value="Manquant">Manquant</option>
+    <option value="defectueux">Défectueux</option>
+  </select>
+  <div ng-if="form.equipement.gants.statut == 'Manquant' || form.equipement.gants.statut == 'defectueux'">
+    <input type="text" ng-model="form.equipement.gants.taille" class="form-control" placeholder="taille">
+  </div>
 </div>
+
 <div class="form-group">
   <label for="formGroupCasque">Casque</label>
-  <select class="form-control" id="formGroupCasque" ng-model="form.casque" required>
+  <!-- <input type="hidden" ng-model="form.equipement.casque.nom" value="Casque"> -->
+  <select class="form-control" id="formGroupCasque" ng-model="form.equipement.casque.statut" required>
     <option value="Oui">Oui</option>
-    <option value="Non">Non</option>
-    <option value="defectueux">defectueux</option></select>
+    <option value="Manquant">Manquant</option>
+    <option value="defectueux">Défectueux</option>
+  </select>
+
 </div>
+
 <div class="form-group">
   <label for="formGroupTShirts">4 T-shirt</label>
-  <select class="form-control" id="formGroupTShirts" ng-model="form.tshirts" required>
+  <!-- <input type="hidden" ng-model="form.equipement.tshirts.nom" value="T-shirts"> -->
+  <select class="form-control" id="formGroupTShirts" ng-model="form.equipement.tshirts.statut" required>
     <option value="Oui">Oui</option>
-    <option value="Non">Non</option>
-    <option value="defectueux">defectueux</option></select>
-
+    <option value="Manquant">Manquant</option>
+    <option value="defectueux">Défectueux</option>
+  </select>
+  <div ng-if="form.equipement.tshirts.statut == 'Manquant' || form.equipement.tshirts.statut == 'defectueux'">
+    <input type="number" ng-model="form.equipement.tshirts.nombre" class="form-control" placeholder="nombre">
+    <input type="text" ng-model="form.equipement.tshirts.taille" class="form-control" placeholder="taille">
+  </div>
 </div>
+
 <div class="form-group">
   <label for="formGroupSouspull">Sous pull</label>
-  <select class="form-control" id="formGroupSouspull" ng-model="form.souspull" required>
+  <!-- <input type="hidden" ng-model="form.equipement.souspull.nom" value="Sous pull"> -->
+  <select class="form-control" id="formGroupSouspull" ng-model="form.equipement.souspull.statut" required>
     <option value="Oui">Oui</option>
-    <option value="Non">Non</option>
-    <option value="defectueux">defectueux</option></select>
+    <option value="Manquant">Manquant</option>
+    <option value="defectueux">Défectueux</option>
+  </select>
+  <div ng-if="form.equipement.souspull.statut == 'Manquant' || form.equipement.souspull.statut == 'defectueux'">
+    <input type="text" ng-model="form.equipement.souspull.taille" class="form-control" placeholder="taille">
+  </div>
 </div>
+
 <div class="form-group">
   <label for="formGroupChaussures">Chaussures</label>
-  <select class="form-control" id="formGroupChaussures" ng-model="form.chaussures" required>
+  <!-- <input type="hidden" ng-model="form.equipement.chaussures.nom" value="Chaussures"> -->
+  <select class="form-control" id="formGroupChaussures" ng-model="form.equipement.chaussures.statut" required>
     <option value="Oui">Oui</option>
-    <option value="Non">Non</option>
-    <option value="defectueux">defectueux</option></select>
-
+    <option value="Manquant">Manquant</option>
+    <option value="defectueux">Défectueux</option>
+  </select>
+  <div ng-if="form.equipement.chaussures.statut == 'Manquant' || form.equipement.chaussures.statut == 'defectueux'">
+    <input type="text" ng-model="form.equipement.chaussures.taille" class="form-control" placeholder="taille">
+  </div>
 </div>
+
 <div class="form-group">
   <label for="formGroupPPI">PPI</label>
-  <select class="form-control" id="formGroupPPI" ng-model="form.ppi" required>
+  <!-- <input type="hidden" ng-model="form.equipement.ppi.nom" value="PPI"> -->
+  <select class="form-control" id="formGroupPPI" ng-model="form.equipement.ppi.statut" required>
     <option value="Oui">Oui</option>
-    <option value="Non">Non</option>
-    <option value="defectueux">defectueux</option></select>
-  </div>
+    <option value="Manquant">Manquant</option>
+    <option value="defectueux">Défectueux</option>
+  </select>
+</div>
+
 <div class="form-group">
   <label for="formGroupBadge">Badge PCi</label>
-  <select class="form-control" id="formGroupBadge" ng-model="form.badge" required>
+  <!-- <input type="hidden" ng-model="form.equipement.badge.nom" value="Badge"> -->
+  <select class="form-control" id="formGroupBadge" ng-model="form.equipement.badge.statut" required>
     <option value="Oui">Oui</option>
-    <option value="Non">Non</option>
-    <option value="defectueux">defectueux</option></select>
+    <option value="Manquant">Manquant</option>
+    <option value="defectueux">Défectueux</option>
+  </select>
+  <div ng-if="form.equipement.badge.statut == 'Manquant' || form.equipement.badge.statut == 'defectueux'">
+    <input type="number" ng-model="form.equipement.badge.nombre" class="form-control" placeholder="nombre">
+  </div>
 </div>
+
 <div class="form-group">
   <label for="formGroupBonnet">Bonnet</label>
-  <select class="form-control" id="formGroupBonnet" ng-model="form.bonnet" required>
+  <!-- <input type="hidden" ng-model="form.equipement.bonnet.nom" value="Bonnet"> -->
+  <select class="form-control" id="formGroupBonnet" ng-model="form.equipement.bonnet.statut" required>
     <option value="Oui">Oui</option>
-    <option value="Non">Non</option>
-    <option value="defectueux">defectueux</option></select>
+    <option value="Manquant">Manquant</option>
+    <option value="defectueux">Défectueux</option>
+  </select>
+  <div ng-if="form.equipement.bonnet.statut == 'Manquant' || form.equipement.bonnet.statut == 'defectueux'">
+    <input type="text" ng-model="form.equipement.bonnet.taille" class="form-control" placeholder="taille">
+  </div>
 </div>
+
+<div class="form-group">
+  <label for="formGroupRemarque">Remarque</label>
+  <input type="text" class="form-control" id="formGroupRemarque" ng-model="form.remarque">
+</div>
+
 <button type="submit" class="btn btn-primary"> Envoyer </button>
 </form>
 
