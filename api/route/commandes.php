@@ -41,22 +41,22 @@ $app->post('/v1/commande/{type}', function ($request,$response, $args) {
   }
 
   // Logging and mailing.
-  // $data = (json_encode($data));
-  // try {
-  //   //append to file named year-month
-  //   $result = setContent("repas", $data);
-  //   $mail = mailSender("repas", $data, "sud.commandement@pci-fr.ch", "sud.commandement@pci-fr.ch");
-  //
-  //   //if someting was inserted
-  //   if($result > 1 & $mail == 0) {
-  //     return $response->withJson(array('status' => 'OK'),200);
-  //   } else {
-  //     return $response->withJson(array('status' => 'Erreur lors du logging ou mailing'),422);
-  //   }
-  //
-  //   } catch(\Exception $ex){
-  //     return $response->withJson(array('error' => $ex->getMessage()),422);
-  //   }
+  $data = (json_encode($data));
+  try {
+    //append to file named year-month
+    $result = setContent("repas", $data);
+    $mail = mailSender("repas", $data, "sud.commandement@pci-fr.ch", "sud.commandement@pci-fr.ch");
+
+    //if someting was inserted
+    if($result > 1 & $mail == 0) {
+      return $response->withJson(array('status' => 'OK'),200);
+    } else {
+      return $response->withJson(array('status' => 'Erreur lors du logging ou mailing'),422);
+    }
+
+    } catch(\Exception $ex){
+      return $response->withJson(array('error' => $ex->getMessage()),422);
+    }
 });
 
 $app->get('/v1/select/commandes', function ($request,$response) {
@@ -103,20 +103,8 @@ $app->post('/v1/search/commandes', function ($request,$response) {
   } catch(\Exception $ex) {
     return $response->withJson(array('error' => 'Failed to find command: ' . $ex->getMessage()), 422);
   }
+
   return $response->withJson($result, 200);
-
-
-  // $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE type like '%$type%' AND nom like '%$nom%'
-  //   AND DATE(timestampDate) >= '$date' AND DATE(timestampDate) < DATE_ADD('$date', INTERVAL 1 DAY)");
-  // try {
-  //   $sth->execute();
-  //   $result = $sth->fetchAll();
-  // } catch(\Exception $ex) {
-  //   return $response->withJson(array('error' => 'Failed to find command: ' . $ex->getMessage()), 422);
-  // }
-  // return $response->withJson($result, 200);
-
-
 });
 
 $app->post('/v1/commande/update/{id}', function ($request,$response, $args) {
@@ -183,45 +171,6 @@ $app->get('/v1/commandes/{id}', function ($request, $response, $args) {
   return $response->withJson($result, 200);
 });
 
-// Insert a new command in the database. TODO move this in the route above.
-/*$app->post('/v1/commandes/insertcommand', function ($request, $response) {
-
-  $data = $request->getParsedBody();
-
-  $type = $data['type'];
-  $nom = $data['nom'];
-  $chantier = $data['chantier'];
-  $status = "attente de validation";
-
-  // Remove already taken fields.
-  array_splice($data, 0, 3);
-  $data = json_encode($data);
-
-  $sth = $this->dbm2->prepare("INSERT INTO commandes (type, nom, chantier, statut, data) VALUES ('$type', '$nom', '$chantier', '$status', '$data')");
-
-  try {
-    $succes = $sth->execute();
-
-  } catch(\Exception $ex){
-    return $response->withJson(array('error' => $ex->getMessage()), 422);
-  }
-
-  return $response->withJson(array('status' => 'OK'), 200);
-});
-
-$app->get('/v1/select/commandes', function ($request,$response) {
-
-  $sth = $this->dbm2->prepare("SELECT * FROM commandes");
-
-  try {
-    $sth->execute();
-    $result = $sth->fetchAll();
-  } catch(\Exception $ex) {
-    return $response->withJson(array('error' => $ex->getMessage()), 422);
-  }
-
-  return $response->withJson($result, 200);
-});*/
 
 // UTILS
 function getTypeCommande($type) {
