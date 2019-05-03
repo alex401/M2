@@ -18,6 +18,7 @@ function ListeAppelCtrl($scope, $http) {
   $scope.status = 0;
   $scope.personnes = {};
   $scope.sessions = {};
+  $scope.ioList = [{name: "Entrée en service"}, {name: "Fin de service"}];
 
 // ****************************
 // Load
@@ -41,7 +42,6 @@ function ListeAppelCtrl($scope, $http) {
       url: 'api/index.php/v1/select/formations'
     }).then(function successCallback(response) {
       $scope.formations = response.data;
-      console.log(response.data);
       }, function errorCallback(response) {
         console.log("error");
       });
@@ -54,14 +54,10 @@ function ListeAppelCtrl($scope, $http) {
 
 var loadSessions = function (formation) {
   $scope.status = 4;
-  console.log("loadSession of formation : "+ formation);
-  console.log(formation.rowId);
-//    console.log("Formation : "+formation);
   $http({
     method: 'GET',
     url: 'api/index.php/v1/admin/sessions/'+formation.rowId
   }).then(function successCallback(response) {
-    console.log(response.data);
     $scope.sessions = response.data;
     $scope.status = 0;
     }, function errorCallback(response) {
@@ -76,15 +72,11 @@ var loadDates = function () {
     dateFin = new Date(session.dateFin);
     var dates = betweenDate(dateDebut, dateFin);
     $scope.dates = dates;
-    console.log(dates);
-    dates.forEach(function(date) {
-    console.log(date);
-  });
 }
 
-  $scope.onChange = function (index) {
-    console.log($scope.personnes[index])
-  }
+  // $scope.onChange = function (index) {
+  //   console.log($scope.personnes[index])
+  // }
 
     $scope.onSelectFormation = function () {
       $scope.personnes = {};
@@ -109,7 +101,6 @@ var loadDates = function () {
           method: 'GET',
           url: 'api/index.php/v1/admin/personnes/'+Number(session)
         }).then(function successCallback(response) {
-          console.log(response.data);
           $scope.personnes = response.data;
           }, function errorCallback(response) {
             console.log("error");
@@ -118,15 +109,13 @@ var loadDates = function () {
 
 
   $scope.submit = function () {
-  //  console.log($scope.personnes);
   $scope.status = 3;
     $http({
       method: 'POST',
       url: 'api/index.php/v1/admin/listeappel',
-      data:  $scope.personnes
+      data:  {entreeSortie: $scope.io.name, personnes: $scope.personnes}
 
     }).then(function successCallback() {
-    //  console.log(response.data);
     console.log("success");
     $scope.status = 1;
 
