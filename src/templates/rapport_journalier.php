@@ -109,8 +109,12 @@
             <option value='Logistique - Subsistance'>Logistique - Subsistance</option>
             <option value='Logistique - Materiel'>Logistique - Materiel</option>
             <option value='Logistique - Transport'>Logistique - Transport</option>
-            <option value='Assistance'>Assistance</option>
-            <option value='Appui'>Appui</option>
+            <option value='Assistance 1'>Assistance 1</option>
+            <option value='Assistance 2'>Assistance 2</option>
+            <option value='Assistance 3'>Assistance 3</option>
+            <option value='Appui 1'>Appui 1</option>
+            <option value='Appui 2'>Appui 2</option>
+            <option value='Appui 3'>Appui 3</option>
           </select>
 
           <select ng-model="mission.avancement">
