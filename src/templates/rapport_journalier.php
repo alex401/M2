@@ -98,11 +98,18 @@
           <select ng-model="mission.section">
             <option value=''>Réalisé par:</option>
             <option value='Etat-Major'>Etat-Major</option>
-            <option value='Aide Commandement'>Aide Commandement</option>
+            <option value='AIC 1 - Renseignement'>AIC 1 - Renseignement</option>
+            <option value='AIC 1 - Média'>AIC 1 - Média</option>
+            <option value='AIC 1 - Chancellerie'>AIC 1 - Chancellerie</option>
+            <option value='AIC 2 - Télématique'>AIC 2 - Télématique</option>
+            <option value='AIC 2 - Informatique'>AIC 2 - Informatique</option>
+            <option value='Circulation'>Circulation</option>
+            <option value='Logistique - Fourrier'>Logistique - Fourrier</option>
+            <option value='Logistique - Infrastructure'>Logistique - Infrastructure</option>
             <option value='Logistique - Subsistance'>Logistique - Subsistance</option>
             <option value='Logistique - Materiel'>Logistique - Materiel</option>
             <option value='Logistique - Transport'>Logistique - Transport</option>
-            <option value='assistance'>Assistance</option>
+            <option value='Assistance'>Assistance</option>
             <option value='Appui'>Appui</option>
           </select>
 
