@@ -101,6 +101,7 @@ function mailSenderComplex($mailSubject, $mailContent, $emailFrom, $emailTo) {
 
   // In/out service.
   $message .= "<p><b>" . $mailContent['entreeSortie'] . "</b></p>";
+  $sujet .= " - " . $mailContent['entreeSortie'];
 
   // People.
   foreach($mailContent['personnes'] as $inputfield) {
