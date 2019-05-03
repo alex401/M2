@@ -35,7 +35,7 @@ $app->post('/v1/commande/{type}', function ($request,$response, $args) {
 
   } catch(\Exception $ex){
 
-    $this->dbm2->roolback();
+    $this->dbm2->rollback();
 
     return $response->withJson(array('error' => $ex->getMessage()), 422);
   }
