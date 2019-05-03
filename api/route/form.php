@@ -207,13 +207,29 @@ $app->post('/v1/form/ctrlequipement', function ($request,$response) {
 
    $data = $request->getParsedBody();
    $data = (json_encode($data));
+   $data = json_decode($data, TRUE);
+   $dataForMail = array('Nom du lieutenant: ' => $data['nomLieut'], 'Nom du soldat: ' => $data['nomSoldat']);
+
+   foreach ($data['equipement'] as $equipement) {
+     $index = $equipement['nom'];
+     $dataForMail[$index] = $equipement['statut'];
+     if (isset($equipement['nombre'])) {
+      $dataForMail[$equipement] .= ' x '.$equipement['nombre'];
+     }
+     if (isset($equipement['taille'])) {
+       $dataForMail[$equipement] .= ' Taille: '.$equipement['taille'];
+     }
+   }
+   $dataForMail['Remarque: '] = $data['remarque'];
+   $dataForMail = (json_encode($dataForMail));
+
    try{
      //append to file named year-month
      $result = setContent($typeCommande, $data);
      $mail = mailSender($typeCommande, $data, "sud.commandement@pci-fr.ch", "sud.materiel@pci-fr.ch");
      //if someting was inserted
      if($result > 1 & $mail == 0){
-       return $response->withJson(array('status' => 'OK'),200);
+       return $response->withJson(array('status' => var_dump($data)),200);
      }
      else {
      return $response->withJson(array('status' => 'Erreur pendant commande de'+ $typeCommande),422);
@@ -407,8 +423,8 @@ $app->post('/v1/form/radios', function ($request,$response) {
 
    try{
      //append to file named year-month
-     $result = setContent("Radios", $dataForMail);
-     $mail = mailSender("Radios", $dataForMail, "sud.commandement@pci-fr.ch", "sud.commandement@pci-fr.ch");
+     $result = setContent("Radios", $data);
+     $mail = mailSender("Radios", $data, "sud.commandement@pci-fr.ch", "sud.commandement@pci-fr.ch");
 
      //if someting was inserted
      if($result > 1 & $mail == 0){
