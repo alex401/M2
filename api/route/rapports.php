@@ -139,9 +139,9 @@ h1, h2, h3, h4, h5, h6 {
   flex: 0 0 auto;
 }
 
-.h-250 { height: 250px; }
+.h-400 { height: 400px; }
 @media (min-width: 768px) {
-  .h-md-250 { height: 250px; }
+  .h-md-400 { height: 400px; }
 }
 
 .border-top { border-top: 1px solid #e5e5e5; }
@@ -248,7 +248,7 @@ h1, h2, h3, h4, h5, h6 {
 
       <div class="row mb-2">
         <div class="col-md-6">
-          <div class="card flex-md-row mb-4 box-shadow h-md-250">
+          <div class="card flex-md-row mb-4 box-shadow h-md-400">
             <div class="card-body d-flex flex-column align-items-start">
               <strong class="d-inline-block mb-2 text-primary">Météo</strong>
               <h3 class="mb-0">
@@ -261,10 +261,10 @@ h1, h2, h3, h4, h5, h6 {
           </div>
         </div>
         <div class="col-md-6">
-          <div class="card flex-md-row mb-4 box-shadow h-md-250">
+          <div class="card flex-md-row mb-4 box-shadow h-md-400">
             <div class="card-body d-flex flex-column align-items-start">
               <strong class="d-inline-block mb-2 text-success">Hommes</strong>
-              <h3 class="mb-0">  </h3
+              <h3 class="mb-0">  </h3>
               ';
 
               foreach ($hommes as $value) {
