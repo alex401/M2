@@ -47,6 +47,22 @@ $app->get('/v1/admin/socpeople/{name}', function ($request,$response, $args) {
 
 });
 
+// Get the parent links list.
+$app->get('/v1/admin/socpeople/extra/parent', function ($request,$response) {
+
+  $sth = $this->dbdoll->prepare("SELECT code, label FROM llx_c_contact_extrafields");
+
+  try{
+    $sth->execute();
+    $result = $sth->fetchAll();
+
+  } catch(\Exception $ex){
+    return $response->withJson(array('error' => $ex->getMessage()), 422);
+  }
+
+  return $response->withJson($result, 200);
+});
+
 // Return the extra field for a soc people.
 $app->get('/v1/admin/socpeople/extra/{rowid}', function ($request,$response, $args) {
 

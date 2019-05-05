@@ -21,14 +21,7 @@ function EntreeServiceCtrl($scope, $http) {
   $scope.tagged = [];
   $scope.existingTags = {};
   $scope.langsInit = [];
-  $scope.parentList = [
-    {index: "1", name: "Parent"},
-    {index: "2", name: "Conjoint/e"},
-    {index: "3", name: "Frère"},
-    {index: "4", name: "Soeur"},
-    {index: "5", name: "Ami/e"},
-    {index: "6", name: "Autres"}
-  ]; // TODO get this from db somehow.
+  $scope.parentList = [];
 
   // ****************************
   // Load
@@ -68,6 +61,8 @@ function EntreeServiceCtrl($scope, $http) {
     $scope.langsInit = [];
     $scope.tagged = [];
 
+    loadParent();
+
     // First get all tags (to display them).
     $http({
       method: 'GET',
@@ -105,6 +100,17 @@ function EntreeServiceCtrl($scope, $http) {
       loadExtrafields(personne.rowid);
   }
 
+  var loadParent = function() {
+    $http({
+      method: 'GET',
+      url: 'api/index.php/v1/admin/socpeople/extra/parent'
+    }).then(function successCallback(response) {
+      $scope.parentList = response.data;
+      }, function errorCallback(response) {
+        console.log("error");
+    });
+  }
+
   // ******
   // Load the Tiers / Persons based on input
   // ******
@@ -128,11 +134,6 @@ function EntreeServiceCtrl($scope, $http) {
       method: 'GET',
       url: 'api/index.php/v1/admin/socpeople/extra/' + rowid
     }).then(function successCallback(response) {
-
-      // Since we can put multiple links in dolibarr...
-      if(response.data.lp) {
-        response.data.lp = response.data.lp.split(",")[0];
-      }
       $scope.personne.extra = response.data;
       $scope.status = 0;
     }, function errorCallback(response) {
@@ -192,8 +193,7 @@ function EntreeServiceCtrl($scope, $http) {
 
   }
 
-// Unused
-// Load();
+Load();
 
 }
 
