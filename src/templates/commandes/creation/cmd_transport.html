@@ -8,44 +8,44 @@
 
   <form ng-submit="submit('transport')" ng-if="status==0">
     <div class="form-group">
-      <label for="formGroupNom">Nom</label>
-      <input type="text" ng-model="form.nom" class="form-control" id="formGroupNom" placeholder="Nom" required>
+      <label for="nom">Nom</label>
+      <input type="text" ng-model="form.nom" class="form-control" id="nom" placeholder="Nom" required>
     </div>
     <div class="form-group">
-      <label for="formGroupChantier">chantier</label>
-      <select class="form-control" id="formGroupChantier" ng-model="form.chantier" ng-options="chantier.title as chantier.title for chantier in chantiers" required>
+      <label for="chantier">chantier</label>
+      <select class="form-control" id="chantier" ng-model="form.chantier" ng-options="chantier.title as chantier.title for chantier in chantiers" required>
         <option value="">-- Selection chantier --</option> </select>
    </div>
    <div class="form-group">
-     <label for="formGroupNom">Destination</label>
-     <input type="text" class="form-control" id="formGroupNom" ng-model="form.destination">
+     <label for="destination">Destination</label>
+     <input type="text" class="form-control" id="destination" ng-model="form.destination">
    </div>
    <div class="form-group">
-     <label for="formGroupNom"> Date du transport </label>
-     <input type="text" class="form-control" id="formDate" ng-model="form.dateLivraison" required>
+     <label for="date"> Date du transport </label>
+     <input type="text" class="form-control" id="date" ng-model="form.dateLivraison" required>
   </div>
    <div class="form-group">
-     <label for="formGroupNom">Heures</label>
-     <select class="form-control" id="formGroupChantier" ng-model="form.heure" required>
+     <label for="heures">Heures</label>
+     <select class="form-control" id="heures" ng-model="form.heure" required>
        <option value="matin">matin</option>
        <option value="midi">midi</option>
        <option value="soir">soir</option>
    </div>
    <div class="form-group">
-     <label for="formGroupNom">Détails pour heure (si necessaire)</label>
-     <input type="text" class="form-control" id="formGroupNom" ng-model="form.detailsHeure" placeholder="Détails pour heure (si necessaire)">
+     <label for="details">Détails pour heure (si necessaire)</label>
+     <input type="text" class="form-control" id="details" ng-model="form.detailsHeure" placeholder="Détails pour heure (si necessaire)">
    </div>
    <div class="form-group">
-     <label for="formGroupNom">Nombre d'hommes</label>
-     <input type="number" class="form-control" id="formGroupNom" ng-model="form.nbHomme" placeholder="Nombre d'hommes">
+     <label for="hommes">Nombre d'hommes</label>
+     <input type="number" class="form-control" id="hommes" ng-model="form.nbHomme" placeholder="Nombre d'hommes">
    </div>
    <div class="form-group">
-     <label for="formGroupNom">Matériel à transporter</label>
-     <input type="text" class="form-control" id="formGroupNom" ng-model="form.matTransport" placeholder="Matériel à transporter">
+     <label for="mat">Matériel à transporter</label>
+     <input type="text" class="form-control" id="mat" ng-model="form.matTransport" placeholder="Matériel à transporter">
    </div>
    <div class="form-group">
-     <label for="formGroupNom">commentaires</label>
-     <input type="text" class="form-control" id="formGroupNom" ng-model="form.commentaire"  placeholder="commentaires">
+     <label for="com">commentaires</label>
+     <input type="text" class="form-control" id="com" ng-model="form.commentaire"  placeholder="commentaires">
    </div>
    <button type="submit" class="btn btn-primary" >Envoyer</button>
   </form>
