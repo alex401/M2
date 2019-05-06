@@ -17,7 +17,7 @@ $app->post('/v1/form/demandeconge', function ($request,$response) {
    try{
      //append to file named year-month
      $result = setContent($typeCommande, $data);
-     $mail = mailSender($typeCommande, $data, "sud.commandement@pci-fr.ch", "sud.commandement@pci-fr.ch");
+     $mail = mailSender($typeCommande, $data, "sud.commandement@pci-fr.ch", "sud.fourrier@pci-fr.ch");
 
      //if someting was inserted
      if($result > 1 & $mail == 0){
