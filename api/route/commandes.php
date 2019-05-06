@@ -141,13 +141,14 @@ $app->post('/v1/commande/update/{id}', function ($request,$response, $args) {
   $data = $request->getParsedBody();
 
   $status = $data['statut'];
-
+  $remark = $data['remark'];
 
   try {
     $this->dbm2->beginTransaction();
 
     // Update command status.
-    $sth = $this->dbm2->prepare("UPDATE commandes SET statut = '$status' WHERE rowid = $id;");
+    $sth = $this->dbm2->prepare("UPDATE commandes SET statut = '$status', remark = :remark WHERE rowid = $id;");
+    $sth->bindParam(':remark', $remark, PDO::PARAM_STR);
     $sth->execute();
 
     // Insert new history entry.
