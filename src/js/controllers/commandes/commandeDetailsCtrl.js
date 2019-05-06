@@ -39,6 +39,7 @@ function CommandeDetailsCtrl($scope, $location, $state, $uibModal, $stateParams,
       $scope.command = response.data;
       $scope.currentStatus = $scope.command.statut;
       $scope.cmdData = JSON.parse($scope.command.data);
+      $scope.remark = response.data.remark;
 
       loadHist();
 
@@ -168,6 +169,10 @@ function CommandeDetailsCtrl($scope, $location, $state, $uibModal, $stateParams,
     updateDB(newStatus, id);
   }
 
+  $scope.updateRemark = function(id) {
+    updateDB($scope.currentStatus, id);
+  }
+
   // Update command status to cancelled.
   var cancel = function(id) {
     updateDB(config.cancelledStatus, id);
@@ -175,7 +180,7 @@ function CommandeDetailsCtrl($scope, $location, $state, $uibModal, $stateParams,
 
   // Update command status.
   var updateDB = function(newStatus, id) {
-    dat = {statut: newStatus};
+    dat = {statut: newStatus, remark: $scope.remark};
 
     $http({
       method: 'POST',
@@ -187,7 +192,7 @@ function CommandeDetailsCtrl($scope, $location, $state, $uibModal, $stateParams,
       $scope.currentStatus = newStatus;
       $state.reload();
     }, function errorCallback(response) {
-      console.log(response.data.error);
+      console.log(response);
       $scope.status = 1;
     });
 

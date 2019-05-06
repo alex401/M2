@@ -89,40 +89,48 @@ $app->post('/v1/search/commandes', function ($request,$response) {
   $nom = $command['client'];
   $nom = "%".$nom."%";
   $dateEnvoi = $command['date'];
+  $chantier = $command['chantier'];
+  if($chantier == "") {
+    $chantier = "%%";
+  }
 
   $sth;
 
-  // If rowid is specified, there should be only one result.
+  // If rowid is specified, there should be only one result. TODO change logic like for chantier.
   if($rowid != "" && $dateEnvoi !="") {
-    $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE rowid = :rowid AND type like :type
+    $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE rowid = :rowid AND type like :type AND chantier LIKE :chantier
       AND nom like :nom AND DATE(timestampDate) >= :dateEnvoi AND DATE(timestampDate) < DATE_ADD(:dateEnvoi, INTERVAL 1 DAY)");
 
     $sth->bindParam(':rowid', $rowid, PDO::PARAM_INT);
     $sth->bindParam(':type', $type, PDO::PARAM_STR);
     $sth->bindParam(':nom', $nom, PDO::PARAM_STR);
     $sth->bindParam(':dateEnvoi', $dateEnvoi, PDO::PARAM_STR);
+    $sth->bindParam(':chantier', $chantier, PDO::PARAM_STR);
 
   } else if($rowid != "") {
-    $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE rowid = :rowid AND type like :type
+    $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE rowid = :rowid AND type like :type AND chantier LIKE :chantier
       AND nom like :nom");
 
     $sth->bindParam(':rowid', $rowid, PDO::PARAM_INT);
     $sth->bindParam(':type', $type, PDO::PARAM_STR);
     $sth->bindParam(':nom', $nom, PDO::PARAM_STR);
+    $sth->bindParam(':chantier', $chantier, PDO::PARAM_STR);
 
   } else if($dateEnvoi !="") {
-    $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE type like :type
+    $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE type like :type AND chantier LIKE :chantier
       AND nom like :nom AND DATE(timestampDate) >= :dateEnvoi AND DATE(timestampDate) < DATE_ADD(:dateEnvoi, INTERVAL 1 DAY)");
 
     $sth->bindParam(':type', $type, PDO::PARAM_STR);
     $sth->bindParam(':nom', $nom, PDO::PARAM_STR);
     $sth->bindParam(':dateEnvoi', $dateEnvoi, PDO::PARAM_STR);
+    $sth->bindParam(':chantier', $chantier, PDO::PARAM_STR);
 
   } else {
-    $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE type like :type AND nom like :nom");
+    $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE type like :type AND nom like :nom AND chantier LIKE :chantier");
 
     $sth->bindParam(':type', $type, PDO::PARAM_STR);
     $sth->bindParam(':nom', $nom, PDO::PARAM_STR);
+    $sth->bindParam(':chantier', $chantier, PDO::PARAM_STR);
   }
 
   try {
@@ -141,13 +149,14 @@ $app->post('/v1/commande/update/{id}', function ($request,$response, $args) {
   $data = $request->getParsedBody();
 
   $status = $data['statut'];
-
+  $remark = $data['remark'];
 
   try {
     $this->dbm2->beginTransaction();
 
     // Update command status.
-    $sth = $this->dbm2->prepare("UPDATE commandes SET statut = '$status' WHERE rowid = $id;");
+    $sth = $this->dbm2->prepare("UPDATE commandes SET statut = '$status', remark = :remark WHERE rowid = $id;");
+    $sth->bindParam(':remark', $remark, PDO::PARAM_STR);
     $sth->execute();
 
     // Insert new history entry.

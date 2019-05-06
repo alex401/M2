@@ -46,6 +46,20 @@
     </span>
   </ul>
 
+  <div ng-if="cat === 'gestion'" >
+    <label for="remark">Remarque aditionnelle</label>
+    <input type="text" ng-model="remark" class="form-control" id="remark" value="">
+    <button class="btn btn-primary" ng-click="updateRemark(command.rowid)">Modifier remarque</button>
+  </div>
+  <span ng-if="cat === 'gestion'"><br></span>
+  <div ng-if="cat !== 'gestion'" >
+    <label for="remark">Remarque aditionnelle</label>
+    <ul class="list-group">
+      <li class="list-group-item">{{remark ? remark : 'Pas de remarque'}}</li>
+    </ul>
+  </div>
+
+
   <div ng-if="currentStatus != config.deliveredStatus && currentStatus != config.refusedStatus && currentStatus != config.cancelledStatus">
     <button ng-disabled="!filterFn() || ((currentStatus === config.waitingTransportStatus) && (t != 'transport'))"
             ng-show="cat === 'gestion'"
