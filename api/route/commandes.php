@@ -85,23 +85,44 @@ $app->post('/v1/search/commandes', function ($request,$response) {
   $command = $data['command'];
   $rowid = $command['id'];
   $type = $command['type'];
+  $type = "%".$type."%";
   $nom = $command['client'];
-  $date = $command['date'];
+  $nom = "%".$nom."%";
+  $dateEnvoi = $command['date'];
 
   $sth;
 
   // If rowid is specified, there should be only one result.
-  if($rowid != "" && $date !="") {
-    $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE rowid = $rowid AND type like '%$type%'
-      AND nom like '%$nom%' AND DATE(timestampDate) >= '$date' AND DATE(timestampDate) < DATE_ADD('$date', INTERVAL 1 DAY)");
+  if($rowid != "" && $dateEnvoi !="") {
+    $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE rowid = :rowid AND type like :type
+      AND nom like :nom AND DATE(timestampDate) >= :dateEnvoi AND DATE(timestampDate) < DATE_ADD(:dateEnvoi, INTERVAL 1 DAY)");
+
+    $sth->bindParam(':rowid', $rowid, PDO::PARAM_INT);
+    $sth->bindParam(':type', $type, PDO::PARAM_STR);
+    $sth->bindParam(':nom', $nom, PDO::PARAM_STR);
+    $sth->bindParam(':dateEnvoi', $dateEnvoi, PDO::PARAM_STR);
+
   } else if($rowid != "") {
-    $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE rowid = $rowid AND type like '%$type%'
-      AND nom like '%$nom%'");
-  } else if($date !="") {
-    $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE type like '%$type%'
-      AND nom like '%$nom%' AND DATE(timestampDate) >= '$date' AND DATE(timestampDate) < DATE_ADD('$date', INTERVAL 1 DAY)");
+    $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE rowid = :rowid AND type like :type
+      AND nom like :nom");
+
+    $sth->bindParam(':rowid', $rowid, PDO::PARAM_INT);
+    $sth->bindParam(':type', $type, PDO::PARAM_STR);
+    $sth->bindParam(':nom', $nom, PDO::PARAM_STR);
+
+  } else if($dateEnvoi !="") {
+    $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE type like :type
+      AND nom like :nom AND DATE(timestampDate) >= :dateEnvoi AND DATE(timestampDate) < DATE_ADD(:dateEnvoi, INTERVAL 1 DAY)");
+
+    $sth->bindParam(':type', $type, PDO::PARAM_STR);
+    $sth->bindParam(':nom', $nom, PDO::PARAM_STR);
+    $sth->bindParam(':dateEnvoi', $dateEnvoi, PDO::PARAM_STR);
+
   } else {
-    $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE type like '%$type%' AND nom like '%$nom%'");
+    $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE type like :type AND nom like :nom");
+
+    $sth->bindParam(':type', $type, PDO::PARAM_STR);
+    $sth->bindParam(':nom', $nom, PDO::PARAM_STR);
   }
 
   try {
