@@ -47,15 +47,15 @@
   </ul>
 
   <div ng-if="cat === 'gestion'" >
-    <label for="remark">Remarque aditionnelle</label>
-    <input type="text" ng-model="remark" class="form-control" id="remark" value="">
+    <label for="remarkid">Remarque aditionnelles</label>
+    <input type="text" ng-model="command.remark" class="form-control" id="remarkid" value="">
     <button class="btn btn-primary" ng-click="updateRemark(command.rowid)">Modifier remarque</button>
   </div>
   <span ng-if="cat === 'gestion'"><br></span>
   <div ng-if="cat !== 'gestion'" >
     <label for="remark">Remarque aditionnelle</label>
     <ul class="list-group">
-      <li class="list-group-item">{{remark ? remark : 'Pas de remarque'}}</li>
+      <li class="list-group-item">{{command.remark ? command.remark : 'Pas de remarque'}}</li>
     </ul>
   </div>
 

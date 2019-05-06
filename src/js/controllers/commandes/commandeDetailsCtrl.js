@@ -23,7 +23,6 @@ function CommandeDetailsCtrl($scope, $location, $state, $uibModal, $stateParams,
   };
   $scope.activeIndex = -1;
 
-
   var Load = function () {
     loadCommand();
   }
@@ -39,7 +38,6 @@ function CommandeDetailsCtrl($scope, $location, $state, $uibModal, $stateParams,
       $scope.command = response.data;
       $scope.currentStatus = $scope.command.statut;
       $scope.cmdData = JSON.parse($scope.command.data);
-      $scope.remark = response.data.remark;
 
       loadHist();
 
@@ -180,7 +178,7 @@ function CommandeDetailsCtrl($scope, $location, $state, $uibModal, $stateParams,
 
   // Update command status.
   var updateDB = function(newStatus, id) {
-    dat = {statut: newStatus, remark: $scope.remark};
+    dat = {statut: newStatus, remark: $scope.command.remark};
 
     $http({
       method: 'POST',
