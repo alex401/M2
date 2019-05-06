@@ -9,9 +9,9 @@ angular.module('PCIM2')
 
 function EntreeServiceCtrl($scope, $http) {
 
-// ****************************
-// Initialise variables & scope
-// ****************************
+  // ****************************
+  // Initialise variables & scope
+  // ****************************
 
   $scope.data = {};
   $scope.status = 0;
@@ -21,13 +21,13 @@ function EntreeServiceCtrl($scope, $http) {
   $scope.tagged = [];
   $scope.existingTags = {};
   $scope.langsInit = [];
+  $scope.parentList = [];
 
-// ****************************
-// Load
-// ****************************
+  // ****************************
+  // Load
+  // ****************************
 
   var Load = function () {
-
   }
 
   // ****************************
@@ -49,60 +49,73 @@ function EntreeServiceCtrl($scope, $http) {
     }
   }
 
-// *****
-// When user click on a tier/person. Will resest some arrays to null which will then reorganize the interface based on data on $scope.
-//
-$scope.onClick = function (personne)  {
-  $scope.personnes = null;
-  $scope.tiers = null;
-  $scope.personne = personne;
-  $scope.tags = null;
-  $scope.existingTags = null;
-  $scope.langsInit = [];
-  $scope.tagged = [];
+  // *****
+  // When user click on a tier/person. Will resest some arrays to null which will then reorganize the interface based on data on $scope.
+  //
+  $scope.onClick = function (personne)  {
+    $scope.personnes = null;
+    $scope.tiers = null;
+    $scope.personne = personne;
+    $scope.tags = null;
+    $scope.existingTags = null;
+    $scope.langsInit = [];
+    $scope.tagged = [];
 
-        // First get all tags (to display them).
-        $http({
-          method: 'GET',
-          url: 'api/index.php/v1/select/entreeservice/tags'
-        }).then(function successCallback(response) {
-          $scope.tags = response.data;
+    loadParent();
 
-          // Get the tags for the current person. TODO put this elswhere maybe.
-          $http({
-            method: 'GET',
-            url: 'api/index.php/v1/admin/tags/' + personne.rowid
-          }).then(function successCallback(response) {
-            $scope.existingTags = response.data;
-            // TODO: do this another way...
-            for (var i = 0; i < $scope.tags.length; i++) {
-              for (var j = 0; j < $scope.existingTags.length; j++) {
-                if($scope.tags[i].label === $scope.existingTags[j].label){
-                  var t = $scope.tags[i];
-                  t.checked = "true";
-                  $scope.tagged.push(t);
-                }
-                //break;
-              }
+    // First get all tags (to display them).
+    $http({
+      method: 'GET',
+      url: 'api/index.php/v1/select/entreeservice/tags'
+    }).then(function successCallback(response) {
+      $scope.tags = response.data;
+
+      // Get the tags for the current person. TODO put this elswhere maybe.
+      $http({
+        method: 'GET',
+        url: 'api/index.php/v1/admin/tags/' + personne.rowid
+      }).then(function successCallback(response) {
+        $scope.existingTags = response.data;
+        // TODO: do this another way...
+        for (var i = 0; i < $scope.tags.length; i++) {
+          for (var j = 0; j < $scope.existingTags.length; j++) {
+            if($scope.tags[i].label === $scope.existingTags[j].label){
+              var t = $scope.tags[i];
+              t.checked = "true";
+              $scope.tagged.push(t);
             }
-            $scope.langsInit = getLangs($scope.tagged);
-            }, function errorCallback(response) {
-              console.log("error");
-            });
+            //break;
+          }
+        }
+        $scope.langsInit = getLangs($scope.tagged);
+        }, function errorCallback(response) {
+          console.log("error");
+        });
 
-          }, function errorCallback(response) {
-            console.log("error");
-          });
+      }, function errorCallback(response) {
+        console.log("error");
+      });
 
+      // Load the emergency information which are in llx_socpeople_extrafield.
+      loadExtrafields(personne.rowid);
+  }
 
-
+  var loadParent = function() {
+    $http({
+      method: 'GET',
+      url: 'api/index.php/v1/admin/socpeople/extra/parent'
+    }).then(function successCallback(response) {
+      $scope.parentList = response.data;
+      }, function errorCallback(response) {
+        console.log("error");
+    });
   }
 
   // ******
   // Load the Tiers / Persons based on input
   // ******
   $scope.loadTiers = function (nom) {
-    if(nom != null && nom.length > 3){
+    if(nom != null && nom.length >= 3){
 
     $http({
       method: 'GET',
@@ -116,25 +129,29 @@ $scope.onClick = function (personne)  {
     }
   }
 
-    $scope.onSelectFormation = function () {
-      loadSessions($scope.data.formation);
-    }
+  var loadExtrafields = function(rowid) {
+    $http({
+      method: 'GET',
+      url: 'api/index.php/v1/admin/socpeople/extra/' + rowid
+    }).then(function successCallback(response) {
+      $scope.personne.extra = response.data;
+      $scope.status = 0;
+    }, function errorCallback(response) {
+      console.log(response);
+    });
+  }
 
-    $scope.selectSession = function () {
-        loadDates($scope.data.session);
-      }
-
-      $scope.onSelectDate = function () {
-        session = $scope.data.session.rowid;
-        $http({
-          method: 'GET',
-          url: 'api/index.php/v1/admin/personnes/'+Number(session)
-        }).then(function successCallback(response) {
-          $scope.personnes = response.data;
-          }, function errorCallback(response) {
-            console.log("error");
-          });
-      }
+  $scope.onSelectDate = function () {
+    session = $scope.data.session.rowid;
+    $http({
+      method: 'GET',
+      url: 'api/index.php/v1/admin/personnes/'+Number(session)
+    }).then(function successCallback(response) {
+      $scope.personnes = response.data;
+      }, function errorCallback(response) {
+        console.log("error");
+    });
+  }
 
 
   $scope.submit = function (personne) {
@@ -144,7 +161,11 @@ $scope.onClick = function (personne)  {
       method: 'POST',
       url: 'api/index.php/v1/admin/entreeservice/tags/'+ Number(personne.rowid),
       //15.01.2019
-      data: { lieu: $scope.personne.town, adresse: $scope.personne.address, zip: $scope.personne.zip, tagged: $scope.tagged, mail: $scope.personne.email, phone: $scope.personne.phone }
+      data: {
+        lieu: $scope.personne.town, adresse: $scope.personne.address, zip: $scope.personne.zip,
+        tagged: $scope.tagged, mail: $scope.personne.email, phone: $scope.personne.phone,
+        urgence: $scope.personne.extra.nb, parent: $scope.personne.extra.lp
+      }
     }).then(function successCallback() {
       console.log("success");
       $scope.status = 1;
@@ -172,10 +193,10 @@ $scope.onClick = function (personne)  {
 
   }
 
-// Unused
-// Load();
+Load();
 
 }
+
 
 // =============================================================================
 // Check if two arrays contain the same values (order not important).
