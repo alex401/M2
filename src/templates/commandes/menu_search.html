@@ -18,7 +18,7 @@
   <div class="col-md-2">
     <label for="client">Client</label>
   </div>
-    <div class="col-md-2">
+  <div class="col-md-2">
     <input id="client" type="text" ng-model="command.client" name="" value="">
   </div>
 </div>
@@ -26,7 +26,7 @@
   <div class="col-md-2">
     <label for="type">Type de commande (repas, transport, ...)</label>
   </div>
-    <div class="col-md-2">
+  <div class="col-md-2">
     <input id="type" type="text" ng-model="command.type" name="" value="">
   </div>
 </div>
@@ -34,8 +34,18 @@
   <div class="col-md-2">
     <label for="date">Date (ex: 2019-04-28)</label>
   </div>
-    <div class="col-md-2">
+  <div class="col-md-2">
     <input id="date" type="text" ng-model="command.date" name="" value="">
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-2">
+    <label for="chantier">Chantier</label>
+  </div>
+  <div class="col-md-2">
+    <select class="form-control" id="chantier" ng-model="chantier" ng-options="chantier.title as chantier.title for chantier in chantiers">
+      <option value="">-- Selection chantier --</option>
+   </select>
   </div>
 </div>
 <button type="submit" class="btn btn-primary" ng-click="search(command)">Search</button>
