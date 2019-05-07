@@ -67,7 +67,7 @@ $app->post('/v1/commande/{type}', function ($request,$response, $args) {
 });
 
 $app->get('/v1/select/commandes', function ($request,$response) {
-  $sth = $this->dbm2->prepare("SELECT * FROM commandes");
+  $sth = $this->dbm2->prepare("SELECT * FROM commandes ORDER BY timestampDate DESC");
   try {
     $sth->execute();
     $result = $sth->fetchAll();
@@ -99,7 +99,7 @@ $app->post('/v1/search/commandes', function ($request,$response) {
   // If rowid is specified, there should be only one result. TODO change logic like for chantier.
   if($rowid != "" && $dateEnvoi !="") {
     $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE rowid = :rowid AND type like :type AND chantier LIKE :chantier
-      AND nom like :nom AND DATE(timestampDate) >= :dateEnvoi AND DATE(timestampDate) < DATE_ADD(:dateEnvoi, INTERVAL 1 DAY)");
+      AND nom like :nom AND DATE(timestampDate) >= :dateEnvoi AND DATE(timestampDate) < DATE_ADD(:dateEnvoi, INTERVAL 1 DAY)  ORDER BY timestampDate DESC");
 
     $sth->bindParam(':rowid', $rowid, PDO::PARAM_INT);
     $sth->bindParam(':type', $type, PDO::PARAM_STR);
@@ -109,7 +109,7 @@ $app->post('/v1/search/commandes', function ($request,$response) {
 
   } else if($rowid != "") {
     $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE rowid = :rowid AND type like :type AND chantier LIKE :chantier
-      AND nom like :nom");
+      AND nom like :nom ORDER BY timestampDate DESC");
 
     $sth->bindParam(':rowid', $rowid, PDO::PARAM_INT);
     $sth->bindParam(':type', $type, PDO::PARAM_STR);
@@ -118,7 +118,7 @@ $app->post('/v1/search/commandes', function ($request,$response) {
 
   } else if($dateEnvoi !="") {
     $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE type like :type AND chantier LIKE :chantier
-      AND nom like :nom AND DATE(timestampDate) >= :dateEnvoi AND DATE(timestampDate) < DATE_ADD(:dateEnvoi, INTERVAL 1 DAY)");
+      AND nom like :nom AND DATE(timestampDate) >= :dateEnvoi AND DATE(timestampDate) < DATE_ADD(:dateEnvoi, INTERVAL 1 DAY)  ORDER BY timestampDate DESC");
 
     $sth->bindParam(':type', $type, PDO::PARAM_STR);
     $sth->bindParam(':nom', $nom, PDO::PARAM_STR);
@@ -126,7 +126,7 @@ $app->post('/v1/search/commandes', function ($request,$response) {
     $sth->bindParam(':chantier', $chantier, PDO::PARAM_STR);
 
   } else {
-    $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE type like :type AND nom like :nom AND chantier LIKE :chantier");
+    $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE type like :type AND nom like :nom AND chantier LIKE :chantier  ORDER BY timestampDate DESC");
 
     $sth->bindParam(':type', $type, PDO::PARAM_STR);
     $sth->bindParam(':nom', $nom, PDO::PARAM_STR);

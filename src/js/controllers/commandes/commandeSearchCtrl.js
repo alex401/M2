@@ -1,14 +1,31 @@
 angular.module('PCIM2')
-    .controller('CommandeSearchCtrl', ['$scope','$stateParams', '$http', CommandeSearchCtrl]);
+    .controller('CommandeSearchCtrl', ['$scope','$stateParams', '$http', 'config', CommandeSearchCtrl]);
 
-function CommandeSearchCtrl($scope, $stateParams, $http) {
+function CommandeSearchCtrl($scope, $stateParams, $http, config) {
   $scope.commandes = {};
   $scope.command = {id: "", type:"", client:"", date:"", chantier: ""};
   $scope.chantier = "";
+  $scope.cmdDeliveredCheck = false;
+  $scope.cmdRefusedCheck = false;
+  $scope.cmdCancelledCheck = false;
 
   $scope.search = function(command) {
     searchCommands(command);
   }
+
+  $scope.filterFn = function(cmd) {
+    if(!$scope.cmdDeliveredCheck && (cmd.statut === config.deliveredStatus)) {
+      return false;
+    }
+    if(!$scope.cmdRefusedCheck && (cmd.statut === config.refusedStatus)) {
+      return false;
+    }
+    if(!$scope.cmdCancelledCheck && (cmd.statut === config.cancelledStatus)) {
+      return false;
+    }
+
+    return true;
+  };
 
   var Load = function () {
     loadChantiers();
