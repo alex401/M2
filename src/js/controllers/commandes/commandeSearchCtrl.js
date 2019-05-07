@@ -5,9 +5,9 @@ function CommandeSearchCtrl($scope, $stateParams, $http, config) {
   $scope.commandes = {};
   $scope.command = {id: "", type:"", client:"", date:"", chantier: ""};
   $scope.chantier = "";
-  $scope.cmdDeliveredCheck = true;
-  $scope.cmdRefusedCheck = true;
-  $scope.cmdCancelledCheck = true;
+  $scope.cmdDeliveredCheck = false;
+  $scope.cmdRefusedCheck = false;
+  $scope.cmdCancelledCheck = false;
 
   $scope.search = function(command) {
     searchCommands(command);
