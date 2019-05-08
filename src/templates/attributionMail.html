@@ -1,0 +1,33 @@
+<main class="col-sm-12 col-md-12" ng-controller="MailCtrl">
+
+
+
+
+
+<div class="container"  style="width:100%">
+  <h1> Attribution des mails </h1>
+  <form ng-if="status==0" ng-submit="submit()">
+    <br>
+    <div class="row">
+      <div class="col-6" ng-if="templates.length > 0">
+        <h3> Destination des formulaires en cours </h3>
+        <br>
+        <div ng-repeat="template in templates">
+          <label for="template.nom"> {{template.nom}} </label>
+          <input id="template.nom" class="form-control" type="text" ng-model="template.destEnCours">
+          <br>
+        </div>
+      </div>
+      <div class="col-6" ng-if="templates.length > 0">
+        <h3> Destination des formulaires hors cours </h3>
+        <br>
+        <div ng-repeat="template in templates">
+          <label for="template.nom"> {{template.nom}} </label>
+          <input id="template.nom" class="form-control" type="text" ng-model="template.destHorsCours">
+          <br>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary"> Valider </button>
+  </form>
+</div>
