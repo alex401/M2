@@ -15,11 +15,10 @@ function EntreeServiceCtrl($scope, $http) {
 
   $scope.data = {};
   $scope.status = 0;
-  $scope.personnes = {};
   $scope.tiers = {};
-  $scope.tags = {};
+  $scope.tags = [];
   $scope.tagged = [];
-  $scope.existingTags = {};
+  $scope.existingTags = [];
   $scope.langsInit = [];
   $scope.parentList = [];
 
@@ -53,11 +52,10 @@ function EntreeServiceCtrl($scope, $http) {
   // When user click on a tier/person. Will resest some arrays to null which will then reorganize the interface based on data on $scope.
   //
   $scope.onClick = function (personne)  {
-    $scope.personnes = null;
     $scope.tiers = null;
     $scope.personne = personne;
-    $scope.tags = null;
-    $scope.existingTags = null;
+    $scope.tags = [];
+    $scope.existingTags = [];
     $scope.langsInit = [];
     $scope.tagged = [];
 
@@ -69,6 +67,7 @@ function EntreeServiceCtrl($scope, $http) {
       url: 'api/index.php/v1/select/entreeservice/tags'
     }).then(function successCallback(response) {
       $scope.tags = response.data;
+      console.log("All tags: ", $scope.tags);
 
       // Get the tags for the current person. TODO put this elswhere maybe.
       $http({
@@ -76,11 +75,12 @@ function EntreeServiceCtrl($scope, $http) {
         url: 'api/index.php/v1/admin/tags/' + personne.rowid
       }).then(function successCallback(response) {
         $scope.existingTags = response.data;
+        console.log("Existing: ", $scope.existingTags);
         // TODO: do this another way...
         for (var i = 0; i < $scope.tags.length; i++) {
           for (var j = 0; j < $scope.existingTags.length; j++) {
             if($scope.tags[i].label === $scope.existingTags[j].label){
-              var t = $scope.tags[i];
+              var t = $scope.tags[i]; //TODO copy
               t.checked = "true";
               $scope.tagged.push(t);
             }
@@ -140,19 +140,6 @@ function EntreeServiceCtrl($scope, $http) {
       console.log(response);
     });
   }
-
-  $scope.onSelectDate = function () {
-    session = $scope.data.session.rowid;
-    $http({
-      method: 'GET',
-      url: 'api/index.php/v1/admin/personnes/'+Number(session)
-    }).then(function successCallback(response) {
-      $scope.personnes = response.data;
-      }, function errorCallback(response) {
-        console.log("error");
-    });
-  }
-
 
   $scope.submit = function (personne) {
 
