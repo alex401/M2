@@ -170,17 +170,27 @@ $app->post('/v1/admin/entreeservice/tags/{personneid}', function ($request, $res
     // Update info.
     $sth = $this->dbdoll->prepare(
       "UPDATE llx_socpeople
-      SET town = '$dataLieu', address = '$dataAdresse', zip = '$dataZip', email = '$dataMail', phone = '$dataPhone'
+      SET town = :dataLieu, address = :dataAdresse, zip = :dataZip, email = :dataMail, phone = :dataPhone
       WHERE rowid = $personneid"
     );
+    $sth->bindParam(':dataLieu', $dataLieu, PDO::PARAM_STR);
+    $sth->bindParam(':dataAdresse', $dataAdresse, PDO::PARAM_STR);
+    $sth->bindParam(':dataZip', $dataZip, PDO::PARAM_STR);
+    $sth->bindParam(':dataMail', $dataMail, PDO::PARAM_STR);
+    $sth->bindParam(':dataPhone', $dataPhone, PDO::PARAM_STR);
     $sth->execute();
 
     $sth = $this->dbdoll->prepare(
       "UPDATE llx_societe, llx_socpeople
-      SET llx_societe.address = '$dataAdresse', llx_societe.zip = '$dataZip', llx_societe.town = '$dataLieu',
-        llx_societe.email = '$dataMail', llx_societe.phone = '$dataPhone'
+      SET llx_societe.address = :dataAdresse, llx_societe.zip = :dataZip, llx_societe.town = :dataLieu,
+        llx_societe.email = :dataMail, llx_societe.phone = :dataPhone
       WHERE llx_societe.rowid = llx_socpeople.fk_soc AND llx_socpeople.rowid = $personneid"
     );
+    $sth->bindParam(':dataLieu', $dataLieu, PDO::PARAM_STR);
+    $sth->bindParam(':dataAdresse', $dataAdresse, PDO::PARAM_STR);
+    $sth->bindParam(':dataZip', $dataZip, PDO::PARAM_STR);
+    $sth->bindParam(':dataMail', $dataMail, PDO::PARAM_STR);
+    $sth->bindParam(':dataPhone', $dataPhone, PDO::PARAM_STR);
     $sth->execute();
 
   } catch (\Exception $ex) {
@@ -255,8 +265,9 @@ $app->post('/v1/admin/entreeservice/tags/{personneid}', function ($request, $res
   // Update parent link and emergency number.
   try {
     $sth = $this->dbdoll->prepare(
-      "UPDATE llx_socpeople_extrafields SET nb = '$dataUrgence', lp = '$dataParent' WHERE fk_object = $personneid"
+      "UPDATE llx_socpeople_extrafields SET nb = :dataUrgence, lp = '$dataParent' WHERE fk_object = $personneid"
     );
+    $sth->bindParam(':dataUrgence', $dataUrgence, PDO::PARAM_STR);
     $sth->execute();
 
   } catch(\Exception $ex) {

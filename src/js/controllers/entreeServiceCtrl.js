@@ -167,12 +167,10 @@ function EntreeServiceCtrl($scope, $http) {
         urgence: $scope.personne.extra.nb, parent: $scope.personne.extra.lp
       }
     }).then(function successCallback() {
-      console.log("success");
       $scope.status = 1;
-
-    }, function errorCallback() {
-      console.log("something went wrong but DB updated-");
-      $scope.status = 1;
+    }, function errorCallback(response) {
+      console.log(response.data.error);
+      $scope.status = 2;
     });
 
 
@@ -184,10 +182,10 @@ function EntreeServiceCtrl($scope, $http) {
         url: 'api/index.php/v1/admin/entreeservice/tags/ecv/'+ Number(personne.rowid),
         data: {langs: langs}
       }).then(function successCallback(response) {
-        $scope.status = 0;
+        $scope.status = 1;
       }, function errorCallback(response) {
         console.log(response.data.error);
-        $scope.status = 1;
+        $scope.status = 2;
       });
     }
 
