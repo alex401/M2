@@ -51,29 +51,9 @@ function FormCtrl($scope, $http) {
 
   $scope.submit = function (type) {
     switch(type) {
-            case "repas":
-                var temp = $scope.form;
-                var dataSent = {'type':type,'nom':temp.nom,'chantier':temp.chantier,'dateLivraison':temp.dateLivraison, 'nbDej':temp.nbDej, 'nbDiner':temp.nbDiner, 'nbSouper':temp.nbSouper, 'nbCollationNuit':temp.nbCollationNuit, 'nbVegetariens':temp.nbVegetariens, 'commentaire':temp.commentaire};
-//                sendCommand(dataSent);
-                break;
-            case "carburant":
-                var temp = $scope.form;
-                var dataSent = {'type':type,'nom':temp.nom, 'chantier':temp.chantier,'nbLitresDiesel':temp.nbLitresDiesel, 'nbLitresEssence':temp.nbLitresEssence, 'nbLitresEssence2T':temp.nbLitresEssence2T, 'commentaire':temp.commentaire};
-//                sendCommand(dataSent);
-                break;
-            case "materiel":
-                var temp = $scope.form;
-                var dataSent = {'type':type,'nom':temp.nom,'chantier':temp.chantier,'dateLivraison':temp.dateLivraison,'mat1':temp.mat1, 'mat2':temp.mat2, 'mat3':temp.mat3, 'commentaire':temp.commentaire};
-//                sendCommand(dataSent);
-                break;
             case "demandeconge":
                 var temp = $scope.form;
                 var dataSent = {'nomLieut':temp.nomLieut, 'nomPers':temp.nomPers,'dateEnvoi':new Date().toLocaleString(),'date':temp.date, 'raison':temp.raison, 'commentaire':temp.commentaire};
-                break;
-            case "transport":
-                var temp = $scope.form;
-                var dataSent = {'type':type,'nom':temp.nom,'chantier':temp.chantier,'dateLivraison':temp.dateLivraison, 'destination':temp.destination, 'heure':temp.heure, 'detailsHeure':temp.detailsHeure, 'nbHomme':temp.nbHomme,'matTransport':temp.matTransport, 'commentaire':temp.commentaire};
-//                sendCommand(dataSent);
                 break;
             case "suivichantier":
                 var temp = $scope.form;
@@ -89,7 +69,6 @@ function FormCtrl($scope, $http) {
                 break;
             case "rapportparking":
                 var temp = $scope.form;
-                console.log($scope.form);
                 var dataSent = {'nom':temp.nom,'parking':temp.parking,'dateEnvoi':new Date().toLocaleString(),'etat':temp.etat, 'detailEtat':temp.detailEtat, 'remplissage':temp.remplissage, 'detailRemplissage':temp.detailRemplissage, 'eclairage':temp.eclairage, 'commentaire':temp.commentaire};
                 break;
             case "etatcirculation":
@@ -101,7 +80,6 @@ function FormCtrl($scope, $http) {
                 break;
             case "ctrlequipement":
                 var dataSent = $scope.form;
-                console.log(dataSent);
                 break;
             default:
                  console.log("do nothing");
