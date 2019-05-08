@@ -31,32 +31,23 @@ function RechercheCtrl($scope, $http) {
       url: 'api/index.php/v1/select/categories'
     }).then(function successCallback(response) {
       $scope.categories = response.data;
-      }, function errorCallback(response) {
-        console.log("error");
-      });
+    }, function errorCallback(response) {
+      console.log("error");
+    });
   }
 
   $scope.loadTiers = function (nom) {
-    if(nom != null && nom.length > 2){
-    console.log(nom);
-
-    $http({
-      method: 'GET',
-      url: 'api/index.php/v1/admin/tiers/'+nom
-    }).then(function successCallback(response) {
-      console.log(response.data);
-      $scope.tiers = response.data;
+    if(nom != null && nom.length > 2) {
+      $http({
+        method: 'GET',
+        url: 'api/index.php/v1/admin/tiers/'+nom
+      }).then(function successCallback(response) {
+        $scope.tiers = response.data;
       }, function errorCallback(response) {
         console.log("error");
       });
     }
   }
-
-  $scope.submit = function () {
-    console.log($scope.form.categorie);
-  //  console.log($scope.formRepas);
-  }
-
 
 
 Load();

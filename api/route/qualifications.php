@@ -47,7 +47,11 @@ $app->post('/v1/form/qualifications/{socpeopleid}', function ($request, $respons
   $tagid = $result[0]['rowid'];
 
   // Verify that the soc_people is not already tagged.
-  $sth = $this->dbdoll->prepare("SELECT fk_categorie, fk_socpeople FROM llx_categorie_contact WHERE fk_socpeople = $socpeopleid AND fk_categorie = $tagid;");
+  $sth = $this->dbdoll->prepare(
+    "SELECT fk_categorie, fk_socpeople
+    FROM llx_categorie_contact
+    WHERE fk_socpeople = $socpeopleid AND fk_categorie = $tagid;"
+  );
 
   try {
     $sth->execute();
@@ -57,10 +61,13 @@ $app->post('/v1/form/qualifications/{socpeopleid}', function ($request, $respons
   }
 
   if($result) {
-    return $response->withJson(array('status' => 'OKAY'), 200);
+    return $response->withJson(array('status' => 'OK'), 200);
   } else {
     //Insert tags into dollibar
-    $sth = $this->dbdoll->prepare("INSERT INTO `llx_categorie_contact`(`fk_categorie`, `fk_socpeople`) VALUES ($tagid, $socpeopleid)");
+    $sth = $this->dbdoll->prepare(
+      "INSERT INTO `llx_categorie_contact`(`fk_categorie`, `fk_socpeople`) VALUES ($tagid, $socpeopleid)"
+    );
+
     try {
       $sth->execute();
     } catch(\Exception $ex) {

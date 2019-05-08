@@ -1,26 +1,20 @@
 <?php
 
+// Get list of chantiers.
+$app->get('/v1/chantiers', function ($request, $response) {
 
-$app->get('/v1/chantiers', function ($request,$response) {
+  $sth = $this->dbdoll->prepare("SELECT `rowid`, `title`, `date_close` FROM `llx_projet` WHERE fk_statut = 1;");
 
-    try{
+  try {
+    $sth->execute();
+    $result = $sth->fetchAll();
 
-//TODO connection to DB  GET data from llx_projet
-
-$sth = $this->dbdoll->prepare("SELECT `rowid`, `title`, `date_close` FROM `llx_projet` WHERE fk_statut = 1;");
-
-$sth->execute();
-$result = $sth->fetchAll();
-
-      if($result){
-
-        return $response->withJson($result,200);
-      }
-      else {
-      return $response->withJson(array('status' => 'Erreur'),422);
-      }
+    if($result) {
+      return $response->withJson($result, 200);
+    } else {
+      return $response->withJson(array('status' => "No chantier found."), 200);
     }
-    catch(\Exception $ex){
-      return $response->withJson(array('error' => $ex->getMessage()),422);
-    }
+  } catch(\Exception $ex) {
+    return $response->withJson(array('error' => "Failed to get chantiers list: " . $ex->getMessage()), 422);
+  }
 });

@@ -1,6 +1,6 @@
 <?php
 
-$app->post('/v1/commande/{type}', function ($request,$response, $args) {
+$app->post('/v1/commande/{type}', function ($request, $response, $args) {
 
   $type = $args['type'];
 
@@ -24,7 +24,9 @@ $app->post('/v1/commande/{type}', function ($request,$response, $args) {
   try {
     $this->dbm2->beginTransaction();
 
-    $sth = $this->dbm2->prepare("INSERT INTO commandes (type, nom, chantier, statut, data) VALUES (:type, :nom, :chantier, :status, :data)");
+    $sth = $this->dbm2->prepare(
+      "INSERT INTO commandes (type, nom, chantier, statut, data) VALUES (:type, :nom, :chantier, :status, :data)"
+    );
     $sth->bindParam(':type', $type, PDO::PARAM_STR);
     $sth->bindParam(':nom', $nom, PDO::PARAM_STR);
     $sth->bindParam(':chantier', $chantier, PDO::PARAM_STR);
@@ -77,7 +79,7 @@ $app->get('/v1/select/commandes', function ($request,$response) {
   return $response->withJson($result, 200);
 });
 
-$app->post('/v1/search/commandes', function ($request,$response) {
+$app->post('/v1/search/commandes', function ($request, $response) {
   $data = $request->getParsedBody();
   $data = (json_encode($data));
   $data = json_decode($data, true);
@@ -94,13 +96,14 @@ $app->post('/v1/search/commandes', function ($request,$response) {
     $chantier = "%%";
   }
 
-  $sth;
-
   // If rowid is specified, there should be only one result. TODO change logic like for chantier.
   if($rowid != "" && $dateEnvoi !="") {
-    $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE rowid = :rowid AND type like :type AND chantier LIKE :chantier
-      AND nom like :nom AND DATE(timestampDate) >= :dateEnvoi AND DATE(timestampDate) < DATE_ADD(:dateEnvoi, INTERVAL 1 DAY)  ORDER BY timestampDate DESC");
-
+    $sth = $this->dbm2->prepare(
+      "SELECT * FROM commandes
+      WHERE rowid = :rowid AND type LIKE :type AND chantier LIKE :chantier AND nom LIKE :nom
+        AND DATE(timestampDate) >= :dateEnvoi AND DATE(timestampDate) < DATE_ADD(:dateEnvoi, INTERVAL 1 DAY)
+      ORDER BY timestampDate DESC"
+    );
     $sth->bindParam(':rowid', $rowid, PDO::PARAM_INT);
     $sth->bindParam(':type', $type, PDO::PARAM_STR);
     $sth->bindParam(':nom', $nom, PDO::PARAM_STR);
@@ -108,26 +111,33 @@ $app->post('/v1/search/commandes', function ($request,$response) {
     $sth->bindParam(':chantier', $chantier, PDO::PARAM_STR);
 
   } else if($rowid != "") {
-    $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE rowid = :rowid AND type like :type AND chantier LIKE :chantier
-      AND nom like :nom ORDER BY timestampDate DESC");
-
+    $sth = $this->dbm2->prepare(
+      "SELECT *
+      FROM commandes
+      WHERE rowid = :rowid AND type LIKE :type AND chantier LIKE :chantier AND nom LIKE :nom
+      ORDER BY timestampDate DESC"
+    );
     $sth->bindParam(':rowid', $rowid, PDO::PARAM_INT);
     $sth->bindParam(':type', $type, PDO::PARAM_STR);
     $sth->bindParam(':nom', $nom, PDO::PARAM_STR);
     $sth->bindParam(':chantier', $chantier, PDO::PARAM_STR);
 
   } else if($dateEnvoi !="") {
-    $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE type like :type AND chantier LIKE :chantier
-      AND nom like :nom AND DATE(timestampDate) >= :dateEnvoi AND DATE(timestampDate) < DATE_ADD(:dateEnvoi, INTERVAL 1 DAY)  ORDER BY timestampDate DESC");
-
+    $sth = $this->dbm2->prepare(
+      "SELECT * FROM commandes WHERE type LIKE :type AND chantier LIKE :chantier AND nom LIKE :nom
+        AND DATE(timestampDate) >= :dateEnvoi AND DATE(timestampDate) < DATE_ADD(:dateEnvoi, INTERVAL 1 DAY)
+      ORDER BY timestampDate DESC"
+      );
     $sth->bindParam(':type', $type, PDO::PARAM_STR);
     $sth->bindParam(':nom', $nom, PDO::PARAM_STR);
     $sth->bindParam(':dateEnvoi', $dateEnvoi, PDO::PARAM_STR);
     $sth->bindParam(':chantier', $chantier, PDO::PARAM_STR);
 
   } else {
-    $sth = $this->dbm2->prepare("SELECT * FROM commandes WHERE type like :type AND nom like :nom AND chantier LIKE :chantier  ORDER BY timestampDate DESC");
-
+    $sth = $this->dbm2->prepare(
+      "SELECT * FROM commandes WHERE type LIKE :type AND nom LIKE :nom AND chantier LIKE :chantier
+      ORDER BY timestampDate DESC"
+    );
     $sth->bindParam(':type', $type, PDO::PARAM_STR);
     $sth->bindParam(':nom', $nom, PDO::PARAM_STR);
     $sth->bindParam(':chantier', $chantier, PDO::PARAM_STR);
@@ -143,7 +153,8 @@ $app->post('/v1/search/commandes', function ($request,$response) {
   return $response->withJson($result, 200);
 });
 
-$app->post('/v1/commande/update/{id}', function ($request,$response, $args) {
+// Update status and optional remark of a command.
+$app->post('/v1/commande/update/{id}', function ($request, $response, $args) {
 
   $id = $args['id'];
   $data = $request->getParsedBody();
@@ -166,27 +177,29 @@ $app->post('/v1/commande/update/{id}', function ($request,$response, $args) {
     $this->dbm2->commit();
 
   } catch(\Exception $ex){
-
     $this->dbm2->rollback();
-
-    return $response->withJson(array('error' => $ex->getMessage()), 422);
+    return $response->withJson(array('error' => "Failed to update command: " . $ex->getMessage()), 422);
   }
 
   return $response->withJson(array('status' => 'OK'), 200);
 });
 
-// Get command history
+// Get command history.
 $app->get('/v1/commande/hist/{id}', function ($request, $response, $args) {
 
   $id = $args['id'];
 
-  $sth = $this->dbm2->prepare("SELECT cmd_id, statut, max(date) as date FROM `commandes_hist` WHERE cmd_id = $id group by cmd_id, statut order by date asc");
-  // $sth = $this->dbm2->prepare("SELECT * FROM commandes_hist WHERE `cmd_id` = $id ORDER BY `date` ASC");
+  $sth = $this->dbm2->prepare(
+    "SELECT cmd_id, statut, max(date) as date
+    FROM `commandes_hist`
+    WHERE cmd_id = $id GROUP BY cmd_id, statut ORDER BY date ASC"
+  );
+
   try {
     $sth->execute();
     $result = $sth->fetchAll();
   } catch(\Exception $ex) {
-    return $response->withJson(array('error' => $ex->getMessage()), 422);
+    return $response->withJson(array('error' => "Failed to get command history: " . $ex->getMessage()), 422);
   }
   return $response->withJson($result, 200);
 });
