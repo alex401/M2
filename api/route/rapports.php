@@ -297,7 +297,7 @@ h1, h2, h3, h4, h5, h6 {
             $content .=  '<div class="blog-post">';
             $content .=  '  <h2 class="blog-post-title">'. $value["section"]  .' </h2>';
             $content .=  '  <p class="blog-post-meta"> '. $value["lieu"].'  - avancement '. $value["avancement"].' </p>';
-            $content .=  '  <p> Description '. $value["description"] .' </p>';
+            $content .=  '  <p>  '. $value["description"] .' </p>';
             $content .=  '  <hr> </div>';
           }
         }
