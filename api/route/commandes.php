@@ -96,8 +96,6 @@ $app->post('/v1/search/commandes', function ($request, $response) {
     $chantier = "%%";
   }
 
-  $sth;
-
   // If rowid is specified, there should be only one result. TODO change logic like for chantier.
   if($rowid != "" && $dateEnvoi !="") {
     $sth = $this->dbm2->prepare(
