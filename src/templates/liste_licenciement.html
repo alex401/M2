@@ -1,6 +1,6 @@
-<main class="col-sm-12 col-md-12" ng-controller="ListeAppelCtrl">
+<main class="col-sm-12 col-md-12" ng-controller="ListeLicenciementCtrl">
 
-  <h1>Liste d'appel</h1>
+  <h1>Liste de libération / licencicement </h1>
 
     <input ng-model="disclaimer" type="checkbox" name="acceptation" id='acceptation' class="form-control" placeholder="Acceptation" required>
     En cochant je confirme que tous les astreints ont été sensibilisés sur les points suivants :
@@ -12,14 +12,17 @@
       <br>
     </ul>
 
-
   <div ng-if="status==1"> Message envoyé </div>
   <div ng-if="status==2"> Erreur de traitement, veuillez réessayer dans un moment</div>
   <div ng-if="status==3"> Chargement en cours </div>
   <div ng-if="status==4" class="loader"></div>
 
+<ul>
+  <li>  Libéré: à sélectionner en fin de journée quand l'astreint n'a pas encore complètement fini le service prévu sur l'ordre de marche. </li>
+  <li>  Licencié: à sélectionner quand l'astreint a fini tout son service. </li>
 
-<form ng-show="status==0 && disclaimer==true" ng-submit="submit('listeappel')">
+
+<form ng-show="status==0 && disclaimer==true" ng-submit="submit('listelicenciement')">
 
       <div class="form-group">
         <label for="formGroupFormation">Formation</label>
@@ -45,16 +48,12 @@
 
       <div class="btn-group btn-group-toggle" >
       <label class="btn btn-secondary">
-          <input ng-change="onChange($index)" type="radio" ng-model="personne.status" value="Present">
-          Present
+          <input ng-change="onChange($index)" type="radio" ng-model="personne.status" value="Libéré">
+          Libéré
         </label>
         <label class="btn btn-secondary">
-          <input ng-change="onChange($index)" type="radio" ng-model="personne.status"  value="Absent">
-          Absent
-        </label>
-        <label class="btn btn-secondary">
-          <input ng-change="onChange($index)" type="radio" ng-model="personne.status" value="Congé">
-          Congé
+          <input ng-change="onChange($index)" type="radio" ng-model="personne.status"  value="Licencié">
+          Licencié
         </label>
       </div>
 

@@ -149,7 +149,31 @@ $app->post('/v1/admin/listeappel', function ($request,$response) {
   }
 });
 
-$app->post('/v1/admin/entreeservice/tags/{personneid}', function ($request, $response, $args) {
+$app->post('/v1/admin/listeLicenciement', function ($request,$response) {
+
+  $typeCommande = "Libération_Licencicement";
+
+   $data = $request->getParsedBody();
+   $data = (json_encode($data));
+   try{
+     //append to file named year-month
+     $result = setContent($typeCommande, $data);
+     $mail = mailSenderComplex($typeCommande, $data, "sud.commandement@pci-fr.ch", "sud.fourrier@pci-fr.ch");
+     //if someting was inserted
+     if($result){
+       return $response->withJson(array('status' => 'OK'),200);
+     }
+     else {
+     return $response->withJson(array('status' => 'Erreur pendant commande de'+ $typeCommande),422);
+     }
+   }
+   catch(\Exception $ex){
+     return $response->withJson(array('error' => $ex->getMessage()),422);
+   }
+});
+
+
+$app->post('/v1/admin/entreeservice/tags/{personneid}', function ($request,$response, $args) {
 
   $result  = "";
   $personneid = $args['personneid'];

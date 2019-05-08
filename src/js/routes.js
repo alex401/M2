@@ -112,6 +112,10 @@ angular.module('PCIM2').config(['$stateProvider', '$urlRouterProvider','$locatio
                 url: '/admin/listeappel',
                 templateUrl: 'templates/liste_appel.html'
             })
+            .state('listelicenciement', {
+                url: '/admin/listeLicenciement',
+                templateUrl: 'templates/liste_licenciement.html'
+            })
             .state('rapportsppam', {
                 url: '/rapport/sppam',
                 templateUrl: 'templates/rapport_sppam.php'
