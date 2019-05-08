@@ -6,9 +6,8 @@
     <li class="list-group-item">Client: {{command.nom}}</li>
     <li class="list-group-item">Type: {{command.type}}</li>
     <li class="list-group-item">Statut: {{currentStatus}}</li>
-    <li class="list-group-item">Date: {{command.timestampDate}}</li>
-    <li class="list-group-item">Chantier: {{command.chantier}}</li>
     <li class="list-group-item">Date d'envoi: {{command.timestampDate}}</li>
+    <li class="list-group-item">Chantier: {{command.chantier}}</li>
 
     <span ng-if="command.type === 'materiel'">
       <li class="list-group-item">Matériel 1: {{cmdData.mat1}}</li>
