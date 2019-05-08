@@ -5,9 +5,9 @@
  //TODO When only one person is is in the search, automatically select it. (BUG)
 
 angular.module('PCIM2')
-    .controller('ListeAppelCtrl', ['$scope', '$http', ListeAppelCtrl]);
+    .controller('ListeLicenciementCtrl', ['$scope', '$http', ListeLicenciementCtrl]);
 
-function ListeAppelCtrl($scope, $http) {
+function ListeLicenciementCtrl($scope, $http) {
 
 // ****************************
 // Initialise variables & scope
@@ -111,7 +111,7 @@ var loadDates = function () {
   $scope.status = 3;
     $http({
       method: 'POST',
-      url: 'api/index.php/v1/admin/listeappel',
+      url: 'api/index.php/v1/admin/listeLicenciement',
       data: $scope.personnes
 
     }).then(function successCallback() {

@@ -100,15 +100,11 @@ function mailSenderComplex($mailSubject, $mailContent, $emailFrom, $emailTo) {
   $sujet = $mailSubject;
   $message = "";
   $mailContent = json_decode($mailContent, TRUE);
+  foreach($mailContent as $inputfield)
+{
+  $message .= "<p>". $inputfield['nom'] ." ". $inputfield['prenom'] ." - ". $inputfield['status'] ."  </p>";
 
-  // In/out service.
-  $message .= "<p><b>" . $mailContent['entreeSortie'] . "</b></p>";
-  $sujet .= " - " . $mailContent['entreeSortie'];
-
-  // People.
-  foreach($mailContent['personnes'] as $inputfield) {
-    $message .= "<p>". $inputfield['nom'] ." ". $inputfield['prenom'] ." - ". $inputfield['status'] ."  </p>";
-  }
+    }
 
 
   $headers = "From: $emailFrom\n";
