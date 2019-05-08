@@ -17,6 +17,10 @@
   <div ng-if="status==3"> Chargement en cours </div>
   <div ng-if="status==4" class="loader"></div>
 
+<ul>
+  <li>  Libéré: à sélectionner en fin de journée quand l'astreint n'a pas encore complètement fini le service prévu sur l'ordre de marche. </li>
+  <li>  Licencié: à sélectionner quand l'astreint a fini tout son service. </li>
+
 
 <form ng-show="status==0 && disclaimer==true" ng-submit="submit('listelicenciement')">
 
