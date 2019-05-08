@@ -143,12 +143,6 @@ $app->post('/v1/admin/listeappel', function ($request,$response) {
    }
 });
 
-
-
-
-
-// update the tags for one user
-//TODO add TRY CATCH logic to catch error in case of and add transaction, delete tags logic.
 $app->post('/v1/admin/entreeservice/tags/{personneid}', function ($request,$response, $args) {
 
   $result  = "";
@@ -157,8 +151,7 @@ $app->post('/v1/admin/entreeservice/tags/{personneid}', function ($request,$resp
   $data = (json_encode($data));
   $data = json_decode($data, true);
 
-  //15.01.2019
-
+  //TODO array_key_exists() ?
   $dataLieu = $data['lieu'];
   $dataAdresse = $data['adresse'];
   $dataZip = $data['zip'];
@@ -167,37 +160,72 @@ $app->post('/v1/admin/entreeservice/tags/{personneid}', function ($request,$resp
   $dataUrgence = $data['urgence'];
   $dataParent = $data['parent'];
 
-  $sth = $this->dbdoll->prepare("UPDATE llx_socpeople SET town = '$dataLieu', address = '$dataAdresse', zip = '$dataZip', email = '$dataMail', phone = '$dataPhone' WHERE rowid = $personneid");
-  $sth->execute();
-  $sth = $this->dbdoll->prepare("UPDATE llx_societe, llx_socpeople SET llx_societe.address = '$dataAdresse', llx_societe.zip = '$dataZip', llx_societe.town = '$dataLieu', llx_societe.email = '$dataMail', llx_societe.phone = '$dataPhone' WHERE llx_societe.rowid = llx_socpeople.fk_soc AND llx_socpeople.rowid = $personneid");
-  $sth->execute();
-
-  //Pre 15.01.2019
-  $data = $data['tagged'];
-
-//  var_dump($data);
-
-  //for each element sent to API
-  foreach ($data as $key => $value) {
-    //get tag id
-    $tagid =  $value['rowid'];
-    // Verifiy that relation doens't exist by looking number of rows returned by SELECT
-    $sth = $this->dbdoll->prepare("SELECT fk_categorie, fk_socpeople FROM llx_categorie_contact WHERE fk_socpeople = $personneid AND fk_categorie = $tagid");
+  try {
+    // Update info.
+    $sth = $this->dbdoll->prepare("UPDATE llx_socpeople SET town = '$dataLieu', address = '$dataAdresse', zip = '$dataZip', email = '$dataMail', phone = '$dataPhone' WHERE rowid = $personneid");
     $sth->execute();
-    $result = $sth->fetchAll();
-    var_dump($result);
-    $temp = sizeof($result);
-    echo "size of first request $temp";
+    $sth = $this->dbdoll->prepare("UPDATE llx_societe, llx_socpeople SET llx_societe.address = '$dataAdresse', llx_societe.zip = '$dataZip', llx_societe.town = '$dataLieu', llx_societe.email = '$dataMail', llx_societe.phone = '$dataPhone' WHERE llx_societe.rowid = llx_socpeople.fk_soc AND llx_socpeople.rowid = $personneid");
+    $sth->execute();
 
-    //if relation doesn't exist, INSERT
-    if ($temp == 0){
-      $sth = $this->dbdoll->prepare("INSERT INTO `llx_categorie_contact`(`fk_categorie`, `fk_socpeople`) VALUES ($tagid ,$personneid)");
-      $sth->execute();
-      echo "executed and inserted";
-    } else {
-      echo " not inserted";
+  } catch (\Exception $ex) {
+    return $response->withJson(array('error' => 'Failed to update info: ' . $ex->getMessage()), 422);
+  }
+
+  // Update tags.
+  $newTags = $data['tagged'];
+  $toDeleteTags = [];
+
+  // Get all current tags for the person.
+  try {
+    $sth = $this->dbdoll->prepare("SELECT fk_categorie, fk_socpeople FROM llx_categorie_contact WHERE fk_socpeople = $personneid");
+    $sth->execute();
+    $toDeleteTags = $sth->fetchAll();
+  } catch(\Exception $ex) {
+    return $response->withJson(array('error' => 'Failed to find tags: ' . $ex->getMessage()), 422);
+  }
+
+  // Compare and update arrays so they contain tags to add and tags to delete.
+  foreach ($newTags as $key => $value) {
+    $tagid =  $value['rowid'];
+    $deleteIndex = -1;
+    foreach($toDeleteTags as $key2 => $value2) {
+      if($value2['fk_categorie'] == $tagid) {
+        unset($newTags[$key]);
+        unset($toDeleteTags[$key2]);
+        break;
+      }
     }
   }
+
+  try {
+    $this->dbdoll->beginTransaction();
+
+    // Insert new tags.
+    if(sizeof($newTags) > 0) {
+      foreach ($newTags as $key => $value) {
+        $tagid =  $value['rowid'];
+        $sth = $this->dbdoll->prepare("INSERT INTO `llx_categorie_contact`(`fk_categorie`, `fk_socpeople`) VALUES ($tagid, $personneid)");
+        $sth->execute();
+      }
+    }
+
+    // Delete old tags.
+    if(sizeof($toDeleteTags) > 0) {
+      foreach ($toDeleteTags as $key => $value) {
+        $tagid =  $value['fk_categorie'];
+        // FIXME This has to match the query select.php./v1/select/entreeservice/tags.
+        // This is done to avoid deleting tags present in Dolibarr but not yet in m2.
+        if(($tagid <=109 && $tagid >= 82) || ($tagid >= 282 && $tagid <=322) || ($tagid >=1168 && $tagid <=1309)) {
+          $sth = $this->dbdoll->prepare("DELETE FROM `llx_categorie_contact` WHERE fk_categorie = $tagid AND fk_socpeople = $personneid");
+          $sth->execute();
+        }
+      }
+    }
+  } catch(\Exception $ex) {
+      $this->dbdoll->rollback();
+      return $response->withJson(array('error' => 'Failed to insert/delete tags: ' . $ex->getMessage()), 422);
+  }
+  $this->dbdoll->commit();
 
   // Update parent link and emergency number.
   try {
@@ -207,14 +235,11 @@ $app->post('/v1/admin/entreeservice/tags/{personneid}', function ($request,$resp
     return $response->withJson(array('error' => 'Failed to modify emergency data: ' . $ex->getMessage()), 422);
   }
 
-  return $response->withJson(array('status' => 'OK'),200);
-
+  return $response->withJson(array('status' => 'OK'), 200);
 });
 
 // Update languages in ecv module.
 $app->post('/v1/admin/entreeservice/tags/ecv/{personneid}', function ($request,$response, $args) {
-
-
 
   $result  = "";
   $personneid = $args['personneid'];
