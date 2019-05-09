@@ -7,6 +7,7 @@ function CommandeCreationCtrl($scope, $stateParams, $http) {
   // ****************************
   $scope.form = {};
   $scope.status = 0;
+  $scope.date = new Date();
 
   // ****************************
   // Load
@@ -43,11 +44,12 @@ function CommandeCreationCtrl($scope, $stateParams, $http) {
   }
 
   $scope.submit = function (type) {
+    var options = {timeZone: "Europe/Zurich"};
 
     switch(type) {
       case "repas":
           var temp = $scope.form;
-          var dataSent = {'type':type,'nom':temp.nom,'chantier':temp.chantier,'dateLivraison':temp.dateLivraison, 'nbDej':temp.nbDej, 'nbDiner':temp.nbDiner, 'nbSouper':temp.nbSouper, 'nbCollationNuit':temp.nbCollationNuit, 'nbVegetariens':temp.nbVegetariens, 'commentaire':temp.commentaire};
+          var dataSent = {'type':type,'nom':temp.nom,'chantier':temp.chantier,'dateLivraison':temp.dateLivraison.toLocaleDateString('fr-CH', options), 'nbDej':temp.nbDej, 'nbDiner':temp.nbDiner, 'nbSouper':temp.nbSouper, 'nbCollationNuit':temp.nbCollationNuit, 'nbVegetariens':temp.nbVegetariens, 'commentaire':temp.commentaire};
           break;
       case "carburant":
           var temp = $scope.form;
@@ -55,11 +57,11 @@ function CommandeCreationCtrl($scope, $stateParams, $http) {
           break;
       case "materiel":
           var temp = $scope.form;
-          var dataSent = {'type':type,'nom':temp.nom,'chantier':temp.chantier,'dateLivraison':temp.dateLivraison,'mat1':temp.mat1, 'mat2':temp.mat2, 'mat3':temp.mat3, 'commentaire':temp.commentaire};
+          var dataSent = {'type':type,'nom':temp.nom,'chantier':temp.chantier,'dateLivraison':temp.dateLivraison.toLocaleDateString('fr-CH', options),'mat1':temp.mat1, 'mat2':temp.mat2, 'mat3':temp.mat3, 'commentaire':temp.commentaire};
           break;
       case "transport":
           var temp = $scope.form;
-          var dataSent = {'type':type,'nom':temp.nom,'chantier':temp.chantier,'dateLivraison':temp.dateLivraison, 'destination':temp.destination, 'heure':temp.heure, 'detailsHeure':temp.detailsHeure, 'nbHomme':temp.nbHomme,'matTransport':temp.matTransport, 'commentaire':temp.commentaire};
+          var dataSent = {'type':type,'nom':temp.nom,'chantier':temp.chantier,'dateLivraison':temp.dateLivraison.toLocaleDateString('fr-CH', options), 'destination':temp.destination, 'heure':temp.heure, 'detailsHeure':temp.detailsHeure, 'nbHomme':temp.nbHomme,'matTransport':temp.matTransport, 'commentaire':temp.commentaire};
           break;
       default:
            console.log("do nothing");
