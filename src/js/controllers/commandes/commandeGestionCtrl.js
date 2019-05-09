@@ -22,7 +22,7 @@ function CommandeGestionCtrl($scope, $stateParams, $state, $interval, $window,$h
     // Put condition in db query ?
     if(($scope.t === 'aidecmdt' && cmd.statut === config.validationStatus)
         || ($scope.t === cmd.type && cmd.statut != config.validationStatus && cmd.statut != config.waitingTransportStatus && cmd.statut != config.transportStatus)
-        || ($scope.t === 'transport' && cmd.statut === config.waitingTransportStatus) //TODO
+        || ($scope.t === 'transport' && cmd.statut === config.waitingTransportStatus)
         || ($scope.t === 'transport' && cmd.statut === config.treatmentStatus)
         || ($scope.t === 'transport' && cmd.statut === config.transportStatus)
       ) {
@@ -41,6 +41,16 @@ function CommandeGestionCtrl($scope, $stateParams, $state, $interval, $window,$h
 
   $scope.onAutoReload = function() {
     reloadFunc();
+  }
+
+  $scope.getColor = function(commande) {
+    if($scope.t === 'transport' && commande.statut === config.treatmentStatus) {
+      return '#FF9800';
+    } else if(commande.statut === config.cancelledStatus || commande.statut === config.refusedStatus) {
+      return '#F44336';
+    } else {
+      return '#4CAF50';
+    }
   }
 
   var reloadFunc = function() {
