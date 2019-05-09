@@ -1,0 +1,87 @@
+<main class="col-sm-12 col-md-12" ng-controller="FormCtrl0">
+  <h1>Commande de radios</h1>
+
+  <div ng-if="status==1"> Message envoyé </div>
+  <div ng-if="status==2"> Erreur de traitement, veuillez réessayer dans un moment</div>
+  <div ng-if="status==3"> Chargement en cours </div>
+
+
+  <form ng-submit="submit('radios')" ng-if="status==0">
+    <div class="form-group">
+      <label for="formGroupSection"> Section </label>
+      <input type="text" ng-model="form.section" class="form-control" id="formGroupSection" placeholder="Nom" required>
+    </div>
+    <div class="form-group">
+      <label for="test"> Section2 </label>
+      <input type="date" ng-model="form.test" class="form-control" id="test" required>
+    </div>
+
+    <div class="form-group">
+      <label for="formGroupDateDe"> Depuis le </label>
+      <p class="input-group">
+        <input  type="text"
+                class="form-control"
+                uib-datepicker-popup="{{format}}" ng-model="form.dateDe"
+                is-open="popup1.opened"
+                datepicker-options="dateOptions"
+                ng-required="true"
+                close-text="Close"
+                id="formGroupDateDe"
+                alt-input-formats="altInputFormats" />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+      </p>
+    </div>
+    <div class="form-group">
+      <label for="formGroupDateA"> Jusqu'au </label>
+      <p class="input-group">
+        <input  type="text"
+                class="form-control"
+                uib-datepicker-popup="{{format}}" ng-model="form.dateA"
+                is-open="popup2.opened"
+                datepicker-options="dateOptions"
+                ng-required="true"
+                close-text="Close"
+                id="formGroupDateA"
+                alt-input-formats="altInputFormats" />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+      </p>
+    </div>
+
+
+    <h3> Personnes à qui une radio doit être attribuée </h3>
+     <fieldset data-ng-repeat="homme in form.hommes">
+        <select class="form-control" ng-model="homme.grade" required>
+          <option value=''>Choisissez un grade</option>
+          <option value='Hors-PC'>Non-PCiste</option>
+          <option value='Soldat'>Std - Soldat</option>
+          <option value='Appointe'>App - Appointé</option>
+          <option value='Caporal'>Cpl - Caporal</option>
+          <option value='Sergent'>Sgt - Sergent</option>
+          <option value='Sergent-major'>Sgtm - Sergent-major</option>
+          <option value='Fourrier'>Four - Fourrier</option>
+          <option value='Lieutenant'>Lt - Lieutenant</option>
+          <option value='Premier-Lieutenant'>PLt - Premier-Lieutenant</option>
+          <option value='Capitaine'>Cap - Capitaine</option>
+          <option value='Major'>Maj - Major</option>
+        </select>
+        <input type="text" ng-model="homme.name" placeholder="Nom et prénom" required>
+        <input type="text" ng-model="homme.tel" placeholder="Numéro de téléphone">
+        <input type="number" ng-model="homme.nombre" placeholder="Nombre de radios">
+     </fieldset>
+
+     <button class="btn" ng-click="addNewHomme()">Add fields</button>
+
+     <div class="form-group">
+       <label for="formGroupCommentaire"> Commentaires </label>
+       <input type="text" class="form-control" id="formGroupCommentaire" ng-model="form.commentaires">
+     </div>
+
+   <button type="submit" class="btn btn-primary">Envoyer</button>
+
+  </form>
+
+</main>

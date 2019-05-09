@@ -128,6 +128,10 @@ angular.module('PCIM2').config(['$stateProvider', '$urlRouterProvider','$locatio
                 url: '/form/radios',
                 templateUrl: 'templates/form_radios.html'
             })
+            .state('radios0', {
+                url: '/form/radios0',
+                templateUrl: 'templates/form_radios0.html'
+            })
             .state('administration', {
                 url: '/administration',
                 templateUrl: 'templates/administration/main.html'
