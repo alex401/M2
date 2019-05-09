@@ -35,6 +35,14 @@ function CommandeSearchCtrl($scope, $stateParams, $http, config) {
     }
   }
 
+  $scope.sqlTimestampToLocal = function(sqlTimestamp) {
+    var t = sqlTimestamp.split(/[- :]/);
+    var d = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+    var options = {hour: "2-digit", minute: "2-digit", second: "2-digit", timeZone: "Europe/Zurich"};
+
+    return d.toLocaleDateString('fr-CH', options);
+  }
+
   var Load = function () {
     loadChantiers();
   }
@@ -45,6 +53,11 @@ function CommandeSearchCtrl($scope, $stateParams, $http, config) {
     } else {
       command.chantier = "";
     }
+    // if($scope.command.date && $scope.command.date != null) {
+    //   $scope.command.date = new Date().toISOString().slice(0, 10);
+    // } else {
+    //   $scope.command.date = "";
+    // }
     $http({
       method: 'POST',
       url: 'api/index.php/v1/search/commandes',

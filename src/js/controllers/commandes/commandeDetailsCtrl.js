@@ -36,6 +36,7 @@ function CommandeDetailsCtrl($scope, $location, $state, $uibModal, $stateParams,
 
       $scope.status = 1;
       $scope.command = response.data;
+      $scope.command.timestampDate = sqlTimestampToLocal($scope.command.timestampDate);
       $scope.currentStatus = $scope.command.statut;
       $scope.cmdData = JSON.parse($scope.command.data);
 
@@ -95,7 +96,7 @@ function CommandeDetailsCtrl($scope, $location, $state, $uibModal, $stateParams,
     for (var i = 0; i < arrayLength; i++) {
       let h = $scope.hist[i];
       if(h.statut == s) {
-          return h.date;
+          return sqlTimestampToLocal(h.date);
       }
     }
     return "";
@@ -196,6 +197,14 @@ function CommandeDetailsCtrl($scope, $location, $state, $uibModal, $stateParams,
 
   }
 
+}
+
+function sqlTimestampToLocal(sqlTimestamp) {
+  var t = sqlTimestamp.split(/[- :]/);
+  var d = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+  var options = {hour: "2-digit", minute: "2-digit", second: "2-digit", timeZone: "Europe/Zurich"};
+  
+  return d.toLocaleDateString('fr-CH', options);
 }
 
 // Confirmation modal when cancelling a command.

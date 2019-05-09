@@ -83,7 +83,7 @@
      <li class="list-group-item">Client: {{commande.nom}}</li>
      <li class="list-group-item">Type: {{commande.type}}</li>
      <li class="list-group-item">Statut: {{commande.statut}}</li>
-     <li class="list-group-item">Date d'envoi: {{commande.timestampDate}}</li>
+     <li class="list-group-item">Date d'envoi: {{sqlTimestampToLocal(commande.timestampDate)}}</li>
      <a class="btn btn-secondary btn-block" href="#/commandes/details/{{commande.rowid}}" role="button">Details</a>
    </ul>
    <br ng-repeat-end>

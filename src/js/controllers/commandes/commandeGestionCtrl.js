@@ -43,6 +43,7 @@ function CommandeGestionCtrl($scope, $stateParams, $state, $interval, $window,$h
     reloadFunc();
   }
 
+
   $scope.getColor = function(commande) {
     if($scope.t === 'transport' && commande.statut === config.treatmentStatus && (commande.type !== 'transport')) {
       return '#FF9800';
@@ -51,6 +52,14 @@ function CommandeGestionCtrl($scope, $stateParams, $state, $interval, $window,$h
     } else {
       return '#4CAF50';
     }
+  }
+
+  $scope.sqlTimestampToLocal = function(sqlTimestamp) {
+    var t = sqlTimestamp.split(/[- :]/);
+    var d = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+    var options = {hour: "2-digit", minute: "2-digit", second: "2-digit", timeZone: "Europe/Zurich"};
+
+    return d.toLocaleDateString('fr-CH', options);
   }
 
   var reloadFunc = function() {
