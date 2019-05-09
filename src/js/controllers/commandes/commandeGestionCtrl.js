@@ -43,6 +43,14 @@ function CommandeGestionCtrl($scope, $stateParams, $state, $interval, $window,$h
     reloadFunc();
   }
 
+  $scope.greyed = function(commande) {
+    if($scope.t === 'transport' && commande.statut === config.treatmentStatus) {
+      return 'lightgrey';
+    } else {
+      return '';
+    }
+  }
+
   var reloadFunc = function() {
     // Reload page every 1min to update commands list.
     if(!angular.isDefined(reload) && $scope.autoReload == 'ON') {
