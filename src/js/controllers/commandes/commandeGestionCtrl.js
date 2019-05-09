@@ -43,11 +43,13 @@ function CommandeGestionCtrl($scope, $stateParams, $state, $interval, $window,$h
     reloadFunc();
   }
 
-  $scope.greyed = function(commande) {
+  $scope.getColor = function(commande) {
     if($scope.t === 'transport' && commande.statut === config.treatmentStatus) {
-      return 'lightgrey';
+      return '#FF9800';
+    } else if(commande.statut === config.cancelledStatus || commande.statut === config.refusedStatus) {
+      return '#F44336';
     } else {
-      return '';
+      return '#4CAF50';
     }
   }
 

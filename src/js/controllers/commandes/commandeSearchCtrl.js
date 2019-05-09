@@ -27,6 +27,14 @@ function CommandeSearchCtrl($scope, $stateParams, $http, config) {
     return true;
   };
 
+  $scope.getColor = function(commande) {
+    if(commande.statut === config.cancelledStatus || commande.statut === config.refusedStatus) {
+      return '#F44336';
+    } else {
+      return '#0275D8';
+    }
+  }
+
   var Load = function () {
     loadChantiers();
   }

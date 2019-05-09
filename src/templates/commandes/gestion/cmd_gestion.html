@@ -8,14 +8,15 @@
   </div>
 
   <div ng-if="commandes.length > 0">
-     <ul class="list-group" ng-repeat="commande in commandes | filter:filterFn">
-       <li class="list-group-item active">Commande numéro: {{commande.rowid}}</li>
-       <li ng-style="{'background-color' : greyed(commande)}" class="list-group-item">Client: {{commande.nom}}</li>
-       <li ng-style="{'background-color' : greyed(commande)}" class="list-group-item">Type: {{commande.type}}</li>
-       <li ng-style="{'background-color' : greyed(commande)}" class="list-group-item">Statut: {{commande.statut}}</li>
-       <li ng-style="{'background-color' : greyed(commande)}" class="list-group-item">Chantier: {{commande.chantier}}</li>
-       <li ng-style="{'background-color' : greyed(commande)}" class="list-group-item">Date d'envoi: {{commande.timestampDate}}</li>
-       <a ng-style="{'background-color' : greyed(commande)}" class="btn btn-secondary btn-block" href="#/commandes/gestion/{{t}}/details/{{commande.rowid}}" role="button">Details</a>
+     <ul class="list-group" ng-repeat-start="commande in commandes | filter:filterFn" ng-style="{'border' : '1px solid {{getColor(commande)}}', 'border-radius': '5px'}">
+       <li ng-style="{'background-color' : getColor(commande)}" class="list-group-item">Commande numéro: {{commande.rowid}}</li>
+       <li class="list-group-item">Client: {{commande.nom}}</li>
+       <li class="list-group-item">Type: {{commande.type}}</li>
+       <li class="list-group-item">Statut: {{commande.statut}}</li>
+       <li class="list-group-item">Chantier: {{commande.chantier}}</li>
+       <li class="list-group-item">Date d'envoi: {{commande.timestampDate}}</li>
+       <a class="btn btn-secondary btn-block" href="#/commandes/gestion/{{t}}/details/{{commande.rowid}}" role="button">Details</a>
      </ul>
+     <br ng-repeat-end>
   </div>
 </main>
