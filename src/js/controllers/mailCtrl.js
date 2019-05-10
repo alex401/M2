@@ -15,6 +15,9 @@ angular.module('PCIM2')
       $scope.form = {};
       $scope.status = 0;
       $scope.templates = {};
+      $scope.form.mode;
+
+
 
       var Load = function() {
         loadTemplates();
@@ -27,6 +30,18 @@ angular.module('PCIM2')
          url: 'api/index.php/v1/mail/gettemplates'
        }).then(function successCallback(response) {
          $scope.templates = response.data;
+         var mode = 0;
+         for (var i = 0; i < $scope.templates.length; i++) {
+           mode = mode + $scope.templates[i].mode;
+         }
+         mode = mode / $scope.templates.length;
+         console.log(mode);
+         if (mode < 0.5) {
+           $scope.form.mode = 0;
+         } else {
+           $scope.form.mode = 1;
+         }
+
        }, function errorCallback(response) {
          console.log("error");
        });
@@ -35,10 +50,11 @@ angular.module('PCIM2')
 
 
       $scope.submit = function () {
+        console.log("Mode: " +  $scope.form.mode)
         $http({
          method: 'POST',
          url: 'api/index.php/v1/mail/attributionMail',
-         data: $scope.templates
+         data: {templates: $scope.templates, mode: $scope.form.mode}
        }).then(function successCallback() {
 
        console.log("success");
