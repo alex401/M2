@@ -58,7 +58,7 @@ $app->post('/v1/commande/{type}', function ($request, $response, $args) {
 
     //if someting was inserted
     if($result > 1 & $mail == 0) {
-      return $response->withJson(array('status' => 'OK'),200);
+      return $response->withJson(array('status' => 'OK', 'id' => $id), 200);
     } else {
       return $response->withJson(array('status' => 'Erreur lors du logging ou mailing'),422);
     }
