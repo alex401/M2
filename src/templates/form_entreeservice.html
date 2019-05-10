@@ -58,7 +58,7 @@
   </div>
   <div class="col-md-3">
     <label for="parent">Lien de parenté</label>
-    <select class="form-control" id="parent" ng-model="personne.extra.lp" ng-options="p.code as p.label for p in parentList" required>
+    <select class="form-control" id="parent" ng-model="personne.extra.lp" ng-options="p.rowid as p.label for p in parentList" required>
       <option value="">-- Selection parenté --</option>
     </select>
   </div>

@@ -49,7 +49,7 @@ $app->get('/v1/admin/socpeople/{name}', function ($request, $response, $args) {
 // Get the parent links list.
 $app->get('/v1/admin/socpeople/extra/parent', function ($request, $response) {
 
-  $sth = $this->dbdoll->prepare("SELECT code, label FROM llx_c_contact_extrafields");
+  $sth = $this->dbdoll->prepare("SELECT rowid, code, label FROM llx_c_contact_extrafields");
 
   try {
     $sth->execute();

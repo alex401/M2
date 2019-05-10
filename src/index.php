@@ -1,5 +1,5 @@
 <?php
-    //include("login/isEnSession.php");
+    include("login/isEnSession.php");
 ?>
 
 
