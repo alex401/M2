@@ -4,9 +4,18 @@
 
 
 
+
 <div class="container"  style="width:100%">
   <h1> Attribution des mails </h1>
   <form ng-if="status==0" ng-submit="submit()">
+
+
+
+      <label for="EnCours"> En cours </label>
+      <input type="radio" id="EnCours" ng-model="form.mode" ng-value="0">
+      <label for="HorsCours"> Hors cours </label>
+      <input type="radio" id="HorsCours" ng-model="form.mode" ng-value="1">
+
     <br>
     <div class="row">
       <div class="col-6" ng-if="templates.length > 0">
