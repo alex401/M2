@@ -122,7 +122,6 @@ function EntreeServiceCtrl($scope, $http) {
       url: 'api/index.php/v1/admin/socpeople/'+nom
     }).then(function successCallback(response) {
       $scope.tiers = response.data;
-      $scope.status = 0;
       }, function errorCallback(response) {
         console.log("error");
       });
@@ -135,7 +134,6 @@ function EntreeServiceCtrl($scope, $http) {
       url: 'api/index.php/v1/admin/socpeople/extra/' + rowid
     }).then(function successCallback(response) {
       $scope.personne.extra = response.data;
-      $scope.status = 0;
     }, function errorCallback(response) {
       console.log(response);
     });
