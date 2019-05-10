@@ -132,6 +132,10 @@ angular.module('PCIM2').config(['$stateProvider', '$urlRouterProvider','$locatio
                 url: '/form/radios0',
                 templateUrl: 'templates/form_radios0.html'
             })
+            .state('attribMail', {
+                url: '/admin/attribMail',
+                templateUrl: 'templates/attributionMail'
+            })
             .state('administration', {
                 url: '/administration',
                 templateUrl: 'templates/administration/main.html'
