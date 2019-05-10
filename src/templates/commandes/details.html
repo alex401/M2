@@ -68,7 +68,7 @@
     <button ng-disabled="!filterFn() || (currentStatus != config.treatmentStatus) && (currentStatus != config.transportStatus) && (currentStatus != config.validationStatus)"
             ng-show="cat === 'gestion'"
             class="btn btn-primary"
-            ng-click="updateStatusRefuse(command.rowid)">Retour en traitement
+            ng-click="updateStatusRefuse(command.rowid)">Retour en attente
     </button>
     <button ng-disabled="!filterFn() || currentStatus == config.deliveredStatus || currentStatus == config.cancelledStatus"
             ng-show="cat === 'gestion'"
