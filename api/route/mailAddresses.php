@@ -2,21 +2,23 @@
 
 
 
-  $app->get('/v1/mail/getMail/{mode}/{name}', function($request, $response, $args) {
+  $app->get('/v1/mail/getMail/{name}', function($request, $response, $args) {
     $name = $args['name'];
-    $mode = $args['mode'];
+    $mode = '';
+    $sth = $this->dbm2->prepare("SELECT mode FROM template WHERE nom like $name");
+    $result = $sth->fetchAll();
+    $mode = $result['mode'];
     if ($mode == 0) {
-        $sth = $this->dbm2->prepare("SELECT destEnCours FROM template WHERE nom like $name");
+        $sth = $this->dbm2->prepare("SELECT destEnCours as mail FROM template WHERE nom like $name");
     }
     if ($mode == 1) {
-        $sth = $this->dbm2->prepare("SELECT destHorsCours FROM template WHERE nom like $name");
+        $sth = $this->dbm2->prepare("SELECT destHorsCours as mail FROM template WHERE nom like $name");
     }
-
     try {
       $sth->execute();
       $result = $sth->fetchAll();
     } catch(\Exception $ex) {
-      return $response->withJson(array('error' => "Tiers search by name failed: " . $ex->getMessage()),422);
+      return $response->withJson(array('error' => $ex->getMessage()),422);
     }
       return $response->withJson($result, 200);
   });

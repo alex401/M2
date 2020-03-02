@@ -32,6 +32,8 @@ require 'dependencies.php';
 //Formulaires
 include 'route/form.php';
 
+
+include 'route/adminlogs.php';
 //Chantiers
 include 'route/chantiers.php';
 
@@ -48,7 +50,7 @@ include 'route/qualifications.php';
 
 include 'route/commandes.php';
 
-include 'route/mailAddresses.php' ;
+include 'route/mailAddresses.php';
 //******************************
 // UTILS
 //-----------------
