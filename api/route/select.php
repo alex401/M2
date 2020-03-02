@@ -66,3 +66,19 @@ $app->get('/v1/select/formations', function ($request,$response) {
     return $response->withJson(array('error' => $ex->getMessage()), 422);
   }
 });
+
+// Return list of warnings.
+$app->get('/v1/select/warnings', function ($request, $response) {
+
+  $sth = $this->dbm2->prepare("SELECT row_id, description FROM warning");
+
+  try {
+    $sth->execute();
+    $result = $sth->fetchAll();
+
+    return $response->withJson($result, 200);
+
+  } catch(\Exception $ex){
+    return $response->withJson(array('error' => "Failed to get warnings: " . $ex->getMessage()), 422);
+  }
+});

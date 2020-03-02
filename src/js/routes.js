@@ -163,6 +163,10 @@ angular.module('PCIM2').config(['$stateProvider', '$urlRouterProvider','$locatio
             .state('cmdsearch', {
                 url: "/commandes/search",
                 templateUrl: 'templates/commandes/menu_search.html'
+            })
+            .state('warnings', {
+              url: "/superadmin/warnings",
+              templateUrl: 'templates/superadmin/warnings.html'
             });
     }
 ]);

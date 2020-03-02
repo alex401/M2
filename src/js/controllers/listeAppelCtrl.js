@@ -25,7 +25,8 @@ function ListeAppelCtrl($scope, $http) {
 
   var Load = function () {
     loadFormations();
-    }
+    loadWarnings();
+  }
 
   // ****************************
   // load from API
@@ -44,6 +45,18 @@ function ListeAppelCtrl($scope, $http) {
       }, function errorCallback(response) {
         console.log("error");
       });
+  }
+
+  var loadWarnings = function() {
+
+    $http({
+      method: 'GET',
+      url: 'api/index.php/v1/superadmin/warnings'
+    }).then(function successCallback(response) {
+      $scope.warnings = response.data;
+      }, function errorCallback(response) {
+        console.log("error");
+    });
   }
 
 /*

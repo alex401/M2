@@ -58,8 +58,15 @@ include 'route/qualifications.php';
 
 include 'route/commandes.php';
 
+<<<<<<< HEAD
 
 include 'route/mailAddresses.php';
+=======
+include 'route/mailAddresses.php' ;
+
+include 'route/superadmin.php';
+
+>>>>>>> First version of warnings.
 
 //******************************
 // UTILS
