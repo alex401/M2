@@ -73,15 +73,13 @@ function RapportCtrl($scope, $http) {
       url: 'api/index.php/v1/select/formations'
     }).then(function successCallback(response) {
       $scope.formations = response.data;
-      console.log($scope.formations);
-      }, function errorCallback(response) {
-        console.log("error");
-      });
+    }, function errorCallback(response) {
+      console.log("error");
+    });
   }
 
   $scope.submit = function () {
-    console.log($scope.rapport);
-
+    $scope.status = 3;
 
     $http({
       method: 'POST',
@@ -89,9 +87,8 @@ function RapportCtrl($scope, $http) {
       data : $scope.rapport
       }).then(function successCallback(response) {
         $scope.url = response.data.url;
-        console.log($scope.url);
         //if API answers "Not found" quick workaround - API need to send correct code for not found
-        if(response.data.message === 'Not found'){
+        if(response.data.message === 'Not found') {
           $scope.status = 2;
         } else {
           $scope.status = 1;

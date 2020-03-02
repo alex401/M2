@@ -44,7 +44,7 @@ function CommandeGestionCtrl($scope, $stateParams, $state, $interval, $window,$h
   }
 
   $scope.getColor = function(commande) {
-    if($scope.t === 'transport' && commande.statut === config.treatmentStatus && commande.type === 'repas') {
+    if($scope.t === 'transport' && commande.statut === config.treatmentStatus && (commande.type !== 'transport')) {
       return '#FF9800';
     } else if(commande.statut === config.cancelledStatus || commande.statut === config.refusedStatus) {
       return '#F44336';

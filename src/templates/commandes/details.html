@@ -68,14 +68,14 @@
     <button ng-disabled="!filterFn() || (currentStatus != config.treatmentStatus) && (currentStatus != config.transportStatus) && (currentStatus != config.validationStatus)"
             ng-show="cat === 'gestion'"
             class="btn btn-primary"
-            ng-click="updateStatusRefuse(command.rowid)">Refuser
+            ng-click="updateStatusRefuse(command.rowid)">Retour en attente
     </button>
     <button ng-disabled="!filterFn() || currentStatus == config.deliveredStatus || currentStatus == config.cancelledStatus"
             ng-show="cat === 'gestion'"
             class="btn btn-primary"
             type="button"
             ng-click="openModal(command.rowid)"
-            name="button">Annuler
+            name="button">Supprimer
     </button>
   </div>
 

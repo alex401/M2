@@ -1,7 +1,10 @@
 <main class="col-sm-9 col-md-12" ng-controller="CommandeCreationCtrl">
   <h1>Commande de matériel</h1>
 
-  <div ng-if="status==1"> Message envoyé </div>
+  <div ng-if="status==1">
+    Commande numéro <b>{{id}}</b> créée avec succès!
+    <br><br> <i>Note: Vous pouvez utilisez le numéro de commande pour faire une recherche par la suite.</i>
+  </div>
   <div ng-if="status==2"> Erreur de traitement, veuillez réessayer dans un moment</div>
   <div ng-if="status==3"> Chargement en cours </div>
 
@@ -9,7 +12,7 @@
   <form ng-submit="submit('materiel')" ng-if="status==0">
     <div class="form-group">
       <label for="nom">Nom</label>
-      <input type="text" ng-model="form.nom" class="form-control" id="nom" placeholder="Nom" required>
+      <input autocomplete="off" type="text" ng-model="form.nom" uib-typeahead="tier.nom for tier in loadTiers($viewValue)" class="form-control" id="nom" placeholder="Nom" required>
     </div>
     <div class="form-group">
       <label for="chantier">chantier</label>

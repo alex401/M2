@@ -29,6 +29,19 @@ function CommandeCreationCtrl($scope, $stateParams, $http) {
       });
   }
 
+  $scope.loadTiers = function (nom) {
+    if(nom != null && nom.length > 2) {
+      return $http({
+        method: 'GET',
+        url: 'api/index.php/v1/admin/tiers/'+nom
+      }).then(function successCallback(response) {
+        return response.data;
+      }, function errorCallback(response) {
+        console.log("error");
+      });
+    }
+  }
+
   $scope.submit = function (type) {
 
     switch(type) {
@@ -59,11 +72,11 @@ function CommandeCreationCtrl($scope, $stateParams, $http) {
       url: 'api/index.php/v1/commande/' + type,
       data : dataSent
       }).then(function successCallback(response) {
-        console.log(response.data.message);
         //if API answers "Not found" quick workaround - API need to send correct code for not found
         if(response.data.message === 'Not found') {
           $scope.status = 2;
         } else {
+          $scope.id = response.data.id;
           $scope.status = 1;
         }
         // this callback will be called asynchronously

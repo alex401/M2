@@ -31,11 +31,15 @@ $app->post('/v1/form/qualifications/{socpeopleid}', function ($request, $respons
   //calculate $average
   $average = $sum/$count;
 
+  //getCurrentYear
+  $year = date("Y");
+
+
   //CASE to get TAG color
   $tag = getTag($average);
 
   //Get rowid of tag
-  $sth = $this->dbdoll->prepare("SELECT rowid from llx_categorie WHERE label='$tag';");
+  $sth = $this->dbdoll->prepare("SELECT rowid from llx_categorie WHERE label LIKE '%$tag%' AND label LIKE '%$year%'");
 
   try {
     $sth->execute();
