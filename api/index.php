@@ -1,6 +1,7 @@
 <?php
 require 'vendor/autoload.php';
 
+
 //******************************
 // Init
 //-----------------
@@ -29,6 +30,13 @@ require 'dependencies.php';
 //
 //******************************
 
+
+session_start();
+if (!isset($_SESSION["login_utilisateurformulaires"]))
+{
+    header('Location: /m2/login/index.php');
+    exit();
+}
 //Formulaires
 include 'route/form.php';
 
@@ -51,7 +59,7 @@ include 'route/qualifications.php';
 include 'route/commandes.php';
 
 
-include 'route/mailAddresses.php';
+//include 'route/mailAddresses.php';
 
 //******************************
 // UTILS
