@@ -1,4 +1,5 @@
 <main class="col-sm-12 col-md-12" ng-controller="CommandeDetailsCtrl">
+  <span id="printSectionId">
   <h1>Détails de la commande</h1>
 
   <ul class="list-group">
@@ -44,6 +45,7 @@
       <li class="list-group-item">Date livraison: {{cmdData.dateLivraison}}</li>
     </span>
   </ul>
+  </span>
 
   <div ng-if="cat === 'gestion'" >
     <label for="remarkid">Remarque additionnelle</label>
@@ -57,7 +59,6 @@
       <li class="list-group-item">{{command.remark ? command.remark : 'Pas de remarque'}}</li>
     </ul>
   </div>
-
 
   <div ng-if="currentStatus != config.deliveredStatus && currentStatus != config.refusedStatus && currentStatus != config.cancelledStatus">
     <button ng-disabled="!filterFn() || ((currentStatus === config.waitingTransportStatus) && (t != 'transport'))"
@@ -78,6 +79,8 @@
             name="button">Supprimer
     </button>
   </div>
+
+  <button class="btn btn-primary mt-3" type="button" ng-click="print()">Imprimer</button>
 
   <hr>
 

@@ -32,7 +32,6 @@ function CommandeDetailsCtrl($scope, $location, $state, $uibModal, $stateParams,
       method: 'GET',
       url: 'api/index.php/v1/commandes/' + $scope.commandId
     }).then(function successCallback(response) {
-      console.log("success");
 
       $scope.status = 1;
       $scope.command = response.data;
@@ -55,7 +54,6 @@ function CommandeDetailsCtrl($scope, $location, $state, $uibModal, $stateParams,
       method: 'GET',
       url: 'api/index.php/v1/commande/hist/' + $scope.command.rowid
     }).then(function successCallback(response) {
-      console.log("success");
       $scope.status = 1;
       $scope.hist = response.data;
     }, function errorCallback(response) {
@@ -184,8 +182,7 @@ function CommandeDetailsCtrl($scope, $location, $state, $uibModal, $stateParams,
       method: 'POST',
       url: 'api/index.php/v1/commande/update/' + id,
       data: dat
-    }).then(function successCallback(response) {
-      console.log("success");
+    }).then(function successCallback() {
       $scope.status = 1;
       $scope.currentStatus = newStatus;
       $state.reload();
@@ -194,6 +191,34 @@ function CommandeDetailsCtrl($scope, $location, $state, $uibModal, $stateParams,
       $scope.status = 1;
     });
 
+  }
+
+  $scope.print = function() {
+    // Get the part already done for the current command type.
+    var content = document.getElementById('printSectionId').cloneNode(true);
+
+    // Add additionnal parts with Mustachejs. TODO extract html templates to separate files(with one template per command type),
+    var data = {
+      remark: $scope.command.remark
+    }
+
+    var template = [
+      content.innerHTML,
+      '<label>Remarque aditionnelle: {{remark}}</label>',
+      '<hr>',
+      '</br>',
+      '<div class="row">',
+          '<b>Date</b> ________________________ <b>Signature</b> ________________________',
+      '</div>'
+    ].join("\n");
+
+    var html = Mustache.render(template, data);
+
+    // Create print window.
+    var popupWinindow = window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+    popupWinindow.document.open();
+    popupWinindow.document.write('<html><head><link rel="stylesheet" type="text/css" href="style.css" /></head><body onload="window.print()">' + html + '</html>');
+    popupWinindow.document.close();
   }
 
 }
