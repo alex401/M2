@@ -13,7 +13,7 @@ function LogCtrl($scope, $http) {
 
       $http({
         method: 'POST',
-        url: 'api/index.php/v1/adminlogs/creation',
+        url: 'api/index.php/v1/superadmin/login',
         data: { login: $scope.log.login, usertype: $scope.log.usertype, motdepasse: $scope.log.motdepasse, nom: $scope.log.nom, prenom: $scope.log.prenom, email: $scope.log.email}
       }).then(function successCallBack(response) {
         $scope.erreur = response.data;

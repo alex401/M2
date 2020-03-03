@@ -40,8 +40,6 @@ if (!isset($_SESSION["login_utilisateurformulaires"]))
 //Formulaires
 include 'route/form.php';
 
-
-include 'route/adminlogs.php';
 //Chantiers
 include 'route/chantiers.php';
 
