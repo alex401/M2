@@ -1,25 +1,24 @@
 <main class="col-sm-12 col-md-12" ng-controller="ListeAppelCtrl">
 
   <h1>Liste d'appel</h1>
-
-    <input ng-model="disclaimer" type="checkbox" name="acceptation" id='acceptation' class="form-control" placeholder="Acceptation" required>
-    En cochant je confirme que tous les astreints ont été sensibilisés sur les points suivants :
-     <ul>
-      <li> Protection des données </li>
-      <li> Matériel doit être complet  </li>
-      <li> Changement d'adresse doit être communiqué </li>
-      <li> Changement de compte pour la solde </li>
-      <br>
-    </ul>
-
+  
+  <div class="custom-control custom-checkbox">
+    <input ng-model="disclaimer" type="checkbox" class="custom-control-input" name="acceptation" id='acceptation' ng-required='true'>
+    <label class="custom-control-label" for="acceptation">
+      En cochant je confirme que tous les astreints ont été sensibilisés sur les points suivants :
+      <ul>
+        <li ng-repeat="warning in warnings">{{warning.description}}</li>
+        <br>
+      </ul>
+    </label>
+  </div>
 
   <div ng-if="status==1"> Message envoyé </div>
   <div ng-if="status==2"> Erreur de traitement, veuillez réessayer dans un moment</div>
   <div ng-if="status==3"> Chargement en cours </div>
   <div ng-if="status==4" class="loader"></div>
 
-
-<form ng-show="status==0 && disclaimer==true" ng-submit="submit('listeappel')">
+  <form ng-show="status==0 && disclaimer==true" ng-submit="submit('listeappel')">
 
       <div class="form-group">
         <label for="formGroupFormation">Formation</label>

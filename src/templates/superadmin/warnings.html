@@ -1,0 +1,18 @@
+<main class="col-sm-12 col-md-12" ng-controller="WarningsCtrl">
+  <h1>Ajout/modification des messages d'avertissement</h1>
+
+  <div ng-if="status==1"> Nouvel avertissement ajouté avec succès </div>
+  <div ng-if="status==2"> Erreur de traitement, veuillez réessayer dans un moment </div>
+  <div ng-if="status==3"> Chargement en cours </div>
+  <div ng-if="status==4"> {{erreur}} </div>
+
+  <div class="input-group mb-3" ng-form="warnForm" ng-repeat="warning in warnings">
+    <input type="text" class="form-control" ng-model="warning.description">
+    <div class="input-group-append" id="button-actions">
+      <button ng-click="save(warning, warnForm)" class="btn btn-outline-secondary" type="button">Enregistrer</button>
+      <button ng-click="delete(warning.row_id)" class="btn btn-outline-secondary" type="button">Supprimer</button>
+    </div>
+  </div>
+  <button ng-click="add()" class="btn btn-primary" type="button">Ajouter</button>
+
+</main>

@@ -15,6 +15,7 @@ function check_login($dbProvider, $_login, $_motdepasse) {
     $email = $infos['email'];
     $nom = $infos['nom'];
     $prenom = $infos['prenom'];
+    $usertype = $infos['usertype'];
     $md5motdepasse = md5($_motdepasse);
 
     if ($md5motdepasse == $motdepasse_utilisateur) {
@@ -23,6 +24,7 @@ function check_login($dbProvider, $_login, $_motdepasse) {
         $_SESSION["email_utilisateurformulaires"] = $email;
         $_SESSION["nom_utilisateurformulaires"] = $nom;
         $_SESSION["prenom_utilisateurformulaires"] = $prenom;
+        $_SESSION["usertype_utilisateurformulaires"] = $usertype;
         return(true);
     } else {
         return(false);
