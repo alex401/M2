@@ -19,7 +19,12 @@ function WarningsCtrl($scope, $http) {
     });
   }
 
-  $scope.save = function(warning) {
+  $scope.save = function(warning, warnForm) {
+    // No need to save if nothing was modified.
+    if(!warnForm.$dirty) {
+      return;
+    }
+
     if(!warning.row_id) {
       $http({
         method: 'POST',

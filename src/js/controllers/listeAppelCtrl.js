@@ -51,7 +51,7 @@ function ListeAppelCtrl($scope, $http) {
 
     $http({
       method: 'GET',
-      url: 'api/index.php/v1/superadmin/warnings'
+      url: 'api/index.php/v1/select/warnings'
     }).then(function successCallback(response) {
       $scope.warnings = response.data;
       }, function errorCallback(response) {

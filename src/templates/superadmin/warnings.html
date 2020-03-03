@@ -6,14 +6,12 @@
   <div ng-if="status==3"> Chargement en cours </div>
   <div ng-if="status==4"> {{erreur}} </div>
 
-  <div class="input-group mb-3" ng-repeat="warning in warnings">
+  <div class="input-group mb-3" ng-form="warnForm" ng-repeat="warning in warnings">
     <input type="text" class="form-control" ng-model="warning.description">
-    <span class="input-group-btn">
-      <button ng-click="save(warning)" class="btn btn-outline-primary" type="button">Enregistrer</button>
-    </span>
-    <span class="input-group-btn">
-      <button ng-click="delete(warning.row_id)" class="btn btn-outline-primary" type="button">Supprimer</button>
-    </span>
+    <div class="input-group-append" id="button-actions">
+      <button ng-click="save(warning, warnForm)" class="btn btn-outline-secondary" type="button">Enregistrer</button>
+      <button ng-click="delete(warning.row_id)" class="btn btn-outline-secondary" type="button">Supprimer</button>
+    </div>
   </div>
   <button ng-click="add()" class="btn btn-primary" type="button">Ajouter</button>
 
