@@ -8,7 +8,7 @@ function CommandeGestionCtrl($scope, $stateParams, $state, $interval, $window,$h
   $scope.commandes = {};
   $scope.t = $stateParams.type;
   $scope.config = config;
-  $scope.autoReload = 'OFF';
+  $scope.autoReload = 'ON';
 
   var reload;
 

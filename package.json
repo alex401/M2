@@ -20,6 +20,7 @@
   "dependencies": {
     "bootstrap": "^4.4.1",
     "jquery": "^3.4.1",
+    "mustache": "^4.0.0",
     "npm": "^6.5.0",
     "popper.js": "^1.12.9"
   }
