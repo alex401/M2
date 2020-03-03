@@ -2,6 +2,7 @@
 
 
 
+
   $app->get('/v1/mail/getMail/{mode}/{name}', function($request, $response, $args) {
     $name = $args['name'];
     $mode = $args['mode'];
@@ -12,11 +13,14 @@
         $sth = $this->dbm2->prepare("SELECT destHorsCours FROM template WHERE nom like $name");
     }
 
+
     try {
       $sth->execute();
       $result = $sth->fetchAll();
     } catch(\Exception $ex) {
-      return $response->withJson(array('error' => "Tiers search by name failed: " . $ex->getMessage()),422);
+
+      return $response->withJson(array('error' => $ex->getMessage()),422);
+
     }
       return $response->withJson($result, 200);
   });

@@ -1,5 +1,5 @@
 <?php
-$app->post('/v1/adminlogs/creation/', function ($request,$response) {
+$app->post('/v1/adminlogs/creation', function ($request,$response) {
     //TODO contrôle de saisie
 
     $data = $request->getParsedBody();
@@ -17,6 +17,7 @@ $app->post('/v1/adminlogs/creation/', function ($request,$response) {
     $emailUtilisateurFormulaire = $data['email'];
     $nomUtilisateurFormulaire = $data['nom'];
     $prenomUtilisateurFormulaire = $data['prenom'];
+    $usertypeUtilisateurFormulaire = $data['usertype'];
 
     if ($loginUtilisateurFormulaire == '') {
         $erreur.="Veuillez saisir un login.";
@@ -40,7 +41,7 @@ $app->post('/v1/adminlogs/creation/', function ($request,$response) {
     if ($erreur != '') {
       return $response->withJson($erreur, 200);
     }
-      $sth = $this->dbm2->prepare("INSERT INTO utilisateursformulaires SET login='" . $loginUtilisateurFormulaire . "', motdepasse='" . md5($motDePasseUtilisateurFormulaire) . "', email='" . $emailUtilisateurFormulaire . "', nom='" . $nomUtilisateurFormulaire . "', prenom='" . $prenomUtilisateurFormulaire . "'");
+      $sth = $this->dbm2->prepare("INSERT INTO utilisateursformulaires SET login='" . $loginUtilisateurFormulaire . "', motdepasse='" . md5($motDePasseUtilisateurFormulaire) . "', email='" . $emailUtilisateurFormulaire . "', nom='" . $nomUtilisateurFormulaire . "', prenom='" . $prenomUtilisateurFormulaire . "', usertype='" . $usertypeUtilisateurFormulaire . "'");
 
           try{
             $sth->execute();
