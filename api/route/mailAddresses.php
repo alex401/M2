@@ -1,19 +1,28 @@
 <?php
 
+ $app->get('/v1/mail/getmail/{nom}', function($request, $response, $args) {
+   $name = $args['name'];
+   $sth = $this->dbm2->prepare("SELECT destEnCours, destHorsCours FROM template WHERE nom like '$name'");
+   try {
+     $sth->execute();
+     $result = $sth->fetchAll();
+   } catch (\Exception $ex) {
+     return $response->withJson(array('error' => $ex->getMessage()), 422);
+   }
+   return $response->withJson($result, 200);
+ });
 
+ 
 
-
-  $app->get('/v1/mail/getMail/{mode}/{name}', function($request, $response, $args) {
+  $app->get('/v1/mail/getmail/{mode}/{name}', function($request, $response, $args) {
     $name = $args['name'];
     $mode = $args['mode'];
     if ($mode == 0) {
-        $sth = $this->dbm2->prepare("SELECT destEnCours FROM template WHERE nom like $name");
+        $sth = $this->dbm2->prepare("SELECT destEnCours FROM template WHERE nom like '$name'");
     }
     if ($mode == 1) {
-        $sth = $this->dbm2->prepare("SELECT destHorsCours FROM template WHERE nom like $name");
+        $sth = $this->dbm2->prepare("SELECT destHorsCours FROM template WHERE nom like '$name'");
     }
-
-
     try {
       $sth->execute();
       $result = $sth->fetchAll();
@@ -51,7 +60,7 @@
     $data = json_decode($data, true);
     $mode = $data['mode'];
     foreach($data['templates'] as $template) {
-      $nom = $tempmlate['nom'];
+      $nom = $template['nom'];
       $sth = $this->dbm2->prepare("UPDATE template SET mode = '$mailEnCours'");
       $sth->execute();
     }

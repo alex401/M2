@@ -49,6 +49,15 @@ function FormCtrl($scope, $http) {
       });
   }
 
+  var loadMail = function(dest) {
+
+    $http({
+      method: 'GET',
+      url: 'api/index.php/v1/mailAddresses/getmail/'+dest,
+
+    })
+  }
+
   $scope.submit = function (type) {
     switch(type) {
             case "demandeconge":
