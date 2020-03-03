@@ -20,9 +20,7 @@ function WarningsCtrl($scope, $http) {
   }
 
   $scope.save = function(warning) {
-
     if(!warning.row_id) {
-      console.log("new object");
       $http({
         method: 'POST',
         url: 'api/index.php/v1/superadmin/warning',
@@ -35,7 +33,7 @@ function WarningsCtrl($scope, $http) {
     } else {
       $http({
         method: 'PUT',
-        url: 'api/index.php/v1/admin/warning/' + warning.row_id,
+        url: 'api/index.php/v1/superadmin/warning/' + warning.row_id,
         data: warning
       }).then(function successCallback() {
         loadWarnings();
@@ -43,11 +41,9 @@ function WarningsCtrl($scope, $http) {
           console.log("error while updating warning.");
       });
     }
-
   }
 
   $scope.delete = function(warningId) {
-
     if(!warningId) {
       $scope.warnings.pop();
     } else {
