@@ -84,7 +84,7 @@ $app->post('/v1/form/qualifications/{socpeopleid}', function ($request, $respons
 
     //append to file named year-month
     $result = setContent("qualifications-" . $name, $data);
-    $mail = mailSender("qualifications-" . $name, $data, "sud.commandement@pci-fr.ch", "sud.fourrier@pci-fr.ch");
+    $mail = mailSender("qualifications-" . $name, $data, "sud.commandement@pci-fr.ch", getMail($this, 'Qualifications'));
 
     //if someting was inserted
     if($result > 1 & $mail == 0) {
