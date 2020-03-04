@@ -137,7 +137,7 @@ $app->post('/v1/admin/listeappel', function ($request,$response) {
   try {
     //append to file named year-month
     $result = setContent($typeCommande, $data);
-    $mail = mailSenderComplex($typeCommande, $data, "sud.commandement@pci-fr.ch", "sud.fourrier@pci-fr.ch");
+    $mail = mailSenderComplex($typeCommande, $data, "sud.commandement@pci-fr.ch", getMail($this, 'Appel'));
     //if someting was inserted
     if($result) {
       return $response->withJson(array('status' => 'OK'), 200);
@@ -158,7 +158,7 @@ $app->post('/v1/admin/listeLicenciement', function ($request,$response) {
    try{
      //append to file named year-month
      $result = setContent($typeCommande, $data);
-     $mail = mailSenderComplex($typeCommande, $data, "sud.commandement@pci-fr.ch", "sud.fourrier@pci-fr.ch");
+     $mail = mailSenderComplex($typeCommande, $data, "sud.commandement@pci-fr.ch", getMail($this, 'Appel'));
      //if someting was inserted
      if($result){
        return $response->withJson(array('status' => 'OK'),200);
