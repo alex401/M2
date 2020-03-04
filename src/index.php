@@ -45,6 +45,7 @@
               <a class="dropdown-item" href="#/commande/materiel">Materiel</a>
               <a class="dropdown-item" href="#/commande/carburant">Carburant</a>
               <a class="dropdown-item" href="#/commande/transport">Transport</a>
+              <a class="dropdown-item" href="#/commande/radio">Radios</a>
             </div>
           </div>
 

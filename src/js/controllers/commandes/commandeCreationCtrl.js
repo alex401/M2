@@ -43,6 +43,7 @@ function CommandeCreationCtrl($scope, $stateParams, $http) {
   }
 
   $scope.submit = function (type) {
+    console.log(type);
 
     switch(type) {
       case "repas":
@@ -60,6 +61,10 @@ function CommandeCreationCtrl($scope, $stateParams, $http) {
       case "transport":
           var temp = $scope.form;
           var dataSent = {'type':type,'nom':temp.nom,'chantier':temp.chantier,'dateLivraison':temp.dateLivraison, 'destination':temp.destination, 'heure':temp.heure, 'detailsHeure':temp.detailsHeure, 'nbHomme':temp.nbHomme,'matTransport':temp.matTransport, 'commentaire':temp.commentaire};
+          break;
+      case "radio":
+          var temp = $scope.form;
+          var dataSent = {'type':type,'nom':temp.nom,'chantier':'','grade':temp.grade, 'section':temp.section, 'dateDe':temp.dateDe, 'dateA':temp.dateA, 'nombre':temp.nombre,'tel':temp.tel, 'commentaire':temp.commentaires};
           break;
       default:
            console.log("do nothing");

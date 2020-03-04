@@ -44,6 +44,10 @@ angular.module('PCIM2').config(['$stateProvider', '$urlRouterProvider','$locatio
                 url: '/commande/transport',
                 templateUrl: 'templates/commandes/creation/cmd_transport.html'
             })
+            .state('cmdradio', {
+                url: '/commande/radio',
+                templateUrl: 'templates/commandes/creation/cmd_radio.html'
+            })
             .state('recherchetiers', {
                 url: '/admin/recherchetiers',
                 templateUrl: 'templates/recherche_tiers.html'

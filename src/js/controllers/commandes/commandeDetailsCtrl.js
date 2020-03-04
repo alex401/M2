@@ -13,15 +13,9 @@ function CommandeDetailsCtrl($scope, $location, $state, $uibModal, $stateParams,
   $scope.hist = [];
   $scope.cat = $location.path().indexOf("gestion") !== -1 ? "gestion" : "";
   $scope.t = $stateParams.t;
-  $scope.histStatus = {
-    validationStatus: config.validationStatus,
-    waitingStatus: config.waitingStatus,
-    treatmentStatus: config.treatmentStatus,
-    waitingTransportStatus: config.waitingTransportStatus,
-    transportStatus: config.transportStatus,
-    deliveredStatus: config.deliveredStatus
-  };
   $scope.activeIndex = -1;
+
+  $scope.histStatuses = {};
 
   var Load = function () {
     loadCommand();
@@ -38,6 +32,7 @@ function CommandeDetailsCtrl($scope, $location, $state, $uibModal, $stateParams,
       $scope.currentStatus = $scope.command.statut;
       $scope.cmdData = JSON.parse($scope.command.data);
 
+      initHist();
       loadHist();
 
     }, function errorCallback(response) {
@@ -60,6 +55,26 @@ function CommandeDetailsCtrl($scope, $location, $state, $uibModal, $stateParams,
       console.log(response.data.error);
       $scope.status = 1;
     });
+  }
+
+  var initHist = function() {
+    if($scope.command.type !== 'radio') {
+      $scope.histStatuses = {
+        validationStatus: config.validationStatus,
+        waitingStatus: config.waitingStatus,
+        treatmentStatus: config.treatmentStatus,
+        waitingTransportStatus: config.waitingTransportStatus,
+        transportStatus: config.transportStatus,
+        deliveredStatus: config.deliveredStatus
+      };
+    } else {
+      $scope.histStatuses = {
+        validationStatus: config.validationStatus,
+        waitingStatus: config.waitingStatus,
+        treatmentStatus: config.treatmentStatus,
+        deliveredStatus: config.deliveredStatus
+      };
+    }
   }
 
   $scope.openModal = function (rowid) {

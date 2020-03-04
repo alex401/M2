@@ -13,7 +13,7 @@
        <li class="list-group-item">Client: {{commande.nom}}</li>
        <li class="list-group-item">Type: {{commande.type}}</li>
        <li class="list-group-item">Statut: {{commande.statut}}</li>
-       <li class="list-group-item">Chantier: {{commande.chantier}}</li>
+       <li class="list-group-item" ng-if="commande.type !== 'radio'">Chantier: {{commande.chantier}}</li>
        <li class="list-group-item">Date d'envoi: {{commande.timestampDate}}</li>
        <a class="btn bg-light btn-block" href="#/commandes/gestion/{{t}}/details/{{commande.rowid}}" role="button">Details</a>
      </ul>

@@ -1,4 +1,4 @@
-<main class="col-sm-12 col-md-12" ng-controller="FormCtrl">
+<main class="col-sm-12 col-md-12" ng-controller="CommandeCreationCtrl">
   <h1>Commande de radios</h1>
 
   <div ng-if="status==1">
@@ -9,7 +9,7 @@
   <div ng-if="status==3"> Chargement en cours </div>
 
 
-  <form ng-submit="submit('radios')" ng-if="status==0">
+  <form ng-submit="submit('radio')" ng-if="status==0">
 
     <div class="form-group">
       <label for="formGroupNom"> Nom </label>

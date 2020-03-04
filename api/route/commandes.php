@@ -1,5 +1,6 @@
 <?php
 
+// Create a new command.
 $app->post('/v1/commande/{type}', function ($request, $response, $args) {
 
   $type = $args['type'];
@@ -14,7 +15,7 @@ $app->post('/v1/commande/{type}', function ($request, $response, $args) {
   // Inserting command in DB.
   $type = $data['type'];
   $nom = $data['nom'];
-  $chantier = $data['chantier'];
+  $chantier = $data['chantier']; // empty for radio.
   $status = "attente de validation";
 
   // Remove already taken fields.
@@ -229,6 +230,7 @@ function getTypeCommande($type) {
     case 'materiel' : return true;
     case 'carburant' : return true;
     case 'transport' : return true;
+    case 'radio' : return true;
     default : return false;
   }
 }
