@@ -27,7 +27,7 @@ angular.module('PCIM2')
       var loadTemplates = function () {
        $http({
          method: 'GET',
-         url: 'api/index.php/v1/mail/gettemplates'
+         url: 'api/index.php/v1/superadmin/gettemplates'
        }).then(function successCallback(response) {
          $scope.templates = response.data;
          var mode = 0;
@@ -53,7 +53,7 @@ angular.module('PCIM2')
         console.log("Mode: " +  $scope.form.mode)
         $http({
          method: 'POST',
-         url: 'api/index.php/v1/mail/attributionMail',
+         url: 'api/index.php/v1/superadmin/attributionMail',
          data: {templates: $scope.templates, mode: $scope.form.mode}
        }).then(function successCallback() {
 

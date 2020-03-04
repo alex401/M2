@@ -55,8 +55,9 @@
           <div class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
             <div class="dropdown-menu" aria-labelledby="adminDropdown">
-              <a class="dropdown-item" href="#/superadmin/warnings">Avertissements</a>
+              <a class="dropdown-item" href="#/superadmin/warnings">Messages du commandant</a>
               <a class="dropdown-item" href="#/superadmin/logins">Logins</a>
+              <a class="dropdown-item" href="#/superadmin/mails">Attribution des emails</a>
             </div>
           </div>
           <?php endif; ?>

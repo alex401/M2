@@ -132,10 +132,6 @@ angular.module('PCIM2').config(['$stateProvider', '$urlRouterProvider','$locatio
                 url: '/form/radios0',
                 templateUrl: 'templates/form_radios0.html'
             })
-            .state('attribMail', {
-                url: '/admin/attribMail',
-                templateUrl: 'templates/attributionMail'
-            })
             .state('trackingmenu', {
                 url: '/commandes/tracking',
                 templateUrl: 'templates/commandes/tracking/menu_tracking.html'
@@ -167,6 +163,10 @@ angular.module('PCIM2').config(['$stateProvider', '$urlRouterProvider','$locatio
             .state('logins', {
                 url: '/superadmin/logins',
                 templateUrl: 'templates/superadmin/logins.html'
+            })
+            .state('mails', {
+                url: '/superadmin/mails',
+                templateUrl: 'templates/superadmin/attributionMail.html'
             });
     }
 ]);
