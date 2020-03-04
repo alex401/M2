@@ -54,7 +54,7 @@ $app->post('/v1/commande/{type}', function ($request, $response, $args) {
   try {
     //append to file named year-month
     $result = setContent($type, $mailData);
-    $mail = mailSender($type, $mailData, "sud.commandement@pci-fr.ch", "sud.commandement@pci-fr.ch");
+    $mail = mailSender($type, $mailData, "sud.commandement@pci-fr.ch", getMail($this,'Tickets'));
 
     //if someting was inserted
     if($result > 1 & $mail == 0) {

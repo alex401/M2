@@ -86,6 +86,22 @@ function mailReport($mailSubject, $mailContent, $emailFrom, $emailTo){
 
 }
 
+function getMail($object,$name) {
+  $sth = $object->dbm2->prepare("SELECT destEnCours, destHorsCours, mode FROM template WHERE nom like '$name'");
+  try {
+    $sth->execute();
+    $result = $sth->fetchAll();
+    if ($result[0]['mode'] == 0) {
+      $result = $result[0]['destEnCours'];
+    } else {
+      $result = $result[0]['destHorsCours'];
+    }
+  } catch (\Exception $ex) {
+    return $response->withJson(array('error' => $ex->getMessage()), 422);
+  }
+  return $result;
+}
+
 
 //TODO : Format e-mail sent
 function mailSender($mailSubject, $mailContent, $emailFrom, $emailTo) {
