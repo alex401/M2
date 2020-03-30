@@ -24,227 +24,228 @@
 <div ng-if="personne != null">
     <h2> Connaissances de base: </h2>
 
-      <div class="btn-group btn-group-toggle col-sm-12 col-md-12" >
-         <label for=formGroupComportement>Comportement</label>
-          <label class="btn btn-secondary">
-            <input  type="radio" ng-model="data.personne.comportement" ng-value="5" value="Tres bon">
+
+      <label>Comportement</label>
+      <div class="btn-group btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
+          <label class="btn btn-outline-secondary">
+            <input type="radio" ng-model="data.personne.comportement" ng-value="5" value="Tres bon">
             Très bon
            </label>
-           <label class="btn btn-secondary">
+           <label class="btn btn-outline-secondary">
            <input  type="radio" ng-model="data.personne.comportement"  ng-value="4" value="Bon">
             Bon
            </label>
-           <label class="btn btn-secondary">
+           <label class="btn btn-outline-secondary">
             <input  type="radio" ng-model="data.personne.comportement" ng-value="3"  value="Suffisant">
             Suffisant
            </label>
-           <label class="btn btn-secondary">
+           <label class="btn btn-outline-secondary">
             <input  type="radio" ng-model="data.personne.comportement" ng-value="1"  value="Insuffisant">
             Insuffisant
            </label>
       </div>
 
-        <div class="btn-group btn-group-toggle col-sm-12 col-md-12" >
-          <label for=formGroupMotivation>Motivation, engagement, entreprenant</label>
-          <label class="btn btn-secondary">
+        <label for=formGroupMotivation>Motivation, engagement, entreprenant</label>
+        <div class="btn-group btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
+          <label class="btn btn-outline-secondary">
             <input  type="radio" ng-model="data.personne.motivation" ng-value="5" value="Tres bon">
             Très bon
           </label>
-          <label class="btn btn-secondary">
+          <label class="btn btn-outline-secondary">
             <input  type="radio" ng-model="data.personne.motivation"  ng-value="4" value="Bon">
             Bon
           </label>
-          <label class="btn btn-secondary">
+          <label class="btn btn-outline-secondary">
             <input  type="radio" ng-model="data.personne.motivation" ng-value="3"  value="Suffisant">
             Suffisant
           </label>
-          <label class="btn btn-secondary">
+          <label class="btn btn-outline-secondary">
             <input  type="radio" ng-model="data.personne.motivation" ng-value="1"  value="Insuffisant">
             Insuffisant
           </label>
         </div>
 
-        <div class="btn-group btn-group-toggle col-sm-12 col-md-12" >
-          <label for=formGroupConnaissances>Connaissances techniques</label>
-          <label class="btn btn-secondary">
+        <label for=formGroupConnaissances>Connaissances techniques</label>
+        <div class="btn-group btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
+          <label class="btn btn-outline-secondary">
             <input type="radio" ng-model="data.personne.connaissances" ng-value="5" value="Tres bon">
             Très bon
           </label>
-          <label class="btn btn-secondary">
+          <label class="btn btn-outline-secondary">
             <input type="radio" ng-model="data.personne.connaissances"  ng-value="4" value="Bon">
             Bon
           </label>
-          <label class="btn btn-secondary">
+          <label class="btn btn-outline-secondary">
             <input type="radio" ng-model="data.personne.connaissances" ng-value="3"  value="Suffisant">
             Suffisant
           </label>
-          <label class="btn btn-secondary">
+          <label class="btn btn-outline-secondary">
             <input type="radio" ng-model="data.personne.connaissances" ng-value="1"  value="Insuffisant">
             Insuffisant
           </label>
         </div>
 
-    <div class="btn-group btn-group-toggle col-sm-12 col-md-12" >
-      <label for=formGroupExpression>Faculté d'expression</label>
-      <label class="btn btn-secondary">
+    <label for=formGroupExpression>Faculté d'expression</label>
+    <div class="btn-group btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
+      <label class="btn btn-outline-secondary">
          <input type="radio" ng-model="data.personne.expression" ng-value="5" value="Tres bon"> Très bon </label>
-        <label class="btn btn-secondary">
+        <label class="btn btn-outline-secondary">
           <input type="radio" ng-model="data.personne.expression"  ng-value="4" value="Bon">  Bon </label>
-        <label class="btn btn-secondary">
+        <label class="btn btn-outline-secondary">
         <input type="radio" ng-model="data.personne.expression" ng-value="3"  value="Suffisant">  Suffisant </label>
-        <label class="btn btn-secondary">
+        <label class="btn btn-outline-secondary">
         <input type="radio" ng-model="data.personne.expression" ng-value="1"  value="Insuffisant"> Insuffisant </label>
      </div>
 
-      <div class="btn-group btn-group-toggle col-sm-12 col-md-12" >
-        <label for=formGroupAptitude>Aptitude à la fonction</label>
-        <label class="btn btn-secondary">
+      <label for=formGroupAptitude>Aptitude à la fonction</label>
+      <div class="btn-group btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
+        <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.aptitude" ng-value="5" value="Tres bon">
           Très bon
         </label>
-        <label class="btn btn-secondary">
+        <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.aptitude"  ng-value="4" value="Bon">
             Bon
         </label>
-        <label class="btn btn-secondary">
+        <label class="btn btn-outline-secondary">
           <input  type="radio" ng-model="data.personne.aptitude" ng-value="3"  value="Suffisant">
             Suffisant
         </label>
-        <label class="btn btn-secondary">
+        <label class="btn btn-outline-secondary">
          <input  type="radio" ng-model="data.personne.aptitude" ng-value="1"  value="Insuffisant">
           Insuffisant
          </label>
         </div>
 
-        <div class="btn-group btn-group-toggle col-sm-12 col-md-12" >
-            <label for=formGroupGlobal>Appréciation globale</label>
-            <label class="btn btn-secondary">
+        <label for=formGroupGlobal>Appréciation globale</label>
+        <div class="btn-group btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
+            <label class="btn btn-outline-secondary">
             <input  type="radio" ng-model="data.personne.global" ng-value="5" value="Tres bon">  Très bon  </label>
-            <label class="btn btn-secondary">
+            <label class="btn btn-outline-secondary">
             <input  type="radio" ng-model="data.personne.global"  ng-value="4" ng-value="4" value="Bon"> Bon </label>
-            <label class="btn btn-secondary">
+            <label class="btn btn-outline-secondary">
             <input  type="radio" ng-model="data.personne.global" ng-value="3"  value="Suffisant">  Suffisant </label>
-            <label class="btn btn-secondary">
+            <label class="btn btn-outline-secondary">
             <input  type="radio" ng-model="data.personne.global" ng-value="1"  value="Insuffisant"> Insuffisant  </label>
         </div>
 
     <h2> Spécialistes et cadres </h2>
 
-    <div class="btn-group btn-group-toggle col-sm-12 col-md-12" >
     <label for=formGroupAppreciation>Capacité d'appréciation de la situation</label>
-    <label class="btn btn-secondary">
+    <div class="btn-group btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
+    <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.appreciation" ng-value="5" value="Tres bon">
         Très bon
       </label>
-      <label class="btn btn-secondary">
+      <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.appreciation"  ng-value="4" value="Bon">
         Bon
       </label>
-      <label class="btn btn-secondary">
+      <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.appreciation" ng-value="3"  value="Suffisant">
         Suffisant
       </label>
-      <label class="btn btn-secondary">
+      <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.appreciation" ng-value="1"  value="Insuffisant">
         Insuffisant
       </label>
     </div>
 
-    <div class="btn-group btn-group-toggle col-sm-12 col-md-12" >
     <label for=formGroupDecision>Capacité de décision</label>
-    <label class="btn btn-secondary">
+    <div class="btn-group btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
+    <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.decision" ng-value="5" value="Tres bon">
         Très bon
       </label>
-      <label class="btn btn-secondary">
+      <label class="btn btn-outline-secondary">
         <input type="radio" ng-model="data.personne.decision"  ng-value="4" value="Bon">
         Bon
       </label>
-      <label class="btn btn-secondary">
+      <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.decision" ng-value="3"  value="Suffisant">
         Suffisant
       </label>
-      <label class="btn btn-secondary">
+      <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.decision" ng-value="1"  value="Insuffisant">
         Insuffisant
       </label>
     </div>
 
-    <div class="btn-group btn-group-toggle col-sm-12 col-md-12" >
     <label for=formGroupInstruction>Capacité d'instruire</label>
-    <label class="btn btn-secondary">
+    <div class="btn-group btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
+    <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.instruction" ng-value="5" value="Tres bon">
         Très bon
       </label>
-      <label class="btn btn-secondary">
+      <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.instruction"  ng-value="4" value="Bon">
         Bon
       </label>
-      <label class="btn btn-secondary">
+      <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.instruction" ng-value="3"  value="Suffisant">
         Suffisant
       </label>
-      <label class="btn btn-secondary">
+      <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.instruction" ng-value="1"  value="Insuffisant">
         Insuffisant
       </label>
     </div>
 
-    <div class="btn-group btn-group-toggle col-sm-12 col-md-12" >
     <label for=formGroupConduite>Aptitude à conduire</label>
-    <label class="btn btn-secondary">
+    <div class="btn-group btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
+    <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.conduite" ng-value="5" value="Tres bon">
         Très bon
       </label>
-      <label class="btn btn-secondary">
+      <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.conduite"  ng-value="4" value="Bon">
         Bon
       </label>
-      <label class="btn btn-secondary">
+      <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.conduite" ng-value="3"  value="Suffisant">
         Suffisant
       </label>
-      <label class="btn btn-secondary">
+      <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.conduite" ng-value="1"  value="Insuffisant">
         Insuffisant
       </label>
     </div>
 
-    <div class="btn-group btn-group-toggle col-sm-12 col-md-12" >
     <label for=formGroupFonction>Aptitude à la fonction</label>
-    <label class="btn btn-secondary">
+    <div class="btn-group btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
+    <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.fonction" ng-value="5" value="Tres bon">
         Très bon
       </label>
-      <label class="btn btn-secondary">
+      <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.fonction"  ng-value="4" value="Bon">
         Bon
       </label>
-      <label class="btn btn-secondary">
+      <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.fonction" ng-value="3"  value="Suffisant">
         Suffisant
       </label>
-      <label class="btn btn-secondary">
+      <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.fonction" ng-value="1"  value="Insuffisant">
         Insuffisant
       </label>
     </div>
 
-    <div class="btn-group btn-group-toggle col-sm-12 col-md-12" >
     <label for=formGroupGlobal>Appréciation globale</label>
-    <label class="btn btn-secondary">
+    <div class="btn-group btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
+    <label class="btn btn-outline-secondary">
         <input type="radio" ng-model="data.personne.globalCadre" ng-value="5" ng-value="5" value="Tres bon">
         Très bon
       </label>
-      <label class="btn btn-secondary">
+      <label class="btn btn-outline-secondary">
         <input type="radio" ng-model="data.personne.globalCadre"  ng-value="4" value="Bon">
         Bon
       </label>
-      <label class="btn btn-secondary">
+      <label class="btn btn-outline-secondary">
         <input type="radio" ng-model="data.personne.globalCadre" ng-value="3"  value="Suffisant">
         Suffisant
       </label>
-      <label class="btn btn-secondary">
+      <label class="btn btn-outline-secondary">
         <input type="radio" ng-model="data.personne.globalCadre" ng-value="1"  value="Insuffisant">
         Insuffisant
       </label>
@@ -255,7 +256,7 @@
       <input type="text" class="form-control" id="formGroupNom" ng-model="data.commentaire" placeholder="Commentaires">
     </div>
 
-    <button type="submit" class="btn btn-primary" >Envoyer</button>
+    <button type="submit" class="btn btn-primary">Envoyer</button>
 
 </div>
 </main>
