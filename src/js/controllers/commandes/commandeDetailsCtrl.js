@@ -203,13 +203,28 @@ function CommandeDetailsCtrl($scope, $location, $state, $uibModal, $stateParams,
     }
 
     var template = [
+      `
+      <div class="row">
+        <div class="col-6">
+          <img src="logo-pcifr.jpg" width="60" height="60">
+        </div>
+        <div class="col-6" align="right">
+          <label>Commande M3</label>
+        </div>
+      </div>
+      <hr>
+      `,
       content.innerHTML,
       '<label>Remarque aditionnelle: {{remark}}</label>',
       '<hr>',
       '</br>',
-      '<div class="row">',
-          '<b>Date</b> ________________________ <b>Signature</b> ________________________',
-      '</div>'
+      `
+      <div class="row">
+        <div class="col-12" align="right">
+          <b>Date</b> ________________________ <b>Signature</b> ________________________
+        </div>
+      </div>
+      `
     ].join("\n");
 
     var html = Mustache.render(template, data);
@@ -217,7 +232,7 @@ function CommandeDetailsCtrl($scope, $location, $state, $uibModal, $stateParams,
     // Create print window.
     var popupWinindow = window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
     popupWinindow.document.open();
-    popupWinindow.document.write('<html><head><link rel="stylesheet" type="text/css" href="style.css" /></head><body onload="window.print()">' + html + '</html>');
+    popupWinindow.document.write('<html><head><link href="components/bootstrap4.4.1/dist/css/bootstrap.min.css" rel="stylesheet"><link rel="stylesheet" type="text/css" href="style.css" /></head><body onload="window.print()">' + html + '</html>');
     popupWinindow.document.close();
   }
 
