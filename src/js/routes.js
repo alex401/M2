@@ -164,6 +164,10 @@ angular.module('PCIM2').config(['$stateProvider', '$urlRouterProvider','$locatio
                 url: '/superadmin/logins',
                 templateUrl: 'templates/superadmin/logins.html'
             })
+            .state('etatgroupe', {
+              url: '/form/etatgroupe',
+              templateUrl: 'templates/form_etatgroupe.html'
+            })
             .state('mails', {
                 url: '/superadmin/mails',
                 templateUrl: 'templates/superadmin/attributionMail.html'
