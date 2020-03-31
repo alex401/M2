@@ -56,6 +56,10 @@ angular.module('PCIM2').config(['$stateProvider', '$urlRouterProvider','$locatio
                 url: '/form/demandeconge',
                 templateUrl: 'templates/form_demandeconge.html'
             })
+            .state('assistance', {
+                url: '/form/demandeassistance',
+                templateUrl: 'templates/form_demandeassistance.html'
+            })
             .state('demandeavance', {
                 url: '/form/demandeavance',
                 templateUrl: 'templates/form_demandeavancement.html'
