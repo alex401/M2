@@ -12,8 +12,8 @@ $app->post('/v1/admin/groupreport', function($request,$response) {
 
   try{
     //append to file named year-month
-    $result = setContent($typeCommande, $data);
-    $mail = mailSender($typeCommande, $data, "sud.commandement@pci-fr.ch", "sud.commandement@pci-fr.ch");
+    $result = setContent("Etat groupe", $data);
+    $mail = mailSender("Etat groupe", $data, "sud.commandement@pci-fr.ch", "sud.aidecommandement@pci-fr.ch");
 
     //if someting was inserted
     if($result > 1 & $mail == 0){

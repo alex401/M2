@@ -7,7 +7,7 @@ function GroupCtrl($scope, $http) {
     $scope.status = 0;
     $scope.submit = function () {
       var temp = $scope.data;
-      var datasent = {'Nom du chef de groupe':temp.nomChef, 'Fatigue':temp.fatigue, 'Stress':temp.stress, 'Moral':temp.moral, 'Commentaires':temp.commentaire}
+      var datasent = {'Nom du chef de groupe':temp.nomChef, 'Ressource':temp.Ressource, 'Fatigue':temp.fatigue, 'Stress':temp.stress, 'Moral':temp.moral, 'Commentaires':temp.commentaire}
       $http({
         method: 'POST',
         url: 'api/index.php/v1/admin/groupreport',
