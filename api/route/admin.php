@@ -26,7 +26,7 @@ $app->post('/v1/admin/groupreport', function($request,$response) {
   catch(\Exception $ex){
     return $response->withJson(array('error' => $ex->getMessage()),422);
   }
-}
+});
 
 
 

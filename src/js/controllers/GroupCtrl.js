@@ -11,7 +11,7 @@ function GroupCtrl($scope, $http) {
       $http({
         method: 'POST',
         url: 'api/index.php/v1/admin/groupreport',
-        data: $scope.data
+        data: datasent
 
       }).then(function successCallback() {
       console.log("success");
