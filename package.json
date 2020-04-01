@@ -19,6 +19,7 @@
     "gulp-wrap": "^0.15.0"
   },
   "dependencies": {
+    "angular-sanitize": "^1.6.8",
     "angular-translate-storage-local": "^2.18.2",
     "bootstrap": "^4.4.1",
     "jquery": "^3.4.1",

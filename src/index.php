@@ -23,6 +23,7 @@
     <script src="components/bootstrap4.4.1/dist/js/bootstrap.min.js"></script>
     <script src="components/angular/dist/angular.js"></script>
     <script src="components/angular-cookies/dist/angular-cookies.min.js"></script>
+    <script src="components/angular-sanitize-168/dist/angular-sanitize.min.js"></script>
     <script src="components/angular-bootstrap/dist/ui-bootstrap-tpls.min.js"></script>
     <script src="components/angular-ui-router/dist/angular-ui-router.js"></script>
     <script src="components/angular-translate/dist/angular-translate.min.js"></script>
@@ -44,12 +45,12 @@
       <div class="collapse navbar-collapse d-none d-lg-block" id="navbarsExampleDefault">
         <div class="navbar-nav mr-auto">
           <div class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="commandsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Commande</a>
+            <a class="nav-link dropdown-toggle" href="#" id="commandsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{'navbar.command' | translate}}</a>
             <div class="dropdown-menu" aria-labelledby="commandsDropdown">
-              <a class="dropdown-item" href="#/commande/repas">Repas</a>
-              <a class="dropdown-item" href="#/commande/materiel">Materiel</a>
-              <a class="dropdown-item" href="#/commande/carburant">Carburant</a>
-              <a class="dropdown-item" href="#/commande/transport">Transport</a>
+              <a class="dropdown-item" href="#/commande/repas">{{'menu.commands.meal' | translate}}</a>
+              <a class="dropdown-item" href="#/commande/materiel">{{'menu.commands.material' | translate}}</a>
+              <a class="dropdown-item" href="#/commande/carburant">{{'menu.commands.fuel' | translate}}</a>
+              <a class="dropdown-item" href="#/commande/transport">{{'menu.commands.transport' | translate}}</a>
             </div>
           </div>
 
@@ -58,7 +59,7 @@
 
           <?php if ($_SESSION["usertype_utilisateurformulaires"] == "admin") : ?>
           <div class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
+            <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{'navbar.admin' | translate}}</a>
             <div class="dropdown-menu" aria-labelledby="adminDropdown">
               <a class="dropdown-item" href="#/superadmin/warnings">Messages du commandant</a>
               <a class="dropdown-item" href="#/superadmin/logins">Logins</a>
@@ -70,7 +71,7 @@
 
         <div class="navbar-nav">
           <div class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Langue</a>
+            <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{'navbar.language' | translate}}</a>
             <div class="dropdown-menu" aria-labelledby="adminDropdown">
               <button class="dropdown-item" ng-click="changeLanguage('fr')">FR</button>
               <button class="dropdown-item" ng-click="changeLanguage('de')">DE</button>

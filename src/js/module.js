@@ -1,4 +1,4 @@
-var app = angular.module('PCIM2', ['ui.bootstrap', 'ui.router', 'ngCookies', 'pascalprecht.translate']);
+var app = angular.module('PCIM2', ['ui.bootstrap', 'ui.router', 'ngCookies', 'pascalprecht.translate', 'ngSanitize']);
 
 app.config(['$translateProvider', function ($translateProvider) {
   // add translation table

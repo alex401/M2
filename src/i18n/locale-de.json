@@ -1,3 +1,78 @@
 {
-  "HEADLINE": "Hallo"
+    "navbar": {
+        "command": "Bestellung",
+        "admin": "Admin",
+        "language": "Sprache"
+    },
+    "menu": {
+        "commands": {
+            "title": "DE:Accès rapide pour commandes",
+            "meal": "Essen",
+            "transport": "Transport",
+            "material": "Material",
+            "fuel": "Treibstoff",
+            "radios": "Radios",
+            "management": "Auftragsmanagement",
+            "search": "Auftragsuche"
+        },
+        "admin": {
+            "title": "Admin",
+            "daily_report": "DE:Rapport journalier (section et SPPAM)"
+        }
+    },
+    "commands": {
+        "meal": {
+            "title" : "DE:Commande de repas",
+            "message": {
+                "success": "DE:Commande numéro <b>{{id}}</b> créée avec succès!<br><br> <i>Note: Vous pouvez utilisez le numéro de commande pour faire une recherche par la suite.</i>",
+                "error": "DE:Erreur de traitement, veuillez réessayer dans un moment",
+                "loading": "DE:Chargement en cours"
+            },
+            "name": "Name",
+            "site": "Baustelle",
+            "delivery_date": "Gewünschtes Lieferdatum",
+            "breakfast_nbr": "Anzahl der Frühstücke",
+            "lunch_nbr": "Anzahl der Mittagessen",
+            "dinner_nbr": "Anzahl der Abendessen",
+            "night_snack_nbr": "Anzahl der nächtlichen Snacks",
+            "vegetarian_nbr": "Anzahl von Vegetariern",
+            "comment": "Kommentar",
+            "button_send": "Senden"
+        },
+        "material": {
+            "title" : "DE:Commande de matériel",
+            "name": "Name",
+            "site": "Baustelle",
+            "delivery_date": "Gewünschtes Lieferdatum",
+            "hour": "Tageszeit",
+            "material_1": "Material 1",
+            "material_2": "Material 2",
+            "material_3": "Material 3",
+            "comment": "Kommentar",
+            "button_send": "Senden"
+        },
+        "fuel": {
+            "title": "DE:Commande de carburant",
+            "name": "Name",
+            "site": "Baustelle",
+            "diesel": "Diesel",
+            "gasoline": "Benzin",
+            "gasoline_2T": "Benzin 2T",
+            "comment": "Kommentar",
+            "button_send": "Senden"
+        },
+        "transport": {
+            "title": "DE:Commande de transport",
+            "name": "Name",
+            "departure": "Abfahrt",
+            "destination": "Reiseziel",
+            "transport_date": "Datum des Transportes",
+            "hour": "Tageszeit",
+            "hour_details": "DE:Détails pour heure (si nécessaire)",
+            "men_nbr": "DE:Nombre d'hommes",
+            "material_to_transport": "DE:Matériel à transporter",
+            "comment": "Kommentar",
+            "button_send": "Senden"
+        }
+    }
 }

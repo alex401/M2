@@ -1,54 +1,50 @@
 <main class="col-sm-12 col-md-12" ng-controller="CommandeCreationCtrl">
-  <h1>Commande de repas</h1>
+  <h1>{{'commands.meal.title' | translate}}</h1>
 
-  <div ng-if="status==1">
-    Commande numéro <b>{{id}}</b> créée avec succès!
-    <br><br> <i>Note: Vous pouvez utilisez le numéro de commande pour faire une recherche par la suite.</i>
-  </div>
-  <div ng-if="status==2"> Erreur de traitement, veuillez réessayer dans un moment</div>
-  <div ng-if="status==3"> Chargement en cours </div>
-
+  <div ng-if="status==1" translate="{{'commands.meal.message.success'}}" translate-values="{id : id}"></div>
+  <div ng-if="status==2">{{'commands.meal.message.error' | translate}}</div>
+  <div ng-if="status==3">{{'commands.meal.message.loading' | translate}}</div>
 
   <form ng-submit="submit('repas')" ng-if="status==0">
     <div class="form-group">
-      <label for="nom">Nom</label>
-      <input autocomplete="off" type="text" ng-model="form.nom" uib-typeahead="tier.nom for tier in loadTiers($viewValue)" class="form-control" id="nom" placeholder="Nom" required>
+      <label for="nom">{{'commands.meal.name' | translate}}</label>
+      <input autocomplete="off" type="text" ng-model="form.nom" uib-typeahead="tier.nom for tier in loadTiers($viewValue)" class="form-control" id="nom" placeholder="{{'commands.meal.name' | translate}}" required>
     </div>
     <div class="form-group">
-      <label for="chantier">chantier</label>
+      <label for="chantier">{{'commands.meal.site' | translate}}</label>
       <select class="form-control" id="chantier" ng-model="form.chantier" ng-options="chantier.title as chantier.title for chantier in chantiers">
         <option value="">-- Selection chantier --</option>
      </select>
    </div>
    <div class="form-group">
-     <label for="date"> Date de livraison souhaitée </label>
+     <label for="date">{{'commands.meal.delivery_date' | translate}}</label>
      <input type="text" class="form-control" id="date" ng-model="form.dateLivraison" required>
   </div>
    <div class="form-group">
-     <label for="dej">nombre de dej</label>
-     <input type="number" class="form-control" id="dej" ng-model="form.nbDej" placeholder="nombre de déjeuner">
+     <label for="dej">{{'commands.meal.breakfast_nbr' | translate}}</label>
+     <input type="number" class="form-control" id="dej" ng-model="form.nbDej" placeholder="{{'commands.meal.breakfast_nbr' | translate}}">
    </div>
    <div class="form-group">
-     <label for="diner">nombre de diner</label>
-     <input type="number" class="form-control" id="diner" ng-model="form.nbDiner" placeholder="nombre de diner">
+     <label for="diner">{{'commands.meal.lunch_nbr' | translate}}</label>
+     <input type="number" class="form-control" id="diner" ng-model="form.nbDiner" placeholder="{{'commands.meal.lunch_nbr' | translate}}">
    </div>
    <div class="form-group">
-     <label for="souper">nombre de souper</label>
-     <input type="number" class="form-control" id="souper" ng-model="form.nbSouper" placeholder="nombre de souper">
+     <label for="souper">{{'commands.meal.dinner_nbr' | translate}}</label>
+     <input type="number" class="form-control" id="souper" ng-model="form.nbSouper" placeholder="{{'commands.meal.dinner_nbr' | translate}}">
    </div>
    <div class="form-group">
-     <label for="nuit">nombre de collation de nuit</label>
-     <input type="number" class="form-control" id="nuit" ng-model="form.nbCollationNuit" placeholder="nombre de collation de nuit">
+     <label for="nuit">{{'commands.meal.night_snack_nbr' | translate}}</label>
+     <input type="number" class="form-control" id="nuit" ng-model="form.nbCollationNuit" placeholder="{{'commands.meal.night_snack_nbr' | translate}}">
    </div>
    <div class="form-group">
-     <label for="vege">nombre de vegetariens</label>
-     <input type="number" class="form-control" id="vege" ng-model="form.nbVegetariens" placeholder="nombre de vegetariens">
+     <label for="vege">{{'commands.meal.vegetarian_nbr' | translate}}</label>
+     <input type="number" class="form-control" id="vege" ng-model="form.nbVegetariens" placeholder="{{'commands.meal.vegetarian_nbr' | translate}}">
    </div>
    <div class="form-group">
-     <label for="com">commentaires</label>
-     <input type="text" class="form-control" id="com" ng-model="form.commentaire" placeholder="commentaires">
+     <label for="com">{{'commands.meal.comment' | translate}}</label>
+     <input type="text" class="form-control" id="com" ng-model="form.commentaire" placeholder="{{'commands.meal.comment' | translate}}">
    </div>
-   <button type="submit" class="btn btn-primary">Envoyer</button>
+   <button type="submit" class="btn btn-primary">{{'commands.meal.button_send' | translate}}</button>
   </form>
 
 </main>
