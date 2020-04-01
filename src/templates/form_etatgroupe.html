@@ -1,0 +1,105 @@
+<main class="col-sm-12 col-md-12" ng-controller="GroupCtrl">
+
+  <h1>Etat du groupe</h1>
+
+  <div ng-if="status==1"> Message envoyé </div>
+  <div ng-if="status==2"> Erreur de traitement, veuillez réessayer dans un moment</div>
+  <div ng-if="status==3"> Chargement en cours </div>
+
+
+
+
+
+<form ng-show="status==0" ng-submit="submit()">
+
+  <div class="form-group">
+    <label for="formGroupNom">Nom du chef de groupe / Namen des Gruppenchefs</label>
+    <input type="text" ng-model="data.nomChef" class="form-control" id="formGroupNom" placeholder="Nom" required>
+  </div>
+
+  <div class="form-group">
+    <label for="formGroupNom">Ressource</label>
+    <input type="text" ng-model="data.Ressource" class="form-control" id="formGroupNom" placeholder="Nom" required>
+  </div>
+
+      <label>Etat de fatigue / Ermüdungszustand</label>
+      <div class="btn-group btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
+          <label class="btn btn-outline-secondary">
+            <input type="radio" ng-model="data.fatigue" value="Tres bon / Sehr gut">
+            Très bon / Sehr gut
+           </label>
+           <label class="btn btn-outline-secondary">
+           <input  type="radio" ng-model="data.fatigue" value="Bon / Gut">
+            Bon / Gut
+           </label>
+           <label class="btn btn-outline-secondary">
+            <input  type="radio" ng-model="data.fatigue"  value="Moyen / Mittelmässig">
+            Moyen / Mittelmässig
+           </label>
+           <label class="btn btn-outline-secondary">
+            <input  type="radio" ng-model="data.fatigue" value="Mauvais / Schlecht">
+            Mauvais / Schlecht
+           </label>
+           <label class="btn btn-outline-secondary">
+            <input  type="radio" ng-model="data.fatigue"  value="Tres mauvais / Sehr schlecht">
+            Très mauvais / Sehr schlecht
+           </label>
+      </div>
+
+      <label>Etat de stress / Spannungszustand</label>
+      <div class="btn-group btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
+          <label class="btn btn-outline-secondary">
+            <input type="radio" ng-model="data.stress" value="Tres bon / Sehr gut">
+            Très bon / Sehr gut
+           </label>
+           <label class="btn btn-outline-secondary">
+           <input  type="radio" ng-model="data.stress" value="Bon / Gut">
+            Bon / Gut
+           </label>
+           <label class="btn btn-outline-secondary">
+            <input  type="radio" ng-model="data.stress"  value="Moyen / Mittelmässig">
+            Moyen / Mittelmässig
+           </label>
+           <label class="btn btn-outline-secondary">
+            <input  type="radio" ng-model="data.stress" value="Mauvais / Schlecht">
+            Mauvais / Schlecht
+           </label>
+           <label class="btn btn-outline-secondary">
+            <input  type="radio" ng-model="data.stress"  value="Tres mauvais / Sehr schlecht">
+            Très mauvais / Sehr schlecht
+           </label>
+      </div>
+
+      <label>Moral</label>
+      <div class="btn-group btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
+          <label class="btn btn-outline-secondary">
+            <input type="radio" ng-model="data.moral" value="Tres bon / Sehr gut">
+            Très bon / Sehr gut
+           </label>
+           <label class="btn btn-outline-secondary">
+           <input  type="radio" ng-model="data.moral" value="Bon / Gut">
+            Bon / Gut
+           </label>
+           <label class="btn btn-outline-secondary">
+            <input  type="radio" ng-model="data.moral"  value="Moyen / Mittelmässig">
+            Moyen / Mittelmässig
+           </label>
+           <label class="btn btn-outline-secondary">
+            <input  type="radio" ng-model="data.moral" value="Mauvais / Schlecht">
+            Mauvais / Schlecht
+           </label>
+           <label class="btn btn-outline-secondary">
+            <input  type="radio" ng-model="data.moral"  value="Tres mauvais / Sehr schlecht">
+            Très mauvais / Sehr schlecht
+           </label>
+      </div>
+
+
+    <div class="form-group col-sm-12 col-md-12">
+      <label for="formGroupNom">Commentaires (précisions sur d'éventuels membres du groupe)</label>
+      <input type="text" class="form-control" id="formGroupNom" ng-model="data.commentaire" placeholder="Commentaires">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Envoyer / Senden</button>
+
+</main>

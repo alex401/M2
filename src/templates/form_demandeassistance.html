@@ -1,0 +1,35 @@
+<main class="col-sm-9 col-md-12" ng-controller="AssistanceCtrl">
+  <h1>Demande d'assistance</h1>
+
+  <div ng-if="status==1"> Message envoyé </div>
+  <div ng-if="status==2"> Erreur de traitement, veuillez réessayer dans un moment</div>
+  <div ng-if="status==3"> Chargement en cours </div>
+
+
+  <form ng-submit="submit()" ng-if="status==0">
+
+    <div class="form-group">
+      <label for="formGroupNom">Nom du lieutenant / Name des Leutnants</label>
+      <input type="text" ng-model="data.nomLieut" class="form-control" id="formGroupNom" placeholder="Nom du lieutenant" required>
+    </div>
+    <div class="form-group">
+        <label for="formGroupNom">Nom de la personne désirant une assistance / Name der hilfsbedürftigen Person</label>
+      <input type="text" ng-model="data.nomPers" class="form-control" id="formGroupNom" placeholder="Nom de la personne" required>
+    </div>
+    <div class="form-group">
+      <label for="formGroupNom">Date souhaitée du rendez-vous / gewünschtes Datum für einen Termin</label>
+      <input type="text" ng-model="data.date" class="form-control" id="formGroupNom" placeholder="Date et heure de congé" required>
+    </div>
+    <div class="form-group">
+      <label for="formGroupNom">Raison de la demande / Grund für die Anfrage </label>
+      <input type="text" ng-model="data.raison" class="form-control" id="formGroupNom" placeholder="Raison de la demande" required>
+    </div>
+   <div class="form-group">
+     <label for="formGroupNom">Commentaires / Kommentar</label>
+     <input type="text" class="form-control" id="formGroupNom" ng-model="data.commentaire" placeholder="commentaires">
+   </div>
+
+   <button type="submit" class="btn btn-primary" >Envoyer / Senden</button>
+  </form>
+
+</main>

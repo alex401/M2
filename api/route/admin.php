@@ -3,6 +3,35 @@
 const LANGS = array('fr_FR', 'de_DE', 'en_GB', 'it_IT', 'es_ES', 'pt_PT', 'tr_TR', 'pl_PL', 'ru_RU', 'nl_NL', 'sq_AL', 'bs_BA');
 
 // Return a list of tiers searched by name.
+
+$app->post('/v1/admin/groupreport', function($request,$response) {
+
+
+  $data = $request->getParsedBody();
+  $data = (json_encode($data));
+
+  try{
+    //append to file named year-month
+    $result = setContent("Etat groupe", $data);
+    $mail = mailSender("Etat groupe", $data, "sud.commandement@pci-fr.ch", "sud.aidecommandement@pci-fr.ch");
+
+    //if someting was inserted
+    if($result > 1 & $mail == 0){
+      return $response->withJson(array('status' => 'OK'),200);
+    }
+    else {
+    return $response->withJson(array('status' => 'Erreur pendant commande de'+ $typeCommande),422);
+    }
+  }
+  catch(\Exception $ex){
+    return $response->withJson(array('error' => $ex->getMessage()),422);
+  }
+});
+
+
+
+
+
 $app->get('/v1/admin/tiers/{name}', function ($request, $response, $args) {
 
   $name = $args['name'];

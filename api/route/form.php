@@ -3,6 +3,33 @@
 
 
 
+
+
+$app->post('/v1/form/demandeassistance', function ($request,$response) {
+
+  $typeCommande = "demandeassistance";
+
+   $data = $request->getParsedBody();
+   $data = (json_encode($data));
+
+   try{
+     //append to file named year-month
+     $result = setContent($typeCommande, $data);
+     $mail = mailSender($typeCommande, $data, "sud.commandement@pci-fr.ch", "sud.commandement@pci-fr.ch");
+
+     //if someting was inserted
+     if($result > 1 & $mail == 0){
+       return $response->withJson(array('status' => 'OK'),200);
+     }
+     else {
+     return $response->withJson(array('status' => 'Erreur pendant commande de'+ $typeCommande),422);
+     }
+   }
+   catch(\Exception $ex){
+     return $response->withJson(array('error' => $ex->getMessage()),422);
+   }
+});
+
 //******************************
 // demande congé
 //-----------------
@@ -10,6 +37,11 @@
 //
 //
 //******************************
+
+
+
+
+
 
 $app->post('/v1/form/demandeconge', function ($request,$response) {
 
