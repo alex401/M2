@@ -3,9 +3,9 @@
  */
 
 angular.module('PCIM2')
-    .controller('MasterCtrl', ['$scope','$http', MasterCtrl]);
+    .controller('MasterCtrl', ['$scope', '$translate', '$http', MasterCtrl]);
 
-function MasterCtrl($scope, $http) {
+function MasterCtrl($scope, $translate, $http) {
 
   // ****************************
   // Initialise variables & scope
@@ -19,5 +19,9 @@ function MasterCtrl($scope, $http) {
  // ****************************
 
  Load();
+
+  $scope.changeLanguage = function (langKey) {
+    $translate.use(langKey);
+  };
 
 }

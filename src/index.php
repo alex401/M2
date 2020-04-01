@@ -22,8 +22,13 @@
     <script src="components/tether/dist/js/tether.min.js"></script>
     <script src="components/bootstrap4.4.1/dist/js/bootstrap.min.js"></script>
     <script src="components/angular/dist/angular.js"></script>
+    <script src="components/angular-cookies/dist/angular-cookies.min.js"></script>
     <script src="components/angular-bootstrap/dist/ui-bootstrap-tpls.min.js"></script>
     <script src="components/angular-ui-router/dist/angular-ui-router.js"></script>
+    <script src="components/angular-translate/dist/angular-translate.min.js"></script>
+    <script src="components/angular-translate/dist/angular-translate-storage-cookie/angular-translate-storage-cookie.min.js"></script>
+    <script src="components/angular-translate/dist/angular-translate-storage-local/angular-translate-storage-local.min.js"></script>
+    <script src="components/angular-translate/dist/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
     <script src="js/dashboard.min.js"></script>
 
     <!-- Custom styles for this template -->
@@ -62,6 +67,17 @@
           </div>
           <?php endif; ?>
         </div>
+
+        <div class="navbar-nav">
+          <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Langue</a>
+            <div class="dropdown-menu" aria-labelledby="adminDropdown">
+              <button class="dropdown-item" ng-click="changeLanguage('fr')">FR</button>
+              <button class="dropdown-item" ng-click="changeLanguage('de')">DE</button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </nav>
 
