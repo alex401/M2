@@ -30,6 +30,7 @@
             },
             "name": "Nom",
             "site": "Chantier",
+            "site_selection": "-- Sélection chantier --",
             "delivery_date": "Date de livraison souhaitée",
             "breakfast_nbr": "Nombre de dej",
             "lunch_nbr": "Nombre de dîners",
@@ -43,8 +44,12 @@
             "title" : "Commande de matériel",
             "name": "Nom",
             "site": "Chantier",
+            "site_selection": "-- Sélection chantier --",
             "delivery_date": "Date de livraison souhaitée",
             "hour": "Heures",
+            "hour_morning": "Matin",
+            "hour_midday": "Midi",
+            "hour_evening": "Soir",
             "material_1": "Matériel 1",
             "material_2": "Matériel 2",
             "material_3": "Matériel 3",
@@ -55,9 +60,11 @@
             "title": "Commande de carburant",
             "name": "Nom",
             "site": "Chantier",
+            "site_selection": "-- Sélection chantier --",
             "diesel": "Diesel",
             "gasoline": "Essence",
             "gasoline_2T": "Essence 2T",
+            "liter": "litres",
             "comment": "Commentaire",
             "button_send": "Envoyer"
         },
@@ -65,14 +72,27 @@
             "title": "Commande de transport",
             "name": "Nom",
             "departure": "Départ",
+            "site_selection": "-- Sélection chantier --",
             "destination": "Destination",
             "transport_date": "Date du transport",
             "hour": "Heures",
+            "hour_morning": "Matin",
+            "hour_midday": "Midi",
+            "hour_evening": "Soir",
             "hour_details": "Détails pour heure (si nécessaire)",
             "men_nbr": "Nombre d'hommes",
             "material_to_transport": "Matériel à transporter",
             "comment": "Commentaire",
             "button_send": "Envoyer"
+        },
+        "position": {
+          "title": "Poste",
+          "leadassistance": "Aide au commandement",
+          "kitchen": "Cuisine",
+          "material": "Matériel",
+          "fuel": "Carburant",
+          "transport": "Transport"
         }
     }
+
 }
