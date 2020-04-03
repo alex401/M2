@@ -1,4 +1,22 @@
-var app = angular.module('PCIM2', ['ui.bootstrap', 'ui.router']);
+var app = angular.module('PCIM2', ['ui.bootstrap', 'ui.router', 'ngCookies', 'pascalprecht.translate', 'ngSanitize']);
+
+app.config(['$translateProvider', function ($translateProvider) {
+  // add translation table
+  $translateProvider
+    .useStaticFilesLoader({
+      prefix: '/dist/i18n/locale-',
+      suffix: '.json'
+    })
+    .useSanitizeValueStrategy('sanitizeParameters')
+    .fallbackLanguage('fr')
+    .registerAvailableLanguageKeys(['en', 'de', 'fr'], {
+      'en_*': 'en',
+      'de_*': 'de',
+      'fr_*': 'fr'
+    })
+    .determinePreferredLanguage()
+    .useLocalStorage();
+}]);
 
 app.constant('config', {
   validationStatus: 'attente de validation',

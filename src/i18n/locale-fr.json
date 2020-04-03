@@ -1,0 +1,78 @@
+{
+    "navbar": {
+        "command": "Commande",
+        "admin": "Admin",
+        "language": "Langue"
+    },
+    "menu": {
+        "commands": {
+            "title": "Accès rapide pour commandes",
+            "meal": "Repas",
+            "transport": "Transport",
+            "material": "Materiel",
+            "fuel": "Carburant",
+            "radios": "Radios",
+            "management": "Gestion de commandes",
+            "search": "Recherche de commandes"
+        },
+        "admin": {
+            "title": "Admin",
+            "daily_report": "Rapport journalier (section et SPPAM)"
+        }
+    },
+    "commands": {
+        "meal": {
+            "title" : "Commande de repas",
+            "message": {
+                "success": "Commande numéro <b>{{id}}</b> créée avec succès!<br><i>Note: Vous pouvez utilisez le numéro de commande pour faire une recherche par la suite.</i>",
+                "error": "Erreur de traitement, veuillez réessayer dans un moment",
+                "loading": "Chargement en cours"
+            },
+            "name": "Nom",
+            "site": "Chantier",
+            "delivery_date": "Date de livraison souhaitée",
+            "breakfast_nbr": "Nombre de dej",
+            "lunch_nbr": "Nombre de dîners",
+            "dinner_nbr": "Nombre de soupers",
+            "night_snack_nbr": "Nombre de collations de nuit",
+            "vegetarian_nbr": "Nombre de végétariens",
+            "comment": "Commentaire",
+            "button_send": "Envoyer"
+        },
+        "material": {
+            "title" : "Commande de matériel",
+            "name": "Nom",
+            "site": "Chantier",
+            "delivery_date": "Date de livraison souhaitée",
+            "hour": "Heures",
+            "material_1": "Matériel 1",
+            "material_2": "Matériel 2",
+            "material_3": "Matériel 3",
+            "comment": "Commentaire",
+            "button_send": "Envoyer"
+        },
+        "fuel": {
+            "title": "Commande de carburant",
+            "name": "Nom",
+            "site": "Chantier",
+            "diesel": "Diesel",
+            "gasoline": "Essence",
+            "gasoline_2T": "Essence 2T",
+            "comment": "Commentaire",
+            "button_send": "Envoyer"
+        },
+        "transport": {
+            "title": "Commande de transport",
+            "name": "Nom",
+            "departure": "Départ",
+            "destination": "Destination",
+            "transport_date": "Date du transport",
+            "hour": "Heures",
+            "hour_details": "Détails pour heure (si nécessaire)",
+            "men_nbr": "Nombre d'hommes",
+            "material_to_transport": "Matériel à transporter",
+            "comment": "Commentaire",
+            "button_send": "Envoyer"
+        }
+    }
+}
