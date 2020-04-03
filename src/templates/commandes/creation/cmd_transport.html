@@ -1,56 +1,53 @@
 <main class="col-sm-12 col-md-12" ng-controller="CommandeCreationCtrl">
-  <h1>Commande de transport</h1>
+  <h1>{{'commands.transport.title' | translate}}</h1>
 
-  <div ng-if="status==1">
-    Commande numéro <b>{{id}}</b> créée avec succès!
-    <br><br> <i>Note: Vous pouvez utilisez le numéro de commande pour faire une recherche par la suite.</i>
-  </div>
-  <div ng-if="status==2"> Erreur de traitement, veuillez réessayer dans un moment</div>
-  <div ng-if="status==3"> Chargement en cours </div>
+<div ng-if="status==1" translate="{{'commands.transport.message.success'}}" translate-values="{id : id}"></div>
+<div ng-if="status==2"> {{'commands.transport.message.error' | translate}}</div>
+<div ng-if="status==3">{{'commands.transport.message.loading' | translate}}</div>
 
 
   <form ng-submit="submit('transport')" ng-if="status==0">
     <div class="form-group">
-      <label for="nom">Nom</label>
+      <label for="nom">{{'commands.transport.name' | translate}}</label>
       <input autocomplete="off" type="text" ng-model="form.nom" uib-typeahead="tier.nom for tier in loadTiers($viewValue)" class="form-control" id="nom" placeholder="Nom" required>
     </div>
     <div class="form-group">
-      <label for="chantier">Départ</label>
+      <label for="chantier">{{'commands.transport.departure' | translate}}</label>
       <select class="form-control" id="chantier" ng-model="form.chantier" ng-options="chantier.title as chantier.title for chantier in chantiers" required>
-        <option value="">-- Selection chantier --</option> </select>
+        <option value="">{{'commands.transport.site_selection' | translate}}</option> </select>
    </div>
    <div class="form-group">
-     <label for="destination">Destination</label>
+     <label for="destination">{{'commands.transport.destination' | translate}}</label>
      <input type="text" class="form-control" id="destination" ng-model="form.destination">
    </div>
    <div class="form-group">
-     <label for="date"> Date du transport </label>
+     <label for="date">{{'commands.transport.transport_date' | translate}}</label>
      <input type="text" class="form-control" id="date" ng-model="form.dateLivraison" required>
   </div>
    <div class="form-group">
-     <label for="heures">Heures</label>
+     <label for="heures">{{'commands.transport.hour' | translate}}</label>
      <select class="form-control" id="heures" ng-model="form.heure" required>
-       <option value="matin">matin</option>
-       <option value="midi">midi</option>
-       <option value="soir">soir</option>
+       <option value="matin">{{'commands.transport.hour_morning' | translate}}</option>
+       <option value="midi">{{'commands.transport.hour_midday' | translate}}</option>
+       <option value="soir">{{'commands.transport.hour_evening' | translate}}</option>
    </div>
    <div class="form-group">
-     <label for="details">Détails pour heure (si necessaire)</label>
-     <input type="text" class="form-control" id="details" ng-model="form.detailsHeure" placeholder="Détails pour heure (si necessaire)">
+     <label for="details">{{'commands.transport.hour_details' | translate}}</label>
+     <input type="text" class="form-control" id="details" ng-model="form.detailsHeure" placeholder="{{'commands.transport.hour_details' | translate}}">
    </div>
    <div class="form-group">
-     <label for="hommes">Nombre d'hommes</label>
-     <input type="number" class="form-control" id="hommes" ng-model="form.nbHomme" placeholder="Nombre d'hommes">
+     <label for="hommes">{{'commands.transport.men_nbr' | translate}}</label>
+     <input type="number" class="form-control" id="hommes" ng-model="form.nbHomme" placeholder="{{'commands.transport.men_nbr' | translate}}">
    </div>
    <div class="form-group">
-     <label for="mat">Matériel à transporter</label>
-     <input type="text" class="form-control" id="mat" ng-model="form.matTransport" placeholder="Matériel à transporter">
+     <label for="mat">{{'commands.transport.material_to_transport' | translate}}</label>
+     <input type="text" class="form-control" id="mat" ng-model="form.matTransport" placeholder="{{'commands.transport.material_to_transport' | translate}}">
    </div>
    <div class="form-group">
-     <label for="com">commentaires</label>
-     <input type="text" class="form-control" id="com" ng-model="form.commentaire"  placeholder="commentaires">
+     <label for="com">{{'commands.transport.comment' | translate}}</label>
+     <input type="text" class="form-control" id="com" ng-model="form.commentaire"  placeholder="{{'commands.transport.comment' | translate}}">
    </div>
-   <button type="submit" class="btn btn-primary" >Envoyer</button>
+   <button type="submit" class="btn btn-primary" >{{'commands.transport.button_send' | translate}}</button>
   </form>
 
 </main>
