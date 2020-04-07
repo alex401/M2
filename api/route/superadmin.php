@@ -221,3 +221,51 @@ $app->get('/v1/superadmin/gettemplates', function($request,$response){
        return $response->withJson(array('error' => $ex->getMessage()),422);
      }
  });
+
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Email attribution.
+// ---------------------------------------------------------------------------------------------------------------------
+
+// Return list of parameters.
+$app->get('/v1/superadmin/params', function ($request, $response) {
+
+    $sth = $this->dbm2->prepare("SELECT `key`, `value`, `description` FROM `parameters`");
+
+    try {
+     $sth->execute();
+     $result = $sth->fetchAll();
+
+     return $response->withJson($result, 200);
+
+    } catch(\Exception $ex){
+     return $response->withJson(array('error' => "Failed to get parameters: " . $ex->getMessage()), 422);
+    }
+ });
+
+// Update a param. TOOD only auto validate for now. Rename params + table.
+$app->put('/v1/superadmin/param', function($request, $response, $args) {
+   if ($_SESSION["usertype_utilisateurformulaires"] != "admin") {
+     http_response_code(401);
+     exit();
+   }
+
+   $data = $request->getParsedBody();
+   $data = (json_encode($data));
+   $data = json_decode($data, true);
+
+   $value = $data['value'];
+   $key = $data['key'];
+
+   $sth = $this->dbm2->prepare(
+     "UPDATE `parameters` SET `value` = :value WHERE `parameters`.`key` LIKE '$key'"
+   );
+   $sth->bindParam(':value', $value, PDO::PARAM_STR);
+
+   try {
+     $sth->execute();
+     return $response->withJson($key, 200);
+   } catch(\Exception $ex) {
+     return $response->withJson(array('error' => "Failed to update param with key $key: " . $ex->getMessage()), 422);
+   }
+ });

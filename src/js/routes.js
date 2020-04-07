@@ -175,6 +175,10 @@ angular.module('PCIM2').config(['$stateProvider', '$urlRouterProvider','$locatio
             .state('mails', {
                 url: '/superadmin/mails',
                 templateUrl: 'templates/superadmin/attributionMail.html'
+            })
+            .state('params', {
+                url: '/superadmin/params',
+                templateUrl: 'templates/superadmin/params.html'
             });
     }
 ]);

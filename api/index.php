@@ -100,6 +100,18 @@ function getMail($object,$name) {
   return $result;
 }
 
+function getParameter($pdo, $key) {
+  $sth = $pdo->prepare("SELECT `value` FROM `parameters` WHERE `key` LIKE :key");
+  $sth->bindParam(':key', $key, PDO::PARAM_STR);
+
+  try {
+    $sth->execute();
+    $result = $sth->fetch(PDO::FETCH_BOTH);
+    return $result['value'];
+  } catch (\Exception $ex) {
+    return null;
+  }
+}
 
 //TODO : Format e-mail sent
 function mailSender($mailSubject, $mailContent, $emailFrom, $emailTo) {
