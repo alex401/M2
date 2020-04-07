@@ -49,6 +49,36 @@ $app->post('/v1/commande/{type}', function ($request, $response, $args) {
     return $response->withJson(array('error' => $ex->getMessage()), 422);
   }
 
+  // Check if the commands have to be auto validated and directly go to next status.
+  $auto = getParameter($this->dbm2, 'auto_validate');
+  // TODO c'est sale me semble
+  if($auto == null) {
+    return $response->withJson(array('error' => "Failed to get param auto_validate."), 422);
+  }
+  if($auto == '1') {
+    // TODO find a way to not duplicate this code.
+    try {
+      $this->dbm2->beginTransaction();
+
+      // Update command status.
+      $autoStatus = 'attente de traitement';
+      $sth = $this->dbm2->prepare("UPDATE commandes SET statut = '$autoStatus', remark = 'auto-validated' WHERE rowid = $id;");
+      $sth->execute();
+
+      // Insert new history entry.
+      $sth = $this->dbm2->prepare("INSERT INTO `commandes_hist`(`cmd_id`, `statut`) VALUES ($id, '$autoStatus')");
+      $sth->execute();
+
+      $this->dbm2->commit();
+
+    } catch(\Exception $ex) {
+      $this->dbm2->rollback();
+      return $response->withJson(array('error' => "Failed to update command during auto validation: " . $ex->getMessage()), 422);
+    }
+  }
+
+  return $response->withJson(array('status' => 'OK', 'id' => $id), 200);
+
   // Logging and mailing.
   $mailData = (json_encode($mailData));
   try {
@@ -192,7 +222,7 @@ $app->get('/v1/commande/hist/{id}', function ($request, $response, $args) {
   $sth = $this->dbm2->prepare(
     "SELECT cmd_id, statut, max(date) as date
     FROM `commandes_hist`
-    WHERE cmd_id = $id GROUP BY cmd_id, statut ORDER BY date ASC"
+    WHERE cmd_id = $id GROUP BY cmd_id, statut ORDER BY date ASC, rowid ASC"
   );
 
   try {

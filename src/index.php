@@ -64,6 +64,7 @@
               <a class="dropdown-item" href="#/superadmin/warnings">Messages du commandant</a>
               <a class="dropdown-item" href="#/superadmin/logins">Logins</a>
               <a class="dropdown-item" href="#/superadmin/mails">Attribution des emails</a>
+              <a class="dropdown-item" href="#/superadmin/params">Paramètres généraux</a>
             </div>
           </div>
           <?php endif; ?>
