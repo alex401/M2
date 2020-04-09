@@ -4,7 +4,7 @@ app.config(['$translateProvider', function ($translateProvider) {
   // add translation table
   $translateProvider
     .useStaticFilesLoader({
-      prefix: '/dist/i18n/locale-',
+      prefix: 'i18n/locale-',
       suffix: '.json'
     })
     .useSanitizeValueStrategy('sanitizeParameters')

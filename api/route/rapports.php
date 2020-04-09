@@ -54,7 +54,7 @@ $app->post('/v1/rapport/journalier/assistance', function ($request, $response) {
    $report = buildHtmlReportAssist($meteo, $situation, $vehicules, $matos, $chantier, "rapport-journalier-assistance", $hommes, $missions, $sanitaryStatus, $troopStatus);
 
    if ($email != null) {
-     $mail = mailReport("Rapport du jour ", $report, "sud.commandement@pci-fr.ch", $data['addr']);
+     $mail = mailReport("Rapport du jour ", $report, "sud.commandement@pci-fr.ch", $email['addr']);
      if ($mail != 0) {
        return $response->withJson(array('status' => 'Erreur pendant traitement du rapport '), 422);
      }
