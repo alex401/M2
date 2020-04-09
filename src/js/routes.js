@@ -104,6 +104,10 @@ angular.module('PCIM2').config(['$stateProvider', '$urlRouterProvider','$locatio
                 url: '/rapport/journalier',
                 templateUrl: 'templates/rapport_journalier.php'
             })
+            .state('rapportjournalierassistance', {
+                url: '/rapport/journalier/assistance',
+                templateUrl: 'templates/rapport_journalier_assistance.php'
+            })
             .state('rapportjournalierold', {
                 url: '/rapport/journalierold',
                 templateUrl: 'templates/rapport_journalier_old.php'
