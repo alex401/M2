@@ -1,42 +1,39 @@
 <main class="col-sm-12 col-md-12" ng-controller="CommandeCreationCtrl">
-  <h1>Commande de carburant</h1>
+  <h1>{{'commands.fuel.title' | translate}}</h1>
 
-  <div ng-if="status==1">
-    Commande numéro <b>{{id}}</b> créée avec succès!
-    <br><br> <i>Note: Vous pouvez utilisez le numéro de commande pour faire une recherche par la suite.</i>
-  </div>
-  <div ng-if="status==2"> Erreur de traitement, veuillez réessayer dans un moment</div>
-  <div ng-if="status==3"> Chargement en cours </div>
+    <div ng-if="status==1" translate="{{'commands.fuel.message.success'}}" translate-values="{id : id}"></div>
+  <div ng-if="status==2"> {{'commands.fuel.message.error' | translate}}</div>
+  <div ng-if="status==3">{{'commands.fuel.message.loading' | translate}}</div>
 
 
   <form ng-submit="submit('carburant')" ng-if="status==0">
     <div class="form-group">
-      <label for="nom">Nom</label>
-      <input autocomplete="off" type="text" ng-model="form.nom" uib-typeahead="tier.nom for tier in loadTiers($viewValue)" class="form-control" id="nom" placeholder="Nom" required>
+      <label for="nom">{{'commands.fuel.name' | translate}}</label>
+      <input autocomplete="off" type="text" ng-model="form.nom" uib-typeahead="tier.nom for tier in loadTiers($viewValue)" class="form-control" id="nom" placeholder="{{'commands.fuel.name' | translate}}" required>
     </div>
     <div class="form-group">
-      <label for="chantier">chantier</label>
+      <label for="chantier">{{'commands.fuel.site' | translate}}</label>
       <select class="form-control" id="chantier" ng-model="form.chantier" ng-options="chantier.title as chantier.title for chantier in chantiers" required>
-        <option value="">-- Selection chantier --</option>
+        <option value="">{{'commands.fuel.site_selection' | translate}}</option>
 
    </div>
    <div class="form-group">
-     <label for="diesel">Diesel</label>
-     <input type="number" class="form-control" id="diesel" ng-model="form.nbLitresDiesel" placeholder="Diesel (nbr litres)">
+     <label for="diesel">{{'commands.fuel.diesel' | translate}}</label>
+     <input type="number" class="form-control" id="diesel" ng-model="form.nbLitresDiesel" placeholder="{{'commands.fuel.liter' | translate}}">
    </div>
    <div class="form-group">
-     <label for="essence">Essence</label>
-     <input type="number" class="form-control" id="essence" ng-model="form.nbLitresEssence" placeholder="Essence (nbr litres)">
+     <label for="essence">{{'commands.fuel.gasoline' | translate}}</label>
+     <input type="number" class="form-control" id="essence" ng-model="form.nbLitresEssence" placeholder="{{'commands.fuel.liter' | translate}}">
    </div>
    <div class="form-group">
-     <label for="essence2T">Essence 2T</label>
-     <input type="number" class="form-control" id="essence2T" ng-model="form.nbLitresEssence2T" placeholder="Essence 2T (nbr litres)">
+     <label for="essence2T">{{'commands.fuel.gasoline_2T' | translate}}</label>
+     <input type="number" class="form-control" id="essence2T" ng-model="form.nbLitresEssence2T" placeholder="{{'commands.fuel.liter' | translate}}">
    </div>
    <div class="form-group">
-     <label for="com">commentaires</label>
-     <input type="text" class="form-control" id="com" ng-model="form.commentaire" placeholder="commentaires">
+     <label for="com">{{'commands.fuel.comment' | translate}}</label>
+     <input type="text" class="form-control" id="com" ng-model="form.commentaire" placeholder="{{'commands.fuel.comment' | translate}}">
    </div>
-   <button  type="submit" class="btn btn-primary" >Envoyer</button>
+   <button  type="submit" class="btn btn-primary" >{{'commands.fuel.button_send' | translate}}</button>
 
   </form>
 
