@@ -17,7 +17,8 @@
         },
         "admin": {
             "title": "Admin",
-            "daily_report": "Täglicher Bericht (Abteilung und SPPAM)"
+            "daily_report": "Täglicher Bericht (Abteilung und SPPAM)",
+            "daily_report_assist": "Rapport journalier Assistance"
         }
     },
     "commands": {
@@ -108,5 +109,60 @@
           "fuel": "Treibstoff",
           "transport": "Transport"
         }
+    },
+    "daily_report_assist": {
+        "title": "Rapport journalier assistance",
+        "site": {
+            "title": "Lieu d'engagement",
+            "selection": "-- Sélection lieu engagement --"
+        },
+        "situation": "Situation actuelle",
+        "meteo": {
+            "title": "Météo",
+            "description": "Description",
+            "city": "Ville"
+        },
+        "means": {
+            "title": "Moyens engagés",
+            "men": "Hommes",
+            "rank": "Choisissez un grade",
+            "resp": "Nom responsable",
+            "amount": "Nombre de soldats",
+            "add_field": "Ajouter un champ"
+        },
+        "vehicles": {
+            "title": "Vehicules",
+            "amount": "Nombre",
+            "type": "Type",
+            "add_field": "Ajouter un champ"
+        },
+        "material": {
+            "title": "Matériel",
+            "amount": "Nombre",
+            "description": "Description / nom",
+            "add_field": "Ajouter un champ"
+        },
+        "missions": {
+            "title": "Missions",
+            "by": "Réalisé par:",
+            "task": "Tâche",
+            "description": "Description",
+            "location": "Lieu",
+            "add_field": "Ajouter un champ"
+        },
+        "sanitaryStatus": {
+            "title": "État sanitaire",
+            "comment": "Commentaire"
+        },
+        "troopStatus": {
+            "title": "État des troupes",
+            "comment": "Commentaire"
+        },
+        "email": {
+            "title": "Email",
+            "zone": "-- Zone --",
+            "note": "Le rapport sera envoyer à l'adresse e-mail correspondante à la zone choisie."
+        },
+        "send": "Envoyer"
     }
 }
