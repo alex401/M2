@@ -21,5 +21,5 @@ function logout() {
 }
 
 logout();
-header("Location:" . INTRANET_ADRESS . "m/login/index.php");
+header("Location:index.php");
 ?>

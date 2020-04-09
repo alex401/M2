@@ -78,6 +78,7 @@
               <button class="dropdown-item" ng-click="changeLanguage('de')">DE</button>
             </div>
           </div>
+          <a class="nav-item nav-link" href="login/logout.php">Logout</a>
         </div>
 
       </div>
