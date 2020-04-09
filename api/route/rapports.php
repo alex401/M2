@@ -49,18 +49,25 @@ $app->post('/v1/rapport/journalier/assistance', function ($request, $response) {
    $matos = $data['matos'];
    $vehicules = $data['vehicules'];
    $meteo = $data['meteo'];
+   $email = $data['email'];
 
    $report = buildHtmlReportAssist($meteo, $situation, $vehicules, $matos, $chantier, "rapport-journalier-assistance", $hommes, $missions, $sanitaryStatus, $troopStatus);
-   //$mail = mailReport("Rapport du jour ", $report, "sud.commandement@pci-fr.ch", "sud.commandement@pci-fr.ch");
+
+   if ($email != null) {
+     $mail = mailReport("Rapport du jour ", $report, "sud.commandement@pci-fr.ch", $data['addr']);
+     if ($mail != 0) {
+       return $response->withJson(array('status' => 'Erreur pendant traitement du rapport '), 422);
+     }
+   }
 
    try{
-     if($report != null){
+     if($report != null) {
        // $filejson = "log/".date("Ymd")."-formation.log";
        // file_put_contents("$filejson",$dataT, FILE_APPEND);
        return $response->withJson(array('status' => 'OK', 'url' => $report),200);
      }
      else {
-     return $response->withJson(array('status' => 'Erreur pendant traitement du rapport '),422);
+       return $response->withJson(array('status' => 'Erreur pendant traitement du rapport '),422);
      }
    }
    catch(\Exception $ex){

@@ -77,8 +77,6 @@ $app->post('/v1/commande/{type}', function ($request, $response, $args) {
     }
   }
 
-  return $response->withJson(array('status' => 'OK', 'id' => $id), 200);
-
   // Logging and mailing.
   $mailData = (json_encode($mailData));
   try {

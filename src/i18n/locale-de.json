@@ -158,6 +158,11 @@
             "title": "État des troupes",
             "comment": "Commentaire"
         },
+        "email": {
+            "title": "Email",
+            "zone": "-- Zone --",
+            "note": "Le rapport sera envoyer à l'adresse e-mail correspondante à la zone choisie."
+        },
         "send": "Envoyer"
     }
 }

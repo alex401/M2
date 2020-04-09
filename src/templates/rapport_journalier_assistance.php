@@ -168,6 +168,17 @@
 
         <br>
 
+        <h3>{{'daily_report_assist.email.title' | translate}}</h3>
+        <fieldset>
+          <select id="email" ng-model="rapport.email" ng-options="email as email.label for email in zoneEmails">
+            <option value="">{{'daily_report_assist.email.zone' | translate}}</option>
+          </select>
+          <br>
+          <span>{{'daily_report_assist.email.note' | translate}}</span>
+        </fieldset>
+
+        <br>
+
         <button ng-click="submit()" type="submit" class="btn btn-primary">{{'daily_report_assist.send' | translate}}</button>
 
 </form>

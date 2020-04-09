@@ -60,6 +60,7 @@ function RapportAssistanceCtrl($scope, $http) {
   var Load = function () {
     loadChantiers();
     loadTasks();
+    loadZoneEmails();
   }
 
   // ****************************
@@ -86,6 +87,14 @@ function RapportAssistanceCtrl($scope, $http) {
       {"id": 4, "label": "Logistique"},
       {"id": 5, "label": "Cuisine"}
     ];
+  }
+
+  var loadZoneEmails = function() {
+    $scope.zoneEmails = [
+      {"id": 0, "label": "Zone A", "addr": "zone_a@pci-fr.ch"},
+      {"id": 1, "label": "Zone B", "addr": "zone_b@pci-fr.ch"},
+      {"id": 2, "label": "Zone C", "addr": "zone_c@pci-fr.ch"}
+    ]
   }
 
   $scope.submit = function () {
