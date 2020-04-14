@@ -129,15 +129,15 @@
           <div class="btn-group btn-group-toggle mb-3" data-toggle="buttons">
             <label class="btn btn-outline-success">
               <input ng-change="onChange($index)" type="radio" ng-model="rapport.sanitaryStatus.status" value="Bon">
-              Bon
+              {{'daily_report_assist.sanitaryStatus.good' | translate}}
             </label>
             <label class="btn btn-outline-warning">
               <input ng-change="onChange($index)" type="radio" ng-model="rapport.sanitaryStatus.status"  value="Moyen">
-              Moyen
+              {{'daily_report_assist.sanitaryStatus.mean' | translate}}
             </label>
             <label class="btn btn-outline-danger">
               <input ng-change="onChange($index)" type="radio" ng-model="rapport.sanitaryStatus.status" value="Mauvais">
-              Mauvais
+              {{'daily_report_assist.sanitaryStatus.bad' | translate}}
             </label>
           </div>
           <br>
@@ -151,15 +151,15 @@
           <div class="btn-group btn-group-toggle mb-3" data-toggle="buttons">
             <label class="btn btn-outline-success">
               <input ng-change="onChange($index)" type="radio" ng-model="rapport.troopStatus.status" value="Bon">
-              Bon
+              {{'daily_report_assist.troopStatus.good' | translate}}
             </label>
             <label class="btn btn-outline-warning">
               <input ng-change="onChange($index)" type="radio" ng-model="rapport.troopStatus.status"  value="Moyen">
-              Moyen
+              {{'daily_report_assist.troopStatus.mean' | translate}}
             </label>
             <label class="btn btn-outline-danger">
               <input ng-change="onChange($index)" type="radio" ng-model="rapport.troopStatus.status" value="Mauvais">
-              Mauvais
+              {{'daily_report_assist.troopStatus.bad' | translate}}
             </label>
           </div>
           <br>
