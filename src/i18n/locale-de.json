@@ -18,7 +18,7 @@
         "admin": {
             "title": "Admin",
             "daily_report": "Täglicher Bericht (Abteilung und SPPAM)",
-            "daily_report_assist": "Rapport journalier Assistance"
+            "daily_report_assist": "Tagesbericht Unterstützung"
         }
     },
     "commands": {
@@ -111,7 +111,7 @@
         }
     },
     "daily_report_assist": {
-        "title": "Tagesbericht Unterstützung",
+        "title": "Tagesbericht Betreu",
         "site": {
             "title": "Arbeitsort",
             "selection": "-- Auswahl Arbeitsort --"
@@ -131,7 +131,19 @@
         "means": {
             "title": "Verwendete Mittel",
             "men": "Männer",
-            "rank": "Auswählen Sie einen Grad",
+            "rank": {
+              "choose":"Auswählen Sie einen Grad",
+              "std":"Soldat",
+              "app":"Gefreiter",
+              "cpl":"Korporal",
+              "sgt":"Wachtmeister",
+              "sgtm":"Feldweibel",
+              "four":"Fourier",
+              "lt":"Leutnant",
+              "plt":"Oberleutnant",
+              "cap":"Hauptmann",
+              "maj":"Major"
+            },
             "resp": "Namen der verantwortliche Person",
             "amount": "Anzahl Männer",
             "add_field": "Feld hinzufügen"
@@ -150,7 +162,23 @@
         },
         "missions": {
             "title": "Mission",
-            "by": "Erfüllt von:",
+            "by": {
+              "title":"Erfüllt von:",
+              "e-m":"Stab",
+              "AICrens":"FU 1 - Lage",
+              "AICmed":"FU 1 - Medien",
+              "AICchanc":"FU 1 - Kanzlerei",
+              "AICtele":"FU 2 - Telematik",
+              "AICinfo":"FU 2 - Informatik",
+              "circ":"Verkehr",
+              "logfour":"Logistik - Fourier",
+              "loginfra":"Logistik - Infrastruktur",
+              "logsub":"Logistik - Lebensunterhalt",
+              "logmat":"Logistik - Material",
+              "logtrans":"Logistik - Transport",
+              "Assist":"Betreu",
+              "Appui":"Unterstützung"
+            },
             "task": "Aufgabe",
             "description": "Beschreibung",
             "location": "Ort",
@@ -196,7 +224,19 @@
         "means": {
             "title": "Verwendete Mittel",
             "men": "Männer",
-            "rank": "Auswählen Sie einen Grad",
+            "rank": {
+              "choose":"Auswählen Sie einen Grad",
+              "std":"Soldat",
+              "app":"Gefreiter",
+              "cpl":"Korporal",
+              "sgt":"Wachtmeister",
+              "sgtm":"Feldweibel",
+              "four":"Fourier",
+              "lt":"Leutnant",
+              "plt":"Oberleutnant",
+              "cap":"Hauptmann",
+              "maj":"Major"
+            },
             "resp": "Namen der verantwortliche Person",
             "amount": "Anzahl Männer",
             "add_field": "Feld hinzufügen"
@@ -215,7 +255,23 @@
         },
         "missions": {
             "title": "Mission",
-            "by": "Erfüllt von:",
+            "by": {
+              "title":"Erfüllt von:",
+              "e-m":"Stab",
+              "AICrens":"FU 1 - Lage",
+              "AICmed":"FU 1 - Medien",
+              "AICchanc":"FU 1 - Kanzlerei",
+              "AICtele":"FU 2 - Telematik",
+              "AICinfo":"FU 2 - Informatik",
+              "circ":"Verkehr",
+              "logfour":"Logistik - Fourier",
+              "loginfra":"Logistik - Infrastruktur",
+              "logsub":"Logistik - Lebensunterhalt",
+              "logmat":"Logistik - Material",
+              "logtrans":"Logistik - Transport",
+              "Assist":"Betreu",
+              "Appui":"Unterstützung"
+            },
             "progress": "Fortschritt",
             "description": "Beschreibung",
             "location": "Ort",

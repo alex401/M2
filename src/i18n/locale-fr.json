@@ -116,7 +116,19 @@
         "means": {
             "title": "Moyens engagés",
             "men": "Hommes",
-            "rank": "Choisissez un grade",
+            "rank": {
+              "choose":"Choisissez un grade",
+              "std":"soldat",
+              "app":"appointé",
+              "cpl":"caporal",
+              "sgt":"sergent",
+              "sgtm":"sergent-major",
+              "four":"fourrier",
+              "lt":"lieutenant",
+              "plt":"premier-lieutenant",
+              "cap":"capitaine",
+              "maj":"major"
+            },
             "resp": "Nom responsable",
             "amount": "Nombre de soldats",
             "add_field": "Ajouter un champ"
@@ -135,7 +147,23 @@
         },
         "missions": {
             "title": "Missions",
-            "by": "Réalisé par:",
+            "by": {
+              "title":"Réalisé par:",
+              "e-m":"Etat-Major",
+              "AICrens":"AIC 1 - Renseignement",
+              "AICmed":"AIC 1 - Média",
+              "AICchanc":"AIC 1 - Chancellerie",
+              "AICtele":"AIC 2 - Télématique",
+              "AICinfo":"AIC 2 - Informatique",
+              "circ":"Circulation",
+              "logfour":"Logistique - Fourrier",
+              "loginfra":"Logistique - Infrastructure",
+              "logsub":"Logistique - Subsistance",
+              "logmat":"Logistique - Matériel",
+              "logtrans":"Logistique - Transport",
+              "Assist":"Assistance",
+              "Appui":"Appui"
+            },
             "task": "Tâche",
             "description": "Description",
             "location": "Lieu",
@@ -181,7 +209,19 @@
         "means": {
             "title": "Moyens engagés",
             "men": "Hommes",
-            "rank": "Choisissez un grade",
+            "rank": {
+              "choose":"Choisissez un grade",
+              "std":"soldat",
+              "app":"appointé",
+              "cpl":"caporal",
+              "sgt":"sergent",
+              "sgtm":"sergent-major",
+              "four":"fourrier",
+              "lt":"lieutenant",
+              "plt":"premier-lieutenant",
+              "cap":"capitaine",
+              "maj":"major"
+            },
             "resp": "Nom responsable",
             "amount": "Nombre de soldats",
             "add_field": "Ajouter un champ"
@@ -200,7 +240,23 @@
         },
         "missions": {
             "title": "Missions",
-            "by": "Réalisé par:",
+            "by": {
+              "title":"Réalisé par:",
+              "e-m":"Etat-Major",
+              "AICrens":"AIC 1 - Renseignement",
+              "AICmed":"AIC 1 - Média",
+              "AICchanc":"AIC 1 - Chancellerie",
+              "AICtele":"AIC 2 - Télématique",
+              "AICinfo":"AIC 2 - Informatique",
+              "circ":"Circulation",
+              "logfour":"Logistique - Fourrier",
+              "loginfra":"Logistique - Infrastructure",
+              "logsub":"Logistique - Subsistance",
+              "logmat":"Logistique - Matériel",
+              "logtrans":"Logistique - Transport",
+              "Assist":"Assistance",
+              "Appui":"Appui"
+            },
             "progress": "Avancement",
             "description": "Description",
             "location": "Lieu",
