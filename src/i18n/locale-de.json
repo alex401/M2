@@ -111,58 +111,122 @@
         }
     },
     "daily_report_assist": {
-        "title": "Rapport journalier assistance",
+        "title": "Tagesbericht Unterstützung",
         "site": {
-            "title": "Lieu d'engagement",
-            "selection": "-- Sélection lieu engagement --"
+            "title": "Arbeitsort",
+            "selection": "-- Auswahl Arbeitsort --"
         },
-        "situation": "Situation actuelle",
+        "situation": "Aktuelle Situation",
         "meteo": {
-            "title": "Météo",
-            "description": "Description",
-            "city": "Ville"
+            "title": "Wetter",
+            "showers": "Regenguss",
+            "lightshowers": "Kleinen Regenguss",
+            "stormy": "Stürmisch",
+            "cloudy": "bewölkt",
+            "cloudsunny": "wenig bewölkt",
+            "sunny": "sonnig",
+            "description": "Beschreibung",
+            "city": "Stadt"
         },
         "means": {
-            "title": "Moyens engagés",
-            "men": "Hommes",
-            "rank": "Choisissez un grade",
-            "resp": "Nom responsable",
-            "amount": "Nombre de soldats",
-            "add_field": "Ajouter un champ"
+            "title": "Verwendete Mittel",
+            "men": "Männer",
+            "rank": "Auswählen Sie einen Grad",
+            "resp": "Namen der verantwortliche Person",
+            "amount": "Anzahl Männer",
+            "add_field": "Feld hinzufügen"
         },
         "vehicles": {
-            "title": "Vehicules",
-            "amount": "Nombre",
-            "type": "Type",
-            "add_field": "Ajouter un champ"
+            "title": "Transportmitteln",
+            "amount": "Anzahl",
+            "type": "Typ",
+            "add_field": "Feld hinzufügen"
         },
         "material": {
-            "title": "Matériel",
-            "amount": "Nombre",
-            "description": "Description / nom",
-            "add_field": "Ajouter un champ"
+            "title": "Material",
+            "amount": "Anzahl",
+            "description": "Beschreibung",
+            "add_field": "Feld hinzufügen"
         },
         "missions": {
-            "title": "Missions",
-            "by": "Réalisé par:",
-            "task": "Tâche",
-            "description": "Description",
-            "location": "Lieu",
-            "add_field": "Ajouter un champ"
+            "title": "Mission",
+            "by": "Erfüllt von:",
+            "task": "Aufgabe",
+            "description": "Beschreibung",
+            "location": "Ort",
+            "add_field": "Feld hinzufügen"
         },
         "sanitaryStatus": {
-            "title": "État sanitaire",
-            "comment": "Commentaire"
+            "title": "Gesundheitszustand",
+            "good":"Gut",
+            "mean":"Mittelmässig",
+            "bad":"Schlecht",
+            "comment": "Kommentar"
         },
         "troopStatus": {
-            "title": "État des troupes",
-            "comment": "Commentaire"
+            "title": "Truppenzustand",
+            "good":"Gut",
+            "mean":"Mittelmässig",
+            "bad":"Schlecht",
+            "comment": "Kommentar"
         },
         "email": {
             "title": "Email",
-            "zone": "-- Zone --",
-            "note": "Le rapport sera envoyer à l'adresse e-mail correspondante à la zone choisie."
+            "zone": "-- Gegend --",
+            "note": "Der Bericht wird an der Mailadresse der Gegend gesendet."
         },
-        "send": "Envoyer"
+        "send": "Senden"
+    },
+    "daily_report": {
+        "title": "Tagesbericht",
+        "formation": "Truppe",
+        "selectFormation": "-- Wahl Truppe --",
+        "situation": "Aktuelle situation",
+        "meteo": {
+            "title": "Wetter",
+            "showers": "Regenguss",
+            "lightshowers": "Kleinen Regenguss",
+            "stormy": "Stürmisch",
+            "cloudy": "bewölkt",
+            "cloudsunny": "wenig bewölkt",
+            "sunny": "sonnig",
+            "description": "Beschreibung",
+            "city": "Stadt"
+        },
+        "means": {
+            "title": "Verwendete Mittel",
+            "men": "Männer",
+            "rank": "Auswählen Sie einen Grad",
+            "resp": "Namen der verantwortliche Person",
+            "amount": "Anzahl Männer",
+            "add_field": "Feld hinzufügen"
+        },
+        "vehicles": {
+            "title": "Transportmitteln",
+            "amount": "Anzahl",
+            "type": "Typ",
+            "add_field": "Feld hinzufügen"
+        },
+        "material": {
+            "title": "Material",
+            "amount": "Anzahl",
+            "description": "Beschreibung",
+            "add_field": "Feld hinzufügen"
+        },
+        "missions": {
+            "title": "Mission",
+            "by": "Erfüllt von:",
+            "progress": "Fortschritt",
+            "description": "Beschreibung",
+            "location": "Ort",
+            "add_field": "Feld hinzufügen"
+        },
+        "missionsTransmises": {
+          "title": "Übertragten Aufträge",
+          "description": "Beschreibung",
+          "location": "Ort",
+          "add_field": "Feld hinzufügen"
+        },
+        "send": "Senden"
     }
 }

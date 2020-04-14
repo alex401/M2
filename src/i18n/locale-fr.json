@@ -104,6 +104,12 @@
         "situation": "Situation actuelle",
         "meteo": {
             "title": "Météo",
+            "showers": "averses / pluie forte",
+            "lightshowers": "rares averses",
+            "stormy": "orageux",
+            "cloudy": "nuageux / couvert",
+            "cloudsunny": "peu nuageux",
+            "sunny": "ensoleillé",
             "description": "Description",
             "city": "Ville"
         },
@@ -137,16 +143,74 @@
         },
         "sanitaryStatus": {
             "title": "État sanitaire",
+            "good":"Bon",
+            "mean":"Moyen",
+            "bad":"Mauvais",
             "comment": "Commentaire"
         },
         "troopStatus": {
             "title": "État des troupes",
+            "good":"Bon",
+            "mean":"Moyen",
+            "bad":"Mauvais",
             "comment": "Commentaire"
         },
         "email": {
             "title": "Email",
             "zone": "-- Zone --",
             "note": "Le rapport sera envoyer à l'adresse e-mail correspondante à la zone choisie."
+        },
+        "send": "Envoyer"
+    },
+    "daily_report": {
+        "title": "Rapport journalier assistance",
+        "formation": "Formation",
+        "selectFormation": "-- Sélection formation--",
+        "situation": "Situation actuelle",
+        "meteo": {
+            "title": "Météo",
+            "showers": "averses / pluie forte",
+            "lightshowers": "rares averses",
+            "stormy": "orageux",
+            "cloudy": "nuageux / couvert",
+            "cloudsunny": "peu nuageux",
+            "sunny": "ensoleillé",
+            "description": "Description",
+            "city": "Ville"
+        },
+        "means": {
+            "title": "Moyens engagés",
+            "men": "Hommes",
+            "rank": "Choisissez un grade",
+            "resp": "Nom responsable",
+            "amount": "Nombre de soldats",
+            "add_field": "Ajouter un champ"
+        },
+        "vehicles": {
+            "title": "Vehicules",
+            "amount": "Nombre",
+            "type": "Type",
+            "add_field": "Ajouter un champ"
+        },
+        "material": {
+            "title": "Matériel",
+            "amount": "Nombre",
+            "description": "Description / nom",
+            "add_field": "Ajouter un champ"
+        },
+        "missions": {
+            "title": "Missions",
+            "by": "Réalisé par:",
+            "progress": "Avancement",
+            "description": "Description",
+            "location": "Lieu",
+            "add_field": "Ajouter un champ"
+        },
+        "missionsTransmises": {
+          "title": "Missions transmises",
+          "description": "Description",
+          "location": "Lieu",
+          "add_field": "Ajouter un champ"
         },
         "send": "Envoyer"
     }
