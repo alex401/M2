@@ -19,9 +19,53 @@
             "title": "Admin",
             "daily_report": "Rapport journalier (section et SPPAM)",
             "daily_report_assist": "Rapport journalier Assistance"
+        },
+        "search": {
+          "title":"Recherche de commande",
+          "number":"Numéro de commande",
+          "client":"Client",
+          "type":"Type de commande",
+          "date":"Date",
+          "site":"Chantier",
+          "selectionsite":"-- Sélection chantier--",
+          "showDelivered":"Afficher commandes livrées",
+          "showRefused":"Afficher commandes refusée",
+          "showCanceled":"Afficher commandes annulées",
+          "status":"statut"
         }
     },
     "commands": {
+      "radios": {
+          "title" : "Commande de radios",
+          "message": {
+              "success": "Commande envoyée!",
+              "error": "Erreur de traitement, veuillez réessayer plus tard.",
+              "loading": "Chargement en cours"
+          },
+          "name": "Nom",
+          "rank": {
+            "title":"Grade",
+            "choose":"Choisissez un grade",
+            "h-p":"Hors PCiste",
+            "std":"soldat",
+            "app":"appointé",
+            "cpl":"caporal",
+            "sgt":"sergent",
+            "sgtm":"sergent-major",
+            "four":"fourrier",
+            "lt":"lieutenant",
+            "plt":"premier-lieutenant",
+            "cap":"capitaine",
+            "maj":"major"
+          },
+          "section": "Section",
+          "from": "Depuis le",
+          "to": "Jusqu'au",
+          "amount":"Nombre",
+          "phone":"Numéro de téléphone",
+          "comment": "Commentaire",
+          "button_send": "Envoyer"
+      },
         "meal": {
             "title" : "Commande de repas",
             "message": {

@@ -19,9 +19,53 @@
             "title": "Admin",
             "daily_report": "Täglicher Bericht (Abteilung und SPPAM)",
             "daily_report_assist": "Tagesbericht Unterstützung"
+        },
+        "search": {
+          "title":"Bestellungssuche",
+          "number":"Bestellungsnummer",
+          "client":"Kunde",
+          "type":"Bestellungstyp",
+          "date":"Datum",
+          "site":"Baustelle",
+          "selectionsite":"-- Auswahl der Baustelle --",
+          "showDelivered":"Ausgelieferte Bestellungen anzeigen",
+          "showRefused":"Abgelehnte Bestellungen anzeigen",
+          "showCanceled":"Annullierte Bestellungen anzeigen",
+          "status":"Status"
         }
     },
     "commands": {
+      "radios": {
+          "title" : "Radiobestellung",
+          "message": {
+              "success": "Bestellung gesendet!",
+              "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+              "loading": "Ladevorgang läuft"
+          },
+          "name": "Name",
+          "rank": {
+            "title":"Grad",
+            "choose":"Auswählen Sie einen Grad",
+            "h-p":"Nicht aus dem Zivilschutz",
+            "std":"Soldat",
+            "app":"Gefreiter",
+            "cpl":"Korporal",
+            "sgt":"Wachtmeister",
+            "sgtm":"Feldweibel",
+            "four":"Fourier",
+            "lt":"Leutnant",
+            "plt":"Oberleutnant",
+            "cap":"Hauptmann",
+            "maj":"Major"
+          },
+          "section": "Abteilung",
+          "from": "Ab",
+          "to": "Bis",
+          "amount":"Anzahl",
+          "phone":"Telefonnummer",
+          "comment": "Kommentar",
+          "button_send": "Senden"
+      },
         "meal": {
             "title" : "Essensbestellung",
             "message": {
