@@ -153,7 +153,7 @@ function EntreeServiceCtrl($scope, $http) {
 
 
   $scope.submit = function (personne) {
-
+    var dataSent = {'Nom': $scope.personne.nom, 'Adresse': $scope.personne.address, 'Zip': $scope.personne.zip, 'Ville': $scope.personne.town, 'Mail': $scope.personne.email, 'Téléphone': $scope.personne.phone}
     //upload
     $http({
       method: 'POST',
@@ -162,7 +162,7 @@ function EntreeServiceCtrl($scope, $http) {
       data: {
         lieu: $scope.personne.town, adresse: $scope.personne.address, zip: $scope.personne.zip,
         tagged: $scope.tagged, mail: $scope.personne.email, phone: $scope.personne.phone,
-        urgence: $scope.personne.extra.nb, parent: $scope.personne.extra.lp
+        urgence: $scope.personne.extra.nb, parent: $scope.personne.extra.lp, message: dataSent
       }
     }).then(function successCallback() {
       $scope.status = 1;

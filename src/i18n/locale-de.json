@@ -14,7 +14,9 @@
             "radios": "Radios",
             "management": "Auftragsmanagement",
             "search": "Auftragsuche"
+
         },
+        "competences": "Aktualisierung persönlicher Daten",
         "admin": {
             "title": "Admin",
             "daily_report": "Täglicher Bericht (Abteilung und SPPAM)",
@@ -328,5 +330,23 @@
           "add_field": "Feld hinzufügen"
         },
         "send": "Senden"
+    },
+    "competences": {
+      "message": {
+        "success": "Gesendet",
+        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+        "loading": "Ladevorgang läuft"
+      },
+      "search": "Suche der Person:",
+      "name":"Name",
+      "address":"Adresse",
+      "zip":"PLZ",
+      "location":"Stadt",
+      "mail":"e-mail",
+      "phone":"Telefonnummer",
+      "emergency":"Notfallkontaktnummer",
+      "relationship":"Beziehung",
+      "selectRelation":"-- Auswahl Beziehung --",
+      "send":"Senden"
     }
 }
