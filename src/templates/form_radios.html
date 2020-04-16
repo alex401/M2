@@ -1,68 +1,66 @@
 <main class="col-sm-12 col-md-12" ng-controller="FormCtrl">
-  <h1>Commande de radios</h1>
+  <h1>{{'commands.radios.title' | translate}}</h1>
 
   <div ng-if="status==1">
-    Commande numéro <b>{{id}}</b> créée avec succès!
-      <br><br> <i>Note: Vous pouvez utilisez le numéro de commande pour faire une recherche par la suite.</i>
-    </div>
-  <div ng-if="status==2"> Erreur de traitement, veuillez réessayer dans un moment</div>
-  <div ng-if="status==3"> Chargement en cours </div>
+    {{'commands.radios.message.success' | translate}}</div>
+  <div ng-if="status==2"> {{'commands.radios.message.error' | translate}}</div>
+  <div ng-if="status==3"> {{'commands.radios.message.loading' | translate}} </div>
 
 
   <form ng-submit="submit('radios')" ng-if="status==0">
 
     <div class="form-group">
-      <label for="formGroupNom"> Nom </label>
+      <label for="formGroupNom"> {{'commands.radios.name' | translate}} </label>
       <input type="text" ng-model="form.nom" class="form-control" id="formGroupNom" required>
     </div>
     <div class="form-group">
-      <label for="formGroupGrade"> Grade </label>
+      <label for="formGroupGrade"> {{'commands.radios.rank.title' | translate}} </label>
       <select class="form-control" id="formGroupGrade" ng-model="form.grade" required>
-        <option value=''></option>
-        <option value='Hors-PC'>Non-PCiste</option>
-        <option value='Soldat'>Std - Soldat</option>
-        <option value='Appointe'>App - Appointé</option>
-        <option value='Caporal'>Cpl - Caporal</option>
-        <option value='Sergent'>Sgt - Sergent</option>
-        <option value='Sergent-major'>Sgtm - Sergent-major</option>
-        <option value='Fourrier'>Four - Fourrier</option>
-        <option value='Lieutenant'>Lt - Lieutenant</option>
-        <option value='Premier-Lieutenant'>PLt - Premier-Lieutenant</option>
-        <option value='Capitaine'>Cap - Capitaine</option>
-        <option value='Major'>Maj - Major</option>
+        <option value=''>{{'commands.radios.rank.choose' | translate}}</option>
+        <option value='Hors-PC'>{{'commands.radios.rank.h-p' | translate}}</option>
+        <option value='Soldat'>{{'commands.radios.rank.std' | translate}}</option>
+        <option value='Appointe'>{{'commands.radios.rank.app' | translate}}</option>
+        <option value='Caporal'>{{'commands.radios.rank.cpl' | translate}}</option>
+        <option value='Sergent'>{{'commands.radios.rank.sgt' | translate}}</option>
+        <option value='Sergent-major'>{{'commands.radios.means.rank.sgtm' | translate}}</option>
+        <option value='Fourrier'>{{'commands.radios.rank.four' | translate}}</option>
+        <option value='Lieutenant'>{{'commands.radios.rank.lt' | translate}}</option>
+        <option value='Premier-Lieutenant'>{{'commands.radios.rank.plt' | translate}}</option>
+        <option value='Capitaine'>{{'commands.radios.rank.cap' | translate}}</option>
+        <option value='Major'>{{'commands.radios.rank.maj' | translate}}</option>
       </select>
     </div>
 
     <div class="form-group">
-      <label for="formGroupSection"> Section </label>
+      <label for="formGroupSection"> {{'commands.radios.section' | translate}} </label>
       <input type="text" ng-model="form.section" class="form-control" id="formGroupSection" required>
     </div>
 
    <div class="form-group">
-     <label for="formGroupDate"> Depuis le </label>
+     <label for="formGroupDate">{{'commands.radios.from' | translate}}</label>
      <input type="text" class="form-control" id="formGroupDate" ng-model="form.dateDe" required>
    </div>
    <div class="form-group">
-     <label for="formGroupDate"> Jusqu'au </label>
+     <label for="formGroupDate"> {{'commands.radios.to' | translate}} </label>
      <input type="text" class="form-control" id="formGroupDate" ng-model="form.dateA" required>
    </div>
 
    <div class="form-group">
-     <label for="fromGroupRadio"> Nombre de radios </label>
+     <label for="fromGroupRadio"> {{'commands.radios.amount' | translate}} </label>
      <input id="formGroupRadio" class="form-control" type="number" ng-model="form.nombre">
    </div>
 
    <div class="form-group">
-      <label for="formGroupTel"> Téléphone </label>
+      <label for="formGroupTel"> {{'commands.radios.phone' | translate}} </label>
       <input class="form-control" id="formGroupTel" type="text" ng-model="form.tel">
     </div>
 
      <div class="form-group">
-       <label for="formGroupCommentaire"> Commentaires </label>
+       <label for="formGroupCommentaire"> {{'commands.radios.comment' | translate}} </label>
        <input type="text" class="form-control" id="formGroupCommentaire" ng-model="form.commentaires">
      </div>
 
-   <button type="submit" class="btn btn-primary">Envoyer</button>
+   <button type="submit" class="btn btn-primary">{{'commands.radios.button_send' | translate}}</button>
 
   </form>
 

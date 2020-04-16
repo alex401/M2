@@ -1,14 +1,14 @@
 <main class="col-sm-12 col-md-12" ng-controller="CommandeSearchCtrl">
 <div class="row">
   <div class="col-md-6">
-  <h1>Recherche de commande</h1>
+  <h1>{{'menu.search.title' | translate}}</h1>
 
   </div>
 </div>
 <form class="simple-form">
 <div class="row">
   <div class="col-md-2">
-    <label for="id">Numéro de commande</label>
+    <label for="id">{{'menu.search.number' | translate}}</label>
   </div>
   <div class="col-md-2">
     <input id="id" type="text" ng-model="command.id" name="" value="">
@@ -16,7 +16,7 @@
 </div>
 <div class="row">
   <div class="col-md-2">
-    <label for="client">Client</label>
+    <label for="client">{{'menu.search.client' | translate}}</label>
   </div>
   <div class="col-md-2">
     <input id="client" type="text" ng-model="command.client" name="" value="">
@@ -24,7 +24,7 @@
 </div>
 <div class="row">
   <div class="col-md-2">
-    <label for="type">Type de commande (repas, transport, ...)</label>
+    <label for="type">{{'menu.search.type' | translate}}</label>
   </div>
   <div class="col-md-2">
     <input id="type" type="text" ng-model="command.type" name="" value="">
@@ -32,7 +32,7 @@
 </div>
 <div class="row">
   <div class="col-md-2">
-    <label for="date">Date (ex: 2019-04-28)</label>
+    <label for="date">{{'menu.search.date' | translate}}</label>
   </div>
   <div class="col-md-2">
     <input id="date" type="text" ng-model="command.date" name="" value="">
@@ -40,17 +40,17 @@
 </div>
 <div class="row">
   <div class="col-md-2">
-    <label for="chantier">Chantier</label>
+    <label for="chantier">{{'menu.search.site' | translate}}</label>
   </div>
   <div class="col-md-2">
     <select class="form-control" id="chantier" ng-model="chantier" ng-options="chantier.title as chantier.title for chantier in chantiers">
-      <option value="">-- Selection chantier --</option>
+      <option value="">{{'menu.search.selectionsite' | translate}}</option>
    </select>
   </div>
 </div>
 <div class="row">
   <div class="col-md-2">
-      <label for="cmdDeliveredCheck">Afficher commandes livrées</label>
+      <label for="cmdDeliveredCheck">{{'menu.search.showDelivered' | translate}}</label>
   </div>
   <div class="checkbox col-md-2">
       <input type="checkbox" id="cmdDeliveredCheck" ng-model="cmdDeliveredCheck">
@@ -58,7 +58,7 @@
 </div>
 <div class="row">
   <div class="col-md-2">
-      <label for="cmdRefusedCheck">Afficher commandes refusée</label>
+      <label for="cmdRefusedCheck">{{'menu.search.showRefused' | translate}}</label>
   </div>
   <div class="checkbox col-md-2">
       <input type="checkbox" id="cmdRefusedCheck" ng-model="cmdRefusedCheck">
@@ -66,7 +66,7 @@
 </div>
 <div class="row">
   <div class="col-md-2">
-      <label for="cmdCancelledCheck">Afficher commandes annulée</label>
+      <label for="cmdCancelledCheck">{{'menu.search.showCanceled' | translate}}</label>
   </div>
   <div class="checkbox col-md-2">
       <input type="checkbox" id="cmdCancelledCheck" ng-model="cmdCancelledCheck">
@@ -80,10 +80,10 @@
 <div ng-if="commandes.length > 0">
    <ul class="list-group" ng-repeat-start="commande in commandes | filter: filterFn" ng-style="{'border' : '1px solid {{getColor(commande)}}', 'border-radius': '5px'}">
      <li ng-style="{'background-color' : getColor(commande)}" class="list-group-item">Commande numéro: {{commande.rowid}}</li>
-     <li class="list-group-item">Client: {{commande.nom}}</li>
-     <li class="list-group-item">Type: {{commande.type}}</li>
-     <li class="list-group-item">Statut: {{commande.statut}}</li>
-     <li class="list-group-item">Date d'envoi: {{commande.timestampDate}}</li>
+     <li class="list-group-item">{{'menu.search.client' | translate}}: {{commande.nom}}</li>
+     <li class="list-group-item">{{'menu.search.type' | translate}}: {{commande.type}}</li>
+     <li class="list-group-item">{{'menu.search.status' | translate}}: {{commande.statut}}</li>
+     <li class="list-group-item">{{'menu.search.date' | translate}}: {{commande.timestampDate}}</li>
      <a class="btn bg-light btn-block" href="#/commandes/details/{{commande.rowid}}" role="button">Details</a>
    </ul>
    <br ng-repeat-end>
