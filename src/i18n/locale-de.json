@@ -18,7 +18,7 @@
         "admin": {
             "title": "Admin",
             "daily_report": "Täglicher Bericht (Abteilung und SPPAM)",
-            "daily_report_assist": "Rapport journalier Assistance"
+            "daily_report_assist": "Tagesbericht Unterstützung"
         }
     },
     "commands": {
@@ -111,58 +111,178 @@
         }
     },
     "daily_report_assist": {
-        "title": "Rapport journalier assistance",
+        "title": "Tagesbericht Betreu",
         "site": {
-            "title": "Lieu d'engagement",
-            "selection": "-- Sélection lieu engagement --"
+            "title": "Arbeitsort",
+            "selection": "-- Auswahl Arbeitsort --"
         },
-        "situation": "Situation actuelle",
+        "situation": "Aktuelle Situation",
         "meteo": {
-            "title": "Météo",
-            "description": "Description",
-            "city": "Ville"
+            "title": "Wetter",
+            "showers": "Regenguss",
+            "lightshowers": "Kleinen Regenguss",
+            "stormy": "Stürmisch",
+            "cloudy": "bewölkt",
+            "cloudsunny": "wenig bewölkt",
+            "sunny": "sonnig",
+            "description": "Beschreibung",
+            "city": "Stadt"
         },
         "means": {
-            "title": "Moyens engagés",
-            "men": "Hommes",
-            "rank": "Choisissez un grade",
-            "resp": "Nom responsable",
-            "amount": "Nombre de soldats",
-            "add_field": "Ajouter un champ"
+            "title": "Verwendete Mittel",
+            "men": "Männer",
+            "rank": {
+              "choose":"Auswählen Sie einen Grad",
+              "std":"Soldat",
+              "app":"Gefreiter",
+              "cpl":"Korporal",
+              "sgt":"Wachtmeister",
+              "sgtm":"Feldweibel",
+              "four":"Fourier",
+              "lt":"Leutnant",
+              "plt":"Oberleutnant",
+              "cap":"Hauptmann",
+              "maj":"Major"
+            },
+            "resp": "Namen der verantwortliche Person",
+            "amount": "Anzahl Männer",
+            "add_field": "Feld hinzufügen"
         },
         "vehicles": {
-            "title": "Vehicules",
-            "amount": "Nombre",
-            "type": "Type",
-            "add_field": "Ajouter un champ"
+            "title": "Transportmitteln",
+            "amount": "Anzahl",
+            "type": "Typ",
+            "add_field": "Feld hinzufügen"
         },
         "material": {
-            "title": "Matériel",
-            "amount": "Nombre",
-            "description": "Description / nom",
-            "add_field": "Ajouter un champ"
+            "title": "Material",
+            "amount": "Anzahl",
+            "description": "Beschreibung",
+            "add_field": "Feld hinzufügen"
         },
         "missions": {
-            "title": "Missions",
-            "by": "Réalisé par:",
-            "task": "Tâche",
-            "description": "Description",
-            "location": "Lieu",
-            "add_field": "Ajouter un champ"
+            "title": "Mission",
+            "by": {
+              "title":"Erfüllt von:",
+              "e-m":"Stab",
+              "AICrens":"FU 1 - Lage",
+              "AICmed":"FU 1 - Medien",
+              "AICchanc":"FU 1 - Kanzlerei",
+              "AICtele":"FU 2 - Telematik",
+              "AICinfo":"FU 2 - Informatik",
+              "circ":"Verkehr",
+              "logfour":"Logistik - Fourier",
+              "loginfra":"Logistik - Infrastruktur",
+              "logsub":"Logistik - Lebensunterhalt",
+              "logmat":"Logistik - Material",
+              "logtrans":"Logistik - Transport",
+              "Assist":"Betreu",
+              "Appui":"Unterstützung"
+            },
+            "task": "Aufgabe",
+            "description": "Beschreibung",
+            "location": "Ort",
+            "add_field": "Feld hinzufügen"
         },
         "sanitaryStatus": {
-            "title": "État sanitaire",
-            "comment": "Commentaire"
+            "title": "Gesundheitszustand",
+            "good":"Gut",
+            "mean":"Mittelmässig",
+            "bad":"Schlecht",
+            "comment": "Kommentar"
         },
         "troopStatus": {
-            "title": "État des troupes",
-            "comment": "Commentaire"
+            "title": "Truppenzustand",
+            "good":"Gut",
+            "mean":"Mittelmässig",
+            "bad":"Schlecht",
+            "comment": "Kommentar"
         },
         "email": {
             "title": "Email",
-            "zone": "-- Zone --",
-            "note": "Le rapport sera envoyer à l'adresse e-mail correspondante à la zone choisie."
+            "zone": "-- Gegend --",
+            "note": "Der Bericht wird an der Mailadresse der Gegend gesendet."
         },
-        "send": "Envoyer"
+        "send": "Senden"
+    },
+    "daily_report": {
+        "title": "Tagesbericht",
+        "formation": "Truppe",
+        "selectFormation": "-- Wahl Truppe --",
+        "situation": "Aktuelle situation",
+        "meteo": {
+            "title": "Wetter",
+            "showers": "Regenguss",
+            "lightshowers": "Kleinen Regenguss",
+            "stormy": "Stürmisch",
+            "cloudy": "bewölkt",
+            "cloudsunny": "wenig bewölkt",
+            "sunny": "sonnig",
+            "description": "Beschreibung",
+            "city": "Stadt"
+        },
+        "means": {
+            "title": "Verwendete Mittel",
+            "men": "Männer",
+            "rank": {
+              "choose":"Auswählen Sie einen Grad",
+              "std":"Soldat",
+              "app":"Gefreiter",
+              "cpl":"Korporal",
+              "sgt":"Wachtmeister",
+              "sgtm":"Feldweibel",
+              "four":"Fourier",
+              "lt":"Leutnant",
+              "plt":"Oberleutnant",
+              "cap":"Hauptmann",
+              "maj":"Major"
+            },
+            "resp": "Namen der verantwortliche Person",
+            "amount": "Anzahl Männer",
+            "add_field": "Feld hinzufügen"
+        },
+        "vehicles": {
+            "title": "Transportmitteln",
+            "amount": "Anzahl",
+            "type": "Typ",
+            "add_field": "Feld hinzufügen"
+        },
+        "material": {
+            "title": "Material",
+            "amount": "Anzahl",
+            "description": "Beschreibung",
+            "add_field": "Feld hinzufügen"
+        },
+        "missions": {
+            "title": "Mission",
+            "by": {
+              "title":"Erfüllt von:",
+              "e-m":"Stab",
+              "AICrens":"FU 1 - Lage",
+              "AICmed":"FU 1 - Medien",
+              "AICchanc":"FU 1 - Kanzlerei",
+              "AICtele":"FU 2 - Telematik",
+              "AICinfo":"FU 2 - Informatik",
+              "circ":"Verkehr",
+              "logfour":"Logistik - Fourier",
+              "loginfra":"Logistik - Infrastruktur",
+              "logsub":"Logistik - Lebensunterhalt",
+              "logmat":"Logistik - Material",
+              "logtrans":"Logistik - Transport",
+              "Assist":"Betreu",
+              "Appui":"Unterstützung"
+            },
+            "progress": "Fortschritt",
+            "description": "Beschreibung",
+            "location": "Ort",
+            "add_field": "Feld hinzufügen"
+        },
+        "missionsTransmises": {
+          "title": "Übertragten Aufträge",
+          "description": "Beschreibung",
+          "location": "Ort",
+          "add_field": "Feld hinzufügen"
+        },
+        "send": "Senden"
     }
 }

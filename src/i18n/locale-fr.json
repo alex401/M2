@@ -104,13 +104,31 @@
         "situation": "Situation actuelle",
         "meteo": {
             "title": "Météo",
+            "showers": "averses / pluie forte",
+            "lightshowers": "rares averses",
+            "stormy": "orageux",
+            "cloudy": "nuageux / couvert",
+            "cloudsunny": "peu nuageux",
+            "sunny": "ensoleillé",
             "description": "Description",
             "city": "Ville"
         },
         "means": {
             "title": "Moyens engagés",
             "men": "Hommes",
-            "rank": "Choisissez un grade",
+            "rank": {
+              "choose":"Choisissez un grade",
+              "std":"soldat",
+              "app":"appointé",
+              "cpl":"caporal",
+              "sgt":"sergent",
+              "sgtm":"sergent-major",
+              "four":"fourrier",
+              "lt":"lieutenant",
+              "plt":"premier-lieutenant",
+              "cap":"capitaine",
+              "maj":"major"
+            },
             "resp": "Nom responsable",
             "amount": "Nombre de soldats",
             "add_field": "Ajouter un champ"
@@ -129,7 +147,23 @@
         },
         "missions": {
             "title": "Missions",
-            "by": "Réalisé par:",
+            "by": {
+              "title":"Réalisé par:",
+              "e-m":"Etat-Major",
+              "AICrens":"AIC 1 - Renseignement",
+              "AICmed":"AIC 1 - Média",
+              "AICchanc":"AIC 1 - Chancellerie",
+              "AICtele":"AIC 2 - Télématique",
+              "AICinfo":"AIC 2 - Informatique",
+              "circ":"Circulation",
+              "logfour":"Logistique - Fourrier",
+              "loginfra":"Logistique - Infrastructure",
+              "logsub":"Logistique - Subsistance",
+              "logmat":"Logistique - Matériel",
+              "logtrans":"Logistique - Transport",
+              "Assist":"Assistance",
+              "Appui":"Appui"
+            },
             "task": "Tâche",
             "description": "Description",
             "location": "Lieu",
@@ -137,16 +171,102 @@
         },
         "sanitaryStatus": {
             "title": "État sanitaire",
+            "good":"Bon",
+            "mean":"Moyen",
+            "bad":"Mauvais",
             "comment": "Commentaire"
         },
         "troopStatus": {
             "title": "État des troupes",
+            "good":"Bon",
+            "mean":"Moyen",
+            "bad":"Mauvais",
             "comment": "Commentaire"
         },
         "email": {
             "title": "Email",
             "zone": "-- Zone --",
             "note": "Le rapport sera envoyer à l'adresse e-mail correspondante à la zone choisie."
+        },
+        "send": "Envoyer"
+    },
+    "daily_report": {
+        "title": "Rapport journalier assistance",
+        "formation": "Formation",
+        "selectFormation": "-- Sélection formation--",
+        "situation": "Situation actuelle",
+        "meteo": {
+            "title": "Météo",
+            "showers": "averses / pluie forte",
+            "lightshowers": "rares averses",
+            "stormy": "orageux",
+            "cloudy": "nuageux / couvert",
+            "cloudsunny": "peu nuageux",
+            "sunny": "ensoleillé",
+            "description": "Description",
+            "city": "Ville"
+        },
+        "means": {
+            "title": "Moyens engagés",
+            "men": "Hommes",
+            "rank": {
+              "choose":"Choisissez un grade",
+              "std":"soldat",
+              "app":"appointé",
+              "cpl":"caporal",
+              "sgt":"sergent",
+              "sgtm":"sergent-major",
+              "four":"fourrier",
+              "lt":"lieutenant",
+              "plt":"premier-lieutenant",
+              "cap":"capitaine",
+              "maj":"major"
+            },
+            "resp": "Nom responsable",
+            "amount": "Nombre de soldats",
+            "add_field": "Ajouter un champ"
+        },
+        "vehicles": {
+            "title": "Vehicules",
+            "amount": "Nombre",
+            "type": "Type",
+            "add_field": "Ajouter un champ"
+        },
+        "material": {
+            "title": "Matériel",
+            "amount": "Nombre",
+            "description": "Description / nom",
+            "add_field": "Ajouter un champ"
+        },
+        "missions": {
+            "title": "Missions",
+            "by": {
+              "title":"Réalisé par:",
+              "e-m":"Etat-Major",
+              "AICrens":"AIC 1 - Renseignement",
+              "AICmed":"AIC 1 - Média",
+              "AICchanc":"AIC 1 - Chancellerie",
+              "AICtele":"AIC 2 - Télématique",
+              "AICinfo":"AIC 2 - Informatique",
+              "circ":"Circulation",
+              "logfour":"Logistique - Fourrier",
+              "loginfra":"Logistique - Infrastructure",
+              "logsub":"Logistique - Subsistance",
+              "logmat":"Logistique - Matériel",
+              "logtrans":"Logistique - Transport",
+              "Assist":"Assistance",
+              "Appui":"Appui"
+            },
+            "progress": "Avancement",
+            "description": "Description",
+            "location": "Lieu",
+            "add_field": "Ajouter un champ"
+        },
+        "missionsTransmises": {
+          "title": "Missions transmises",
+          "description": "Description",
+          "location": "Lieu",
+          "add_field": "Ajouter un champ"
         },
         "send": "Envoyer"
     }

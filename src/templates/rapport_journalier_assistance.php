@@ -52,19 +52,19 @@
 
     <h3>{{'daily_report_assist.means.men' | translate}}</h3>
     <fieldset data-ng-repeat="homme in rapport.hommes">
-       <select ng-model="homme.grade">
-         <option value=''>{{'daily_report_assist.means.rank' | translate}}</option>
-         <option value='Soldat'>Std - Soldat</option>
-         <option value='Appointe'>App - Appointé</option>
-         <option value='Caporal'>Cpl - Caporal</option>
-         <option value='Sergent'>Sgt - Sergent</option>
-         <option value='Sergent-major'>Sgtm - Sergent-major</option>
-         <option value='Fourrier'>Four - Fourrier</option>
-         <option value='Lieutenant'>Lt - Lieutenant</option>
-         <option value='Premier-Lieutenant'>PLt - Premier-Lieutenant</option>
-         <option value='Capitaine'>Cap - Capitaine</option>
-         <option value='Major'>Maj - Major</option>
-       </select>
+      <select ng-model="homme.grade">
+        <option value=''>{{'daily_report_assist.means.rank.choose' | translate}}</option>
+        <option value='Soldat'>{{'daily_report_assist.means.rank.std' | translate}}</option>
+        <option value='Appointe'>{{'daily_report_assist.means.rank.app' | translate}}</option>
+        <option value='Caporal'>{{'daily_report_assist.means.rank.cpl' | translate}}</option>
+        <option value='Sergent'>{{'daily_report_assist.means.rank.sgt' | translate}}</option>
+        <option value='Sergent-major'>{{'daily_report_assist.means.rank.sgtm' | translate}}</option>
+        <option value='Fourrier'>{{'daily_report_assist.means.rank.four' | translate}}</option>
+        <option value='Lieutenant'>{{'daily_report_assist.means.rank.lt' | translate}}</option>
+        <option value='Premier-Lieutenant'>{{'daily_report_assist.means.rank.plt' | translate}}</option>
+        <option value='Capitaine'>{{'daily_report_assist.means.rank.cap' | translate}}</option>
+        <option value='Major'>{{'daily_report_assist.means.rank.maj' | translate}}</option>
+      </select>
        <input type="text" ng-model="homme.name" name="" placeholder="{{'daily_report_assist.means.resp' | translate}}">
        <input type="text" ng-model="homme.nombre" name="" placeholder="{{'daily_report_assist.means.amount' | translate}}">
     </fieldset>
@@ -94,25 +94,25 @@
         <h3>{{'daily_report_assist.missions.title' | translate}}</h3>
         <fieldset data-ng-repeat="mission in rapport.missions">
           <select ng-model="mission.section">
-            <option value=''>{{'daily_report_assist.missions.by' | translate}}</option>
-            <option value='Etat-Major'>Etat-Major</option>
-            <option value='AIC 1 - Renseignement'>AIC 1 - Renseignement</option>
-            <option value='AIC 1 - Média'>AIC 1 - Média</option>
-            <option value='AIC 1 - Chancellerie'>AIC 1 - Chancellerie</option>
-            <option value='AIC 2 - Télématique'>AIC 2 - Télématique</option>
-            <option value='AIC 2 - Informatique'>AIC 2 - Informatique</option>
-            <option value='Circulation'>Circulation</option>
-            <option value='Logistique - Fourrier'>Logistique - Fourrier</option>
-            <option value='Logistique - Infrastructure'>Logistique - Infrastructure</option>
-            <option value='Logistique - Subsistance'>Logistique - Subsistance</option>
-            <option value='Logistique - Materiel'>Logistique - Materiel</option>
-            <option value='Logistique - Transport'>Logistique - Transport</option>
-            <option value='Assistance 1'>Assistance 1</option>
-            <option value='Assistance 2'>Assistance 2</option>
-            <option value='Assistance 3'>Assistance 3</option>
-            <option value='Appui 1'>Appui 1</option>
-            <option value='Appui 2'>Appui 2</option>
-            <option value='Appui 3'>Appui 3</option>
+            <option value=''>{{'daily_report_assist.missions.by.title' | translate}}</option>
+            <option value='Etat-Major'>{{'daily_report_assist.missions.by.e-m' | translate}}</option>
+            <option value='AIC 1 - Renseignement'>{{'daily_report_assist.missions.by.AICrens' | translate}}</option>
+            <option value='AIC 1 - Média'>{{'daily_report_assist.missions.by.AICmed' | translate}}</option>
+            <option value='AIC 1 - Chancellerie'>{{'daily_report_assist.missions.by.AICchanc' | translate}}</option>
+            <option value='AIC 2 - Télématique'>{{'daily_report_assist.missions.by.AICtele' | translate}}</option>
+            <option value='AIC 2 - Informatique'>{{'daily_report_assist.missions.by.AICinfo' | translate}}</option>
+            <option value='Circulation'>{{'daily_report_assist.missions.by.circ' | translate}}</option>
+            <option value='Logistique - Fourrier'>{{'daily_report_assist.missions.by.logfour' | translate}}</option>
+            <option value='Logistique - Infrastructure'>{{'daily_report_assist.missions.by.loginfra' | translate}}</option>
+            <option value='Logistique - Subsistance'>{{'daily_report_assist.missions.by.logsub' | translate}}</option>
+            <option value='Logistique - Materiel'>{{'daily_report_assist.missions.by.logmat' | translate}}</option>
+            <option value='Logistique - Transport'>{{'daily_report_assist.missions.by.logtrans' | translate}}</option>
+            <option value='Assistance 1'>{{'daily_report_assist.missions.by.Assist' | translate}} 1</option>
+            <option value='Assistance 2'>{{'daily_report_assist.missions.by.Assist' | translate}} 2</option>
+            <option value='Assistance 3'>{{'daily_report_assist.missions.by.Assist' | translate}} 3</option>
+            <option value='Appui 1'>{{'daily_report_assist.missions.by.Appui' | translate}} 1</option>
+            <option value='Appui 2'>{{'daily_report_assist.missions.by.Appui' | translate}} 2</option>
+            <option value='Appui 3'>{{'daily_report_assist.missions.by.Appui' | translate}} 3</option>
           </select>
 
           <select id="missionTask" ng-model="mission.task" ng-options="task.label as task.label for task in tasks">
@@ -129,15 +129,15 @@
           <div class="btn-group btn-group-toggle mb-3" data-toggle="buttons">
             <label class="btn btn-outline-success">
               <input ng-change="onChange($index)" type="radio" ng-model="rapport.sanitaryStatus.status" value="Bon">
-              Bon
+              {{'daily_report_assist.sanitaryStatus.good' | translate}}
             </label>
             <label class="btn btn-outline-warning">
               <input ng-change="onChange($index)" type="radio" ng-model="rapport.sanitaryStatus.status"  value="Moyen">
-              Moyen
+              {{'daily_report_assist.sanitaryStatus.mean' | translate}}
             </label>
             <label class="btn btn-outline-danger">
               <input ng-change="onChange($index)" type="radio" ng-model="rapport.sanitaryStatus.status" value="Mauvais">
-              Mauvais
+              {{'daily_report_assist.sanitaryStatus.bad' | translate}}
             </label>
           </div>
           <br>
@@ -151,15 +151,15 @@
           <div class="btn-group btn-group-toggle mb-3" data-toggle="buttons">
             <label class="btn btn-outline-success">
               <input ng-change="onChange($index)" type="radio" ng-model="rapport.troopStatus.status" value="Bon">
-              Bon
+              {{'daily_report_assist.troopStatus.good' | translate}}
             </label>
             <label class="btn btn-outline-warning">
               <input ng-change="onChange($index)" type="radio" ng-model="rapport.troopStatus.status"  value="Moyen">
-              Moyen
+              {{'daily_report_assist.troopStatus.mean' | translate}}
             </label>
             <label class="btn btn-outline-danger">
               <input ng-change="onChange($index)" type="radio" ng-model="rapport.troopStatus.status" value="Mauvais">
-              Mauvais
+              {{'daily_report_assist.troopStatus.bad' | translate}}
             </label>
           </div>
           <br>
