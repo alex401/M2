@@ -250,6 +250,15 @@ $app->post('/v1/admin/entreeservice/tags/{personneid}', function ($request,$resp
     return $response->withJson(array('error' => 'Failed to update info: ' . $ex->getMessage()), 422);
   }
 
+  try {
+    $message = (json_encode($data['message']));
+    $result = setContent('Mise à jour données personnelles', $message);
+    $mail = mailSender('Mise à jour données personnelles', $message, "sud.commandement@pci-fr.ch", getMail($this,'donnees'));
+  } catch (\Exception $ex) {
+    return $response->withJson(array('error' => 'Failed to send mail: ' . $ex->getMessage()), 422);
+  }
+
+
   // Update tags.
   $newTags = $data['tagged'];
   $toDeleteTags = [];

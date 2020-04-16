@@ -1,13 +1,13 @@
 <main class="col-sm-12 col-md-12" ng-controller="EntreeServiceCtrl">
 
-  <div ng-if="status==1"> Message envoyé, vous pouvez passer au suivant.</div>
-  <div ng-if="status==2"> Erreur de traitement, veuillez réessayer dans un moment</div>
-  <div ng-if="status==3"> Chargement en cours </div>
+  <div ng-if="status==1"> {{'competences.message.success' | translate}}</div>
+  <div ng-if="status==2"> {{'competences.message.error' | translate}}</div>
+  <div ng-if="status==3"> {{'competences.message.loading' | translate}} </div>
 
 
   <div class="form-group">
-    <label for="formGroupNom">Recherche personne : </label>
-    <input ng-change="loadTiers(form.nom)" type="text" ng-model="form.nom" class="form-control" id="formGroupNom" placeholder="Nom" required>
+    <label for="formGroupNom">{{'competences.search' | translate}} </label>
+    <input ng-change="loadTiers(form.nom)" type="text" ng-model="form.nom" class="form-control" id="formGroupNom" placeholder="{{'competences.name' | translate}}" required>
   </div>
 
 <div ng-if="tiers.length > 0" >
@@ -22,44 +22,44 @@
 <form ng-submit="submit(personne)" ng-if="status == 0 ">
 <div ng-if="personne != null">
 <div class="form-group">
-  <label for="formGroupNom">Nom</label>
+  <label for="formGroupNom">{{'competences.name' | translate}}</label>
   <input type="text" ng-model="personne.nom" class="form-control" id="formGroupNom">
 </div>
 
 <div class="form-group">
-  <label for="formGroupNom">Adresse</label>
+  <label for="formGroupNom">{{'competences.address' | translate}}</label>
   <input type="text" ng-model="personne.address" class="form-control" id="formGroupNom">
 </div>
 
 <div class="form-group">
-  <label for="formGroupNom">Zip</label>
+  <label for="formGroupNom">{{'competences.zip' | translate}}</label>
   <input type="text" ng-model="personne.zip" class="form-control" id="formGroupNom">
 </div>
 
 <div class="form-group">
-  <label for="formGroupNom">Lieu</label>
+  <label for="formGroupNom">{{'competences.location' | translate}}</label>
   <input type="text" ng-model="personne.town" class="form-control" id="formGroupNom">
 </div>
 
 <div class="form-group">
-  <label for="formGroupNom">email</label>
+  <label for="formGroupNom">{{'competences.mail' | translate}}</label>
   <input type="email" ng-model="personne.email" class="form-control" id="formGroupNom">
 
 </div>
 <div class="form-group">
-  <label for="formGroupNom">Telephone</label>
+  <label for="formGroupNom">{{'competences.phone' | translate}}</label>
   <input type="tel" ng-model="personne.phone" class="form-control" id="formGroupNom">
 </div>
 
 <div class="form-group row">
   <div class="col-md-3">
-    <label for="urgence">N° d'urgence</label>
+    <label for="urgence">{{'competences.emergency' | translate}}</label>
     <input type="tel" ng-model="personne.extra.nb" class="form-control" id="urgence" required>
   </div>
   <div class="col-md-3">
-    <label for="parent">Lien de parenté</label>
+    <label for="parent">{{'competences.relationship' | translate}}</label>
     <select class="form-control" id="parent" ng-model="personne.extra.lp" ng-options="p.rowid as p.label for p in parentList" required>
-      <option value="">-- Selection parenté --</option>
+      <option value="">{{'competences.selectRelation' | translate}}</option>
     </select>
   </div>
 </div>
@@ -70,7 +70,7 @@
   <p class="alert" ng-class="{'alert-success': tag.checked == 'true' }" ng-click="actionTag(tag, $index)" ng-model="tagged" class="mb-0">{{ tag.label }}</p>
 </div>
 
-<button type="submit()" class="btn btn-primary btn-block" >Envoyer</button>
+<button type="submit()" class="btn btn-primary btn-block" >{{'competences.send' | translate}}</button>
 
 <br>
 

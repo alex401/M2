@@ -15,6 +15,7 @@
             "management": "Gestion de commandes",
             "search": "Recherche de commandes"
         },
+        "competences": "Mise à jour données perso",
         "admin": {
             "title": "Admin",
             "daily_report": "Rapport journalier (section et SPPAM)",
@@ -313,5 +314,23 @@
           "add_field": "Ajouter un champ"
         },
         "send": "Envoyer"
+    },
+    "competences": {
+      "message": {
+          "success": "Envoyé!",
+          "error": "Erreur de traitement, veuillez réessayer plus tard.",
+          "loading": "Chargement en cours"
+      },
+      "search": "Recherche personne:",
+      "name":"Nom",
+      "address":"Adresse",
+      "zip":"Zip",
+      "location":"Lieu",
+      "mail":"e-mail",
+      "phone":"Téléphone",
+      "emergency":"Numéro d'urgence",
+      "relationship":"Lien de parenté",
+      "selectRelation":"-- Sélection parenté --",
+      "send":"Envoyer"
     }
 }
