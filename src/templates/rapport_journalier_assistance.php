@@ -35,14 +35,14 @@
     <h2>{{'daily_report_assist.meteo.title' | translate}}</h2>
 
     <fieldset>
-       <select ng-model="rapport.meteo.court">
-         <option value='Averses / pluie forte'>Averses / pluie forte</option>
-         <option value='Rare averses'>Rare averses</option>
-         <option value='Orageux'>Orageux</option>
-         <option value='Nuageux/couvert'>Nuageux/couvert</option>
-         <option value='Peu nuageux'>Peu nuageux</option>
-         <option value='Ensoleillé'>Ensoleillé</option>
-       </select>
+      <select ng-model="rapport.meteo.court">
+        <option value='Averses / pluie forte'>{{'daily_report_assist.meteo.showers' | translate}}</option>
+        <option value='Rare averses'>{{'daily_report_assist.meteo.lightshowers' | translate}}</option>
+        <option value='Orageux'>{{'daily_report_assist.meteo.stormy' | translate}}</option>
+        <option value='Nuageux/couvert'>{{'daily_report_assist.meteo.cloudy' | translate}}</option>
+        <option value='Peu nuageux'>{{'daily_report_assist.meteo.cloudsunny' | translate}}</option>
+        <option value='Ensoleillé'>{{'daily_report_assist.meteo.sunny' | translate}}</option>
+      </select>
        <input type="text" ng-model="rapport.meteo.desc" name="" placeholder="{{'daily_report_assist.meteo.description' | translate}}">
        <input type="text" ng-model="rapport.meteo.ville" name="" placeholder="{{'daily_report_assist.meteo.city' | translate}}">
 
