@@ -16,6 +16,7 @@
             "search": "Recherche de commandes"
         },
         "competences": "Mise à jour données perso",
+        "equipement": "Contrôle d'équipement",
         "admin": {
             "title": "Admin",
             "daily_report": "Rapport journalier (section et SPPAM)",
@@ -331,6 +332,42 @@
       "emergency":"Numéro d'urgence",
       "relationship":"Lien de parenté",
       "selectRelation":"-- Sélection parenté --",
+      "send":"Envoyer"
+    },
+    "equipement": {
+      "title": "Contrôle d'équipement",
+      "message": {
+          "success": "Message envoyé!",
+          "error": "Erreur de traitement, veuillez réessayer plus tard.",
+          "loading": "Chargement en cours"
+      },
+      "lieutenant": "Nom du lieutenant",
+      "name": "Nom du soldat",
+      "bag": "Sac",
+      "rainjacket": "Veste de pluie",
+      "rainpants": "Pantalon de pluie",
+      "rainhat": "Chapeau de pluie",
+      "polar": "Polaire",
+      "jacket": "Veste",
+      "pants": "Pantalon",
+      "belt": "Ceinture",
+      "cap": "Casquette",
+      "gloves": "Gants",
+      "helmet": "Casque",
+      "tshirt": "4 T-shirts",
+      "sous-pull": "Sous-pull",
+      "shoes": "Chaussures",
+      "PPI": "PPI",
+      "badge": "Badge PCI",
+      "bonnet":"Bonnet",
+      "comment":"Commentaire",
+      "options" : {
+        "yes": "Oui",
+        "missing": "Manquant",
+        "defective": "Défectueux",
+        "size": "taille",
+        "amount": "nombre"
+      },
       "send":"Envoyer"
     }
 }
