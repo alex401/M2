@@ -50,8 +50,9 @@ $app->post('/v1/rapport/journalier/assistance', function ($request, $response) {
    $vehicules = $data['vehicules'];
    $meteo = $data['meteo'];
    $email = $data['email'];
+   $comment = $data['comment'];
 
-   $report = buildHtmlReportAssist($meteo, $situation, $vehicules, $matos, $chantier, "rapport-journalier-assistance", $hommes, $missions, $sanitaryStatus, $troopStatus);
+   $report = buildHtmlReportAssist($meteo, $situation, $vehicules, $matos, $chantier, "rapport-journalier-assistance", $hommes, $missions, $sanitaryStatus, $troopStatus, $comment);
 
    if ($email != null) {
      $mail = mailReport("Rapport du jour ", $report, "sud.commandement@pci-fr.ch", $email['addr']);
@@ -76,7 +77,7 @@ $app->post('/v1/rapport/journalier/assistance', function ($request, $response) {
 });
 
 // Créer rapport journalier en HTML
-function buildHtmlReportAssist($meteo, $situation, $vehicules, $matos, $chantier, $filename, $hommes, $missions, $sanitaryStatus, $troopStatus) {
+function buildHtmlReportAssist($meteo, $situation, $vehicules, $matos, $chantier, $filename, $hommes, $missions, $sanitaryStatus, $troopStatus, $comment) {
 
 $content = '<!doctype html>
 
@@ -239,7 +240,7 @@ h1, h2, h3, h4, h5, h6 {
         <div class="row flex-nowrap justify-content-between align-items-center">
 
           <div class="col-12 text-center">
-            <a class="blog-header-logo text-dark" href="#">Rapport Journalier</a>
+            <a class="blog-header-logo text-dark" href="#">Rapport Journalier Assistance</a>
           </div>
 
         </div>
@@ -250,7 +251,12 @@ h1, h2, h3, h4, h5, h6 {
       <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
         <div class="col-md-6 px-0">
           <h1 class="display-4 font-italic">Mission: '.$chantier .'</h1>
-          <p class="lead my-3">'.$situation .'</p>
+          <p class="lead my-3">';
+          if (!empty($comment)) {
+            $content .= 'Dates concernées: '.$comment. '\r\n';
+          }
+          $content .=
+          $situation .'</p>
         </div>
       </div>
 
