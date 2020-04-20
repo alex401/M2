@@ -253,10 +253,9 @@ h1, h2, h3, h4, h5, h6 {
           <h1 class="display-4 font-italic">Mission: '.$chantier .'</h1>
           <p class="lead my-3">';
           if (!empty($comment)) {
-            $content .= 'Dates concernées: '.$comment. '\r\n';
+            $content .= 'Dates concernées: '.$comment. '<br>';
           }
-          $content .=
-          $situation .'</p>
+          $content .= $situation .'</p>
         </div>
       </div>
 

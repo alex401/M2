@@ -163,7 +163,7 @@
             "title": "Arbeitsort",
             "selection": "-- Auswahl Arbeitsort --"
         },
-        "comment":"Klarstellung bezüglich des Datums",
+        "comment":"Betreffendes Datum (wenn es heute ist, lassen Sie es leer)",
         "situation": "Aktuelle Situation",
         "meteo": {
             "title": "Wetter",
