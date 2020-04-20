@@ -153,7 +153,14 @@ function EntreeServiceCtrl($scope, $http) {
 
 
   $scope.submit = function (personne) {
-    var dataSent = {'Nom': $scope.personne.nom, 'Adresse': $scope.personne.address, 'Zip': $scope.personne.zip, 'Ville': $scope.personne.town, 'Mail': $scope.personne.email, 'Téléphone': $scope.personne.phone}
+
+    var tagList = $scope.tagged;
+    var tagInMessage = '';
+    for (var i = 0; i < $scope.tagged.length; i++) {
+      tagInMessage += $scope.tagged[i].label + '\n';
+    }
+    var parent = $scope.parentList[$scope.personne.extra.lp-1].label;
+    var dataSent = {'Nom': $scope.personne.nom, 'Adresse': $scope.personne.address, 'Zip': $scope.personne.zip, 'Ville': $scope.personne.town, 'Mail': $scope.personne.email, 'Téléphone': $scope.personne.phone, 'Numéro d\'urgence': $scope.personne.extra.nb, 'Lien de parenté': parent, 'Tags': tagInMessage}
     //upload
     $http({
       method: 'POST',

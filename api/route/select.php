@@ -22,6 +22,56 @@ $app->get('/v1/select/categories', function ($request, $response) {
 // Return list of all tags.
 $app->get('/v1/select/entreeservice/tags', function ($request, $response) {
 
+  // $sth = $this->dbdoll->prepare(
+  //   "SELECT rowid, label, color, 'false' as checked
+  //   FROM `llx_categorie`
+  //   WHERE "
+  // );
+  //
+  // try {
+  //   $sth->execute();
+  //   $language = $sth->fecthAll();
+  //
+  // }
+  // $sth = $this->dbdoll->prepare(
+  //   "SELECT rowid, label, color, 'false' as checked
+  //   FROM `llx_categorie`
+  //   WHERE "
+  // );
+  //
+  // try {
+  //   $sth->execute();
+  //   $job = $sth->fecthAll();
+  //
+  // }
+  // $sth = $this->dbdoll->prepare(
+  //   "SELECT rowid, label, color, 'false' as checked
+  //   FROM `llx_categorie`
+  //   WHERE "
+  // );
+  //
+  // try {
+  //   $sth->execute();
+  //   $rank = $sth->fecthAll();
+  // }
+  //
+  // $sth = $this->dbdoll->prepare(
+  //   "SELECT rowid, label, color, 'false' as checked
+  //   FROM `llx_categorie`
+  //   WHERE "
+  // );
+  //
+  // try {
+  //   $sth->execute();
+  //   $permis = $sth->fecthAll();
+  //
+  // }
+
+
+
+
+
+
   $sth = $this->dbdoll->prepare(
     "SELECT rowid, label, color, 'false' as checked
     FROM `llx_categorie`
