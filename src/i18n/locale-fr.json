@@ -147,6 +147,7 @@
             "title": "Lieu d'engagement",
             "selection": "-- Sélection lieu engagement --"
         },
+        "comment":"Date(s) concernées (laisser vide s'il s'agit d'aujourd'hui)",
         "situation": "Situation actuelle",
         "meteo": {
             "title": "Météo",
@@ -237,7 +238,7 @@
         "send": "Envoyer"
     },
     "daily_report": {
-        "title": "Rapport journalier assistance",
+        "title": "Rapport journalier",
         "formation": "Formation",
         "selectFormation": "-- Sélection formation--",
         "situation": "Situation actuelle",
