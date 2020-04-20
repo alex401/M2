@@ -25,7 +25,7 @@ $app->get('/v1/select/entreeservice/tags', function ($request, $response) {
   // $sth = $this->dbdoll->prepare(
   //   "SELECT rowid, label, color, 'false' as checked
   //   FROM `llx_categorie`
-  //   WHERE "
+  //   WHERE color='5f00bf' AND type = 4"
   // );
   //
   // try {
@@ -36,7 +36,7 @@ $app->get('/v1/select/entreeservice/tags', function ($request, $response) {
   // $sth = $this->dbdoll->prepare(
   //   "SELECT rowid, label, color, 'false' as checked
   //   FROM `llx_categorie`
-  //   WHERE "
+  //   WHERE color='#' AND type = 4"
   // );
   //
   // try {
@@ -47,7 +47,7 @@ $app->get('/v1/select/entreeservice/tags', function ($request, $response) {
   // $sth = $this->dbdoll->prepare(
   //   "SELECT rowid, label, color, 'false' as checked
   //   FROM `llx_categorie`
-  //   WHERE "
+  //   WHERE color='007f00' AND type = 4"
   // );
   //
   // try {
@@ -58,7 +58,7 @@ $app->get('/v1/select/entreeservice/tags', function ($request, $response) {
   // $sth = $this->dbdoll->prepare(
   //   "SELECT rowid, label, color, 'false' as checked
   //   FROM `llx_categorie`
-  //   WHERE "
+  //   WHERE color='ff56ff' AND type = 4"
   // );
   //
   // try {
@@ -67,6 +67,30 @@ $app->get('/v1/select/entreeservice/tags', function ($request, $response) {
   //
   // }
 
+
+  // $sth = $this->dbdoll->prepare(
+  //   "SELECT rowid, label, color, 'false' as checked
+  //   FROM `llx_categorie`
+  //   WHERE color='003f7f' AND type = 4"
+  // );
+  //
+  // try {
+  //   $sth->execute();
+  //   $fonction = $sth->fecthAll();
+  //
+  // }
+
+  // $sth = $this->dbdoll->prepare(
+  //   "SELECT rowid, label, color, 'false' as checked
+  //   FROM `llx_categorie`
+  //   WHERE color='aaffaa' AND type = 4"
+  // );
+  //
+  // try {
+  //   $sth->execute();
+  //   $regime = $sth->fecthAll();
+  //
+  // }
 
 
 
