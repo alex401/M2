@@ -66,9 +66,22 @@
 
 </div>
 
+<!-- <h3> Langue maternelle </h3>
+<div id="langMat" class="form-group">
+  <select ng-model="tagged" placeholder="Langue maternelle">
+    <option ng-repeat="tag in tags.language | filter:{color:'5f00bf'}" class="form-control"> {{tag.label}} </option> </select>
+</div>
+
+<h4> Autres langues </h4>
+<div role="alert" ng-repeat="tag in tags.language | filter:{color:'5f00bf'}">
+  <p class="alert" ng-class="{'alert-success': tag.checked == 'true' }" ng-click="actionTag(tag, $index)" ng-model="tagged" class="mb-0">{{ tag.label }}</p>
+</div> -->
+
 <div role="alert" ng-repeat="tag in tags" >
   <p class="alert" ng-class="{'alert-success': tag.checked == 'true' }" ng-click="actionTag(tag, $index)" ng-model="tagged" class="mb-0">{{ tag.label }}</p>
 </div>
+
+
 
 <button type="submit()" class="btn btn-primary btn-block" >{{'competences.send' | translate}}</button>
 

@@ -22,91 +22,15 @@ $app->get('/v1/select/categories', function ($request, $response) {
 // Return list of all tags.
 $app->get('/v1/select/entreeservice/tags', function ($request, $response) {
 
-  // $sth = $this->dbdoll->prepare(
-  //   "SELECT rowid, label, color, 'false' as checked
-  //   FROM `llx_categorie`
-  //   WHERE color='5f00bf' AND type = 4"
-  // );
-  //
-  // try {
-  //   $sth->execute();
-  //   $language = $sth->fecthAll();
-  //
-  // }
-  // $sth = $this->dbdoll->prepare(
-  //   "SELECT rowid, label, color, 'false' as checked
-  //   FROM `llx_categorie`
-  //   WHERE color='#' AND type = 4"
-  // );
-  //
-  // try {
-  //   $sth->execute();
-  //   $job = $sth->fecthAll();
-  //
-  // }
-  // $sth = $this->dbdoll->prepare(
-  //   "SELECT rowid, label, color, 'false' as checked
-  //   FROM `llx_categorie`
-  //   WHERE color='007f00' AND type = 4"
-  // );
-  //
-  // try {
-  //   $sth->execute();
-  //   $rank = $sth->fecthAll();
-  // }
-  //
-  // $sth = $this->dbdoll->prepare(
-  //   "SELECT rowid, label, color, 'false' as checked
-  //   FROM `llx_categorie`
-  //   WHERE color='ff56ff' AND type = 4"
-  // );
-  //
-  // try {
-  //   $sth->execute();
-  //   $permis = $sth->fecthAll();
-  //
-  // }
-
-
-  // $sth = $this->dbdoll->prepare(
-  //   "SELECT rowid, label, color, 'false' as checked
-  //   FROM `llx_categorie`
-  //   WHERE color='003f7f' AND type = 4"
-  // );
-  //
-  // try {
-  //   $sth->execute();
-  //   $fonction = $sth->fecthAll();
-  //
-  // }
-
-  // $sth = $this->dbdoll->prepare(
-  //   "SELECT rowid, label, color, 'false' as checked
-  //   FROM `llx_categorie`
-  //   WHERE color='aaffaa' AND type = 4"
-  // );
-  //
-  // try {
-  //   $sth->execute();
-  //   $regime = $sth->fecthAll();
-  //
-  // }
-
-
-
-
-
   $sth = $this->dbdoll->prepare(
     "SELECT rowid, label, color, 'false' as checked
     FROM `llx_categorie`
-    WHERE rowid <=109 AND rowid >= 82 AND rowid >= 282 AND rowid <=322 OR rowid >=1168 AND rowid <=1309
-    ORDER BY color;"
+    WHERE type = 4 AND (color = 'ff56ff' OR color = 'aaffaa' OR color = '5f00bf' OR color = '007f00' OR color = '003f7f' OR color = '00bfbf' OR NULL)
+    ORDER BY label"
   );
-
   try {
     $sth->execute();
     $result = $sth->fetchAll();
-
     if($result) {
       return $response->withJson($result, 200);
     } else {

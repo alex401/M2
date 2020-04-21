@@ -18,11 +18,16 @@ function EntreeServiceCtrl($scope, $http) {
   $scope.personnes = {};
   $scope.tiers = {};
   $scope.tags = {};
+  $scope.tags.permit = {};
+  $scope.tags.language = {};
+  $scope.tags.rank = {};
+  $scope.tags.fonction = {};
+  $scope.tags.job = {};
   $scope.tagged = [];
   $scope.existingTags = {};
   $scope.langsInit = [];
   $scope.parentList = [];
-
+  console.log($scope.tags);
   // ****************************
   // Load
   // ****************************
@@ -56,11 +61,15 @@ function EntreeServiceCtrl($scope, $http) {
     $scope.personnes = null;
     $scope.tiers = null;
     $scope.personne = personne;
-    $scope.tags = null;
+
+    $scope.tags.permit = [];
+    $scope.tags.language = [];
+    $scope.tags.rank = [];
+    $scope.tags.fonction = [];
+    $scope.tags.job = [];
     $scope.existingTags = null;
     $scope.langsInit = [];
     $scope.tagged = [];
-
     loadParent();
 
     // First get all tags (to display them).
@@ -68,7 +77,34 @@ function EntreeServiceCtrl($scope, $http) {
       method: 'GET',
       url: 'api/index.php/v1/select/entreeservice/tags'
     }).then(function successCallback(response) {
-      $scope.tags = response.data;
+      // $scope.tags = response.data;
+      var temp = response.data;
+      temp.forEach((item) => {
+        switch(item.color) {
+          case "ff56ff":
+              $scope.tags.permit.push(item);
+            break;
+          // case "aaffaa":
+          //     $scope.tags.regime.push(item);
+          //   break;
+          case "5f00bf":
+              $scope.tags.language.push(item);
+            break;
+          case "007f00":
+              $scope.tags.rank.push(item);
+            break;
+          case "003f7f":
+              $scope.tags.fonction.push(item);
+            break;
+          // case "00bfbf":
+          //     $scope.tags.permis.push(item);
+          //   break;
+          case null:
+              $scope.tags.job.push(item);
+            break;
+        }
+      });
+      console.log($scope.tags);
 
       // Get the tags for the current person. TODO put this elswhere maybe.
       $http({
@@ -167,6 +203,7 @@ function EntreeServiceCtrl($scope, $http) {
       url: 'api/index.php/v1/admin/entreeservice/tags/'+ Number(personne.rowid),
       //15.01.2019
       data: {
+
         lieu: $scope.personne.town, adresse: $scope.personne.address, zip: $scope.personne.zip,
         tagged: $scope.tagged, mail: $scope.personne.email, phone: $scope.personne.phone,
         urgence: $scope.personne.extra.nb, parent: $scope.personne.extra.lp, message: dataSent
