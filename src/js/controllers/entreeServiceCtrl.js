@@ -15,19 +15,26 @@ function EntreeServiceCtrl($scope, $http) {
 
   $scope.data = {};
   $scope.status = 0;
+  $scope.personne = null;
   $scope.personnes = {};
+  $scope.contacts = {};
   $scope.tiers = {};
   $scope.tags = {};
-  $scope.tags.permit = {};
-  $scope.tags.language = {};
-  $scope.tags.rank = {};
-  $scope.tags.fonction = {};
-  $scope.tags.job = {};
+  $scope.form = {};
+  $scope.form.tagtype = '';
+  // $scope.tags.permit = [];
+  // $scope.tags.hobby = [];
+  // $scope.tags.language = [];
+  // $scope.tags.rank = [];
+  // $scope.tags.section = [];
+  // $scope.tags.function = [];
+  // $scope.tags.job = [];
+  // $scope.tags.secondary = [];
   $scope.tagged = [];
   $scope.existingTags = {};
   $scope.langsInit = [];
   $scope.parentList = [];
-  console.log($scope.tags);
+
   // ****************************
   // Load
   // ****************************
@@ -58,15 +65,21 @@ function EntreeServiceCtrl($scope, $http) {
   // When user click on a tier/person. Will resest some arrays to null which will then reorganize the interface based on data on $scope.
   //
   $scope.onClick = function (personne)  {
+    $scope.contacts = null;
     $scope.personnes = null;
-    $scope.tiers = null;
     $scope.personne = personne;
-
-    $scope.tags.permit = [];
-    $scope.tags.language = [];
-    $scope.tags.rank = [];
-    $scope.tags.fonction = [];
-    $scope.tags.job = [];
+    $scope.personne.tier = null;
+    $scope.personne.form = {};
+    $scope.personne.form.tier = $scope.personne.tier_nom;
+    $scope.tiers = {};
+    // $scope.tags.permit = [];
+    // $scope.tags.hobby = [];
+    // $scope.tags.language = [];
+    // $scope.tags.rank = [];
+    // $scope.tags.section = [];
+    // $scope.tags.function = [];
+    // $scope.tags.job = [];
+    // $scope.tags.secondary = [];
     $scope.existingTags = null;
     $scope.langsInit = [];
     $scope.tagged = [];
@@ -77,34 +90,39 @@ function EntreeServiceCtrl($scope, $http) {
       method: 'GET',
       url: 'api/index.php/v1/select/entreeservice/tags'
     }).then(function successCallback(response) {
-      // $scope.tags = response.data;
-      var temp = response.data;
-      temp.forEach((item) => {
-        switch(item.color) {
-          case "ff56ff":
-              $scope.tags.permit.push(item);
-            break;
-          // case "aaffaa":
-          //     $scope.tags.regime.push(item);
-          //   break;
-          case "5f00bf":
-              $scope.tags.language.push(item);
-            break;
-          case "007f00":
-              $scope.tags.rank.push(item);
-            break;
-          case "003f7f":
-              $scope.tags.fonction.push(item);
-            break;
-          // case "00bfbf":
-          //     $scope.tags.permis.push(item);
-          //   break;
-          case null:
-              $scope.tags.job.push(item);
-            break;
-        }
-      });
+        $scope.tags = response.data;
+      // var temp = response.data;
+      // temp.forEach((item) => {
+      //
+      //   switch(item.description) {
+      //     case "Permis":
+      //         $scope.tags.permit.push(item);
+      //       break;
+      //     case "Hobby":
+      //          $scope.tags.hobby.push(item);
+      //       break;
+      //     case "Langue":
+      //         $scope.tags.language.push(item);
+      //       break;
+      //     case "Section Pci":
+      //         $scope.tags.section.push(item);
+      //       break;
+      //     case "Grade":
+      //         $scope.tags.rank.push(item);
+      //       break;
+      //      case "Fonction Pci":
+      //          $scope.tags.function.push(item);
+      //        break;
+      //     case "Metier":
+      //         $scope.tags.job.push(item);
+      //       break;
+      //     case "activite secondaire":
+      //         $scope.tags.secondary.push(item);
+      //     break;
+      //   }
+      // });
       console.log($scope.tags);
+      // console.log($scope.tags.permit);
 
       // Get the tags for the current person. TODO put this elswhere maybe.
       $http({
@@ -123,6 +141,8 @@ function EntreeServiceCtrl($scope, $http) {
             //break;
           }
         }
+
+
         $scope.langsInit = getLangs($scope.tagged);
         }, function errorCallback(response) {
           console.log("error");
@@ -131,9 +151,18 @@ function EntreeServiceCtrl($scope, $http) {
       }, function errorCallback(response) {
         console.log("error");
       });
-
+      $scope.loadTiers(personne.tier_nom);
       // Load the emergency information which are in llx_socpeople_extrafield.
       loadExtrafields(personne.rowid);
+  }
+
+  $scope.onClickTier = function (tier)  {
+    $scope.personne.tier = tier;
+    $scope.tiers = null;
+  }
+  $scope.goTopTags = function() {
+    $location.hash('topTags');
+    $anchorScroll();
   }
 
   var loadParent = function() {
@@ -150,20 +179,38 @@ function EntreeServiceCtrl($scope, $http) {
   // ******
   // Load the Tiers / Persons based on input
   // ******
-  $scope.loadTiers = function (nom) {
-    if(nom != null && nom.length >= 3){
+  $scope.loadContacts = function (nom) {
+    if(nom != null && nom.length >= 2){
 
     $http({
       method: 'GET',
-      url: 'api/index.php/v1/admin/socpeople/'+nom
+      url: 'api/index.php/v1/admin/socpeopleTiers/'+nom
     }).then(function successCallback(response) {
-      $scope.tiers = response.data;
+      $scope.contacts = response.data;
       }, function errorCallback(response) {
         console.log("error");
       });
     }
   }
 
+  $scope.loadTiers = function (nom) {
+    if ($scope.personne.tier !== null) {
+        $scope.personne.tier.rowid = null;
+    }
+    if(nom != null && nom.length > 2) {
+      $http({
+        method: 'GET',
+        url: 'api/index.php/v1/admin/tiers/'+nom
+      }).then(function successCallback(response) {
+        console.log("Response data:" + response.data);
+        $scope.tiers = response.data;
+      }, function errorCallback(response) {
+        console.log("error");
+      });
+
+    };
+
+  }
   var loadExtrafields = function(rowid) {
     $http({
       method: 'GET',
@@ -191,22 +238,120 @@ function EntreeServiceCtrl($scope, $http) {
   $scope.submit = function (personne) {
 
     var tagList = $scope.tagged;
-    var tagInMessage = '';
-    for (var i = 0; i < $scope.tagged.length; i++) {
-      tagInMessage += $scope.tagged[i].label + '\n';
-    }
+    var compagnie = [];
+    var grade = [];
+    var section = [];
+    var fonction = [];
+    var metier = [];
+    var activite = [];
+    var maternelle = [];
+    var langues = [];
+    var permis = [];
+    var hobby = [];
+
+    tagList.forEach((item) => {
+      switch(item.description) {
+           case "Permis":
+               permis.push(item);
+             break;
+           case "Hobby":
+                hobby.push(item);
+             break;
+           case "Langue":
+               langues.push(item);
+             break;
+           case "Section Pci":
+              section.push(item);
+            break;
+          case "Grade":
+              grade.push(item);
+            break;
+           case "Fonction Pci":
+               fonction.push(item);
+             break;
+          case "Metier":
+              metier.push(item);
+            break;
+          case "activite secondaire":
+              activite.push(item);
+          break;
+          case "Langue maternelle":
+            maternelle.push(item);
+          break;
+          case "Compagnie":
+            compagnie.push(item);
+          break;
+        }
+      });
+      var tagInMessage = '';
+
+       tagInMessage+= 'Compagnie \n';
+      for (var i = 0; i < compagnie.length; i++) {
+        tagInMessage+=  '          ' + compagnie[i].label + '\n';
+      }
+
+      tagInMessage+= 'Grade \n';
+      for (var i = 0; i < grade.length; i++) {
+      tagInMessage+=  '          ' + grade[i].label + '\n';
+      }
+
+      tagInMessage+= 'Section \n';
+      for (var i = 0; i < section.length; i++) {
+        tagInMessage+=  '          ' + section[i].label + '\n';
+      }
+
+       tagInMessage+= 'Fonction \n';
+      for (var i = 0; i < fonction.length; i++) {
+        tagInMessage+=  '          ' + fonction[i].label + '\n';
+      }
+
+      tagInMessage+= 'Metier \n';
+      for (var i = 0; i < metier.length; i++) {
+        tagInMessage+=  '          ' + metier[i].label + '\n';
+      }
+
+      tagInMessage+= 'Activités secondaires \n';
+      for (var i = 0; i < activite.length; i++) {
+        tagInMessage+=  '          ' + activite[i].label + '\n';
+      }
+
+      tagInMessage+= 'Langue(s) maternelle(s) \n';
+      for (var i = 0; i < maternelle.length; i++) {
+        tagInMessage+=  '          ' + maternelle[i].label + '\n';
+      }
+
+      tagInMessage+= 'Autres langues \n';
+      for (var i = 0; i < langues.length; i++) {
+        tagInMessage+=  '          ' + langues[i].label + '\n';
+      }
+
+      tagInMessage+= 'Permis \n';
+      for (var i = 0; i < permis.length; i++) {
+        tagInMessage+=  '          ' + permis[i].label + '\n';
+      }
+
+      tagInMessage+= 'Hobbies \n';
+      for (var i = 0; i < hobby.length; i++) {
+        tagInMessage+= '          ' + hobby[i].label + '\n';
+      }
+
+
     var parent = $scope.parentList[$scope.personne.extra.lp-1].label;
-    var dataSent = {'Nom': $scope.personne.nom, 'Adresse': $scope.personne.address, 'Zip': $scope.personne.zip, 'Ville': $scope.personne.town, 'Mail': $scope.personne.email, 'Téléphone': $scope.personne.phone, 'Numéro d\'urgence': $scope.personne.extra.nb, 'Lien de parenté': parent, 'Tags': tagInMessage}
+    var dataSent = {'Nom': $scope.personne.nom, 'Adresse': $scope.personne.address, 'Zip': $scope.personne.zip, 'Ville': $scope.personne.town, 'Mail': $scope.personne.email, 'Téléphone': $scope.personne.phone, 'Numéro d\'urgence': $scope.personne.extra.nb, 'Lien de parenté': parent,
+    'Employeur':$scope.personne.tier.nom, 'Adresse de l\'employeur' :$scope.personne.tier.address, 'Zip de l\'employeur' :$scope.personne.tier.zip, 'Ville de l\'employeur':$scope.personne.tier.town, 'Téléphone de l\'employeur' :$scope.personne.tier.phone, 'Mail de l\'employeur':$scope.personne.tier.email,
+    'Tags': tagInMessage}
     //upload
     $http({
       method: 'POST',
       url: 'api/index.php/v1/admin/entreeservice/tags/'+ Number(personne.rowid),
       //15.01.2019
       data: {
-
+        nom: $scope.personne.nom,
         lieu: $scope.personne.town, adresse: $scope.personne.address, zip: $scope.personne.zip,
         tagged: $scope.tagged, mail: $scope.personne.email, phone: $scope.personne.phone,
-        urgence: $scope.personne.extra.nb, parent: $scope.personne.extra.lp, message: dataSent
+        urgence: $scope.personne.extra.nb, parent: $scope.personne.extra.lp, message: dataSent,
+        employeur: $scope.personne.tier.nom, emplAdresse: $scope.personne.tier.address, emplZip: $scope.personne.tier.zip,
+        emplVille: $scope.personne.tier.town, emplPhone: $scope.personne.tier.phone, emplMail: $scope.personne.tier.email, emplID: $scope.personne.tier.rowid
       }
     }).then(function successCallback() {
       $scope.status = 1;

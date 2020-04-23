@@ -7,15 +7,15 @@
 
   <div class="form-group">
     <label for="formGroupNom">{{'competences.search' | translate}} </label>
-    <input ng-change="loadTiers(form.nom)" type="text" ng-model="form.nom" class="form-control" id="formGroupNom" placeholder="{{'competences.name' | translate}}" required>
+    <input ng-change="loadContacts(form.nom)" type="text" ng-model="form.nom" class="form-control" id="formGroupNom" placeholder="{{'competences.name' | translate}}" required>
   </div>
 
-<div ng-if="tiers.length > 0" >
-  <ul  ng-click="onClick(tier)" class="list-group" ng-repeat="tier in tiers" >
-    <li class="list-group-item active">{{tier.nom}}</li>
-    <li class="list-group-item">{{tier.zip}} {{tier.town}}</li>
-    <li class="list-group-item">{{tier.email}}</li>
-    <li class="list-group-item">{{tier.phone}}</li>
+<div ng-if="contacts.length > 0" >
+  <ul  ng-click="onClick(contact)" class="list-group" ng-repeat="contact in contacts" >
+    <li class="list-group-item active">{{contact.nom}}</li>
+    <li class="list-group-item">{{contact.zip}} {{contact.town}}</li>
+    <li class="list-group-item">{{contact.email}}</li>
+    <li class="list-group-item">{{contact.phone}}</li>
  </ul>
 </div>
 
@@ -64,23 +64,112 @@
   </div>
 </div>
 
+<div  class="from-group">
+  <label for="formGroupNom">{{'competences.third.name' | translate}}</label>
+  <input ng-change="loadTiers(personne.tier.nom)" type="text" ng-model="personne.tier.nom" class="form-control" id="formGroupNom">
 </div>
 
-<!-- <h3> Langue maternelle </h3>
-<div id="langMat" class="form-group">
-  <select ng-model="tagged" placeholder="Langue maternelle">
-    <option ng-repeat="tag in tags.language | filter:{color:'5f00bf'}" class="form-control"> {{tag.label}} </option> </select>
+
+<div ng-if="tiers.length > 0 && personne !== null" >
+  <br>
+  <ul  ng-click="onClickTier(tier)" class="list-group" ng-repeat="tier in tiers" >
+    <li class="list-group-item active" >{{tier.nom}}</li>
+    <li class="list-group-item" style="background-color:yellow">{{tier.zip}} {{tier.town}}</li>
+    <li class="list-group-item" style="background-color:yellow">{{tier.email}}</li>
+    <li class="list-group-item" style="background-color:yellow"  >{{tier.phone}}</li>
+ </ul>
+ <br>
 </div>
 
-<h4> Autres langues </h4>
-<div role="alert" ng-repeat="tag in tags.language | filter:{color:'5f00bf'}">
-  <p class="alert" ng-class="{'alert-success': tag.checked == 'true' }" ng-click="actionTag(tag, $index)" ng-model="tagged" class="mb-0">{{ tag.label }}</p>
-</div> -->
+
+<div ng-if="personne.tier !== null || tiers.length == 0" class="form-group">
+  <label for="formGroupNom">{{'competences.third.address' | translate}}</label>
+  <input type="text" ng-model="personne.tier.address" class="form-control" id="formGroupNom">
+</div>
+
+<div ng-if="personne.tier !== null || tiers.length == 0" class="form-group">
+  <label for="formGroupNom">{{'competences.third.zip' | translate}}</label>
+  <input type="text" ng-model="personne.tier.zip" class="form-control" id="formGroupNom">
+</div>
+
+<div ng-if="personne.tier !== null || tiers.length == 0" class="form-group">
+  <label for="formGroupNom">{{'competences.third.town' | translate}}</label>
+  <input type="text" ng-model="personne.tier.town" class="form-control" id="formGroupNom">
+</div>
+
+<div ng-if="personne.tier !== null || tiers.length == 0"class="form-group">
+  <label for="formGroupNom">{{'competences.third.phone' | translate}}</label>
+  <input type="text" ng-model="personne.tier.phone" class="form-control" id="formGroupNom">
+</div>
+
+<div ng-if="personne.tier !== null || tiers.length == 0"class="form-group">
+  <label for="formGroupNom">{{'competences.third.email' | translate}}</label>
+  <input type="text" ng-model="personne.tier.email" class="form-control" id="formGroupNom">
+</div>
+<div id ="toptags"></div>
+
+<!-- <md-radio-group ng-change="console.log(form.tagtype)" class="radioValue" ng-model="form.tagtype">
+  <md-radio-button value="Compagnie"> Compagnie </md-radio-button>
+  <md-radio-button value="Grade"> Grade </md-radio-button>
+  <md-radio-button value="Section"> Section </md-radio-button>
+  <md-radio-button value="Fonction"> Fonction </md-radio-button>
+  <md-radio-button value="Metier"> Metier </md-radio-button>
+  <md-radio-button value="Activite"> Activité secondaire </md-radio-button>
+  <md-radio-button value="Maternelle"> Langue maternelle </md-radio-button>
+  <md-radio-button value="Langue"> Langue </md-radio-button>
+  <md-radio-button value="Permis"> Permis </md-radio-button>
+  <md-radio-button value="Hobby"> Hobby </md-radio-button>
+</md-radio-group> -->
+<div class="btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
+    <label class="btn btn-outline-secondary">
+      <input  type="radio" ng-model="description" value="Compagnie">
+      Compagnie
+     </label>
+     <label class="btn btn-outline-secondary">
+     <input type="radio" ng-model="description"  value="Grade">
+      Grade
+     </label>
+     <label class="btn btn-outline-secondary">
+      <input type="radio" ng-model="description" value="Section Pci">
+      Section
+     </label>
+     <label class="btn btn-outline-secondary">
+      <input  type="radio" ng-model="description" value="Fonction Pci" >
+      Fonction
+     </label>
+     <label class="btn btn-outline-secondary">
+      <input  type="radio" ng-model="description" value="Metier">
+      Métier
+     </label>
+     <label class="btn btn-outline-secondary">
+      <input  type="radio" ng-model="description" value="activite secondaire" >
+      Activité secondaire
+     </label>
+     <label class="btn btn-outline-secondary">
+      <input  type="radio" ng-model="description" value="Langue maternelle" >
+      Langue maternelle
+     </label>
+     <label class="btn btn-outline-secondary">
+      <input  type="radio" ng-model="description" value="Langue"  >
+      Autres langues
+     </label>
+     <label class="btn btn-outline-secondary">
+      <input  type="radio" ng-model="description" value="Permis">
+      Permis
+     </label>
+     <label class="btn btn-outline-secondary">
+      <input  type="radio" ng-model="description" value="Hobby">
+      Hobby
+     </label>
+</div>
+
 
 <div role="alert" ng-repeat="tag in tags" >
-  <p class="alert" ng-class="{'alert-success': tag.checked == 'true' }" ng-click="actionTag(tag, $index)" ng-model="tagged" class="mb-0">{{ tag.label }}</p>
+  <p ng-show="tag.description == description" class="alert" ng-class="{'alert-success': tag.checked == 'true' }" ng-click="actionTag(tag, $index)" ng-model="tagged" class="mb-0">{{ tag.label }}</p>
 </div>
 
+
+</div>
 
 
 <button type="submit()" class="btn btn-primary btn-block" >{{'competences.send' | translate}}</button>

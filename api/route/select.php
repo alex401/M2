@@ -23,9 +23,9 @@ $app->get('/v1/select/categories', function ($request, $response) {
 $app->get('/v1/select/entreeservice/tags', function ($request, $response) {
 
   $sth = $this->dbdoll->prepare(
-    "SELECT rowid, label, color, 'false' as checked
+    "SELECT rowid, label, description, 'false' as checked
     FROM `llx_categorie`
-    WHERE type = 4 AND (color = 'ff56ff' OR color = 'aaffaa' OR color = '5f00bf' OR color = '007f00' OR color = '003f7f' OR color = '00bfbf' OR NULL)
+    WHERE type = 4
     ORDER BY label"
   );
   try {
@@ -40,6 +40,7 @@ $app->get('/v1/select/entreeservice/tags', function ($request, $response) {
     return $response->withJson(array('error' => $ex->getMessage()), 422);
   }
 });
+
 
 // Return list of formations.
 $app->get('/v1/select/formations', function ($request,$response) {

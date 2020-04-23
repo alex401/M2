@@ -30,8 +30,6 @@ $app->post('/v1/admin/groupreport', function($request,$response) {
 
 
 
-
-
 $app->get('/v1/admin/tiers/{name}', function ($request, $response, $args) {
 
   $name = $args['name'];
@@ -67,6 +65,33 @@ $app->get('/v1/admin/socpeople/{name}', function ($request, $response, $args) {
 
   try {
     $sth->execute();
+    $result = $sth->fetchAll();
+  } catch(\Exception $ex) {
+    return $response->withJson(array('error' => "Contacts search ny name failed: " . $ex->getMessage()), 422);
+  }
+
+  return $response->withJson($result, 200);
+});
+
+$app->get('/v1/admin/socpeopleTiers/{name}', function ($request, $response, $args) {
+
+  $name = $args['name'];
+  $name = "%".$name."%";
+
+  $sth = $this->dbdoll->prepare(
+    "SELECT CONCAT(contact.lastname, ' ', contact.firstname) as nom, contact.address, contact.zip, contact.town, contact.phone, contact.email, contact.rowid, tier.nom as tier_nom
+    FROM llx_socpeople contact
+    LEFT JOIN (
+    SELECT llx_societe.rowid, llx_societe.nom, llx_societe.address, llx_societe.zip, llx_societe.town, llx_societe.phone, llx_societe.email
+    FROM llx_societe) tier
+    ON contact.fk_soc = tier.rowid
+    HAVING nom LIKE :name"
+  );
+  $sth->bindParam(':name', $name, PDO::PARAM_STR);
+
+  try {
+    $sth->execute();
+
     $result = $sth->fetchAll();
   } catch(\Exception $ex) {
     return $response->withJson(array('error' => "Contacts search ny name failed: " . $ex->getMessage()), 422);
@@ -211,6 +236,7 @@ $app->post('/v1/admin/entreeservice/tags/{personneid}', function ($request,$resp
   $data = json_decode($data, true);
 
   //TODO array_key_exists() ?
+  $dataNom = $data['nom'];
   $dataLieu = $data['lieu'];
   $dataAdresse = $data['adresse'];
   $dataZip = $data['zip'];
@@ -218,12 +244,51 @@ $app->post('/v1/admin/entreeservice/tags/{personneid}', function ($request,$resp
   $dataPhone = $data['phone'];
   $dataUrgence = $data['urgence'];
   $dataParent = $data['parent'];
+  $dataEmployeur = $data['employeur'];
+  $dataEmplAdresse = $data['emplAdresse'];
+  $dataEmplZip = $data['emplZip'];
+  $dataEmplVille = $data['emplVille'];
+  $dataEmplPhone = $data['emplPhone'];
+  $dataEmplMail = $data['emplMail'];
+  $dataEmplID = $data['emplID'];
+
 
   try {
+    if ($dataEmplID == null) {
+      $sth = $this->dbdoll->prepare(
+        "INSERT INTO llx_societe
+        SET nom = :employeur, address = :adresse, zip = :zip, town = :ville, phone = :phone, email = :mail"
+      );
+
+    } else {
+      $sth = $this->dbdoll->prepare(
+        "UPDATE llx_societe
+        SET nom = :employeur, address = :adresse, zip = :zip, town = :ville, phone = :phone, email = :mail
+        WHERE rowid = :rowid"
+      );
+      $sth->bindParam(':rowid', $dataEmplID, PDO::PARAM_STR);
+    }
+    $sth->bindParam(':employeur', $dataEmployeur, PDO::PARAM_STR);
+    $sth->bindParam(':adresse', $dataEmplAdresse, PDO::PARAM_STR);
+    $sth->bindParam(':zip', $dataEmplZip, PDO::PARAM_STR);
+    $sth->bindParam(':ville', $dataEmplVille, PDO::PARAM_STR);
+    $sth->bindParam(':phone', $dataEmplPhone, PDO::PARAM_STR);
+    $sth->bindParam(':mail', $dataEmplMail, PDO::PARAM_STR);
+
+    $sth->execute();
+    //var_dump($sth);
+    if ($dataEmplID == null) {
+      $dataEmplID = $this->dbdoll->lastInsertId();
+    }
+
+
+    //var_dump($result);
+
+
     // Update info.
     $sth = $this->dbdoll->prepare(
       "UPDATE llx_socpeople
-      SET town = :dataLieu, address = :dataAdresse, zip = :dataZip, email = :dataMail, phone = :dataPhone
+      SET fk_soc = :tier, town = :dataLieu, address = :dataAdresse, zip = :dataZip, email = :dataMail, phone = :dataPhone
       WHERE rowid = $personneid"
     );
     $sth->bindParam(':dataLieu', $dataLieu, PDO::PARAM_STR);
@@ -231,19 +296,7 @@ $app->post('/v1/admin/entreeservice/tags/{personneid}', function ($request,$resp
     $sth->bindParam(':dataZip', $dataZip, PDO::PARAM_STR);
     $sth->bindParam(':dataMail', $dataMail, PDO::PARAM_STR);
     $sth->bindParam(':dataPhone', $dataPhone, PDO::PARAM_STR);
-    $sth->execute();
-
-    $sth = $this->dbdoll->prepare(
-      "UPDATE llx_societe, llx_socpeople
-      SET llx_societe.address = :dataAdresse, llx_societe.zip = :dataZip, llx_societe.town = :dataLieu,
-        llx_societe.email = :dataMail, llx_societe.phone = :dataPhone
-      WHERE llx_societe.rowid = llx_socpeople.fk_soc AND llx_socpeople.rowid = $personneid"
-    );
-    $sth->bindParam(':dataLieu', $dataLieu, PDO::PARAM_STR);
-    $sth->bindParam(':dataAdresse', $dataAdresse, PDO::PARAM_STR);
-    $sth->bindParam(':dataZip', $dataZip, PDO::PARAM_STR);
-    $sth->bindParam(':dataMail', $dataMail, PDO::PARAM_STR);
-    $sth->bindParam(':dataPhone', $dataPhone, PDO::PARAM_STR);
+    $sth->bindParam(':tier', $dataEmplID, PDO::PARAM_STR);
     $sth->execute();
 
   } catch (\Exception $ex) {
@@ -252,8 +305,8 @@ $app->post('/v1/admin/entreeservice/tags/{personneid}', function ($request,$resp
 
   try {
     $message = (json_encode($data['message']));
-    $result = setContent('Nouvelles données pour modification PISA', $message);
-    $mail = mailSender('Nouvelles données pour modification PISA', $message, "sud.commandement@pci-fr.ch", getMail($this,'donnees'));
+    $result = setContent('Nouvelles données pour modification PISA '.$dataNom, $message);
+    $mail = mailSender('Nouvelles données pour modification PISA '.$dataNom, $message, "sud.commandement@pci-fr.ch", getMail($this,'donnees'));
   } catch (\Exception $ex) {
     return $response->withJson(array('error' => 'Failed to send mail: ' . $ex->getMessage()), 422);
   }
