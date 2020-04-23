@@ -283,63 +283,65 @@ function EntreeServiceCtrl($scope, $http) {
           break;
         }
       });
-      var tagInMessage = '';
 
-       tagInMessage+= 'Compagnie \n';
+
+       compagnieMsg = '';
       for (var i = 0; i < compagnie.length; i++) {
-        tagInMessage+=  '          ' + compagnie[i].label + '\n';
+        compagnieMsg+= compagnie[i].label + '  ---  ';
       }
 
-      tagInMessage+= 'Grade \n';
+      gradeMsg = '';
       for (var i = 0; i < grade.length; i++) {
-      tagInMessage+=  '          ' + grade[i].label + '\n';
+      gradeMsg+= grade[i].label + '  ---  ' ;
       }
 
-      tagInMessage+= 'Section \n';
+      sectionMsg = '';
       for (var i = 0; i < section.length; i++) {
-        tagInMessage+=  '          ' + section[i].label + '\n';
+        sectionMsg+= section[i].label + '  ---  ' ;
       }
 
-       tagInMessage+= 'Fonction \n';
+       fonctionMsg = '';
       for (var i = 0; i < fonction.length; i++) {
-        tagInMessage+=  '          ' + fonction[i].label + '\n';
+        fonctionMsg+= fonction[i].label + '  ---  ' ;
       }
 
-      tagInMessage+= 'Metier \n';
+      metierMsg = '';
       for (var i = 0; i < metier.length; i++) {
-        tagInMessage+=  '          ' + metier[i].label + '\n';
+        metierMsg+= metier[i].label + '  ---  ' ;
       }
 
-      tagInMessage+= 'Activités secondaires \n';
+      activiteMsg = '';
       for (var i = 0; i < activite.length; i++) {
-        tagInMessage+=  '          ' + activite[i].label + '\n';
+        activiteMsg+= activite[i].label + '  ---  ' ;
       }
 
-      tagInMessage+= 'Langue(s) maternelle(s) \n';
+      maternelleMsg = '';
       for (var i = 0; i < maternelle.length; i++) {
-        tagInMessage+=  '          ' + maternelle[i].label + '\n';
+        maternelleMsg+= maternelle[i].label + '  ---  ' ;
       }
 
-      tagInMessage+= 'Autres langues \n';
+      langueMsg = '';
       for (var i = 0; i < langues.length; i++) {
-        tagInMessage+=  '          ' + langues[i].label + '\n';
+        langueMsg+= langues[i].label + '  ---  ' ;
       }
 
-      tagInMessage+= 'Permis \n';
+      permisMsg = '';
       for (var i = 0; i < permis.length; i++) {
-        tagInMessage+=  '          ' + permis[i].label + '\n';
+        permisMsg+= permis[i].label + '  ---  ' ;
       }
 
-      tagInMessage+= 'Hobbies \n';
+      hobbyMsg = '';
       for (var i = 0; i < hobby.length; i++) {
-        tagInMessage+= '          ' + hobby[i].label + '\n';
+        hobbyMsg += hobby[i].label + '  ---  ' ;
       }
 
 
     var parent = $scope.parentList[$scope.personne.extra.lp-1].label;
     var dataSent = {'Nom': $scope.personne.nom, 'Adresse': $scope.personne.address, 'Zip': $scope.personne.zip, 'Ville': $scope.personne.town, 'Mail': $scope.personne.email, 'Téléphone': $scope.personne.phone, 'Numéro d\'urgence': $scope.personne.extra.nb, 'Lien de parenté': parent,
     'Employeur':$scope.personne.tier.nom, 'Adresse de l\'employeur' :$scope.personne.tier.address, 'Zip de l\'employeur' :$scope.personne.tier.zip, 'Ville de l\'employeur':$scope.personne.tier.town, 'Téléphone de l\'employeur' :$scope.personne.tier.phone, 'Mail de l\'employeur':$scope.personne.tier.email,
-    'Tags': tagInMessage}
+    'Compagnie': compagnieMsg, 'Grade': gradeMsg, 'Section':sectionMsg , 'Fonction': fonctionMsg, 'Métiers': metierMsg, 'Activité secondaire':activiteMsg , 'Langue maternelle':maternelleMsg , 'Autres langues':langueMsg , 'Permis':permisMsg , 'Hobbies': hobbyMsg}
+    console.log(JSON.stringify(dataSent));
+
     //upload
     $http({
       method: 'POST',
