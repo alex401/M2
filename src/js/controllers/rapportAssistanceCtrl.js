@@ -25,6 +25,7 @@ function RapportAssistanceCtrl($scope, $http) {
   $scope.rapport.meteo = {};
   $scope.rapport.sanitaryStatus = {};
   $scope.rapport.troopStatus = {};
+  $scope.rapport.comment = "";
 
 
   $scope.addNewHomme = function() {

@@ -15,7 +15,10 @@
         <option value="">{{'daily_report_assist.site.selection' | translate}}</option>
       </select>
    </div>
-
+   <div class="form-group">
+     <label for="commentaire"> {{'daily_report_assist.comment' | translate}} </label>
+     <input type="text" id="commentaire" class="form-control" ng-model="rapport.comment" name="" placeholder="{{'daily_report_assist.comment' | translate}}">
+   </div>
       <script type="text/javascript">
           <!--
           var rangeValues = {

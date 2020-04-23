@@ -19,6 +19,7 @@ var paths = {
     index: 'src/index.php',
     logo: 'src/*.png',
     bower_fonts: 'src/components/**/*.{ttf,woff,eof,svg}',
+    lang: 'src/i18n/**/*.*',
 };
 
 
