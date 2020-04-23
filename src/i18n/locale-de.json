@@ -163,7 +163,9 @@
             "title": "Arbeitsort",
             "selection": "-- Auswahl Arbeitsort --"
         },
+
         "comment":"Betreffendes Datum (wenn es heute ist, lassen Sie es leer)",
+
         "situation": "Aktuelle Situation",
         "meteo": {
             "title": "Wetter",
@@ -349,6 +351,50 @@
       "emergency":"Notfallkontaktnummer",
       "relationship":"Beziehung",
       "selectRelation":"-- Auswahl Beziehung --",
+      "third": {
+        "name":"Namen des Unternehmers",
+        "address":"Adresse der Unternehmung",
+        "zip":"PLT",
+        "town":"Stadt",
+        "phone":"Telefonnummer",
+        "email":"Email"
+      },
+      "send":"Senden"
+    },
+    "equipement": {
+      "title": "Ausrüstungskontrolle",
+      "message": {
+          "success": "Message envoyé!",
+          "error": "Erreur de traitement, veuillez réessayer plus tard.",
+          "loading": "Chargement en cours"
+      },
+      "lieutenant": "Namen des Leutnants",
+      "name": "Namen des Soldats",
+      "bag": "Effektentasche",
+      "rainjacket": "Regenjacke",
+      "rainpants": "Regenhosen",
+      "rainhat": "Regenhut",
+      "polar": "Fleece-Jacke",
+      "jacket": "Arbeitsjacke",
+      "pants": "Arbeitshose",
+      "belt": "Hosengurt",
+      "cap": "Schirmmütze",
+      "gloves": "Handschuhe",
+      "helmet": "Schutzhelm",
+      "tshirt": "4 T-shirts",
+      "sous-pull": "Unter-Pull",
+      "shoes": "Kampfschuhe",
+      "PPI": "kleiner Verband",
+      "badge": "Badge PCI",
+      "bonnet":"Rollmütze",
+      "comment":"Kommentar",
+      "options" : {
+        "yes": "ja",
+        "missing": "fehlend",
+        "defective": "defekt",
+        "size": "Grösse",
+        "amount": "Anzahl"
+      },
       "send":"Senden"
     },
     "equipement": {
