@@ -3,7 +3,7 @@
 // Get list of chantiers.
 $app->get('/v1/chantiers', function ($request, $response) {
 
-  $sth = $this->dbdoll->prepare("SELECT `rowid`, `title`, `date_close` FROM `llx_projet` WHERE fk_statut = 1;");
+  $sth = $this->dbdoll->prepare("SELECT `rowid`, `title`, `date_close` FROM `llx_projet` WHERE fk_statut = 1 ORDER BY title;");
 
   try {
     $sth->execute();
