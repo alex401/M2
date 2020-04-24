@@ -14,6 +14,7 @@ var paths = {
     scripts: 'src/js/**/*.*',
     libs: 'src/components/**/dist/**/*.*',
     styles: 'src/css/*.*',
+    i18n: 'src/i18n/*.*',
     images: 'src/img/**/*.*',
     templates: 'src/templates/**',
     index: 'src/index.php',
@@ -58,6 +59,11 @@ gulp.task('custom-images', function() {
         .pipe(gulp.dest('dist/img'));
 });
 
+gulp.task('custom-i18n', function() {
+    return gulp.src(paths.i18n)
+        .pipe(gulp.dest('dist/i18n'));
+});
+
 gulp.task('custom-js', function() {
     return gulp.src(paths.scripts)
 //        .pipe(minifyJs())
@@ -92,6 +98,7 @@ gulp.task('custom-templates', function() {
  */
 gulp.task('watch', function() {
     gulp.watch([paths.images], ['custom-images']);
+    gulp.watch([paths.images], ['custom-i18n']);
     gulp.watch([paths.styles], ['custom-less']);
     gulp.watch([paths.scripts], ['custom-js']);
     gulp.watch([paths.templates], ['custom-templates']);
