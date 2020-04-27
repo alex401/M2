@@ -84,6 +84,24 @@ $app->post('/v1/superadmin/warning', function($request, $response) {
 // Logins gestion.
 // ---------------------------------------------------------------------------------------------------------------------
 
+$app->get('/v1/superadmin/getLogins', function ($request, $response) {
+    if ($_SESSION["usertype_utilisateurformulaires"] != "admin") {
+      http_response_code(401);
+      exit();
+    }
+    $sth = $this->dbm2->prepare("SELECT login, email, nom, prenom, usertype FROM utilisateursformulaires");
+    try {
+      $sth->execute();
+      $result = $sth->fetchAll();
+    } catch (\Exception $ex) {
+      return $response->withJson(array('error' => $ex->getMessage()), 422);
+    }
+    return $response->withJson($result, 200);
+});
+
+
+
+
 $app->post('/v1/superadmin/login', function ($request,$response) {
     if ($_SESSION["usertype_utilisateurformulaires"] != "admin") {
       http_response_code(401);

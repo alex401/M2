@@ -6,8 +6,27 @@ function LogCtrl($scope, $http) {
   $scope.data = {};
   $scope.status = 0;
   $scope.log = {};
+  $scope.logs = {};
   $scope.errorMessage = "Unknown error";
   $scope.log.login = '';
+
+
+  var Load = function() {
+    loadLogins();
+  }
+
+
+  var loadLogins= function () {
+    $http({
+      method: 'GET',
+      url: 'api/index.php/v1/superadmin/getLogins',
+    }).then(function successCallBack(response) {
+      $scope.logs = response.data;
+      console.log($scope.logs);
+    }, function errorCallback(response) {
+      console.log("error");
+    });
+  }
 
   $scope.submit = function () {
 
@@ -30,4 +49,6 @@ function LogCtrl($scope, $http) {
       });
 
   }
+
+  Load();
 }

@@ -48,6 +48,18 @@
     <input type="text" class="form-control" id="formGroupNom" ng-model="log.email">
   </div>
 
+
   <button  type="submit" class="btn btn-primary" >Envoyer</button>
   </form>
+
+  <table style="width:100%">
+    <tr ng-repeat="log in logs">
+      <td> Utilisateur: {{log.login}} </td>
+      <td> Email: {{log.email}}</td>
+      <td> Nom: {{log.nom}} {{log.prenom}}</td>
+      <td> Type d'utilisateur: {{log.usertype}}</td>
+    </tr>
+</table>
+
+
   </main>
