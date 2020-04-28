@@ -335,6 +335,8 @@
       "emergency":"Numéro d'urgence",
       "relationship":"Lien de parenté",
       "selectRelation":"-- Sélection parenté --",
+      "allergie": "Allergie?",
+      "selectAllergie": "Si oui, à quoi?",
       "third": {
         "name":"Nom de l'entrepreneur",
         "address":"Adresse de l'entreprise",
@@ -343,6 +345,7 @@
         "phone":"Téléphone",
         "email":"Email"
       },
+      "iban":"IBAN",
       "send":"Envoyer"
     },
     "equipement": {

@@ -351,6 +351,8 @@
       "emergency":"Notfallkontaktnummer",
       "relationship":"Beziehung",
       "selectRelation":"-- Auswahl Beziehung --",
+      "allergie": "Allergie?",
+      "selectAllergie": "Wenn ja, wozu?",
       "third": {
         "name":"Namen des Unternehmers",
         "address":"Adresse der Unternehmung",
@@ -359,6 +361,7 @@
         "phone":"Telefonnummer",
         "email":"Email"
       },
+      "iban": "IBAN",
       "send":"Senden"
     },
     "equipement": {

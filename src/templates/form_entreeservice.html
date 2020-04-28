@@ -64,6 +64,25 @@
   </div>
 </div>
 
+<label for="allergy"> {{'competences.allergie' | translate}} </label>
+<div id="allergy" class="btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
+    <label class="btn btn-outline-secondary">
+      <input  type="radio" ng-model="personne.allergie" value="Oui">
+      Oui
+     </label>
+     <label class="btn btn-outline-secondary">
+     <input type="radio" ng-model="personne.allergie"  value="Non">
+      Non
+     </label>
+</div>
+
+<div class="form-group">
+  <label for="formGroupNom"> {{'competences.selectAllergie' | translate}} </label>
+  <input type="text" ng-model="personne.selectAllergie" class="form-control" id="formGroupNom">
+</div>
+
+
+
 <div  class="from-group">
   <label for="formGroupNom">{{'competences.third.name' | translate}}</label>
   <input ng-change="loadTiers(personne.tier.nom)" type="text" ng-model="personne.tier.nom" class="form-control" id="formGroupNom">
@@ -108,18 +127,11 @@
 </div>
 <div id ="toptags"></div>
 
-<!-- <md-radio-group ng-change="console.log(form.tagtype)" class="radioValue" ng-model="form.tagtype">
-  <md-radio-button value="Compagnie"> Compagnie </md-radio-button>
-  <md-radio-button value="Grade"> Grade </md-radio-button>
-  <md-radio-button value="Section"> Section </md-radio-button>
-  <md-radio-button value="Fonction"> Fonction </md-radio-button>
-  <md-radio-button value="Metier"> Metier </md-radio-button>
-  <md-radio-button value="Activite"> Activité secondaire </md-radio-button>
-  <md-radio-button value="Maternelle"> Langue maternelle </md-radio-button>
-  <md-radio-button value="Langue"> Langue </md-radio-button>
-  <md-radio-button value="Permis"> Permis </md-radio-button>
-  <md-radio-button value="Hobby"> Hobby </md-radio-button>
-</md-radio-group> -->
+<div class="form-group">
+  <label for="formGroupNom"> {{'competences.iban' | translate}} </label>
+  <input type="text" ng-model="personne.iban" class="form-control" id="formGroupNom">
+</div>
+
 <div class="btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
     <label class="btn btn-outline-secondary">
       <input  type="radio" ng-model="description" value="Compagnie">
