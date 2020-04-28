@@ -1,0 +1,401 @@
+{
+    "navbar": {
+        "command": "Bestellung",
+        "admin": "Admin",
+        "language": "Sprache"
+    },
+    "menu": {
+        "commands": {
+            "title": "Schnellzugriff für Bestellungen",
+            "meal": "Essen",
+            "transport": "Transport",
+            "material": "Material",
+            "fuel": "Treibstoff",
+            "radios": "Radios",
+            "management": "Auftragsmanagement",
+            "search": "Auftragsuche"
+
+        },
+        "competences": "Aktualisierung persönlicher Daten",
+        "equipement":"Ausrüstungskontrolle",
+        "admin": {
+            "title": "Admin",
+            "daily_report": "Täglicher Bericht (Abteilung und SPPAM)",
+            "daily_report_assist": "Tagesbericht Unterstützung"
+        },
+        "search": {
+          "title":"Bestellungssuche",
+          "number":"Bestellungsnummer",
+          "client":"Kunde",
+          "type":"Bestellungstyp",
+          "date":"Datum",
+          "site":"Baustelle",
+          "selectionsite":"-- Auswahl der Baustelle --",
+          "showDelivered":"Ausgelieferte Bestellungen anzeigen",
+          "showRefused":"Abgelehnte Bestellungen anzeigen",
+          "showCanceled":"Annullierte Bestellungen anzeigen",
+          "status":"Status"
+        }
+    },
+    "commands": {
+      "radios": {
+          "title" : "Radiobestellung",
+          "message": {
+              "success": "Bestellung gesendet!",
+              "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+              "loading": "Ladevorgang läuft"
+          },
+          "name": "Name",
+          "rank": {
+            "title":"Grad",
+            "choose":"Auswählen Sie einen Grad",
+            "h-p":"Nicht aus dem Zivilschutz",
+            "std":"Soldat",
+            "app":"Gefreiter",
+            "cpl":"Korporal",
+            "sgt":"Wachtmeister",
+            "sgtm":"Feldweibel",
+            "four":"Fourier",
+            "lt":"Leutnant",
+            "plt":"Oberleutnant",
+            "cap":"Hauptmann",
+            "maj":"Major"
+          },
+          "section": "Abteilung",
+          "from": "Ab",
+          "to": "Bis",
+          "amount":"Anzahl",
+          "phone":"Telefonnummer",
+          "comment": "Kommentar",
+          "button_send": "Senden"
+      },
+        "meal": {
+            "title" : "Essensbestellung",
+            "message": {
+                "success": "Auftrag Nummer <b>{{id}}</b> erfolgreich erstellt!<br><br> <i>Hinweis: Sie können die Bestellnummer zur späteren Suche verwenden.</i>",
+                "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+                "loading": "Ladevorgang läuft"
+            },
+            "name": "Name",
+            "site": "Baustelle",
+            "site_selection": "-- Baustellenauswahl --",
+            "delivery_date": "Gewünschtes Lieferdatum",
+            "breakfast_nbr": "Anzahl der Frühstücke",
+            "lunch_nbr": "Anzahl der Mittagessen",
+            "dinner_nbr": "Anzahl der Abendessen",
+            "night_snack_nbr": "Anzahl der nächtlichen Snacks",
+            "vegetarian_nbr": "Anzahl von Vegetariern",
+            "comment": "Kommentar",
+            "button_send": "Senden"
+        },
+        "material": {
+            "title" : "Materialbestellung",
+            "message": {
+                "success": "Auftrag Nummer <b>{{id}}</b> erfolgreich erstellt!<br><br> <i>Hinweis: Sie können die Bestellnummer zur späteren Suche verwenden.</i>",
+                "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+                "loading": "Ladevorgang läuft"
+            },
+            "name": "Name",
+            "site": "Baustelle",
+            "site_selection": "-- Baustellenauswahl --",
+            "delivery_date": "Gewünschtes Lieferdatum",
+            "hour": "Tageszeit",
+            "hour_morning": "Am Morgen",
+            "hour_midday": "Mittag",
+            "hour_evening": "Abend",
+            "material_1": "Material 1",
+            "material_2": "Material 2",
+            "material_3": "Material 3",
+            "comment": "Kommentar",
+            "button_send": "Senden"
+        },
+        "fuel": {
+            "title": "Treibstoffbestellung",
+            "message": {
+                "success": "Auftrag Nummer <b>{{id}}</b> erfolgreich erstellt!<br><br> <i>Hinweis: Sie können die Bestellnummer zur späteren Suche verwenden.</i>",
+                "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+                "loading": "Ladevorgang läuft"
+            },
+            "name": "Name",
+            "site": "Baustelle",
+            "site_selection": "-- Baustellenauswahl --",
+            "diesel": "Diesel",
+            "gasoline": "Benzin",
+            "gasoline_2T": "Benzin 2T",
+            "liter": "Liter",
+            "comment": "Kommentar",
+            "button_send": "Senden"
+        },
+        "transport": {
+            "title": "Transportbestellung",
+            "message": {
+                "success": "Auftrag Nummer <b>{{id}}</b> erfolgreich erstellt!<br><br> <i>Hinweis: Sie können die Bestellnummer zur späteren Suche verwenden.</i>",
+                "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+                "loading": "Ladevorgang läuft"
+            },
+            "name": "Name",
+            "departure": "Abfahrt",
+            "site_selection": "-- Baustellenauswahl --",
+            "destination": "Reiseziel",
+            "transport_date": "Datum des Transportes",
+            "hour": "Tageszeit",
+            "hour_morning": "Am Morgen",
+            "hour_midday": "Mittag",
+            "hour_evening": "Abend",
+            "hour_details": "Details für die Zeit (falls erforderlich)",
+            "men_nbr": "Anzahl Männer",
+            "material_to_transport": "Material zu transportieren",
+            "comment": "Kommentar",
+            "button_send": "Senden"
+        },
+        "position": {
+          "title": "Arbeitsstelle",
+          "leadassistance": "Stabsassistent",
+          "kitchen": "Küche",
+          "material": "Material",
+          "fuel": "Treibstoff",
+          "transport": "Transport"
+        }
+    },
+    "daily_report_assist": {
+        "title": "Tagesbericht Betreu",
+        "site": {
+            "title": "Arbeitsort",
+            "selection": "-- Auswahl Arbeitsort --"
+        },
+        "comment":"Betreffendes Datum",
+        "situation": "Aktuelle Situation",
+        "meteo": {
+            "title": "Wetter",
+            "showers": "Regenguss",
+            "lightshowers": "Kleinen Regenguss",
+            "stormy": "Stürmisch",
+            "cloudy": "bewölkt",
+            "cloudsunny": "wenig bewölkt",
+            "sunny": "sonnig",
+            "description": "Beschreibung",
+            "city": "Stadt"
+        },
+        "means": {
+            "title": "Verwendete Mittel",
+            "men": "Männer",
+            "rank": {
+              "choose":"Auswählen Sie einen Grad",
+              "std":"Soldat",
+              "app":"Gefreiter",
+              "cpl":"Korporal",
+              "sgt":"Wachtmeister",
+              "sgtm":"Feldweibel",
+              "four":"Fourier",
+              "lt":"Leutnant",
+              "plt":"Oberleutnant",
+              "cap":"Hauptmann",
+              "maj":"Major"
+            },
+            "resp": "Namen der verantwortliche Person",
+            "amount": "Anzahl Männer",
+            "add_field": "Feld hinzufügen"
+        },
+        "vehicles": {
+            "title": "Transportmitteln",
+            "amount": "Anzahl",
+            "type": "Typ",
+            "add_field": "Feld hinzufügen"
+        },
+        "material": {
+            "title": "Material",
+            "amount": "Anzahl",
+            "description": "Beschreibung",
+            "add_field": "Feld hinzufügen"
+        },
+        "missions": {
+            "title": "Mission",
+            "by": {
+              "title":"Erfüllt von:",
+              "e-m":"Stab",
+              "AICrens":"FU 1 - Lage",
+              "AICmed":"FU 1 - Medien",
+              "AICchanc":"FU 1 - Kanzlerei",
+              "AICtele":"FU 2 - Telematik",
+              "AICinfo":"FU 2 - Informatik",
+              "circ":"Verkehr",
+              "logfour":"Logistik - Fourier",
+              "loginfra":"Logistik - Infrastruktur",
+              "logsub":"Logistik - Lebensunterhalt",
+              "logmat":"Logistik - Material",
+              "logtrans":"Logistik - Transport",
+              "Assist":"Betreu",
+              "Appui":"Unterstützung"
+            },
+            "task": "Aufgabe",
+            "description": "Beschreibung",
+            "location": "Ort",
+            "add_field": "Feld hinzufügen"
+        },
+        "sanitaryStatus": {
+            "title": "Gesundheitszustand",
+            "good":"Gut",
+            "mean":"Mittelmässig",
+            "bad":"Schlecht",
+            "comment": "Kommentar"
+        },
+        "troopStatus": {
+            "title": "Truppenzustand",
+            "good":"Gut",
+            "mean":"Mittelmässig",
+            "bad":"Schlecht",
+            "comment": "Kommentar"
+        },
+        "email": {
+            "title": "Email",
+            "zone": "-- Gegend --",
+            "note": "Der Bericht wird an der Mailadresse der Gegend gesendet."
+        },
+        "send": "Senden"
+    },
+    "daily_report": {
+        "title": "Tagesbericht",
+        "formation": "Truppe",
+        "selectFormation": "-- Wahl Truppe --",
+        "situation": "Aktuelle situation",
+        "meteo": {
+            "title": "Wetter",
+            "showers": "Regenguss",
+            "lightshowers": "Kleinen Regenguss",
+            "stormy": "Stürmisch",
+            "cloudy": "bewölkt",
+            "cloudsunny": "wenig bewölkt",
+            "sunny": "sonnig",
+            "description": "Beschreibung",
+            "city": "Stadt"
+        },
+        "means": {
+            "title": "Verwendete Mittel",
+            "men": "Männer",
+            "rank": {
+              "choose":"Auswählen Sie einen Grad",
+              "std":"Soldat",
+              "app":"Gefreiter",
+              "cpl":"Korporal",
+              "sgt":"Wachtmeister",
+              "sgtm":"Feldweibel",
+              "four":"Fourier",
+              "lt":"Leutnant",
+              "plt":"Oberleutnant",
+              "cap":"Hauptmann",
+              "maj":"Major"
+            },
+            "resp": "Namen der verantwortliche Person",
+            "amount": "Anzahl Männer",
+            "add_field": "Feld hinzufügen"
+        },
+        "vehicles": {
+            "title": "Transportmitteln",
+            "amount": "Anzahl",
+            "type": "Typ",
+            "add_field": "Feld hinzufügen"
+        },
+        "material": {
+            "title": "Material",
+            "amount": "Anzahl",
+            "description": "Beschreibung",
+            "add_field": "Feld hinzufügen"
+        },
+        "missions": {
+            "title": "Mission",
+            "by": {
+              "title":"Erfüllt von:",
+              "e-m":"Stab",
+              "AICrens":"FU 1 - Lage",
+              "AICmed":"FU 1 - Medien",
+              "AICchanc":"FU 1 - Kanzlerei",
+              "AICtele":"FU 2 - Telematik",
+              "AICinfo":"FU 2 - Informatik",
+              "circ":"Verkehr",
+              "logfour":"Logistik - Fourier",
+              "loginfra":"Logistik - Infrastruktur",
+              "logsub":"Logistik - Lebensunterhalt",
+              "logmat":"Logistik - Material",
+              "logtrans":"Logistik - Transport",
+              "Assist":"Betreu",
+              "Appui":"Unterstützung"
+            },
+            "progress": "Fortschritt",
+            "description": "Beschreibung",
+            "location": "Ort",
+            "add_field": "Feld hinzufügen"
+        },
+        "missionsTransmises": {
+          "title": "Übertragten Aufträge",
+          "description": "Beschreibung",
+          "location": "Ort",
+          "add_field": "Feld hinzufügen"
+        },
+        "send": "Senden"
+    },
+    "competences": {
+      "message": {
+        "success": "Gesendet",
+        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+        "loading": "Ladevorgang läuft"
+      },
+      "search": "Suche der Person:",
+      "name":"Name",
+      "address":"Adresse",
+      "zip":"PLZ",
+      "location":"Stadt",
+      "mail":"e-mail",
+      "phone":"Telefonnummer",
+      "emergency":"Notfallkontaktnummer",
+      "relationship":"Beziehung",
+      "selectRelation":"-- Auswahl Beziehung --",
+      "allergie": "Allergie?",
+      "selectAllergie": "Wenn ja, wozu?",
+      "third": {
+        "name":"Namen des Unternehmers",
+        "address":"Adresse der Unternehmung",
+        "zip":"PLT",
+        "town":"Stadt",
+        "phone":"Telefonnummer",
+        "email":"Email"
+      },
+      "iban": "IBAN",
+      "send":"Senden"
+    },
+    "equipement": {
+      "title": "Ausrüstungskontrolle",
+      "message": {
+          "success": "Message envoyé!",
+          "error": "Erreur de traitement, veuillez réessayer plus tard.",
+          "loading": "Chargement en cours"
+      },
+      "lieutenant": "Namen des Leutnants",
+      "name": "Namen des Soldats",
+      "bag": "Effektentasche",
+      "rainjacket": "Regenjacke",
+      "rainpants": "Regenhosen",
+      "rainhat": "Regenhut",
+      "polar": "Fleece-Jacke",
+      "jacket": "Arbeitsjacke",
+      "pants": "Arbeitshose",
+      "belt": "Hosengurt",
+      "cap": "Schirmmütze",
+      "gloves": "Handschuhe",
+      "helmet": "Schutzhelm",
+      "tshirt": "4 T-shirts",
+      "sous-pull": "Unter-Pull",
+      "shoes": "Kampfschuhe",
+      "PPI": "kleiner Verband",
+      "badge": "Badge PCI",
+      "bonnet":"Rollmütze",
+      "comment":"Kommentar",
+      "options" : {
+        "yes": "ja",
+        "missing": "fehlend",
+        "defective": "defekt",
+        "size": "Grösse",
+        "amount": "Anzahl"
+      },
+      "send":"Senden"
+    }
+}
