@@ -338,6 +338,7 @@ function EntreeServiceCtrl($scope, $http) {
 
     var parent = $scope.parentList[$scope.personne.extra.lp-1].label;
     var dataSent = {'Nom': $scope.personne.nom, 'Adresse': $scope.personne.address, 'Zip': $scope.personne.zip, 'Ville': $scope.personne.town, 'Mail': $scope.personne.email, 'Téléphone': $scope.personne.phone, 'Numéro d\'urgence': $scope.personne.extra.nb, 'Lien de parenté': parent,
+    'Allergie?' : $scope.personne.allergie, 'Allergie (s\'il y en a)': $scope.personne.selectAllergie, 'IBAN': $scope.personne.iban,
     'Employeur':$scope.personne.tier.nom, 'Adresse de l\'employeur' :$scope.personne.tier.address, 'Zip de l\'employeur' :$scope.personne.tier.zip, 'Ville de l\'employeur':$scope.personne.tier.town, 'Téléphone de l\'employeur' :$scope.personne.tier.phone, 'Mail de l\'employeur':$scope.personne.tier.email,
     'Compagnie': compagnieMsg, 'Grade': gradeMsg, 'Section':sectionMsg , 'Fonction': fonctionMsg, 'Métiers': metierMsg, 'Activité secondaire':activiteMsg , 'Langue maternelle':maternelleMsg , 'Autres langues':langueMsg , 'Permis':permisMsg , 'Hobbies': hobbyMsg}
     console.log(JSON.stringify(dataSent));
