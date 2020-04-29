@@ -54,8 +54,9 @@
             </div>
           </div>
 
-          <a class="nav-item nav-link" href="#/admin/recherchetiers">Recherche tiers<span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link" href="#/admin/recherchetags">Recherche contacts<span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="#/admin/recherchetiers">{{'recherche.tiers.title' | translate}}<span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="#/admin/recherchetags">{{'recherche.tags.title' | translate}}<span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="#/admin/recherchecontacts">{{'recherche.contact.title' | translate}}<span class="sr-only">(current)</span></a>
 
           <?php if ($_SESSION["usertype_utilisateurformulaires"] == "admin") : ?>
           <div class="nav-item dropdown">

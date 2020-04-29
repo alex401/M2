@@ -1,0 +1,27 @@
+<main class="col-sm-9 col-md-12" ng-controller="RechercheCtrl">
+
+  <h1>{{'recherche.contact.title' | translate}}</h1>
+
+  <!--  <div class="form-group">
+      <label for="formGroupCategorie">Catégorie</label>
+      <select ng-change="submit(form.categorie)" class="form-control" id="formGroupCategorie" ng-model="form.categorie" ng-options="categorie.rowId as categorie.label for categorie in categories" required>
+        <option value="">-- Selection catégorie --</option>
+    </div> -->
+
+    <div class="form-group">
+      <label for="formGroupNom">{{'recherche.contact.name' | translate}}</label>
+      <input ng-change="loadSocPeople(form.nom)" type="text" ng-model="form.nom" class="form-control" id="formGroupNom" placeholder="minimum 2 lettres" required>
+    </div>
+
+ <div ng-if="socpeople.length > 0" >
+    <ul class="list-group" ng-repeat="socperson in socpeople" >
+      <li class="list-group-item active">{{socperson.nom}}</li>
+      <li class="list-group-item">{{socperson.zip}} {{socperson.town}}</li>
+      <li class="list-group-item"><a href=" mailto:{{socperson.email}}">{{socperson.email}} </a></li>
+      <li class="list-group-item"><a href=" tel:{{socperson.phone}}">{{socperson.phone}} </a></li>
+      <li class="list-group-item">{{'recherche.contact.employeur' | translate}} {{socperson.tier_nom}}</li>
+      <li class="list-group-item">{{'recherche.contact.emplTelephone' | translate}} {{socperson.tier_phone}}</li>
+   </ul>
+</div>
+
+</main>

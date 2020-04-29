@@ -4,6 +4,22 @@
         "admin": "Admin",
         "language": "Langue"
     },
+    "recherche": {
+      "tiers": {
+        "title": "Recherche de tiers",
+        "name": "Nom"
+      },
+      "tags": {
+        "title": "Recherche par tags",
+        "tags": "Tags"
+      },
+      "contact": {
+        "title": "Recherche de contacts",
+        "name": "Nom",
+        "employeur":"Employeur / Entreprise",
+        "emplTelephone":"Numéro de téléphone de l'employeur"
+      }
+    },
     "menu": {
         "commands": {
             "title": "Accès rapide pour commandes",
@@ -147,9 +163,7 @@
             "title": "Lieu d'engagement",
             "selection": "-- Sélection lieu engagement --"
         },
-
-        "comment":"Date(s) concernées (laisser vide s'il s'agit d'aujourd'hui)",
-
+        "comment":"Date(s) concernées",
         "situation": "Situation actuelle",
         "meteo": {
             "title": "Météo",
@@ -240,7 +254,7 @@
         "send": "Envoyer"
     },
     "daily_report": {
-        "title": "Rapport journalier",
+        "title": "Rapport journalier assistance",
         "formation": "Formation",
         "selectFormation": "-- Sélection formation--",
         "situation": "Situation actuelle",
@@ -346,42 +360,6 @@
         "email":"Email"
       },
       "iban":"IBAN",
-      "send":"Envoyer"
-    },
-    "equipement": {
-      "title": "Contrôle d'équipement",
-      "message": {
-          "success": "Message envoyé!",
-          "error": "Erreur de traitement, veuillez réessayer plus tard.",
-          "loading": "Chargement en cours"
-      },
-      "lieutenant": "Nom du lieutenant",
-      "name": "Nom du soldat",
-      "bag": "Sac",
-      "rainjacket": "Veste de pluie",
-      "rainpants": "Pantalon de pluie",
-      "rainhat": "Chapeau de pluie",
-      "polar": "Polaire",
-      "jacket": "Veste",
-      "pants": "Pantalon",
-      "belt": "Ceinture",
-      "cap": "Casquette",
-      "gloves": "Gants",
-      "helmet": "Casque",
-      "tshirt": "4 T-shirts",
-      "sous-pull": "Sous-pull",
-      "shoes": "Chaussures",
-      "PPI": "PPI",
-      "badge": "Badge PCI",
-      "bonnet":"Bonnet",
-      "comment":"Commentaire",
-      "options" : {
-        "yes": "Oui",
-        "missing": "Manquant",
-        "defective": "Défectueux",
-        "size": "taille",
-        "amount": "nombre"
-      },
       "send":"Envoyer"
     },
     "equipement": {

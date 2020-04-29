@@ -4,6 +4,22 @@
         "admin": "Admin",
         "language": "Sprache"
     },
+    "recherche": {
+      "tiers": {
+        "title": "Suche nach Dritter",
+        "name": "Name"
+      },
+      "tags": {
+        "title": "Suche nach Tags",
+        "tags": "Tags"
+      },
+      "contact": {
+        "title": "Suche nach Kontakt",
+        "name": "Name",
+        "employeur":"Arbeitgeber / Unternehmung",
+        "emplTelephone":"Telefonnummer des Arbeitsgebers"
+      }
+    },
     "menu": {
         "commands": {
             "title": "Schnellzugriff für Bestellungen",
@@ -163,9 +179,7 @@
             "title": "Arbeitsort",
             "selection": "-- Auswahl Arbeitsort --"
         },
-
-        "comment":"Betreffendes Datum (wenn es heute ist, lassen Sie es leer)",
-
+        "comment":"Betreffendes Datum",
         "situation": "Aktuelle Situation",
         "meteo": {
             "title": "Wetter",
@@ -362,42 +376,6 @@
         "email":"Email"
       },
       "iban": "IBAN",
-      "send":"Senden"
-    },
-    "equipement": {
-      "title": "Ausrüstungskontrolle",
-      "message": {
-          "success": "Message envoyé!",
-          "error": "Erreur de traitement, veuillez réessayer plus tard.",
-          "loading": "Chargement en cours"
-      },
-      "lieutenant": "Namen des Leutnants",
-      "name": "Namen des Soldats",
-      "bag": "Effektentasche",
-      "rainjacket": "Regenjacke",
-      "rainpants": "Regenhosen",
-      "rainhat": "Regenhut",
-      "polar": "Fleece-Jacke",
-      "jacket": "Arbeitsjacke",
-      "pants": "Arbeitshose",
-      "belt": "Hosengurt",
-      "cap": "Schirmmütze",
-      "gloves": "Handschuhe",
-      "helmet": "Schutzhelm",
-      "tshirt": "4 T-shirts",
-      "sous-pull": "Unter-Pull",
-      "shoes": "Kampfschuhe",
-      "PPI": "kleiner Verband",
-      "badge": "Badge PCI",
-      "bonnet":"Rollmütze",
-      "comment":"Kommentar",
-      "options" : {
-        "yes": "ja",
-        "missing": "fehlend",
-        "defective": "defekt",
-        "size": "Grösse",
-        "amount": "Anzahl"
-      },
       "send":"Senden"
     },
     "equipement": {

@@ -79,7 +79,7 @@ $app->get('/v1/admin/socpeopleTiers/{name}', function ($request, $response, $arg
   $name = "%".$name."%";
 
   $sth = $this->dbdoll->prepare(
-    "SELECT CONCAT(contact.lastname, ' ', contact.firstname) as nom, contact.address, contact.zip, contact.town, contact.phone, contact.email, contact.rowid, tier.nom as tier_nom
+    "SELECT CONCAT(contact.lastname, ' ', contact.firstname) as nom, contact.address, contact.zip, contact.town, contact.phone, contact.email, contact.rowid, tier.nom as tier_nom, tier.phone as tier_phone
     FROM llx_socpeople contact
     LEFT JOIN (
     SELECT llx_societe.rowid, llx_societe.nom, llx_societe.address, llx_societe.zip, llx_societe.town, llx_societe.phone, llx_societe.email
