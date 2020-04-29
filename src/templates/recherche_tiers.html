@@ -1,6 +1,6 @@
 <main class="col-sm-9 col-md-12" ng-controller="RechercheCtrl">
 
-  <h1>Rechercher de tiers</h1>
+  <h1>{{'recherche.tiers.title' | translate}}</h1>
 
   <!--  <div class="form-group">
       <label for="formGroupCategorie">Catégorie</label>
@@ -9,7 +9,7 @@
     </div> -->
 
     <div class="form-group">
-      <label for="formGroupNom">Nom</label>
+      <label for="formGroupNom">{{'recherche.tiers.name' | translate}}</label>
       <input ng-change="loadTiers(form.nom)" type="text" ng-model="form.nom" class="form-control" id="formGroupNom" placeholder="minimum 3 lettres" required>
     </div>
 

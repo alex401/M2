@@ -14,6 +14,7 @@ function RechercheCtrl($scope, $http) {
   $scope.form = {};
   $scope.status = 0;
 
+
 // ****************************
 // Load
 // ****************************
@@ -35,6 +36,23 @@ function RechercheCtrl($scope, $http) {
       console.log("error");
     });
   }
+
+
+  $scope.loadSocPeople = function (nom) {
+    if(nom != null && nom.length > 2) {
+      $http({
+        method: 'GET',
+        url: 'api/index.php/v1/admin/socpeopleTiers/'+nom
+      }).then(function successCallback(response) {
+        $scope.socpeople = response.data;
+        console.log($scope.socpeople);
+      }, function errorCallback(response) {
+        console.log("error");
+      });
+    }
+  }
+
+
 
   $scope.loadTiers = function (nom) {
     if(nom != null && nom.length > 2) {

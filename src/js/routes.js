@@ -48,6 +48,10 @@ angular.module('PCIM2').config(['$stateProvider', '$urlRouterProvider','$locatio
                 url: '/admin/recherchetiers',
                 templateUrl: 'templates/recherche_tiers.html'
             })
+            .state('recherchecontact', {
+                url: '/admin/recherchecontacts',
+                templateUrl: 'templates/recherche_socpeople.html'
+            })
             .state('recherchetags', {
                 url: '/admin/recherchetags',
                 templateUrl: 'templates/recherche_tags.html'

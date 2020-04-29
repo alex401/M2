@@ -1,9 +1,9 @@
 <main class="col-sm-9 col-md-12" ng-controller="RechercheContactsCtrl">
 
-  <h1>Recherche par tag</h1>
+  <h1>{{'recherche.tags.title' | translate}}</h1>
 
     <div class="form-group">
-        <label for="formGroupCategorie">Tag</label>
+        <label for="formGroupCategorie">{{'recherche.tags.tags' | translate}}</label>
         <input ng-change="loadSocPeople(form.categorie)" type="text" class="form-control" id="formGroupCategorie" ng-model="form.categorie" required>
       </div>
 
