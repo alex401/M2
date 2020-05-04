@@ -35,7 +35,7 @@ function check_login($dbProvider, $_login, $_motdepasse) {
 if (check_login(connectToDB(), $login, $motdepasse)) {
 
     if ($_SESSION["usertype_utilisateurformulaires"] == "info"){
-        header("Location: ../#/form/entreeservice");
+        header("Location: ../#/pisa/data");
     } else {
         header("Location: ../#/");
     }
