@@ -25,6 +25,7 @@ function check_login($dbProvider, $_login, $_motdepasse) {
         $_SESSION["nom_utilisateurformulaires"] = $nom;
         $_SESSION["prenom_utilisateurformulaires"] = $prenom;
         $_SESSION["usertype_utilisateurformulaires"] = $usertype;
+
         return(true);
     } else {
         return(false);
@@ -32,7 +33,14 @@ function check_login($dbProvider, $_login, $_motdepasse) {
 }
 
 if (check_login(connectToDB(), $login, $motdepasse)) {
-    header("Location: ../#/");
+
+    if ($_SESSION["usertype_utilisateurformulaires"] == "info"){
+        header("Location: ../#/form/entreeservice");
+    } else {
+        header("Location: ../#/");
+    }
+
+
 } else {
     header("Location: index.php?erreur=1");
 }

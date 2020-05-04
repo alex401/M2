@@ -44,19 +44,26 @@
 
       <div class="collapse navbar-collapse d-none d-lg-block" id="navbarsExampleDefault">
         <div class="navbar-nav mr-auto">
-          <div class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="commandsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{'navbar.command' | translate}}</a>
-            <div class="dropdown-menu" aria-labelledby="commandsDropdown">
-              <a class="dropdown-item" href="#/commande/repas">{{'menu.commands.meal' | translate}}</a>
-              <a class="dropdown-item" href="#/commande/materiel">{{'menu.commands.material' | translate}}</a>
-              <a class="dropdown-item" href="#/commande/carburant">{{'menu.commands.fuel' | translate}}</a>
-              <a class="dropdown-item" href="#/commande/transport">{{'menu.commands.transport' | translate}}</a>
-            </div>
-          </div>
+
+          <?php if ($_SESSION["usertype_utilisateurformulaires"] == "user" || $_SESSION["usertype_utilisateurformulaires"] == "admin") : ?>
+
+            <div class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="commandsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{'navbar.command' | translate}}</a>
+                <div class="dropdown-menu" aria-labelledby="commandsDropdown">
+                  <a class="dropdown-item" href="#/commande/repas">{{'menu.commands.meal' | translate}}</a>
+                  <a class="dropdown-item" href="#/commande/materiel">{{'menu.commands.material' | translate}}</a>
+                  <a class="dropdown-item" href="#/commande/carburant">{{'menu.commands.fuel' | translate}}</a>
+                  <a class="dropdown-item" href="#/commande/transport">{{'menu.commands.transport' | translate}}</a>
+                </div>
+              </div>
+
 
           <a class="nav-item nav-link" href="#/admin/recherchetiers">{{'recherche.tiers.title' | translate}}<span class="sr-only">(current)</span></a>
           <a class="nav-item nav-link" href="#/admin/recherchetags">{{'recherche.tags.title' | translate}}<span class="sr-only">(current)</span></a>
           <a class="nav-item nav-link" href="#/admin/recherchecontacts">{{'recherche.contact.title' | translate}}<span class="sr-only">(current)</span></a>
+
+        <?php endif; ?>
+
 
           <?php if ($_SESSION["usertype_utilisateurformulaires"] == "admin") : ?>
           <div class="nav-item dropdown">
