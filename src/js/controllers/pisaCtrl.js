@@ -28,6 +28,7 @@ function PisaCtrl($scope, $http) {
 
   var Load = function () {
     loadMail();
+    loadParent();
   }
 
 
@@ -177,9 +178,163 @@ function PisaCtrl($scope, $http) {
 
 
 
+    $scope.submit = function (personne) {
+
+      var tagList = $scope.tagged;
+      var compagnie = [];
+      var grade = [];
+      var section = [];
+      var fonction = [];
+      var metier = [];
+      var activite = [];
+      var maternelle = [];
+      var langues = [];
+      var permis = [];
+      var hobby = [];
+
+      tagList.forEach((item) => {
+        switch(item.description) {
+             case "Permis":
+                 permis.push(item);
+               break;
+             case "Hobby":
+                  hobby.push(item);
+               break;
+             case "Langue":
+                 langues.push(item);
+               break;
+             case "Section Pci":
+                section.push(item);
+              break;
+            case "Grade":
+                grade.push(item);
+              break;
+             case "Fonction Pci":
+                 fonction.push(item);
+               break;
+            case "Metier":
+                metier.push(item);
+              break;
+            case "activite secondaire":
+                activite.push(item);
+            break;
+            case "Langue maternelle":
+              maternelle.push(item);
+            break;
+            case "Compagnie":
+              compagnie.push(item);
+            break;
+          }
+        });
 
 
+         compagnieMsg = '';
+        for (var i = 0; i < compagnie.length; i++) {
+          compagnieMsg+= compagnie[i].label + '  ---  ';
+        }
 
+        gradeMsg = '';
+        for (var i = 0; i < grade.length; i++) {
+        gradeMsg+= grade[i].label + '  ---  ' ;
+        }
+
+        sectionMsg = '';
+        for (var i = 0; i < section.length; i++) {
+          sectionMsg+= section[i].label + '  ---  ' ;
+        }
+
+         fonctionMsg = '';
+        for (var i = 0; i < fonction.length; i++) {
+          fonctionMsg+= fonction[i].label + '  ---  ' ;
+        }
+
+        metierMsg = '';
+        for (var i = 0; i < metier.length; i++) {
+          metierMsg+= metier[i].label + '  ---  ' ;
+        }
+
+        activiteMsg = '';
+        for (var i = 0; i < activite.length; i++) {
+          activiteMsg+= activite[i].label + '  ---  ' ;
+        }
+
+        maternelleMsg = '';
+        for (var i = 0; i < maternelle.length; i++) {
+          maternelleMsg+= maternelle[i].label + '  ---  ' ;
+        }
+
+        langueMsg = '';
+        for (var i = 0; i < langues.length; i++) {
+          langueMsg+= langues[i].label + '  ---  ' ;
+        }
+
+        permisMsg = '';
+        for (var i = 0; i < permis.length; i++) {
+          permisMsg+= permis[i].label + '  ---  ' ;
+        }
+
+        hobbyMsg = '';
+        for (var i = 0; i < hobby.length; i++) {
+          hobbyMsg += hobby[i].label + '  ---  ' ;
+        }
+
+
+      var parent = $scope.parentList[$scope.personne.extra.lp-1].label;
+      var dataSent = {'Nom': $scope.personne.nom, 'Adresse': $scope.personne.address, 'Zip': $scope.personne.zip, 'Ville': $scope.personne.town, 'Mail': $scope.personne.email, 'Téléphone': $scope.personne.phone, 'Numéro d\'urgence': $scope.personne.extra.nb, 'Lien de parenté': parent,
+      'Allergie?' : $scope.personne.allergie, 'Allergie (s\'il y en a)': $scope.personne.selectAllergie, 'IBAN': $scope.personne.iban,
+      'Employeur':$scope.personne.tier.nom, 'Adresse de l\'employeur' :$scope.personne.tier.address, 'Zip de l\'employeur' :$scope.personne.tier.zip, 'Ville de l\'employeur':$scope.personne.tier.town, 'Téléphone de l\'employeur' :$scope.personne.tier.phone, 'Mail de l\'employeur':$scope.personne.tier.email,
+      'Compagnie': compagnieMsg, 'Grade': gradeMsg, 'Section':sectionMsg , 'Fonction': fonctionMsg, 'Métiers': metierMsg, 'Activité secondaire':activiteMsg , 'Langue maternelle':maternelleMsg , 'Autres langues':langueMsg , 'Permis':permisMsg , 'Hobbies': hobbyMsg}
+      console.log(JSON.stringify(dataSent));
+
+      //upload
+      $http({
+        method: 'POST',
+        url: 'api/index.php/v1/admin/entreeservice/tags/'+ Number(personne.rowid),
+        //15.01.2019
+        data: {
+          nom: $scope.personne.nom,
+          lieu: $scope.personne.town, adresse: $scope.personne.address, zip: $scope.personne.zip,
+          tagged: $scope.tagged, mail: $scope.personne.email, phone: $scope.personne.phone,
+          urgence: $scope.personne.extra.nb, parent: $scope.personne.extra.lp, message: dataSent,
+          employeur: $scope.personne.tier.nom, emplAdresse: $scope.personne.tier.address, emplZip: $scope.personne.tier.zip,
+          emplVille: $scope.personne.tier.town, emplPhone: $scope.personne.tier.phone, emplMail: $scope.personne.tier.email, emplID: $scope.personne.tier.rowid
+        }
+      }).then(function successCallback() {
+        $scope.status = 1;
+      }, function errorCallback(response) {
+        console.log(response.data.error);
+        $scope.status = 2;
+      });
+
+
+      // Mapping tags languages to ECV languages.
+      var langs = getLangs($scope.tagged);
+      if(langs.length > 0 && !compareArray(langs, $scope.langsInit)) {
+        $http({
+          method: 'POST',
+          url: 'api/index.php/v1/admin/entreeservice/tags/ecv/'+ Number(personne.rowid),
+          data: {langs: langs}
+        }).then(function successCallback(response) {
+          $scope.status = 1;
+        }, function errorCallback(response) {
+          console.log(response.data.error);
+          $scope.status = 2;
+        });
+      }
+
+    }
+
+
+    var loadParent = function() {
+      $http({
+        method: 'GET',
+        url: 'api/index.php/v1/admin/socpeople/extra/parent'
+      }).then(function successCallback(response) {
+        $scope.parentList = response.data;
+        }, function errorCallback(response) {
+          console.log("error");
+      });
+    }
 
 
 
