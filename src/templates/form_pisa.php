@@ -15,19 +15,6 @@
   <div ng-if="status==3"> {{'competences.message.loading' | translate}} </div>
 
 
-  <div class="form-group">
-    <label for="formGroupNom">  </label>
-    <input type="text" ng-model="form.nom" class="form-control" id="formGroupNom" placeholder=" <?php echo ( $_SESSION["email_utilisateurformulaires"]  ); ?> " value=" <?php echo ( $_SESSION["email_utilisateurformulaires"]  ); ?> " >
-  </div>
-
-<div ng-if="contacts.length > 0" >
-  <ul  ng-click="onClick(contact)" class="list-group" ng-repeat="contact in contacts" >
-    <li class="list-group-item active">{{contact.nom}}</li>
-    <li class="list-group-item">{{contact.zip}} {{contact.town}}</li>
-    <li class="list-group-item">{{contact.email}}</li>
-    <li class="list-group-item">{{contact.phone}}</li>
- </ul>
-</div>
 
 <form ng-submit="submit(personne)" ng-if="status == 0 ">
 <div ng-if="personne != null">
