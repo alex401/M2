@@ -1,8 +1,6 @@
 <?php
     include("../login/isEnSession.php");
 
-    echo ( $_SESSION["email_utilisateurformulaires"]  );
-
 ?>
 
 
