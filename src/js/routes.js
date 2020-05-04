@@ -14,7 +14,7 @@ angular.module('PCIM2').config(['$stateProvider', '$urlRouterProvider','$locatio
         $stateProvider
             .state('index', {
                 url: '/',
-                templateUrl: 'templates/menu.html'
+                templateUrl: 'templates/menu.php'
             })
             .state('commandes', {
                 url: '/menu/commandes',
