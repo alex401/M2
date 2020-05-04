@@ -33,7 +33,7 @@ function EntreeServiceCtrl($scope, $http) {
   $scope.tagged = [];
   $scope.existingTags = {};
   $scope.langsInit = [];
-  $scope.parentList = [];
+  $scope.parentList = []; 
 
   // ****************************
   // Load
@@ -72,14 +72,6 @@ function EntreeServiceCtrl($scope, $http) {
     $scope.personne.form = {};
     $scope.personne.form.tier = $scope.personne.tier_nom;
     $scope.tiers = {};
-    // $scope.tags.permit = [];
-    // $scope.tags.hobby = [];
-    // $scope.tags.language = [];
-    // $scope.tags.rank = [];
-    // $scope.tags.section = [];
-    // $scope.tags.function = [];
-    // $scope.tags.job = [];
-    // $scope.tags.secondary = [];
     $scope.existingTags = null;
     $scope.langsInit = [];
     $scope.tagged = [];
@@ -91,36 +83,7 @@ function EntreeServiceCtrl($scope, $http) {
       url: 'api/index.php/v1/select/entreeservice/tags'
     }).then(function successCallback(response) {
         $scope.tags = response.data;
-      // var temp = response.data;
-      // temp.forEach((item) => {
-      //
-      //   switch(item.description) {
-      //     case "Permis":
-      //         $scope.tags.permit.push(item);
-      //       break;
-      //     case "Hobby":
-      //          $scope.tags.hobby.push(item);
-      //       break;
-      //     case "Langue":
-      //         $scope.tags.language.push(item);
-      //       break;
-      //     case "Section Pci":
-      //         $scope.tags.section.push(item);
-      //       break;
-      //     case "Grade":
-      //         $scope.tags.rank.push(item);
-      //       break;
-      //      case "Fonction Pci":
-      //          $scope.tags.function.push(item);
-      //        break;
-      //     case "Metier":
-      //         $scope.tags.job.push(item);
-      //       break;
-      //     case "activite secondaire":
-      //         $scope.tags.secondary.push(item);
-      //     break;
-      //   }
-      // });
+
       console.log($scope.tags);
       // console.log($scope.tags.permit);
 

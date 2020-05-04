@@ -50,6 +50,8 @@ $app->get('/v1/admin/tiers/{name}', function ($request, $response, $args) {
   return $response->withJson($result, 200);
 });
 
+
+
 // Return a list of contacts searched by name.
 $app->get('/v1/admin/socpeople/{name}', function ($request, $response, $args) {
 
@@ -95,6 +97,49 @@ $app->get('/v1/admin/socpeopleTiers/{name}', function ($request, $response, $arg
     $result = $sth->fetchAll();
   } catch(\Exception $ex) {
     return $response->withJson(array('error' => "Contacts search ny name failed: " . $ex->getMessage()), 422);
+  }
+
+  return $response->withJson($result, 200);
+});
+
+
+//pour pisa - recherche par email
+$app->get('/v1/admin/socpeopleTiers/mail/{name}', function ($request, $response, $args) {
+
+  $name = $args['name'];
+  $name = "%".$name."%";
+
+  $sth = $this->dbdoll->prepare(
+    "SELECT contact.email as mail, contact.address, contact.zip, contact.town, contact.phone, contact.email, contact.rowid, tier.nom as tier_nom, tier.phone as tier_phone
+    FROM llx_socpeople contact
+    LEFT JOIN (
+    SELECT llx_societe.rowid, llx_societe.nom, llx_societe.address, llx_societe.zip, llx_societe.town, llx_societe.phone, llx_societe.email
+    FROM llx_societe) tier
+    ON contact.fk_soc = tier.rowid
+    HAVING mail LIKE :name"
+  );
+  $sth->bindParam(':name', $name, PDO::PARAM_STR);
+
+  try {
+    $sth->execute();
+
+    $result = $sth->fetchAll();
+  } catch(\Exception $ex) {
+    return $response->withJson(array('error' => "Contacts search by mails failed: " . $ex->getMessage()), 422);
+  }
+
+  return $response->withJson($result, 200);
+});
+
+
+$app->get('/v1/admin/connected', function ($request, $response, $args) {
+
+
+  try {
+    $result = ( $_SESSION["email_utilisateurformulaires"] ) ;
+
+  } catch(\Exception $ex) {
+    return $response->withJson(array('error' => "Contacts search by mails failed: " . $ex->getMessage()), 422);
   }
 
   return $response->withJson($result, 200);
