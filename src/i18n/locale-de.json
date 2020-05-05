@@ -20,6 +20,10 @@
         "emplTelephone":"Telefonnummer des Arbeitsgebers"
       }
     },
+    "pisa": {
+      "firstname":"Vorname",
+      "lastname":"Nachname"
+    },
     "menu": {
         "commands": {
             "title": "Schnellzugriff für Bestellungen",
@@ -366,11 +370,11 @@
       "relationship":"Beziehung",
       "selectRelation":"-- Auswahl Beziehung --",
       "allergie": "Allergie?",
-      "selectAllergie": "Wenn ja, wozu?",
+      "selectAllergie": "Wenn ja, welche?",
       "third": {
-        "name":"Namen des Unternehmers",
-        "address":"Adresse der Unternehmung",
-        "zip":"PLT",
+        "name":"Namen des Unternehmens",
+        "address":"Adresse des Unternehmens",
+        "zip":"PLZ",
         "town":"Stadt",
         "phone":"Telefonnummer",
         "email":"Email"

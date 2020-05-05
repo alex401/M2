@@ -51,6 +51,11 @@
   <input type="tel" ng-model="personne.phone" class="form-control" id="formGroupNom">
 </div>
 
+<div class="form-group">
+  <label for="formGroupNom"> {{'competences.iban' | translate}} </label>
+  <input type="text" ng-model="personne.iban" class="form-control" id="formGroupNom">
+</div>
+
 <div class="form-group row">
   <div class="col-md-3">
     <label for="urgence">{{'competences.emergency' | translate}}</label>
@@ -127,10 +132,7 @@
 </div>
 <div id ="toptags"></div>
 
-<div class="form-group">
-  <label for="formGroupNom"> {{'competences.iban' | translate}} </label>
-  <input type="text" ng-model="personne.iban" class="form-control" id="formGroupNom">
-</div>
+
 
 <div class="btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
     <label class="btn btn-outline-secondary">

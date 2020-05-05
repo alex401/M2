@@ -104,22 +104,27 @@ $app->get('/v1/admin/socpeopleTiers/{name}', function ($request, $response, $arg
 
 
 //pour pisa - recherche par email
-$app->get('/v1/admin/socpeopleTiers/mail/{name}', function ($request, $response, $args) {
+$app->get('/v1/admin/socpeopleTiers/mail/{firstname}/{lastname}', function ($request, $response, $args) {
 
-  $name = $args['name'];
-  $name = "%".$name."%";
-
+  $firstname = str_replace(' ', '%', $args['firstname']);
+  $lastname = str_replace(' ', '%', $args['lastname']);
+  // var_dump($lastname);
+  // var_dump($firstname);
+  $firstname = "%".$firstname."%";
+  $lastname = "%".$lastname."%";
+  // var_dump($lastname);
+  // var_dump($firstname);
   $sth = $this->dbdoll->prepare(
-    "SELECT contact.email as mail, contact.address, contact.zip, contact.town, contact.phone, contact.email, contact.rowid, tier.nom as tier_nom, tier.phone as tier_phone
+    "SELECT contact.email as mail, contact.lastname, contact.firstname, contact.address, contact.zip, contact.town, contact.phone, contact.email, contact.rowid, tier.nom as tier_nom, tier.phone as tier_phone
     FROM llx_socpeople contact
     LEFT JOIN (
     SELECT llx_societe.rowid, llx_societe.nom, llx_societe.address, llx_societe.zip, llx_societe.town, llx_societe.phone, llx_societe.email
     FROM llx_societe) tier
     ON contact.fk_soc = tier.rowid
-    HAVING mail LIKE :name"
+    HAVING lastname LIKE :lastname AND firstname LIKE :firstname"
   );
-  $sth->bindParam(':name', $name, PDO::PARAM_STR);
-
+  $sth->bindParam(':firstname', $firstname, PDO::PARAM_STR);
+  $sth->bindParam(':lastname', $lastname, PDO::PARAM_STR);
   try {
     $sth->execute();
 
@@ -136,7 +141,7 @@ $app->get('/v1/admin/connected', function ($request, $response, $args) {
 
 
   try {
-    $result = ( $_SESSION["email_utilisateurformulaires"] ) ;
+    $result = array( 'nom' => mb_convert_encoding($_SESSION["nom_utilisateurformulaires"], 'UTF-8', 'UTF-8'), 'prenom' => mb_convert_encoding($_SESSION["prenom_utilisateurformulaires"], 'UTF-8', 'UTF-8'));
 
   } catch(\Exception $ex) {
     return $response->withJson(array('error' => "Contacts search by mails failed: " . $ex->getMessage()), 422);
@@ -281,7 +286,17 @@ $app->post('/v1/admin/entreeservice/tags/{personneid}', function ($request,$resp
   $data = json_decode($data, true);
 
   //TODO array_key_exists() ?
-  $dataNom = $data['nom'];
+  if (isset($data['nom']) ) {
+      $dataNom = $data['nom'];
+  }
+  if (isset($data['firstname']) ) {
+      $dataFirstname = $data['firstname'];
+      $dataNom = $dataFirstname;
+  }
+  if (isset($data['lastname']) ) {
+      $dataLastname = $data['lastname'];
+      $dataNom .= ' '.$dataLastname;
+  }
   $dataLieu = $data['lieu'];
   $dataAdresse = $data['adresse'];
   $dataZip = $data['zip'];
@@ -289,17 +304,23 @@ $app->post('/v1/admin/entreeservice/tags/{personneid}', function ($request,$resp
   $dataPhone = $data['phone'];
   $dataUrgence = $data['urgence'];
   $dataParent = $data['parent'];
-  $dataEmployeur = $data['employeur'];
-  $dataEmplAdresse = $data['emplAdresse'];
-  $dataEmplZip = $data['emplZip'];
-  $dataEmplVille = $data['emplVille'];
-  $dataEmplPhone = $data['emplPhone'];
-  $dataEmplMail = $data['emplMail'];
-  $dataEmplID = $data['emplID'];
+  if (isset($data['employeur'])) {
+    if ($data['employeur'] !== '') {
+    $dataEmployeur = $data['employeur'];
+    $dataEmplAdresse = $data['emplAdresse'];
+    $dataEmplZip = $data['emplZip'];
+    $dataEmplVille = $data['emplVille'];
+    $dataEmplPhone = $data['emplPhone'];
+    $dataEmplMail = $data['emplMail'];
+    $dataEmplID = $data['emplID'];
+  }
+}
+
 
 
   try {
-    if ($dataEmplID == null) {
+    if (isset($dataEmployeur)) {
+      if ($dataEmplID == null) {
       $sth = $this->dbdoll->prepare(
         "INSERT INTO llx_societe
         SET nom = :employeur, address = :adresse, zip = :zip, town = :ville, phone = :phone, email = :mail"
@@ -321,13 +342,15 @@ $app->post('/v1/admin/entreeservice/tags/{personneid}', function ($request,$resp
     $sth->bindParam(':mail', $dataEmplMail, PDO::PARAM_STR);
 
     $sth->execute();
-    //var_dump($sth);
+
     if ($dataEmplID == null) {
       $dataEmplID = $this->dbdoll->lastInsertId();
     }
+  } else {
+    $dataEmplID = null;
+  }
 
 
-    //var_dump($result);
 
 
     // Update info.
@@ -345,14 +368,37 @@ $app->post('/v1/admin/entreeservice/tags/{personneid}', function ($request,$resp
     $sth->execute();
 
   } catch (\Exception $ex) {
+
     return $response->withJson(array('error' => 'Failed to update info: ' . $ex->getMessage()), 422);
   }
+
+
+if (isset($data['firstname']) && isset($data['lastname'])) {
+  $now = date("Y-m-d");
+
+  try {
+      $sth = $this->dbm2->prepare(
+        "UPDATE utilisateursformulaires
+        SET lastConnection = :now
+        WHERE prenom = :firstname AND nom = :lastname"
+      );
+      $sth->bindParam(':now', $now, PDO::PARAM_STR);
+      $sth->bindParam(':firstname', $dataFirstname, PDO::PARAM_STR);
+      $sth->bindParam(':lastname', $dataLastname, PDO::PARAM_STR);
+    $sth->execute();
+  } catch (\Exception $ex) {
+
+    return $response->withJson(array('error' => 'Failed to update last connection: ' . $ex->getMessage()), 422);
+  }
+}
+
 
   try {
     $message = (json_encode($data['message']));
     $result = setContent('Nouvelles données pour modification PISA '.$dataNom, $message);
     $mail = mailSender('Nouvelles données pour modification PISA '.$dataNom, $message, "sud.commandement@pci-fr.ch", getMail($this,'donnees'));
   } catch (\Exception $ex) {
+
     return $response->withJson(array('error' => 'Failed to send mail: ' . $ex->getMessage()), 422);
   }
 
@@ -372,6 +418,7 @@ $app->post('/v1/admin/entreeservice/tags/{personneid}', function ($request,$resp
     $toDeleteTags = $sth->fetchAll();
 
   } catch(\Exception $ex) {
+
     return $response->withJson(array('error' => 'Failed to find tags: ' . $ex->getMessage()), 422);
   }
 
@@ -408,15 +455,16 @@ $app->post('/v1/admin/entreeservice/tags/{personneid}', function ($request,$resp
         $tagid =  $value['fk_categorie'];
         // FIXME This has to match the query select.php./v1/select/entreeservice/tags.
         // This is done to avoid deleting tags present in Dolibarr but not yet in m2.
-        if(($tagid <=109 && $tagid >= 82) || ($tagid >= 282 && $tagid <=322) || ($tagid >=1168 && $tagid <=1309)) {
+    //    if(($tagid <=109 && $tagid >= 82) || ($tagid >= 282 && $tagid <=322) || ($tagid >=1168 && $tagid <=1309)) {
           $sth = $this->dbdoll->prepare(
             "DELETE FROM `llx_categorie_contact` WHERE fk_categorie = $tagid AND fk_socpeople = $personneid"
           );
           $sth->execute();
-        }
+  //      }
       }
     }
   } catch(\Exception $ex) {
+
       $this->dbdoll->rollback();
       return $response->withJson(array('error' => 'Failed to insert/delete tags: ' . $ex->getMessage()), 422);
   }
@@ -431,6 +479,7 @@ $app->post('/v1/admin/entreeservice/tags/{personneid}', function ($request,$resp
     $sth->execute();
 
   } catch(\Exception $ex) {
+
     return $response->withJson(array('error' => 'Failed to modify emergency data: ' . $ex->getMessage()), 422);
   }
 

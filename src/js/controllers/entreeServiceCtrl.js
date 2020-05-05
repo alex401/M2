@@ -33,7 +33,7 @@ function EntreeServiceCtrl($scope, $http) {
   $scope.tagged = [];
   $scope.existingTags = {};
   $scope.langsInit = [];
-  $scope.parentList = []; 
+  $scope.parentList = [];
 
   // ****************************
   // Load

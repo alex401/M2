@@ -17,8 +17,13 @@
 <form ng-submit="submit(personne)" ng-if="status == 0 ">
 <div ng-if="personne != null">
 <div class="form-group">
-  <label for="formGroupNom">{{'competences.name' | translate}}</label>
-  <input type="text" ng-model="personne.nom" class="form-control" id="formGroupNom">
+  <label for="formGroupNom">{{'pisa.firstname' | translate}}</label>
+  <input type="text" ng-model="personne.firstname" class="form-control" id="formGroupNom">
+</div>
+
+<div class="form-group">
+  <label for="formGroupNom">{{'pisa.lastname' | translate}}</label>
+  <input type="text" ng-model="personne.lastname" class="form-control" id="formGroupNom">
 </div>
 
 <div class="form-group">
@@ -44,6 +49,11 @@
 <div class="form-group">
   <label for="formGroupNom">{{'competences.phone' | translate}}</label>
   <input type="tel" ng-model="personne.phone" class="form-control" id="formGroupNom">
+</div>
+
+<div class="form-group">
+  <label for="formGroupNom"> {{'competences.iban' | translate}} </label>
+  <input type="text" ng-model="personne.iban" class="form-control" id="formGroupNom">
 </div>
 
 <div class="form-group row">
@@ -122,10 +132,7 @@
 </div>
 <div id ="toptags"></div>
 
-<div class="form-group">
-  <label for="formGroupNom"> {{'competences.iban' | translate}} </label>
-  <input type="text" ng-model="personne.iban" class="form-control" id="formGroupNom">
-</div>
+
 
 <div class="btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
     <label class="btn btn-outline-secondary">

@@ -20,6 +20,10 @@
         "emplTelephone":"Numéro de téléphone de l'employeur"
       }
     },
+    "pisa": {
+      "firstname":"Prénom",
+      "lastname":"Nom"
+    },
     "menu": {
         "commands": {
             "title": "Accès rapide pour commandes",
@@ -352,7 +356,7 @@
       "allergie": "Allergie?",
       "selectAllergie": "Si oui, à quoi?",
       "third": {
-        "name":"Nom de l'entrepreneur",
+        "name":"Nom de l'entreprise",
         "address":"Adresse de l'entreprise",
         "zip":"Zip",
         "town":"Ville",

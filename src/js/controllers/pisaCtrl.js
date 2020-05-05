@@ -67,12 +67,21 @@ function PisaCtrl($scope, $http) {
     }).then(function successCallback(response) {
 
 
-      var email = response.data;
+      $scope.login = response.data;
+      console.log($scope.login);
+
+      $scope.login.nom = $scope.login.nom.replace(/\?/g, '+');
+      $scope.login.prenom = $scope.login.prenom.replace(/\?/g, '+');
+      console.log($scope.login.nom);
+      console.log($scope.login.prenom);
+
       $http({
         method: 'GET',
-        url: 'api/index.php//v1/admin/socpeopleTiers/mail/'+email
+        url: 'api/index.php//v1/admin/socpeopleTiers/mail/'+ $scope.login.prenom + '/' + $scope.login.nom
       }).then(function successCallback(response) {
         $scope.personne = response.data[0];
+        console.log($scope.personne);
+        $scope.personne.tier = {};
         rowid = $scope.personne.rowid;
 
         $http({
@@ -121,8 +130,6 @@ function PisaCtrl($scope, $http) {
           console.log(response);
         });
 
-
-        console.log($scope.personne);
         }, function errorCallback(response) {
           console.log("error");
         });
@@ -169,13 +176,10 @@ function PisaCtrl($scope, $http) {
       loadExtrafields(personne.rowid);
   }
 
-
-
-
-
-
-
-
+  $scope.onClickTier = function (tier)  {
+    $scope.personne.tier = tier;
+    $scope.tiers = null;
+  }
 
 
     $scope.submit = function (personne) {
@@ -280,7 +284,7 @@ function PisaCtrl($scope, $http) {
 
 
       var parent = $scope.parentList[$scope.personne.extra.lp-1].label;
-      var dataSent = {'Nom': $scope.personne.nom, 'Adresse': $scope.personne.address, 'Zip': $scope.personne.zip, 'Ville': $scope.personne.town, 'Mail': $scope.personne.email, 'Téléphone': $scope.personne.phone, 'Numéro d\'urgence': $scope.personne.extra.nb, 'Lien de parenté': parent,
+      var dataSent = {'Nom': $scope.personne.lastname, 'Prénom': $scope.personne.firstname, 'Adresse': $scope.personne.address, 'Zip': $scope.personne.zip, 'Ville': $scope.personne.town, 'Mail': $scope.personne.email, 'Téléphone': $scope.personne.phone, 'Numéro d\'urgence': $scope.personne.extra.nb, 'Lien de parenté': parent,
       'Allergie?' : $scope.personne.allergie, 'Allergie (s\'il y en a)': $scope.personne.selectAllergie, 'IBAN': $scope.personne.iban,
       'Employeur':$scope.personne.tier.nom, 'Adresse de l\'employeur' :$scope.personne.tier.address, 'Zip de l\'employeur' :$scope.personne.tier.zip, 'Ville de l\'employeur':$scope.personne.tier.town, 'Téléphone de l\'employeur' :$scope.personne.tier.phone, 'Mail de l\'employeur':$scope.personne.tier.email,
       'Compagnie': compagnieMsg, 'Grade': gradeMsg, 'Section':sectionMsg , 'Fonction': fonctionMsg, 'Métiers': metierMsg, 'Activité secondaire':activiteMsg , 'Langue maternelle':maternelleMsg , 'Autres langues':langueMsg , 'Permis':permisMsg , 'Hobbies': hobbyMsg}
@@ -292,7 +296,7 @@ function PisaCtrl($scope, $http) {
         url: 'api/index.php/v1/admin/entreeservice/tags/'+ Number(personne.rowid),
         //15.01.2019
         data: {
-          nom: $scope.personne.nom,
+          lastname: $scope.personne.lastname, firstname: $scope.personne.firstname,
           lieu: $scope.personne.town, adresse: $scope.personne.address, zip: $scope.personne.zip,
           tagged: $scope.tagged, mail: $scope.personne.email, phone: $scope.personne.phone,
           urgence: $scope.personne.extra.nb, parent: $scope.personne.extra.lp, message: dataSent,
