@@ -369,7 +369,11 @@
       "emergency":"Notfallkontaktnummer",
       "relationship":"Beziehung",
       "selectRelation":"-- Auswahl Beziehung --",
-      "allergie": "Allergie?",
+      "allergie": {
+        "title":"Allergie?",
+        "yes": "Ja",
+        "no": "Nein"
+      },
       "selectAllergie": "Wenn ja, welche?",
       "third": {
         "name":"Namen des Unternehmens",
@@ -380,7 +384,19 @@
         "email":"Email"
       },
       "iban": "IBAN",
-      "send":"Senden"
+      "send":"Senden",
+      "tags":{
+        "compagnie": "Kompagnie",
+        "grade": "Grad",
+        "section": "Grundfunktion",
+        "fonction": "Funktion",
+        "metier": "Beruf",
+        "activite": "Nebentätigkeit",
+        "maternelle": "Muttersprache",
+        "langue": "Weitere Sprache",
+        "permis": "Fahrzeugausweise",
+        "hobby": "Hobby"
+      }
     },
     "equipement": {
       "title": "Ausrüstungskontrolle",

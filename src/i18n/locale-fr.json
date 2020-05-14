@@ -353,7 +353,11 @@
       "emergency":"Numéro d'urgence",
       "relationship":"Lien de parenté",
       "selectRelation":"-- Sélection parenté --",
-      "allergie": "Allergie?",
+      "allergie": {
+        "title":"Allergie?",
+        "yes": "Oui",
+        "no": "Non"
+      },
       "selectAllergie": "Si oui, à quoi?",
       "third": {
         "name":"Nom de l'entreprise",
@@ -364,7 +368,19 @@
         "email":"Email"
       },
       "iban":"IBAN",
-      "send":"Envoyer"
+      "send":"Envoyer",
+      "tags":{
+        "compagnie": "Compagnie",
+        "grade": "Grade",
+        "section": "Section",
+        "fonction": "Fonction",
+        "metier": "Métier",
+        "activite": "Activité secondaire",
+        "maternelle": "Langue maternelle",
+        "langue": "Autres langues",
+        "permis": "Permis",
+        "hobby": "Hobby"
+      }
     },
     "equipement": {
       "title": "Contrôle d'équipement",
