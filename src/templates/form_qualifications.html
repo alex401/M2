@@ -1,13 +1,13 @@
 <main class="col-sm-12 col-md-12" ng-controller="QualifCtrl">
 
-  <h1>Qualifications</h1>
+  <h1>{{'qualif.title' | translate}}</h1>
 
-  <div ng-if="status==1"> Message envoyé </div>
-  <div ng-if="status==2"> Erreur de traitement, veuillez réessayer dans un moment</div>
-  <div ng-if="status==3"> Chargement en cours </div>
+  <div ng-if="status==1"> {{'qualif.message.success' | translate}}</div>
+  <div ng-if="status==2"> {{'qualif.message.error' | translate}}</div>
+  <div ng-if="status==3"> {{'qualif.message.loading' | translate}}</div>
 
   <div class="form-group">
-    <label for="formGroupNom">Recherche personne : </label>
+    <label for="formGroupNom">{{'qualif.search' | translate}} </label>
     <input ng-change="loadContacts(form.contact)" type="text" ng-model="form.contact" class="form-control" id="formGroupNom" placeholder="Nom" required>
   </div>
 
@@ -22,70 +22,70 @@
 
 <form ng-show="status==0" ng-submit="submit('qualifications')">
 <div ng-if="personne != null">
-    <h2> Connaissances de base: </h2>
+    <h2> {{'qualif.connaissances' | translate}}</h2>
 
 
-      <label>Comportement</label>
+      <label>{{'qualif.comportement' | translate}}</label>
       <div class="btn-group btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
           <label class="btn btn-outline-secondary">
             <input type="radio" ng-model="data.personne.comportement" ng-value="5" value="Tres bon">
-            Très bon
+            {{'qualif.qualif.TB' | translate}}
            </label>
            <label class="btn btn-outline-secondary">
            <input  type="radio" ng-model="data.personne.comportement"  ng-value="4" value="Bon">
-            Bon
+              {{'qualif.qualif.B' | translate}}
            </label>
            <label class="btn btn-outline-secondary">
             <input  type="radio" ng-model="data.personne.comportement" ng-value="3"  value="Suffisant">
-            Suffisant
+              {{'qualif.qualif.S' | translate}}
            </label>
            <label class="btn btn-outline-secondary">
             <input  type="radio" ng-model="data.personne.comportement" ng-value="1"  value="Insuffisant">
-            Insuffisant
+              {{'qualif.qualif.I' | translate}}
            </label>
       </div>
 
-        <label for=formGroupMotivation>Motivation, engagement, entreprenant</label>
+        <label for=formGroupMotivation>{{'qualif.motivation' | translate}}</label>
         <div class="btn-group btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
           <label class="btn btn-outline-secondary">
             <input  type="radio" ng-model="data.personne.motivation" ng-value="5" value="Tres bon">
-            Très bon
+              {{'qualif.qualif.TB' | translate}}
           </label>
           <label class="btn btn-outline-secondary">
             <input  type="radio" ng-model="data.personne.motivation"  ng-value="4" value="Bon">
-            Bon
+              {{'qualif.qualif.B' | translate}}
           </label>
           <label class="btn btn-outline-secondary">
             <input  type="radio" ng-model="data.personne.motivation" ng-value="3"  value="Suffisant">
-            Suffisant
+              {{'qualif.qualif.S' | translate}}
           </label>
           <label class="btn btn-outline-secondary">
             <input  type="radio" ng-model="data.personne.motivation" ng-value="1"  value="Insuffisant">
-            Insuffisant
+              {{'qualif.qualif.I' | translate}}
           </label>
         </div>
 
-        <label for=formGroupConnaissances>Connaissances techniques</label>
+        <label for=formGroupConnaissances>{{'qualif.technique' | translate}}</label>
         <div class="btn-group btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
           <label class="btn btn-outline-secondary">
             <input type="radio" ng-model="data.personne.connaissances" ng-value="5" value="Tres bon">
-            Très bon
+              {{'qualif.qualif.TB' | translate}}
           </label>
           <label class="btn btn-outline-secondary">
             <input type="radio" ng-model="data.personne.connaissances"  ng-value="4" value="Bon">
-            Bon
+              {{'qualif.qualif.B' | translate}}
           </label>
           <label class="btn btn-outline-secondary">
             <input type="radio" ng-model="data.personne.connaissances" ng-value="3"  value="Suffisant">
-            Suffisant
+              {{'qualif.qualif.S' | translate}}
           </label>
           <label class="btn btn-outline-secondary">
             <input type="radio" ng-model="data.personne.connaissances" ng-value="1"  value="Insuffisant">
-            Insuffisant
+              {{'qualif.qualif.I' | translate}}
           </label>
         </div>
 
-    <label for=formGroupExpression>Faculté d'expression</label>
+    <label for=formGroupExpression>{{'qualif.expression' | translate}}</label>
     <div class="btn-group btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
       <label class="btn btn-outline-secondary">
          <input type="radio" ng-model="data.personne.expression" ng-value="5" value="Tres bon"> Très bon </label>
@@ -97,27 +97,27 @@
         <input type="radio" ng-model="data.personne.expression" ng-value="1"  value="Insuffisant"> Insuffisant </label>
      </div>
 
-      <label for=formGroupAptitude>Aptitude à la fonction</label>
+      <label for=formGroupAptitude>{{'qualif.aptitude' | translate}}</label>
       <div class="btn-group btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
         <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.aptitude" ng-value="5" value="Tres bon">
-          Très bon
+              {{'qualif.qualif.TB' | translate}}
         </label>
         <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.aptitude"  ng-value="4" value="Bon">
-            Bon
+              {{'qualif.qualif.B' | translate}}
         </label>
         <label class="btn btn-outline-secondary">
           <input  type="radio" ng-model="data.personne.aptitude" ng-value="3"  value="Suffisant">
-            Suffisant
+              {{'qualif.qualif.S' | translate}}
         </label>
         <label class="btn btn-outline-secondary">
          <input  type="radio" ng-model="data.personne.aptitude" ng-value="1"  value="Insuffisant">
-          Insuffisant
+              {{'qualif.qualif.I' | translate}}
          </label>
         </div>
 
-        <label for=formGroupGlobal>Appréciation globale</label>
+        <label for=formGroupGlobal>{{'qualif.appreciation' | translate}}</label>
         <div class="btn-group btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
             <label class="btn btn-outline-secondary">
             <input  type="radio" ng-model="data.personne.global" ng-value="5" value="Tres bon">  Très bon  </label>
@@ -129,134 +129,134 @@
             <input  type="radio" ng-model="data.personne.global" ng-value="1"  value="Insuffisant"> Insuffisant  </label>
         </div>
 
-    <h2> Spécialistes et cadres </h2>
+    <h2> {{'qualif.specialistes' | translate}} </h2>
 
-    <label for=formGroupAppreciation>Capacité d'appréciation de la situation</label>
+    <label for=formGroupAppreciation>{{'qualif.appreciation' | translate}}</label>
     <div class="btn-group btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
     <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.appreciation" ng-value="5" value="Tres bon">
-        Très bon
+              {{'qualif.qualif.TB' | translate}}
       </label>
       <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.appreciation"  ng-value="4" value="Bon">
-        Bon
+              {{'qualif.qualif.B' | translate}}
       </label>
       <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.appreciation" ng-value="3"  value="Suffisant">
-        Suffisant
+              {{'qualif.qualif.S' | translate}}
       </label>
       <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.appreciation" ng-value="1"  value="Insuffisant">
-        Insuffisant
+              {{'qualif.qualif.I' | translate}}
       </label>
     </div>
 
-    <label for=formGroupDecision>Capacité de décision</label>
+    <label for=formGroupDecision>{{'qualif.decision' | translate}}</label>
     <div class="btn-group btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
     <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.decision" ng-value="5" value="Tres bon">
-        Très bon
+              {{'qualif.qualif.TB' | translate}}
       </label>
       <label class="btn btn-outline-secondary">
         <input type="radio" ng-model="data.personne.decision"  ng-value="4" value="Bon">
-        Bon
+              {{'qualif.qualif.B' | translate}}
       </label>
       <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.decision" ng-value="3"  value="Suffisant">
-        Suffisant
+              {{'qualif.qualif.S' | translate}}
       </label>
       <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.decision" ng-value="1"  value="Insuffisant">
-        Insuffisant
+              {{'qualif.qualif.I' | translate}}
       </label>
     </div>
 
-    <label for=formGroupInstruction>Capacité d'instruire</label>
+    <label for=formGroupInstruction>{{'qualif.instruction' | translate}}</label>
     <div class="btn-group btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
     <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.instruction" ng-value="5" value="Tres bon">
-        Très bon
+              {{'qualif.qualif.TB' | translate}}
       </label>
       <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.instruction"  ng-value="4" value="Bon">
-        Bon
+              {{'qualif.qualif.B' | translate}}
       </label>
       <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.instruction" ng-value="3"  value="Suffisant">
-        Suffisant
+              {{'qualif.qualif.S' | translate}}
       </label>
       <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.instruction" ng-value="1"  value="Insuffisant">
-        Insuffisant
+              {{'qualif.qualif.I' | translate}}
       </label>
     </div>
 
-    <label for=formGroupConduite>Aptitude à conduire</label>
+    <label for=formGroupConduite>{{'qualif.conduite' | translate}}</label>
     <div class="btn-group btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
     <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.conduite" ng-value="5" value="Tres bon">
-        Très bon
+              {{'qualif.qualif.TB' | translate}}
       </label>
       <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.conduite"  ng-value="4" value="Bon">
-        Bon
+              {{'qualif.qualif.B' | translate}}
       </label>
       <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.conduite" ng-value="3"  value="Suffisant">
-        Suffisant
+              {{'qualif.qualif.S' | translate}}
       </label>
       <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.conduite" ng-value="1"  value="Insuffisant">
-        Insuffisant
+              {{'qualif.qualif.I' | translate}}
       </label>
     </div>
 
-    <label for=formGroupFonction>Aptitude à la fonction</label>
+    <label for=formGroupFonction>{{'qualif.aptitude' | translate}}</label>
     <div class="btn-group btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
     <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.fonction" ng-value="5" value="Tres bon">
-        Très bon
+              {{'qualif.qualif.TB' | translate}}
       </label>
       <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.fonction"  ng-value="4" value="Bon">
-        Bon
+              {{'qualif.qualif.B' | translate}}
       </label>
       <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.fonction" ng-value="3"  value="Suffisant">
-        Suffisant
+              {{'qualif.qualif.S' | translate}}
       </label>
       <label class="btn btn-outline-secondary">
         <input  type="radio" ng-model="data.personne.fonction" ng-value="1"  value="Insuffisant">
-        Insuffisant
+              {{'qualif.qualif.I' | translate}}
       </label>
     </div>
 
-    <label for=formGroupGlobal>Appréciation globale</label>
+    <label for=formGroupGlobal>{{'qualif.globale' | translate}}</label>
     <div class="btn-group btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
     <label class="btn btn-outline-secondary">
         <input type="radio" ng-model="data.personne.globalCadre" ng-value="5" ng-value="5" value="Tres bon">
-        Très bon
+              {{'qualif.qualif.TB' | translate}}
       </label>
       <label class="btn btn-outline-secondary">
         <input type="radio" ng-model="data.personne.globalCadre"  ng-value="4" value="Bon">
-        Bon
+              {{'qualif.qualif.B' | translate}}
       </label>
       <label class="btn btn-outline-secondary">
         <input type="radio" ng-model="data.personne.globalCadre" ng-value="3"  value="Suffisant">
-        Suffisant
+              {{'qualif.qualif.S' | translate}}
       </label>
       <label class="btn btn-outline-secondary">
         <input type="radio" ng-model="data.personne.globalCadre" ng-value="1"  value="Insuffisant">
-        Insuffisant
+              {{'qualif.qualif.I' | translate}}
       </label>
     </div>
 
     <div class="form-group col-sm-12 col-md-12">
-      <label for="formGroupNom">Commentaires</label>
+      <label for="formGroupNom">{{'qualif.comment' | translate}}</label>
       <input type="text" class="form-control" id="formGroupNom" ng-model="data.commentaire" placeholder="Commentaires">
     </div>
 
-    <button type="submit" class="btn btn-primary">Envoyer</button>
+    <button type="submit" class="btn btn-primary">{{'qualif.send' | translate}}</button>
 
 </div>
 </main>

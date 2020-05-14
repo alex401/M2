@@ -36,7 +36,7 @@ function QualifCtrl($scope, $http) {
   $scope.loadContacts = function (nom) {
     $scope.personne = null;
 
-    if(nom != null && nom.length > 3) {
+    if(nom != null && nom.length > 1) {
       console.log(nom);
 
       $http({

@@ -1,35 +1,35 @@
 <main class="col-sm-9 col-md-12" ng-controller="AssistanceCtrl">
-  <h1>Demande d'assistance</h1>
+  <h1>{{'assistance.title' | translate}}</h1>
 
-  <div ng-if="status==1"> Message envoyé </div>
-  <div ng-if="status==2"> Erreur de traitement, veuillez réessayer dans un moment</div>
-  <div ng-if="status==3"> Chargement en cours </div>
+  <div ng-if="status==1"> {{'assistance.message.success' | translate}} </div>
+  <div ng-if="status==2"> {{'assistance.message.error' | translate}}</div>
+  <div ng-if="status==3"> {{'assistance.message.loading' | translate}} </div>
 
 
   <form ng-submit="submit()" ng-if="status==0">
 
     <div class="form-group">
-      <label for="formGroupNom">Nom du lieutenant / Name des Leutnants</label>
+      <label for="formGroupNom">{{'assistance.lieutenant' | translate}}</label>
       <input type="text" ng-model="data.nomLieut" class="form-control" id="formGroupNom" placeholder="Nom du lieutenant" required>
     </div>
     <div class="form-group">
-        <label for="formGroupNom">Nom de la personne désirant une assistance / Name der hilfsbedürftigen Person</label>
+        <label for="formGroupNom">{{'assistance.nom' | translate}}</label>
       <input type="text" ng-model="data.nomPers" class="form-control" id="formGroupNom" placeholder="Nom de la personne" required>
     </div>
     <div class="form-group">
-      <label for="formGroupNom">Date souhaitée du rendez-vous / gewünschtes Datum für einen Termin</label>
+      <label for="formGroupNom">{{'assistance.date' | translate}}</label>
       <input type="text" ng-model="data.date" class="form-control" id="formGroupNom" placeholder="Date et heure de congé" required>
     </div>
     <div class="form-group">
-      <label for="formGroupNom">Raison de la demande / Grund für die Anfrage </label>
+      <label for="formGroupNom">{{'assistance.raison' | translate}} </label>
       <input type="text" ng-model="data.raison" class="form-control" id="formGroupNom" placeholder="Raison de la demande" required>
     </div>
    <div class="form-group">
-     <label for="formGroupNom">Commentaires / Kommentar</label>
+     <label for="formGroupNom">{{'assistance.comment' | translate}}</label>
      <input type="text" class="form-control" id="formGroupNom" ng-model="data.commentaire" placeholder="commentaires">
    </div>
 
-   <button type="submit" class="btn btn-primary" >Envoyer / Senden</button>
+   <button type="submit" class="btn btn-primary" >{{'assistance.send' | translate}}</button>
   </form>
 
 </main>

@@ -1,33 +1,33 @@
 <main class="col-sm-9 col-md-12" ng-controller="FormCtrl">
-  <h1>Demande d'avancement</h1>
+  <h1>{{'avancement.title' | translate}}</h1>
 
-  <div ng-if="status==1"> Message envoyé </div>
-  <div ng-if="status==2"> Erreur de traitement, veuillez réessayer dans un moment</div>
-  <div ng-if="status==3"> Chargement en cours </div>
+  <div ng-if="status==1"> {{'avancement.message.success' | translate}}</div>
+  <div ng-if="status==2"> {{'avancement.message.error' | translate}}</div>
+  <div ng-if="status==3"> {{'avancement.message.loading' | translate}}</div>
 
 
   <form ng-submit="submit('demandeavance')" ng-if="status==0">
     <div class="form-group">
-      <label for="formGroupNom">Nom et prénom du lieutenant</label>
+      <label for="formGroupNom">{{'avancement.lieutenant' | translate}}</label>
       <input type="text" ng-model="form.nomLieut" class="form-control" id="formGroupNom" placeholder="Nom du lieutenant" required>
     </div>
     <div class="form-group">
-      <label for="formGroupNom">Nom et prénom de la personne</label>
+      <label for="formGroupNom">{{'avancement.nom' | translate}}</label>
       <input type="text" ng-model="form.nomPers" class="form-control" id="formGroupNom" placeholder="Nom de la personne" required>
     </div>
     <div class="form-group">
-      <label for="formGroupNom">Fonction actuelle</label>
+      <label for="formGroupNom">{{'avancement.actuelle' | translate}}</label>
       <input type="text" ng-model="form.fonctAct" class="form-control" id="formGroupNom" placeholder="Fonction actuelle" required>
     </div>
    <div class="form-group">
-      <label for="formGroupNom">Fonction prévue</label>
+      <label for="formGroupNom">{{'avancement.prevue' | translate}}</label>
       <input type="text" ng-model="form.fonctPrevue" class="form-control" id="formGroupNom" placeholder="Fonction actuelle" required>
     </div>
     <div class="form-group">
-      <label for="formGroupNom">Commentaires</label>
+      <label for="formGroupNom">{{'avancement.comment' | translate}}</label>
       <input type="text" class="form-control" id="formGroupNom" ng-model="form.commentaire" placeholder="commentaires">
     </div>
-     <button type="submit" class="btn btn-primary" >Envoyer</button>
+     <button type="submit" class="btn btn-primary" >{{'avancement.send' | translate}}</button>
   </form>
 
 </main>

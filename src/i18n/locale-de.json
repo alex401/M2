@@ -57,6 +57,164 @@
           "status":"Status"
         }
     },
+    "assistance" : {
+      "title": "Betreuungsanfrage",
+      "message": {
+          "success": "Anfrage gesendet!",
+          "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+          "loading": "Ladevorgang läuft"
+      },
+      "lieutenant":"Name des Leutnants",
+      "nom":"Name der anfragende Person",
+      "date":"Gewünschtes Datum für das Termin",
+      "raison":"Grund für die Anfrage",
+      "comment":"Kommentar",
+      "send":"Senden"
+    },
+    "avancement" : {
+      "title": "Demande d'avancement",
+      "message": {
+        "success": "Anfrage gesendet!",
+        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+        "loading": "Ladevorgang läuft"
+      },
+      "lieutenant":"Name des Leutnants",
+      "nom":"Name der Person",
+      "actuelle":"Aktuelle Funktion",
+      "prevue":"Geplante Funktion",
+      "comment":"Kommentar",
+      "send":"Senden"
+    },
+    "conge" : {
+      "title": "Urlaubsanfrage",
+      "message": {
+        "success": "Anfrage gesendet!",
+        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+        "loading": "Ladevorgang läuft"
+      },
+      "lieutenant":"Name des Leutnants",
+      "nom":"Name der Person",
+      "date":"Gewünschtes Datum und Uhrzeit des Urlaubs",
+      "raison":"Grund der Anfrage",
+      "comment":"Kommentar",
+      "send":"Senden"
+    },
+    "circulation" : {
+      "title": "Zustand der Zirkulation",
+      "message": {
+        "success": "Gesendet!",
+        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+        "loading": "Ladevorgang läuft"
+      },
+      "nom":"Name",
+      "chantier":"Baustelle",
+      "selectChantier":"-- Wahl der Baustelle --",
+      "etat": {
+        "title":"Zustand",
+        "vert":"Grün - fliessend",
+        "orange":"Orange - gesättigt",
+        "rouge": "Rot - blockiert"
+      },
+      "detail":"Details falls nötig",
+      "send":"Senden"
+    },
+    "qualif":{
+      "title": "Qualifizierung",
+      "message": {
+        "success": "Gesendet!",
+        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+        "loading": "Ladevorgang läuft"
+      },
+      "search": "Suche Person:",
+      "connaissances":"Grundkenntnisse:",
+      "comportement":"Verhalten",
+      "motivation":"Motivation, Engagement, Unternehmungsgeist",
+      "technique":"Technisches Wissen",
+      "expression":"Ausdrucksfähigkeit",
+      "aptitude":"Eignung für den Dienst",
+      "appreciation":"Situationsbewusstsein",
+      "specialistes":"Fach- und Führungskräfte",
+      "globale":"Gesamtbeurteilung",
+      "decision":"Entscheidungsfähigkeit",
+      "instruction":"Fähigkeit zur Bildung",
+      "conduite":"Fähigkeit zu führen",
+      "comment":"Kommentar",
+      "send":"Senden",
+      "qualif" : {
+        "TB":"Sehr gut",
+        "B":"Gut",
+        "S":"Genügend",
+        "I":"Ungenügend"
+      }
+    },
+    "parking":{
+      "title":"Parkplatzbericht",
+      "message": {
+        "success": "Gesendet!",
+        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+        "loading": "Ladevorgang läuft"
+      },
+      "nom":"Namen",
+      "parking":"Parkplatz",
+      "selectParking":"-- Auswahl des Parkplatzes --",
+      "etat": {
+        "title":"Zustand",
+        "bon":"Gut",
+        "moyen":"Mittelmässig",
+        "mauvais":"Schlecht",
+        "impraticable":"Unzugänglich"
+        },
+      "detailEtat":"Detail für den Zustand falls nötig",
+      "remplissage":"Füllung",
+      "detailRemplissage":"Detail für die Füllung falls nötig",
+      "eclairage":"Beleuchtung",
+      "existant":"Bestehend",
+      "inexistant":"Unbestehend",
+      "comment":"Kommentar",
+      "send":"Senden"
+    },
+    "chantier": {
+      "title":"Baustelle Nachlauf",
+      "message": {
+        "success": "Gesendet!",
+        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+        "loading": "Ladevorgang läuft"
+      },
+      "nom":"Name",
+      "site":"Baustelle",
+      "selectSite":"-- Baustellenauswahl --",
+      "avancement":"Fortschritt",
+      "selectAvancement":"-- FORTSCHRITT --",
+      "estimation":"Geschätzte verbleibende Zeit",
+      "tasks":"Noch zu erledigende Aufgaben",
+      "send":"Senden"
+    },
+    "machine": {
+      "title":"Baumaschinen Nachlauf",
+      "message": {
+        "success": "Gesendet!",
+        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+        "loading": "Ladevorgang läuft"
+      },
+      "nom":"Namen",
+      "site":"Baustelle",
+      "selectSite":"-- Baustellenauswahl --",
+      "number":"Telefonnumer der Kontaktperson",
+      "type": {
+        "title":"Typ der Meldung",
+        "demande":"Maschinenanfrage",
+        "reception":"Maschinen-Abnahme",
+        "panne":"Ausfall",
+        "deplacement":"Antrag auf Verschiebung der Maschine",
+        "retour":"Rückgabe der Maschine"
+        },
+      "machine":"Maschine",
+      "serie":"Seriennummer",
+        "destSite":"Zielbaustelle",
+      "heures":"Anzahl der Maschinenstunden",
+      "comment":"Kommentar",
+      "send":"Senden"
+    },
     "commands": {
       "radios": {
           "title" : "Radiobestellung",
