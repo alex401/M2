@@ -257,7 +257,7 @@
           "loading": "Chargement en cours"
       },
       "libere":"Libéré: à sélectionner en fin de journée quand l'astreint n'a pas encore complètement fini le service prévu sur l'ordre de marche.",
-      "licenciement":"Licencié: à sélectionner quand l'astreint a fini tout son service.",
+      "licencie":"Licencié: à sélectionner quand l'astreint a fini tout son service.",
       "formation":"Formation",
       "selectFormation":"-- Sélection formation --",
       "session":"Session",

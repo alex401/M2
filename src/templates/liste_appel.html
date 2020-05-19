@@ -5,7 +5,7 @@
   <div class="custom-control custom-checkbox">
     <input ng-model="disclaimer" type="checkbox" class="custom-control-input" name="acceptation" id='acceptation' ng-required='true'>
     <label class="custom-control-label" for="acceptation">
-      {{'appel.disclaimer'}}
+      {{'appel.disclaimer' | translate}}
       <ul>
         <li ng-repeat="warning in warnings">{{warning.description}}</li>
         <br>

@@ -43,7 +43,6 @@
 <a class="btn btn-outline-secondary btn-block" href="#/admin/listeappel" role="button">{{'menu.admin.appel' | translate}}</a>
 <a class="btn btn-outline-secondary btn-block" href="#/admin/listeLicenciement" role="button"> {{'menu.admin.liberation' | translate}}</a>
 <a class="btn btn-outline-secondary btn-block" href="#/admin/qualifications" role="button">{{'menu.admin.qualif' | translate}}</a>
-<a class="btn btn-outline-secondary btn-block" href="#/admin/attribMail" role="button"> {{'menu.admin.attrib' | translate}} </a>
 <!-- <a class="btn btn-outline-secondary btn-block" href="#/form/etatgroupe" role="button"> Etat groupe </a> -->
 
 </div>
