@@ -33,14 +33,27 @@
             "fuel": "Carburant",
             "radios": "Radios",
             "management": "Gestion de commandes",
-            "search": "Recherche de commandes"
+            "search": "Recherche de commandes",
+            "radios":"Radios"
         },
+        "recherche":"Accès rapide recherches",
+        "rapide":"Accès rapide",
+        "conge":"Demande de congé",
+        "assistance":"Demande d'assistance",
+        "avancement":"Demande d'avancement",
+        "parking":"Etat parking",
+        "circulation":"Etat circulation",
+        "machine":"Suivi de machine",
         "competences": "Mise à jour données perso",
         "equipement": "Contrôle d'équipement",
         "admin": {
             "title": "Admin",
             "daily_report": "Rapport journalier (section et SPPAM)",
-            "daily_report_assist": "Rapport journalier Assistance"
+            "daily_report_assist": "Rapport journalier Assistance",
+            "appel":"Liste d'appel",
+            "liberation":"Liste de libération / licenciement",
+            "qualif":"Qualifications",
+            "attrib":"Attribution mail"
         },
         "search": {
           "title":"Recherche de commande",
@@ -212,6 +225,49 @@
       "destSite":"Chantier de destination",
       "heures":"Nombre d'heures de la machine",
       "comment":"commentaires",
+      "send":"Envoyer"
+    },
+    "appel":{
+      "title":"Liste d'appel",
+      "disclaimer":"En cochant je confirme que tous les astreints ont été sensibilisés sur les points suivants :",
+      "message": {
+          "success": "Envoyé!",
+          "error": "Erreur de traitement, veuillez réessayer plus tard.",
+          "loading": "Chargement en cours"
+      },
+      "formation":"Formation",
+      "selectFormation":"-- Sélection formation --",
+      "session":"Session",
+      "selectSession":"-- Sélection session --",
+      "date":"Date",
+      "selectDate":"-- Sélection date --",
+      "presence": {
+        "present":"Présent",
+        "absent":"Absent",
+        "conge":"Congé"
+      },
+      "send":"Envoyer"
+    },
+    "licenciement":{
+      "title":"Liste de libération / licenciement",
+      "disclaimer":"En cochant je confirme que tous les astreints ont été sensibilisés sur les points suivants :",
+      "message": {
+          "success": "Envoyé!",
+          "error": "Erreur de traitement, veuillez réessayer plus tard.",
+          "loading": "Chargement en cours"
+      },
+      "libere":"Libéré: à sélectionner en fin de journée quand l'astreint n'a pas encore complètement fini le service prévu sur l'ordre de marche.",
+      "licenciement":"Licencié: à sélectionner quand l'astreint a fini tout son service.",
+      "formation":"Formation",
+      "selectFormation":"-- Sélection formation --",
+      "session":"Session",
+      "selectSession":"-- Sélection session --",
+      "date":"Date",
+      "selectDate":"-- Sélection date --",
+      "liberation": {
+        "libere":"Libéré",
+        "licencie":"Licencié"
+      },
       "send":"Envoyer"
     },
     "commands": {

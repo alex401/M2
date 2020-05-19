@@ -9,7 +9,7 @@
   <form ng-submit="submit('transport')" ng-if="status==0">
     <div class="form-group">
       <label for="nom">{{'commands.transport.name' | translate}}</label>
-      <input autocomplete="off" type="text" ng-model="form.nom" uib-typeahead="tier.nom for tier in loadTiers($viewValue)" class="form-control" id="nom" placeholder="Nom" required>
+      <input autocomplete="off" type="text" ng-model="form.nom" uib-typeahead="tier.nom for tier in loadTiers($viewValue)" class="form-control" id="nom" placeholder="" required>
     </div>
     <div class="form-group">
       <label for="chantier">{{'commands.transport.departure' | translate}}</label>

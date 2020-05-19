@@ -33,15 +33,27 @@
             "fuel": "Treibstoff",
             "radios": "Radios",
             "management": "Auftragsmanagement",
-            "search": "Auftragsuche"
-
+            "search": "Auftragsuche",
+            "radios":"Radios"
         },
+        "recherche":"Schnellzugriff für Suchen",
+        "rapide":"Schellzugriff",
+        "conge":"Urlaubsanfrage",
+        "assistance":"Betreuungsanfrage",
+        "avancement":"Demande d'avancement",
+        "parking":"Parkplatzbericht",
+        "circulation":"Zustand der Zirkulation",
+        "machine":"Baumaschinen Nachlauf",
         "competences": "Aktualisierung persönlicher Daten",
         "equipement":"Ausrüstungskontrolle",
         "admin": {
             "title": "Admin",
             "daily_report": "Täglicher Bericht (Abteilung und SPPAM)",
-            "daily_report_assist": "Tagesbericht Unterstützung"
+            "daily_report_assist": "Tagesbericht Unterstützung",
+            "appel":"Anrufsliste",
+            "liberation":"Freigabe-/Entlassungsliste",
+            "qualif":"Qualifizierung",
+            "attrib":"Mail Zuteilung"
         },
         "search": {
           "title":"Bestellungssuche",
@@ -213,6 +225,49 @@
         "destSite":"Zielbaustelle",
       "heures":"Anzahl der Maschinenstunden",
       "comment":"Kommentar",
+      "send":"Senden"
+    },
+    "appel":{
+      "title":"Anrufliste",
+      "disclaimer":"Durch Ankreuzen bestätige ich, dass das gesamte Bereitschaftspersonal auf die folgenden Punkte aufmerksam gemacht wurde:",
+      "message": {
+        "success": "Gesendet!",
+        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+        "loading": "Ladevorgang läuft"
+      },
+      "formation":"Ausbildung",
+      "selectFormation":"-- Auswahl Ausbildung --",
+      "session":"Sitzung",
+      "selectSession":"-- Auswahl Sitzung --",
+      "date":"Datum",
+      "selectDate":"-- Auswahl Datum --",
+      "presence": {
+        "present":"Anwesend",
+        "absent":"Nicht anwesend",
+        "conge":"Urlaub"
+      },
+      "send":"Senden"
+    },
+    "licenciement":{
+      "title":"Freigabe-/Entlassungsliste",
+      "disclaimer":"Durch Ankreuzen bestätige ich, dass das gesamte Bereitschaftspersonal auf die folgenden Punkte aufmerksam gemacht wurde:",
+      "message": {
+        "success": "Gesendet!",
+        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+        "loading": "Ladevorgang läuft"
+      },
+      "libere":"Befreit: am Ende des Tages zu wählen, wenn die Person den auf dem Laufbefehl geplanten Dienst noch nicht vollständig beendet hat.",
+      "licenciement":"Entlasst: zu wählen, wenn die Person seinen Dienst vollständig beendet hat.",
+      "formation":"Ausbildung",
+      "selectFormation":"-- Auswahl Ausbildung --",
+      "session":"Sitzung",
+      "selectSession":"-- Auswahl Sitzung --",
+      "date":"Datum",
+      "selectDate":"-- Auswahl Datum --",
+      "liberation": {
+        "libere":"Befreit",
+        "licencie":"Entlasst"
+      },
       "send":"Senden"
     },
     "commands": {

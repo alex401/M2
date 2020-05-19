@@ -9,7 +9,7 @@
   <form ng-submit="submit('suivichantier')" ng-if="status==0">
     <div class="form-group">
       <label for="formGroupNom">{{'chantier.nom' | translate}}</label>
-      <input type="text" ng-model="form.nom" class="form-control" id="formGroupNom" placeholder="Nom et Prénom" required>
+      <input type="text" ng-model="form.nom" class="form-control" id="formGroupNom" placeholder="" required>
     </div>
     <div class="form-group">
       <label for="formGroupChantier">{{'chantier.site' | translate}}</label>
@@ -35,11 +35,11 @@
      </div>
    <div class="form-group">
      <label for="formGroupNom">{{'chantier.estimation' | translate}}</label>
-     <input type="text" class="form-control" id="formGroupNom" ng-model="form.tempsRestant" placeholder="Estimation du temps restant (en minutes)">
+     <input type="text" class="form-control" id="formGroupNom" ng-model="form.tempsRestant" placeholder="">
    </div>
    <div class="form-group">
      <label for="formGroupNom">{{'chantier.tasks' | translate}}</label>
-     <input type="text" class="form-control" id="formGroupNom" ng-model="form.tachesRestantes" placeholder="Tâche restantes à effectuer ">
+     <input type="text" class="form-control" id="formGroupNom" ng-model="form.tachesRestantes" placeholder="">
    </div>
    <button type="submit" class="btn btn-primary" >{{'chantier.send' | translate}}</button>
   </form>

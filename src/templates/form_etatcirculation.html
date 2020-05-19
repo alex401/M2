@@ -9,7 +9,7 @@
   <form ng-submit="submit('etatcirculation')" ng-if="status==0">
     <div class="form-group">
       <label for="formGroupNom">{{'circulation.nom' | translate}}</label>
-      <input type="text" ng-model="form.nom" class="form-control" id="formGroupNom" placeholder="Nom" required>
+      <input type="text" ng-model="form.nom" class="form-control" id="formGroupNom" placeholder="" required>
     </div>
     <div class="form-group">
       <label for="formGroupChantier">{{'circulation.chantier' | translate}}</label>
@@ -25,7 +25,7 @@
    </div>
    <div class="form-group">
      <label for="formGroupNom">{{'circulation.detail' | translate}}</label>
-     <input type="text" class="form-control" id="formGroupNom" ng-model="form.detail" placeholder="Détails">
+     <input type="text" class="form-control" id="formGroupNom" ng-model="form.detail" placeholder="">
    </div>
    <button type="submit" class="btn btn-primary" >{{'circulation.send' | translate}}</button>
   </form>

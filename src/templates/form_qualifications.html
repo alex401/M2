@@ -8,7 +8,7 @@
 
   <div class="form-group">
     <label for="formGroupNom">{{'qualif.search' | translate}} </label>
-    <input ng-change="loadContacts(form.contact)" type="text" ng-model="form.contact" class="form-control" id="formGroupNom" placeholder="Nom" required>
+    <input ng-change="loadContacts(form.contact)" type="text" ng-model="form.contact" class="form-control" id="formGroupNom" placeholder="" required>
   </div>
 
   <div ng-if="contacts.length > 0" >
@@ -120,13 +120,13 @@
         <label for=formGroupGlobal>{{'qualif.appreciation' | translate}}</label>
         <div class="btn-group btn-group-toggle col-sm-12 col-md-12" data-toggle="buttons">
             <label class="btn btn-outline-secondary">
-            <input  type="radio" ng-model="data.personne.global" ng-value="5" value="Tres bon">  Très bon  </label>
+            <input  type="radio" ng-model="data.personne.global" ng-value="5" value="Tres bon">  {{'qualif.qualif.TB' | translate}}  </label>
             <label class="btn btn-outline-secondary">
-            <input  type="radio" ng-model="data.personne.global"  ng-value="4" ng-value="4" value="Bon"> Bon </label>
+            <input  type="radio" ng-model="data.personne.global"  ng-value="4" ng-value="4" value="Bon"> {{'qualif.qualif.B' | translate}} </label>
             <label class="btn btn-outline-secondary">
-            <input  type="radio" ng-model="data.personne.global" ng-value="3"  value="Suffisant">  Suffisant </label>
+            <input  type="radio" ng-model="data.personne.global" ng-value="3"  value="Suffisant">  {{'qualif.qualif.S' | translate}} </label>
             <label class="btn btn-outline-secondary">
-            <input  type="radio" ng-model="data.personne.global" ng-value="1"  value="Insuffisant"> Insuffisant  </label>
+            <input  type="radio" ng-model="data.personne.global" ng-value="1"  value="Insuffisant"> {{'qualif.qualif.I' | translate}}  </label>
         </div>
 
     <h2> {{'qualif.specialistes' | translate}} </h2>
@@ -253,7 +253,7 @@
 
     <div class="form-group col-sm-12 col-md-12">
       <label for="formGroupNom">{{'qualif.comment' | translate}}</label>
-      <input type="text" class="form-control" id="formGroupNom" ng-model="data.commentaire" placeholder="Commentaires">
+      <input type="text" class="form-control" id="formGroupNom" ng-model="data.commentaire" placeholder="">
     </div>
 
     <button type="submit" class="btn btn-primary">{{'qualif.send' | translate}}</button>
