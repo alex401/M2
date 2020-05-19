@@ -1,11 +1,11 @@
 <main class="col-sm-12 col-md-12" ng-controller="ListeLicenciementCtrl">
 
-  <h1>Liste de libération / licencicement </h1>
+  <h1>{{'licenciement.title' | translate}}</h1>
 
   <div class="custom-control custom-checkbox">
     <input ng-model="disclaimer" type="checkbox" class="custom-control-input" name="acceptation" id='acceptation' ng-required='true'>
     <label class="custom-control-label" for="acceptation">
-      En cochant je confirme que tous les astreints ont été sensibilisés sur les points suivants :
+      {{'licenciement.disclaimer' | translate}}
       <ul>
         <li ng-repeat="warning in warnings">{{warning.description}}</li>
         <br>
@@ -13,34 +13,34 @@
     </label>
   </div>
 
-  <div ng-if="status==1"> Message envoyé </div>
-  <div ng-if="status==2"> Erreur de traitement, veuillez réessayer dans un moment</div>
-  <div ng-if="status==3"> Chargement en cours </div>
+  <div ng-if="status==1"> {{'licenciement.message.success' | translate}}</div>
+  <div ng-if="status==2"> {{'licenciement.message.error' | translate}}</div>
+  <div ng-if="status==3"> {{'licenciement.message.loading' | translate}}</div>
   <div ng-if="status==4" class="loader"></div>
 
 <ul>
-  <li>  Libéré: à sélectionner en fin de journée quand l'astreint n'a pas encore complètement fini le service prévu sur l'ordre de marche. </li>
-  <li>  Licencié: à sélectionner quand l'astreint a fini tout son service. </li>
+  <li>  {{'licenciement.libere' | translate}} </li>
+  <li>  {{'licenciement.licencie' | translate}} </li>
 
 
 <form ng-show="status==0 && disclaimer==true" ng-submit="submit('listelicenciement')">
 
       <div class="form-group">
-        <label for="formGroupFormation">Formation</label>
+        <label for="formGroupFormation">{{'licenciement.formation' | translate}}</label>
         <select ng-change="onSelectFormation()" class="form-control" id="formGroupFormation" ng-model="data.formation" ng-value="formation" ng-options="formation as formation.intitule for formation in formations" required>
-          <option value="">-- Selection formation --</option>
+          <option value="">{{'licenciement.selectFormation' | translate}}</option>
        </select> </div>
 
       <div class="form-group">
-        <label for="formGroupSession">Session</label>
+        <label for="formGroupSession">{{'licenciement.session' | translate}}</label>
         <select ng-change="selectSession()" class="form-control" id="formGroupSession" ng-model="data.session" ng-value="session" ng-options="session as session.sessionNom for session in sessions" required>
-          <option value="">-- Selection session --</option>
+          <option value="">{{'licenciement.selectSession' | translate}}</option>
       </select></div>
 
       <div class="form-group">
-        <label for="formGroupDate">Date</label>
+        <label for="formGroupDate">{{'licenciement.date' | translate}}</label>
         <select ng-change="onSelectDate()" class="form-control" id="formGroupDate" ng-model="data.jour" ng-value="date" ng-options="date as date for date in dates" required>
-          <option value="">-- Selection date --</option>
+          <option value="">{{'licenciement.selectDate' | translate}}</option>
       </select></div>
 
  <div  ng-if="personnes.length > 0">
@@ -50,16 +50,16 @@
       <div class="btn-group btn-group-toggle" >
       <label class="btn btn-secondary">
           <input ng-change="onChange($index)" type="radio" ng-model="personne.status" value="Libéré">
-          Libéré
+          {{'licenciement.liberation.libere' | translate}}
         </label>
         <label class="btn btn-secondary">
           <input ng-change="onChange($index)" type="radio" ng-model="personne.status"  value="Licencié">
-          Licencié
+          {{'licenciement.liberation.licencie' | translate}}
         </label>
       </div>
 
    </ul>
-   <button type="submit()" class="btn btn-primary btn-block" >Envoyer</button>
+   <button type="submit()" class="btn btn-primary btn-block" >{{'appel.send' | translate}}</button>
 </div>
 </form>
 

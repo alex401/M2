@@ -57,11 +57,14 @@
                 </div>
               </div>
 
-
-          <a class="nav-item nav-link" href="#/admin/recherchetiers">{{'recherche.tiers.title' | translate}}<span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link" href="#/admin/recherchetags">{{'recherche.tags.title' | translate}}<span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link" href="#/admin/recherchecontacts">{{'recherche.contact.title' | translate}}<span class="sr-only">(current)</span></a>
-
+          <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{'navbar.search' | translate}}</a>
+              <div class="dropdown-menu" aria-labelledby="searchDropdown">
+              <a class="dropdown-item" href="#/admin/recherchetiers">{{'recherche.tiers.title' | translate}}</a>
+              <a class="dropdown-item" href="#/admin/recherchetags">{{'recherche.tags.title' | translate}}</a>
+              <a class="dropdown-item" href="#/admin/recherchecontacts">{{'recherche.contact.title' | translate}}</a>
+            </div>
+          </div>
         <?php endif; ?>
 
 
@@ -69,10 +72,10 @@
           <div class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{'navbar.admin' | translate}}</a>
             <div class="dropdown-menu" aria-labelledby="adminDropdown">
-              <a class="dropdown-item" href="#/superadmin/warnings">Messages du commandant</a>
-              <a class="dropdown-item" href="#/superadmin/logins">Logins</a>
-              <a class="dropdown-item" href="#/superadmin/mails">Attribution des emails</a>
-              <a class="dropdown-item" href="#/superadmin/params">Paramètres généraux</a>
+              <a class="dropdown-item" href="#/superadmin/warnings">{{'navbar.superadmin.messages' | translate}}</a>
+              <a class="dropdown-item" href="#/superadmin/logins">{{'navbar.superadmin.logins' | translate}}</a>
+              <a class="dropdown-item" href="#/superadmin/mails">{{'navbar.superadmin.attribution' | translate}}</a>
+              <a class="dropdown-item" href="#/superadmin/params">{{'navbar.superadmin.parametres' | translate}}</a>
             </div>
           </div>
           <?php endif; ?>

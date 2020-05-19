@@ -1,26 +1,26 @@
 <main class="col-sm-9 col-md-12" ng-controller="FormCtrl">
-  <h1>Suivi de chantier</h1>
+  <h1>{{'chantier.title' | translate}}</h1>
 
-  <div ng-if="status==1"> Message envoyé </div>
-  <div ng-if="status==2"> Erreur de traitement, veuillez réessayer dans un moment</div>
-  <div ng-if="status==3"> Chargement en cours </div>
+  <div ng-if="status==1"> {{'chantier.message.success' | translate}}</div>
+  <div ng-if="status==2"> {{'chantier.message.error' | translate}}</div>
+  <div ng-if="status==3"> {{'chantier.message.loading' | translate}}</div>
 
 
   <form ng-submit="submit('suivichantier')" ng-if="status==0">
     <div class="form-group">
-      <label for="formGroupNom">Nom</label>
-      <input type="text" ng-model="form.nom" class="form-control" id="formGroupNom" placeholder="Nom et Prénom" required>
+      <label for="formGroupNom">{{'chantier.nom' | translate}}</label>
+      <input type="text" ng-model="form.nom" class="form-control" id="formGroupNom" placeholder="" required>
     </div>
     <div class="form-group">
-      <label for="formGroupChantier">chantier</label>
+      <label for="formGroupChantier">{{'chantier.site' | translate}}</label>
       <select class="form-control" id="formGroupChantier" ng-model="form.chantier" ng-options="chantier.title as chantier.title for chantier in chantiers" required>
         <option value="">-- Selection chantier --</option>
 
    </div>
    <div class="form-group">
-     <label for="formGroupAvancement">Avancement</label>
+     <label for="formGroupAvancement">{{'chantier.avancement' | translate}}</label>
      <select class="form-control" id="formGroupAvancement" ng-model="form.avancement" required>
-       <option value="">--AVANCEMENT --</option>
+       <option value="">{{'chantier.selectAvancement' | translate}}</option>
        <option value="100%">100%</option>
        <option value="90%">90%</option>
        <option value="80%">80%</option>
@@ -34,14 +34,14 @@
        <option value="0%">0%</option>
      </div>
    <div class="form-group">
-     <label for="formGroupNom">Estimation du temps restant</label>
-     <input type="text" class="form-control" id="formGroupNom" ng-model="form.tempsRestant" placeholder="Estimation du temps restant (en minutes)">
+     <label for="formGroupNom">{{'chantier.estimation' | translate}}</label>
+     <input type="text" class="form-control" id="formGroupNom" ng-model="form.tempsRestant" placeholder="">
    </div>
    <div class="form-group">
-     <label for="formGroupNom">Tâche restantes à effectuer</label>
-     <input type="text" class="form-control" id="formGroupNom" ng-model="form.tachesRestantes" placeholder="Tâche restantes à effectuer ">
+     <label for="formGroupNom">{{'chantier.tasks' | translate}}</label>
+     <input type="text" class="form-control" id="formGroupNom" ng-model="form.tachesRestantes" placeholder="">
    </div>
-   <button type="submit" class="btn btn-primary" >Envoyer</button>
+   <button type="submit" class="btn btn-primary" >{{'chantier.send' | translate}}</button>
   </form>
 
 </main>

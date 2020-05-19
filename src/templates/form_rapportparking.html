@@ -1,36 +1,36 @@
 <main class="col-sm-9 col-md-12" ng-controller="FormCtrl">
-  <h1>Rapport de parking</h1>
+  <h1>{{'parking.title' | translate}}</h1>
 
-  <div ng-if="status==1"> Message envoyé </div>
-  <div ng-if="status==2"> Erreur de traitement, veuillez réessayer dans un moment</div>
-  <div ng-if="status==3"> Chargement en cours </div>
+  <div ng-if="status==1"> {{'parking.message.success' | translate}}</div>
+  <div ng-if="status==2"> {{'parking.message.error' | translate}}</div>
+  <div ng-if="status==3"> {{'parking.message.loading' | translate}}</div>
 
 
   <form ng-submit="submit('rapportparking')" ng-if="status==0">
     <div class="form-group">
-      <label for="formGroupNom">Nom</label>
-      <input type="text" ng-model="form.nom" class="form-control" id="formGroupNom" placeholder="Nom" required>
+      <label for="formGroupNom">{{'parking.nom' | translate}}</label>
+      <input type="text" ng-model="form.nom" class="form-control" id="formGroupNom"  required>
     </div>
     <!-- ng-options à définir -->
     <div class="form-group">
-      <label for="formGroupParking">Parking</label>
+      <label for="formGroupParking">{{'parking.parking' | translate}}</label>
       <select class="form-control" id="formGroupParking" ng-model="form.parking" ng-options="chantier.title as chantier.title for chantier in chantiers | filter: 'Parking'" required>
-        <option value="">-- Selection parking --</option>
+        <option value="">{{'parking.selectParking' | translate}}</option>
    </div>
    <div class="form-group">
-     <label for="formGroupEtat">Etat</label>
+     <label for="formGroupEtat">{{'parking.etat' | translate}}</label>
      <select class="form-control" id="formGroupEtat" ng-model="form.etat" required>
-       <option value="Bon">Bon</option>
-       <option value="Moyen">Moyen</option>
-       <option value="Mauvais">Mauvais</option>
-       <option value="Impraticable">Impraticable</option>
+       <option value="Bon">{{'parking.bon' | translate}}</option>
+       <option value="Moyen">{{'parking.moyen' | translate}}</option>
+       <option value="Mauvais">{{'parking.mauvais' | translate}}</option>
+       <option value="Impraticable">{{'parking.impraticable' | translate}}</option>
    </div>
    <div class="form-group">
-     <label for="formGroupNom">Détail pour l'état si nécessaire</label>
-     <input type="text" class="form-control" id="formGroupNom" ng-model="form.detailEtat" placeholder="Détail état">
+     <label for="formGroupNom">{{'parking.detailEtat' | translate}}</label>
+     <input type="text" class="form-control" id="formGroupNom" ng-model="form.detailEtat">
    </div>
    <div class="form-group">
-     <label for="formGroupRemplissage">Remplissage</label>
+     <label for="formGroupRemplissage">{{'parking.remplissage' | translate}}</label>
      <select class="form-control" id="formGroupRemplissage" ng-model="form.remplissage" required>
        <option value="0">0%</option>
        <option value="25">25%</option>
@@ -39,20 +39,20 @@
        <option value="100">100%</option>
    </div>
    <div class="form-group">
-     <label for="formGroupNom">Détail pour le remplissage si nécessaire</label>
-     <input type="text" class="form-control" id="formGroupNom" ng-model="form.detailRemplissage" placeholder="Détail remplissage">
+     <label for="formGroupNom">{{'parking.detailRemplissage' | translate}}</label>
+     <input type="text" class="form-control" id="formGroupNom" ng-model="form.detailRemplissage">
    </div>
    <div class="form-group">
-     <label for="formGroupEclairage">Eclairage</label>
+     <label for="formGroupEclairage">{{'parking.eclairage' | translate}}</label>
      <select class="form-control" id="formGroupEclairage" ng-model="form.eclairage" required>
-       <option value="Expistant">Existant</option>
-       <option value="Inexistant">Inexistant</option>
+       <option value="Expistant">{{'parking.existant' | translate}}</option>
+       <option value="Inexistant">{{'parking.inexistant' | translate}}</option>
    </div>
    <div class="form-group">
-     <label for="formGroupNom">commentaires</label>
-     <input type="text" class="form-control" id="formGroupNom" ng-model="form.commentaire" placeholder="commentaires">
+     <label for="formGroupNom">{{'parking.comment' | translate}}</label>
+     <input type="text" class="form-control" id="formGroupNom" ng-model="form.commentaire" >
    </div>
-   <button type="submit" class="btn btn-primary" >Envoyer</button>
+   <button type="submit" class="btn btn-primary" >{{'parking.send' | translate}}</button>
   </form>
 
 </main>

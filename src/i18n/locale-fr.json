@@ -2,8 +2,15 @@
     "navbar": {
         "command": "Commande",
         "admin": "Admin",
-        "language": "Langue"
-    },
+        "language": "Langue",
+        "search": "Recherches",
+        "superadmin" : {
+          "messages":"Messages du commandant",
+          "logins":"Logins",
+          "attribution":"Attribution des mails",
+          "parametres":"Paramètres généraux"
+        }
+      },
     "recherche": {
       "tiers": {
         "title": "Recherche de tiers",
@@ -33,14 +40,27 @@
             "fuel": "Carburant",
             "radios": "Radios",
             "management": "Gestion de commandes",
-            "search": "Recherche de commandes"
+            "search": "Recherche de commandes",
+            "radios":"Radios"
         },
+        "recherche":"Accès rapide recherches",
+        "rapide":"Accès rapide",
+        "conge":"Demande de congé",
+        "assistance":"Demande d'assistance",
+        "avancement":"Demande d'avancement",
+        "parking":"Etat parking",
+        "circulation":"Etat circulation",
+        "machine":"Suivi de machine",
         "competences": "Mise à jour données perso",
         "equipement": "Contrôle d'équipement",
         "admin": {
             "title": "Admin",
             "daily_report": "Rapport journalier (section et SPPAM)",
-            "daily_report_assist": "Rapport journalier Assistance"
+            "daily_report_assist": "Rapport journalier Assistance",
+            "appel":"Liste d'appel",
+            "liberation":"Liste de libération / licenciement",
+            "qualif":"Qualifications",
+            "attrib":"Attribution mail"
         },
         "search": {
           "title":"Recherche de commande",
@@ -55,6 +75,207 @@
           "showCanceled":"Afficher commandes annulées",
           "status":"statut"
         }
+    },
+    "assistance" : {
+      "title": "Demande d'assistance",
+      "message": {
+          "success": "Demande envoyée!",
+          "error": "Erreur de traitement, veuillez réessayer plus tard.",
+          "loading": "Chargement en cours"
+      },
+      "lieutenant":"Nom du lieutenant",
+      "nom":"Nom de la personne désirant une assistance",
+      "date":"Date souhaitée du rendez-vous",
+      "raison":"Raison de la demande",
+      "comment":"Commentaires",
+      "send":"Envoyer"
+    },
+    "avancement" : {
+      "title": "Demande d'avancement",
+      "message": {
+          "success": "Demande envoyée!",
+          "error": "Erreur de traitement, veuillez réessayer plus tard.",
+          "loading": "Chargement en cours"
+      },
+      "lieutenant":"Nom du lieutenant",
+      "nom":"Nom de la personne",
+      "actuelle":"Fonction actuelle",
+      "prevue":"Fonction prévue",
+      "comment":"Commentaires",
+      "send":"Envoyer"
+    },
+    "conge" : {
+      "title": "Demande de congé",
+      "message": {
+          "success": "Demande envoyée!",
+          "error": "Erreur de traitement, veuillez réessayer plus tard.",
+          "loading": "Chargement en cours"
+      },
+      "lieutenant":"Nom du lieutenant",
+      "nom":"Nom de la personne",
+      "date":"Date et heure de congé désiré",
+      "raison":"Raison de la demande",
+      "comment":"Commentaires",
+      "send":"Envoyer"
+    },
+    "circulation" : {
+      "title": "Etat de circulation",
+      "message": {
+          "success": "Demande envoyée!",
+          "error": "Erreur de traitement, veuillez réessayer plus tard.",
+          "loading": "Chargement en cours"
+      },
+      "nom":"Nom",
+      "chantier":"Chantier",
+      "selectChantier":"-- Sélection chantier --",
+      "etat": {
+        "title":"Etat",
+        "vert":"Vert - fluide",
+        "orange":"Orange - saturé",
+        "rouge": "Rouge - bloqué"
+      },
+      "detail":"Détails si nécessaire",
+      "send":"Envoyer"
+    },
+    "qualif":{
+      "title": "Qualifications",
+      "message": {
+          "success": "Envoyé!",
+          "error": "Erreur de traitement, veuillez réessayer plus tard.",
+          "loading": "Chargement en cours"
+      },
+      "search": "Recherche personne:",
+      "connaissances":"Connaissances de base:",
+      "comportement":"Comportement",
+      "motivation":"Motivation, engagement, entreprenant",
+      "technique":"Connaissances techniques",
+      "expression":"Faculté d'expression",
+      "aptitude":"Aptitude à la fonction",
+      "globale":"Appréciation globale",
+      "specialistes":"Spécialistes et cadres",
+      "appreciation":"Capacité d'appréciation de la situation",
+      "decision":"Capacité de décision",
+      "instruction":"Capacité d'instruire",
+      "conduite":"Aptitude à conduire",
+      "comment":"Commentaires",
+      "send":"Envoyer",
+      "qualif" : {
+        "TB":"Très bon",
+        "B":"Bon",
+        "S":"Suffisant",
+        "I":"Insuffisant"
+      }
+    },
+    "parking":{
+      "title":"Rapport parking",
+      "message": {
+          "success": "Envoyé!",
+          "error": "Erreur de traitement, veuillez réessayer plus tard.",
+          "loading": "Chargement en cours"
+      },
+      "nom":"Nom",
+      "parking":"Parking",
+      "selectParking":"-- Sélection parking --",
+      "etat": {
+        "title":"Etat",
+        "bon":"Bon",
+        "moyen":"Moyen",
+        "mauvais":"Mauvais",
+        "impraticable":"Impraticable"
+        },
+      "detailEtat":"Détail pour l'état si nécessaire",
+      "remplissage":"Remplissage",
+      "detailRemplissage":"Détail pour le remplissage si nécessaire",
+      "eclairage":"Eclairage",
+      "existant":"Existant",
+      "inexistant":"Inexistant",
+      "comment":"Commentaires",
+      "send":"Envoyer"
+    },
+    "chantier": {
+      "title":"Suivi de chantier",
+      "message": {
+          "success": "Envoyé!",
+          "error": "Erreur de traitement, veuillez réessayer plus tard.",
+          "loading": "Chargement en cours"
+      },
+      "nom":"Nom",
+      "site":"Chantier",
+      "selectSite":"-- Sélection chantier --",
+      "avancement":"Avancement",
+      "selectAvancement":"-- AVANCEMENT --",
+      "estimation":"Estimation du temps restant",
+      "tasks":"Tâches restantes à effectuer",
+      "send":"Envoyer"
+    },
+    "machine": {
+      "title":"Suivi de machine",
+      "message": {
+          "success": "Envoyé!",
+          "error": "Erreur de traitement, veuillez réessayer plus tard.",
+          "loading": "Chargement en cours"
+      },
+      "nom":"Nom",
+      "site":"Chantier",
+      "selectSite":"-- Sélection chantier --",
+      "number":"Numéro de téléphone de la personne de contact",
+      "type": {
+        "title":"Type de message",
+        "demande":"Demande de machine",
+        "reception":"Réception de la machine",
+        "panne":"Panne",
+        "deplacement":"Demande de déplacement de la machine",
+        "retour":"Retour de la machine"
+        },
+      "machine":"Machine",
+      "serie":"Numéro de série",
+      "destSite":"Chantier de destination",
+      "heures":"Nombre d'heures de la machine",
+      "comment":"commentaires",
+      "send":"Envoyer"
+    },
+    "appel":{
+      "title":"Liste d'appel",
+      "disclaimer":"En cochant je confirme que tous les astreints ont été sensibilisés sur les points suivants :",
+      "message": {
+          "success": "Envoyé!",
+          "error": "Erreur de traitement, veuillez réessayer plus tard.",
+          "loading": "Chargement en cours"
+      },
+      "formation":"Formation",
+      "selectFormation":"-- Sélection formation --",
+      "session":"Session",
+      "selectSession":"-- Sélection session --",
+      "date":"Date",
+      "selectDate":"-- Sélection date --",
+      "presence": {
+        "present":"Présent",
+        "absent":"Absent",
+        "conge":"Congé"
+      },
+      "send":"Envoyer"
+    },
+    "licenciement":{
+      "title":"Liste de libération / licenciement",
+      "disclaimer":"En cochant je confirme que tous les astreints ont été sensibilisés sur les points suivants :",
+      "message": {
+          "success": "Envoyé!",
+          "error": "Erreur de traitement, veuillez réessayer plus tard.",
+          "loading": "Chargement en cours"
+      },
+      "libere":"Libéré: à sélectionner en fin de journée quand l'astreint n'a pas encore complètement fini le service prévu sur l'ordre de marche.",
+      "licencie":"Licencié: à sélectionner quand l'astreint a fini tout son service.",
+      "formation":"Formation",
+      "selectFormation":"-- Sélection formation --",
+      "session":"Session",
+      "selectSession":"-- Sélection session --",
+      "date":"Date",
+      "selectDate":"-- Sélection date --",
+      "liberation": {
+        "libere":"Libéré",
+        "licencie":"Licencié"
+      },
+      "send":"Envoyer"
     },
     "commands": {
       "radios": {

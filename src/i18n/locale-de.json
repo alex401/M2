@@ -2,8 +2,15 @@
     "navbar": {
         "command": "Bestellung",
         "admin": "Admin",
-        "language": "Sprache"
-    },
+        "language": "Sprache",
+        "search":"Suchen",
+        "superadmin" : {
+          "messages":"Nachricht des Kommandanten",
+          "logins":"Logins",
+          "attribution":"Mail Zuteilung",
+          "parametres":"allgemeine Einstellungen"
+        }
+      },
     "recherche": {
       "tiers": {
         "title": "Suche nach Dritter",
@@ -33,15 +40,27 @@
             "fuel": "Treibstoff",
             "radios": "Radios",
             "management": "Auftragsmanagement",
-            "search": "Auftragsuche"
-
+            "search": "Auftragsuche",
+            "radios":"Radios"
         },
+        "recherche":"Schnellzugriff für Suchen",
+        "rapide":"Schellzugriff",
+        "conge":"Urlaubsanfrage",
+        "assistance":"Betreuungsanfrage",
+        "avancement":"Demande d'avancement",
+        "parking":"Parkplatzbericht",
+        "circulation":"Zustand der Zirkulation",
+        "machine":"Baumaschinen Nachlauf",
         "competences": "Aktualisierung persönlicher Daten",
         "equipement":"Ausrüstungskontrolle",
         "admin": {
             "title": "Admin",
             "daily_report": "Täglicher Bericht (Abteilung und SPPAM)",
-            "daily_report_assist": "Tagesbericht Unterstützung"
+            "daily_report_assist": "Tagesbericht Unterstützung",
+            "appel":"Anrufsliste",
+            "liberation":"Freigabe-/Entlassungsliste",
+            "qualif":"Qualifizierung",
+            "attrib":"Mail Zuteilung"
         },
         "search": {
           "title":"Bestellungssuche",
@@ -56,6 +75,207 @@
           "showCanceled":"Annullierte Bestellungen anzeigen",
           "status":"Status"
         }
+    },
+    "assistance" : {
+      "title": "Betreuungsanfrage",
+      "message": {
+          "success": "Anfrage gesendet!",
+          "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+          "loading": "Ladevorgang läuft"
+      },
+      "lieutenant":"Name des Leutnants",
+      "nom":"Name der anfragende Person",
+      "date":"Gewünschtes Datum für das Termin",
+      "raison":"Grund für die Anfrage",
+      "comment":"Kommentar",
+      "send":"Senden"
+    },
+    "avancement" : {
+      "title": "Demande d'avancement",
+      "message": {
+        "success": "Anfrage gesendet!",
+        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+        "loading": "Ladevorgang läuft"
+      },
+      "lieutenant":"Name des Leutnants",
+      "nom":"Name der Person",
+      "actuelle":"Aktuelle Funktion",
+      "prevue":"Geplante Funktion",
+      "comment":"Kommentar",
+      "send":"Senden"
+    },
+    "conge" : {
+      "title": "Urlaubsanfrage",
+      "message": {
+        "success": "Anfrage gesendet!",
+        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+        "loading": "Ladevorgang läuft"
+      },
+      "lieutenant":"Name des Leutnants",
+      "nom":"Name der Person",
+      "date":"Gewünschtes Datum und Uhrzeit des Urlaubs",
+      "raison":"Grund der Anfrage",
+      "comment":"Kommentar",
+      "send":"Senden"
+    },
+    "circulation" : {
+      "title": "Zustand der Zirkulation",
+      "message": {
+        "success": "Gesendet!",
+        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+        "loading": "Ladevorgang läuft"
+      },
+      "nom":"Name",
+      "chantier":"Baustelle",
+      "selectChantier":"-- Wahl der Baustelle --",
+      "etat": {
+        "title":"Zustand",
+        "vert":"Grün - fliessend",
+        "orange":"Orange - gesättigt",
+        "rouge": "Rot - blockiert"
+      },
+      "detail":"Details falls nötig",
+      "send":"Senden"
+    },
+    "qualif":{
+      "title": "Qualifizierung",
+      "message": {
+        "success": "Gesendet!",
+        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+        "loading": "Ladevorgang läuft"
+      },
+      "search": "Suche Person:",
+      "connaissances":"Grundkenntnisse:",
+      "comportement":"Verhalten",
+      "motivation":"Motivation, Engagement, Unternehmungsgeist",
+      "technique":"Technisches Wissen",
+      "expression":"Ausdrucksfähigkeit",
+      "aptitude":"Eignung für den Dienst",
+      "appreciation":"Situationsbewusstsein",
+      "specialistes":"Fach- und Führungskräfte",
+      "globale":"Gesamtbeurteilung",
+      "decision":"Entscheidungsfähigkeit",
+      "instruction":"Fähigkeit zur Bildung",
+      "conduite":"Fähigkeit zu führen",
+      "comment":"Kommentar",
+      "send":"Senden",
+      "qualif" : {
+        "TB":"Sehr gut",
+        "B":"Gut",
+        "S":"Genügend",
+        "I":"Ungenügend"
+      }
+    },
+    "parking":{
+      "title":"Parkplatzbericht",
+      "message": {
+        "success": "Gesendet!",
+        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+        "loading": "Ladevorgang läuft"
+      },
+      "nom":"Namen",
+      "parking":"Parkplatz",
+      "selectParking":"-- Auswahl des Parkplatzes --",
+      "etat": {
+        "title":"Zustand",
+        "bon":"Gut",
+        "moyen":"Mittelmässig",
+        "mauvais":"Schlecht",
+        "impraticable":"Unzugänglich"
+        },
+      "detailEtat":"Detail für den Zustand falls nötig",
+      "remplissage":"Füllung",
+      "detailRemplissage":"Detail für die Füllung falls nötig",
+      "eclairage":"Beleuchtung",
+      "existant":"Bestehend",
+      "inexistant":"Unbestehend",
+      "comment":"Kommentar",
+      "send":"Senden"
+    },
+    "chantier": {
+      "title":"Baustelle Nachlauf",
+      "message": {
+        "success": "Gesendet!",
+        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+        "loading": "Ladevorgang läuft"
+      },
+      "nom":"Name",
+      "site":"Baustelle",
+      "selectSite":"-- Baustellenauswahl --",
+      "avancement":"Fortschritt",
+      "selectAvancement":"-- FORTSCHRITT --",
+      "estimation":"Geschätzte verbleibende Zeit",
+      "tasks":"Noch zu erledigende Aufgaben",
+      "send":"Senden"
+    },
+    "machine": {
+      "title":"Baumaschinen Nachlauf",
+      "message": {
+        "success": "Gesendet!",
+        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+        "loading": "Ladevorgang läuft"
+      },
+      "nom":"Namen",
+      "site":"Baustelle",
+      "selectSite":"-- Baustellenauswahl --",
+      "number":"Telefonnumer der Kontaktperson",
+      "type": {
+        "title":"Typ der Meldung",
+        "demande":"Maschinenanfrage",
+        "reception":"Maschinen-Abnahme",
+        "panne":"Ausfall",
+        "deplacement":"Antrag auf Verschiebung der Maschine",
+        "retour":"Rückgabe der Maschine"
+        },
+      "machine":"Maschine",
+      "serie":"Seriennummer",
+        "destSite":"Zielbaustelle",
+      "heures":"Anzahl der Maschinenstunden",
+      "comment":"Kommentar",
+      "send":"Senden"
+    },
+    "appel":{
+      "title":"Anrufliste",
+      "disclaimer":"Durch Ankreuzen bestätige ich, dass das gesamte Bereitschaftspersonal auf die folgenden Punkte aufmerksam gemacht wurde:",
+      "message": {
+        "success": "Gesendet!",
+        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+        "loading": "Ladevorgang läuft"
+      },
+      "formation":"Ausbildung",
+      "selectFormation":"-- Auswahl Ausbildung --",
+      "session":"Sitzung",
+      "selectSession":"-- Auswahl Sitzung --",
+      "date":"Datum",
+      "selectDate":"-- Auswahl Datum --",
+      "presence": {
+        "present":"Anwesend",
+        "absent":"Nicht anwesend",
+        "conge":"Urlaub"
+      },
+      "send":"Senden"
+    },
+    "licenciement":{
+      "title":"Freigabe-/Entlassungsliste",
+      "disclaimer":"Durch Ankreuzen bestätige ich, dass das gesamte Bereitschaftspersonal auf die folgenden Punkte aufmerksam gemacht wurde:",
+      "message": {
+        "success": "Gesendet!",
+        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+        "loading": "Ladevorgang läuft"
+      },
+      "libere":"Befreit: am Ende des Tages zu wählen, wenn die Person den auf dem Laufbefehl geplanten Dienst noch nicht vollständig beendet hat.",
+      "licencie":"Entlasst: zu wählen, wenn die Person seinen Dienst vollständig beendet hat.",
+      "formation":"Ausbildung",
+      "selectFormation":"-- Auswahl Ausbildung --",
+      "session":"Sitzung",
+      "selectSession":"-- Auswahl Sitzung --",
+      "date":"Datum",
+      "selectDate":"-- Auswahl Datum --",
+      "liberation": {
+        "libere":"Befreit",
+        "licencie":"Entlasst"
+      },
+      "send":"Senden"
     },
     "commands": {
       "radios": {
