@@ -2,8 +2,15 @@
     "navbar": {
         "command": "Bestellung",
         "admin": "Admin",
-        "language": "Sprache"
-    },
+        "language": "Sprache",
+        "search":"Suchen",
+        "superadmin" : {
+          "messages":"Nachricht des Kommandanten",
+          "logins":"Logins",
+          "attribution":"Mail Zuteilung",
+          "parametres":"allgemeine Einstellungen"
+        }
+      },
     "recherche": {
       "tiers": {
         "title": "Suche nach Dritter",

@@ -2,8 +2,15 @@
     "navbar": {
         "command": "Commande",
         "admin": "Admin",
-        "language": "Langue"
-    },
+        "language": "Langue",
+        "search": "Recherches",
+        "superadmin" : {
+          "messages":"Messages du commandant",
+          "logins":"Logins",
+          "attribution":"Attribution des mails",
+          "parametres":"Paramètres généraux"
+        }
+      },
     "recherche": {
       "tiers": {
         "title": "Recherche de tiers",
