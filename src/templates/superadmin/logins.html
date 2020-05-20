@@ -6,44 +6,51 @@
   <div ng-if="status==3"> Chargement en cours </div>
   <div ng-if="status==4"> {{erreur}} </div>
 
+  <div ng-show="status == 5">
+    <label for="login"> Login </label>
+    {{log.login}}     <button ng-click="deleteLogin(log)"> Supprimer login </button>
+  </div>
 
-  <form ng-submit="submit(log)" ng-if="status==0">
+  
+  <form ng-submit="submit(log)" ng-if="status==0 || status==5">
 
-  <div class="form-group">
+  <div ng-show="status==0"class="form-group">
     <label for="formGroupNom">Login</label>
     <input type="text" class="form-control" id="formGroupNom" ng-model="log.login">
   </div>
 
-  <div class="form-group">
+
+
+  <div ng-show="status == 0 || status == 5" class="form-group">
     <label for="formGroupNom">Mot de passe</label>
     <input type="text" class="form-control" id="formGroupNom" ng-model="log.motdepasse">
   </div>
 
-  <div class="form-group">
+  <div ng-show="status == 0 || status == 5" class="form-group">
     <label for="formGroupNom">Nom</label>
     <input type="text" class="form-control" id="formGroupNom" ng-model="log.nom">
   </div>
 
-  <div class="form-group">
+  <div ng-show="status == 0 || status == 5" class="form-group">
     <label for="formGroupNom">Prénom</label>
     <input type="text" class="form-control" id="formGroupNom" ng-model="log.prenom">
   </div>
 
-  <div class="form-group">
+  <div ng-show="status == 0 || status == 5" class="form-group">
     <label for="formGroupNom">Type d'utilisateur</label>
     <select class="form-control" id="usertype" ng-model="log.usertype">
-      <option value="aide">Aide au commandement</option>
-      <option value="assist">Assistance</option>
+      <option value="info">Membre (pour mise à jour pisa)</option>
+      <option value="users">Users</option>
       <option value="admin">Admin</option>
-      <option value="cuisine">Cuisine</option>
+      <!-- <option value="cuisine">Cuisine</option>
       <option value="trans">Transport</option>
       <option value="mat">Matériel</option>
       <option value="four">Fourrier</option>
-      <option value="pio">Pionnier</option>
+      <option value="pio">Pionnier</option> -->
     </select>
 
 
-  <div class="form-group">
+  <div ng-show="status == 0 || status == 5" class="form-group">
     <label for="formGroupNom">Email</label>
     <input type="text" class="form-control" id="formGroupNom" ng-model="log.email">
   </div>
@@ -52,12 +59,13 @@
   <button  type="submit" class="btn btn-primary" >Envoyer</button>
   </form>
 
-  <table style="width:100%">
+  <table ng-show="status==0" style="width:100%">
     <tr ng-repeat="log in logs">
       <td> Utilisateur: {{log.login}} </td>
       <td> Email: {{log.email}}</td>
       <td> Nom: {{log.nom}} {{log.prenom}}</td>
       <td> Type d'utilisateur: {{log.usertype}}</td>
+      <td> <button ng-click="selectLogin(log)"> Modifier / supprimer </button> </td>
     </tr>
 </table>
 
