@@ -9,12 +9,43 @@ function LogCtrl($scope, $http) {
   $scope.logs = {};
   $scope.errorMessage = "Unknown error";
   $scope.log.login = '';
+  $scope.updating = false;
 
 
   var Load = function() {
     loadLogins();
   }
 
+
+  $scope.selectLogin = function (login) {
+    $scope.log = login;
+    $scope.status = 5;
+    $scope.updating = true;
+    $scope.log.motdepasse = '';
+  }
+
+  $scope.deleteLogin = function (login) {
+
+    if (confirm("Êtes-vous sûr de vouloir supprimer ce login?")) {
+    $http({
+      method:'POST',
+      url: 'api/index.php/v1/superadmin/deleteLogin',
+      data: {login : $scope.log.login}
+    }).then(function successCallback(response) {
+      $scope.erreur = response.data;
+      console.log("success");
+      if ($scope.erreur != '') {
+        $scope.status = 4;
+      } else {
+
+        $scope.status = 1;
+      }
+
+    }, function errorCallback() {
+      $scope.status = 2;
+    });
+  }
+}
 
   var loadLogins= function () {
     $http({
@@ -33,7 +64,7 @@ function LogCtrl($scope, $http) {
       $http({
         method: 'POST',
         url: 'api/index.php/v1/superadmin/login',
-        data: { login: $scope.log.login, usertype: $scope.log.usertype, motdepasse: $scope.log.motdepasse, nom: $scope.log.nom, prenom: $scope.log.prenom, email: $scope.log.email}
+        data: { login: $scope.log.login, usertype: $scope.log.usertype, motdepasse: $scope.log.motdepasse, nom: $scope.log.nom, prenom: $scope.log.prenom, email: $scope.log.email, updating: $scope.updating}
       }).then(function successCallBack(response) {
         $scope.erreur = response.data;
         console.log("success");

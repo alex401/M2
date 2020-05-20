@@ -100,7 +100,23 @@ $app->get('/v1/superadmin/getLogins', function ($request, $response) {
 });
 
 
-
+$app->post('/v1/superadmin/deleteLogin', function ($request, $response) {
+  $data = $request->getParsedBody();
+  $data = (json_encode($data));
+  $data = json_decode($data, true);
+  $loginUtilisateurFormulaire = $data['login'];
+  $sth = $this->dbm2->prepare(
+    "DELETE FROM utilisateursformulaires
+    WHERE login=:login"
+  );
+  $sth->bindParam(':login', $loginUtilisateurFormulaire, PDO::PARAM_STR);
+  try {
+    $sth->execute();
+  } catch(\Exception $ex) {
+    return $response->withJson(array('error' => $ex->getMessage()), 422);
+  }
+  return $response->withJson(array('status' => 'OK'), 200);
+});
 
 $app->post('/v1/superadmin/login', function ($request,$response) {
     if ($_SESSION["usertype_utilisateurformulaires"] != "admin") {
@@ -121,6 +137,7 @@ $app->post('/v1/superadmin/login', function ($request,$response) {
     $nomUtilisateurFormulaire = $data['nom'];
     $prenomUtilisateurFormulaire = $data['prenom'];
     $usertypeUtilisateurFormulaire = $data['usertype'];
+    $updating = $data['updating'];
 
     if ($loginUtilisateurFormulaire == '') {
         $erreur.="Veuillez saisir un login.";
@@ -135,8 +152,34 @@ $app->post('/v1/superadmin/login', function ($request,$response) {
       return $response->withJson(array('error' => $ex->getMessage()), 422);
     }
 
+
     if ($result) {
+      if (!$updating) {
         $erreur.="Login existant. Veuillez saisir un autre login.";
+      } else {
+        $sth = $this->dbm2->prepare(
+          "UPDATE utilisateursformulaires
+          SET motdepasse=:motdepasse, email=:email, nom=:nom, prenom=:prenom, usertype=:usertype
+          WHERE login=:login"
+        );
+        $sth->bindParam(':login', $loginUtilisateurFormulaire, PDO::PARAM_STR);
+        if ($motDePasseUtilisateurFormulaire == '') {
+          $sth->bindParam(':motdepasse', $result[0]['motdepasse'], PDO::PARAM_STR);
+        } else {
+          $motDePasseUtilisateurFormulaire = md5($motDePasseUtilisateurFormulaire);
+          $sth->bindParam(':motdepasse', $motDePasseUtilisateurFormulaire, PDO::PARAM_STR);
+        }
+        $sth->bindParam(':email', $emailUtilisateurFormulaire, PDO::PARAM_STR);
+        $sth->bindParam(':nom', $nomUtilisateurFormulaire, PDO::PARAM_STR);
+        $sth->bindParam(':prenom', $prenomUtilisateurFormulaire, PDO::PARAM_STR);
+        $sth->bindParam(':usertype', $usertypeUtilisateurFormulaire, PDO::PARAM_STR);
+        try{
+          $sth->execute();
+        } catch(\Exception $ex) {
+          return $response->withJson(array('error' => $ex->getMessage()), 422);
+        }
+        return $response->withJson(array('status' => 'OK'), 200);
+      }
     }
 
     if ($erreur != '') {
