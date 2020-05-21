@@ -3,20 +3,20 @@
 
 
 <div class="container"  style="width:100%">
-  <h1> Attribution des mails </h1>
+  <h1> {{'superadmin.mails.title' | translate}} </h1>
   <form ng-if="status==0" ng-submit="submit()">
 
 
 
-      <label for="EnCours"> En cours </label>
+      <label for="EnCours"> {{'superadmin.mails.enCours' | translate}} </label>
       <input type="radio" id="EnCours" ng-model="form.mode" ng-value="0">
-      <label for="HorsCours"> Hors cours </label>
+      <label for="HorsCours"> {{'superadmin.mails.horsCours' | translate}} </label>
       <input type="radio" id="HorsCours" ng-model="form.mode" ng-value="1">
 
     <br>
     <div class="col-12">
       <div class="col-12" ng-if="templates.length > 0">
-        <h3> Destination des formulaires en cours </h3>
+        <h3> {{'superadmin.mails.destEnCours' | translate}} </h3>
         <br>
         <div ng-repeat="template in templates">
           <label for="template.nom"> {{template.nom}} </label>
@@ -25,7 +25,7 @@
         </div>
       </div>
       <div class="col-12" ng-if="templates.length > 0">
-        <h3> Destination des formulaires hors cours </h3>
+        <h3> {{'superadmin.mails.destHorsCours' | translate}} </h3>
         <br>
         <div ng-repeat="template in templates">
           <label for="template.nom"> {{template.nom}} </label>
@@ -34,6 +34,6 @@
         </div>
       </div>
     </div>
-    <button type="submit" class="btn btn-primary"> Valider </button>
+    <button type="submit" class="btn btn-primary"> {{'superadmin.mails.validate' | translate}} </button>
   </form>
 </div>

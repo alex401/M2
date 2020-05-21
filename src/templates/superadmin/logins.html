@@ -1,47 +1,47 @@
 <main class="col-sm-12 col-md-12" ng-controller="LogCtrl">
-  <h1>Ajout d'utilisateur formulaire</h1>
+  <h1>{{'superadmin.logins.title' | translate}}</h1>
 
-  <div ng-if="status==1"> Login créé </div>
-  <div ng-if="status==2"> Erreur de traitement, veuillez réessayer dans un moment </div>
-  <div ng-if="status==3"> Chargement en cours </div>
+  <div ng-if="status==1"> {{'superadmin.logins.message.success' | translate}} </div>
+  <div ng-if="status==2"> {{'superadmin.logins.message.error' | translate}}</div>
+  <div ng-if="status==3"> {{'superadmin.logins.message.loading' | translate}} </div>
   <div ng-if="status==4"> {{erreur}} </div>
 
   <div ng-show="status == 5">
-    <label for="login"> Login </label>
-    {{log.login}}     <button ng-click="deleteLogin(log)"> Supprimer login </button>
+    <label for="login"> {{'superadmin.logins.login' | translate}} </label>
+    {{log.login}}     <button ng-click="deleteLogin(log)"> {{'superadmin.logins.delete' | translate}} </button>
   </div>
 
-  
+
   <form ng-submit="submit(log)" ng-if="status==0 || status==5">
 
   <div ng-show="status==0"class="form-group">
-    <label for="formGroupNom">Login</label>
+    <label for="formGroupNom">{{'superadmin.logins.login' | translate}}</label>
     <input type="text" class="form-control" id="formGroupNom" ng-model="log.login">
   </div>
 
 
 
   <div ng-show="status == 0 || status == 5" class="form-group">
-    <label for="formGroupNom">Mot de passe</label>
+    <label for="formGroupNom">{{'superadmin.logins.password' | translate}}</label>
     <input type="text" class="form-control" id="formGroupNom" ng-model="log.motdepasse">
   </div>
 
   <div ng-show="status == 0 || status == 5" class="form-group">
-    <label for="formGroupNom">Nom</label>
+    <label for="formGroupNom">{{'superadmin.logins.name' | translate}}</label>
     <input type="text" class="form-control" id="formGroupNom" ng-model="log.nom">
   </div>
 
   <div ng-show="status == 0 || status == 5" class="form-group">
-    <label for="formGroupNom">Prénom</label>
+    <label for="formGroupNom">{{'superadmin.logins.prenom' | translate}}</label>
     <input type="text" class="form-control" id="formGroupNom" ng-model="log.prenom">
   </div>
 
   <div ng-show="status == 0 || status == 5" class="form-group">
-    <label for="formGroupNom">Type d'utilisateur</label>
+    <label for="formGroupNom">{{'superadmin.logins.usertype' | translate}}</label>
     <select class="form-control" id="usertype" ng-model="log.usertype">
-      <option value="info">Membre (pour mise à jour pisa)</option>
-      <option value="users">Users</option>
-      <option value="admin">Admin</option>
+      <option value="info">{{'superadmin.logins.member' | translate}}</option>
+      <option value="users">{{'superadmin.logins.user' | translate}}</option>
+      <option value="admin">{{'superadmin.logins.admin' | translate}}</option>
       <!-- <option value="cuisine">Cuisine</option>
       <option value="trans">Transport</option>
       <option value="mat">Matériel</option>
@@ -51,21 +51,21 @@
 
 
   <div ng-show="status == 0 || status == 5" class="form-group">
-    <label for="formGroupNom">Email</label>
+    <label for="formGroupNom">{{'superadmin.logins.mail' | translate}}</label>
     <input type="text" class="form-control" id="formGroupNom" ng-model="log.email">
   </div>
 
 
-  <button  type="submit" class="btn btn-primary" >Envoyer</button>
+  <button  type="submit" class="btn btn-primary" >{{'superadmin.logins.send' | translate}}</button>
   </form>
 
   <table ng-show="status==0" style="width:100%">
     <tr ng-repeat="log in logs">
-      <td> Utilisateur: {{log.login}} </td>
-      <td> Email: {{log.email}}</td>
-      <td> Nom: {{log.nom}} {{log.prenom}}</td>
-      <td> Type d'utilisateur: {{log.usertype}}</td>
-      <td> <button ng-click="selectLogin(log)"> Modifier / supprimer </button> </td>
+      <td> {{'superadmin.logins.login' | translate}}: {{log.login}} </td>
+      <td> {{'superadmin.logins.mail' | translate}}: {{log.email}}</td>
+      <td> {{'superadmin.logins.name' | translate}}: {{log.nom}} {{log.prenom}}</td>
+      <td> {{'superadmin.logins.usertype' | translate}}: {{log.usertype}}</td>
+      <td> <button ng-click="selectLogin(log)"> {{'superadmin.logins.edit' | translate}} </button> </td>
     </tr>
 </table>
 

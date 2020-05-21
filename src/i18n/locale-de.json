@@ -621,9 +621,9 @@
     "equipement": {
       "title": "Ausrüstungskontrolle",
       "message": {
-          "success": "Message envoyé!",
-          "error": "Erreur de traitement, veuillez réessayer plus tard.",
-          "loading": "Chargement en cours"
+        "success": "Gesendet",
+        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+        "loading": "Ladevorgang läuft"
       },
       "lieutenant": "Namen des Leutnants",
       "name": "Namen des Soldats",
@@ -653,5 +653,55 @@
         "amount": "Anzahl"
       },
       "send":"Senden"
+    },
+    "superadmin": {
+      "logins":{
+        "title":"Hinzufügen von Benutzern Formular",
+        "message": {
+          "success": "Benutzer hinzugefügt",
+          "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+          "loading": "Ladevorgang läuft"
+        },
+        "login":"Benutzername",
+        "delete":"Benutzername löschen",
+        "password":"Passwort",
+        "name":"Name",
+        "prenom":"Vorname",
+        "usertype":"Benutzertyp",
+        "member":"Mitglied (zur Aktualisierung Pisa)",
+        "user":"Benutzer",
+        "admin":"Admin",
+        "mail":"Email",
+        "send":"Senden",
+        "edit":"Ändern / Löschen"
+      },
+      "mails":{
+        "title":"Mail Zuteilung",
+        "enCours":"In Wiederholungskurs",
+        "horsCours":"Ausserhalb des Wiederholungskurs",
+        "destEnCours":"Formular-Destination in Wiederholungskurs",
+        "destHorsCours":"Formular-Destination ausserhalb des Wiederholungskurs",
+        "validate":"Bestätigen"
+      },
+      "warnings":{
+        "title":"Hinzufügen/Ändern von Warnmeldungen",
+        "message": {
+          "success": "Neue Warnung erfolgreich hinzugefügt",
+          "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+          "loading": "Ladevorgang läuft"
+        },
+        "save":"Speichern",
+        "delete":"Löschen",
+        "add":"Hinzufügen"
+      },
+      "params":{
+        "title":"Allgemeine Parameter ändern",
+        "message": {
+          "success": "Parameter erfolgreich geändert",
+          "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+          "loading": "Ladevorgang läuft"
+        },
+        "save":"Speichern"
+      }
     }
 }
