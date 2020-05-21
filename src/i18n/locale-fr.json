@@ -638,5 +638,55 @@
         "amount": "nombre"
       },
       "send":"Envoyer"
+    },
+    "superadmin": {
+      "logins":{
+        "title":"Ajout d'utilisateur formulaire",
+        "message": {
+            "success": "Login créé!",
+            "error": "Erreur de traitement, veuillez réessayer plus tard.",
+            "loading": "Chargement en cours"
+        },
+        "login":"Login",
+        "delete":"Supprimer login",
+        "password":"Mot de passe",
+        "name":"Nom",
+        "prenom":"Prénom",
+        "usertype":"Type d'utilisateur",
+        "member":"Membre (pour mise à jour pisa)",
+        "user":"Utilisateur",
+        "admin":"Admin",
+        "mail":"Email",
+        "send":"Envoyer",
+        "edit":"Modifier / supprimer"
+      },
+      "mails":{
+        "title":"Attribution des mails",
+        "enCours":"En cours",
+        "horsCours":"Hors cours",
+        "destEnCours":"Destination des formulaires en cours",
+        "destHorsCours":"Destination des formulaires hors cours",
+        "validate":"Valider"
+      },
+      "warnings":{
+        "title":"Ajout/modification des messages d'avertissement",
+        "message": {
+          "success":"Nouvel avertissement ajouté avec succès",
+          "error":"Erreur de traitement, veuillez réessayer dans un moment",
+          "loading":"Chargement en cours"
+        },
+        "save":"Enregistrer",
+        "delete":"Supprimer",
+        "add":"Ajouter"
+      },
+      "params":{
+        "title":"Modification des paramètres généraux",
+        "message": {
+          "success":"Paramètre changé avec succès",
+          "error":"Erreur de traitement, veuillez réessayer dans un moment",
+          "loading":"Chargement en cours"
+        },
+        "save":"Enregistrer"
+      }
     }
 }
