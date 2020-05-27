@@ -101,6 +101,10 @@ $app->get('/v1/superadmin/getLogins', function ($request, $response) {
 
 
 $app->post('/v1/superadmin/deleteLogin', function ($request, $response) {
+  if ($_SESSION["usertype_utilisateurformulaires"] != "admin") {
+    http_response_code(401);
+    exit();
+  }
   $data = $request->getParsedBody();
   $data = (json_encode($data));
   $data = json_decode($data, true);
@@ -200,6 +204,10 @@ $app->post('/v1/superadmin/login', function ($request,$response) {
 // ---------------------------------------------------------------------------------------------------------------------
 
 $app->get('/v1/superadmin/getmail/{nom}', function($request, $response, $args) {
+  if ($_SESSION["usertype_utilisateurformulaires"] != "admin") {
+    http_response_code(401);
+    exit();
+  }
   $name = $args['name'];
   $sth = $this->dbm2->prepare("SELECT destEnCours, destHorsCours FROM template WHERE nom like '$name'");
   try {
@@ -212,6 +220,10 @@ $app->get('/v1/superadmin/getmail/{nom}', function($request, $response, $args) {
 });
 
 $app->get('/v1/superadmin/getmail/{mode}/{name}', function($request, $response, $args) {
+  if ($_SESSION["usertype_utilisateurformulaires"] != "admin") {
+    http_response_code(401);
+    exit();
+  }
  $name = $args['name'];
  $mode = $args['mode'];
  if ($mode == 0) {
@@ -252,6 +264,10 @@ $app->post('/v1/superadmin/attributionMail', function($request, $response, $args
 });
 
 $app->post('/v1/superadmin/submitMode', function($request, $response, $args){
+  if ($_SESSION["usertype_utilisateurformulaires"] != "admin") {
+    http_response_code(401);
+    exit();
+  }
  $data = $request->getParsedBody();
  $data = (json_encode($data));
  $data = json_decode($data, true);
@@ -264,6 +280,10 @@ $app->post('/v1/superadmin/submitMode', function($request, $response, $args){
 });
 
 $app->get('/v1/superadmin/gettemplates', function($request,$response){
+  if ($_SESSION["usertype_utilisateurformulaires"] != "admin") {
+    http_response_code(401);
+    exit();
+  }
 
  $sth = $this->dbm2->prepare("SELECT template_id, nom, destEnCours, destHorsCours, mode FROM template");
 
