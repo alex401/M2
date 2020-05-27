@@ -47,7 +47,7 @@
         "rapide":"Schellzugriff",
         "conge":"Urlaubsanfrage",
         "assistance":"Betreuungsanfrage",
-        "avancement":"Demande d'avancement",
+        "avancement":"Aufstiegsanfrage",
         "parking":"Parkplatzbericht",
         "circulation":"Zustand der Zirkulation",
         "machine":"Baumaschinen Nachlauf",
@@ -91,7 +91,7 @@
       "send":"Senden"
     },
     "avancement" : {
-      "title": "Demande d'avancement",
+      "title": "Aufstiegsanfrage",
       "message": {
         "success": "Anfrage gesendet!",
         "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
