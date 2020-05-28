@@ -1,7 +1,8 @@
 <main class="col-sm-12 col-md-12" ng-controller="LogCtrl">
   <h1>{{'superadmin.logins.title' | translate}}</h1>
 
-  <div ng-if="status==1"> {{'superadmin.logins.message.success' | translate}} </div>
+  <div ng-if="status==1"> {{'superadmin.logins.message.success' | translate}}   <button ng-click="refresh()"> Retour aux logins </button> </div>
+
   <div ng-if="status==2"> {{'superadmin.logins.message.error' | translate}}</div>
   <div ng-if="status==3"> {{'superadmin.logins.message.loading' | translate}} </div>
   <div ng-if="status==4"> {{erreur}} </div>

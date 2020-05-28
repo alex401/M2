@@ -16,6 +16,16 @@ function LogCtrl($scope, $http) {
     loadLogins();
   }
 
+  $scope.refresh = function() {
+    $scope.data = {};
+    $scope.status = 0;
+    $scope.log = {};
+    $scope.logs = {};
+    $scope.log.login = '';
+    $scope.errorMessage = "Unknown error";
+    $scope.updating = false;
+    loadLogins();
+  }
 
   $scope.selectLogin = function (login) {
     $scope.log = login;
@@ -34,12 +44,9 @@ function LogCtrl($scope, $http) {
     }).then(function successCallback(response) {
       $scope.erreur = response.data;
       console.log("success");
-      if ($scope.erreur != '') {
-        $scope.status = 4;
-      } else {
 
         $scope.status = 1;
-      }
+
 
     }, function errorCallback() {
       $scope.status = 2;
