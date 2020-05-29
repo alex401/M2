@@ -48,11 +48,11 @@
       <li class="list-group-item active">{{personne.nom}} {{personne.prenom}} - {{personne.civilite}}</li>
 
       <div class="btn-group btn-group-toggle" >
-      <label class="btn btn-secondary">
+      <label class="btn btn-outline-secondary">
           <input ng-change="onChange($index)" type="radio" ng-model="personne.status" value="Libéré">
           {{'licenciement.liberation.libere' | translate}}
         </label>
-        <label class="btn btn-secondary">
+        <label class="btn btn-outline-secondary">
           <input ng-change="onChange($index)" type="radio" ng-model="personne.status"  value="Licencié">
           {{'licenciement.liberation.licencie' | translate}}
         </label>

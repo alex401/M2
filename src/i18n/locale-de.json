@@ -251,7 +251,8 @@
       "presence": {
         "present":"Anwesend",
         "absent":"Nicht anwesend",
-        "conge":"Urlaub"
+        "conge":"Urlaub",
+        "visite":"Arztbesuch"
       },
       "send":"Senden"
     },
@@ -281,7 +282,7 @@
       "radios": {
           "title" : "Radiobestellung",
           "message": {
-              "success": "Bestellung gesendet!",
+              "success": "Auftrag Nummer <b>{{id}}</b> erfolgreich erstellt!<br><br> <i>Hinweis: Sie können die Bestellnummer zur späteren Suche verwenden.</i>",
               "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
               "loading": "Ladevorgang läuft"
           },
@@ -369,10 +370,11 @@
         "transport": {
             "title": "Transportbestellung",
             "message": {
-                "success": "Auftrag Nummer <b>{{id}}</b> erfolgreich erstellt!<br><br> <i>Hinweis: Sie können die Bestellnummer zur späteren Suche verwenden.</i>",
-                "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
-                "loading": "Ladevorgang läuft"
-            },
+              "message": {
+                  "success": "Auftrag Nummer <b>{{id}}</b> erfolgreich erstellt!<br><br> <i>Hinweis: Sie können die Bestellnummer zur späteren Suche verwenden.</i>",
+                  "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+                  "loading": "Ladevorgang läuft"
+              },
             "name": "Name",
             "departure": "Abfahrt",
             "site_selection": "-- Baustellenauswahl --",

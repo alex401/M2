@@ -33,7 +33,7 @@ function CommandeCreationCtrl($scope, $stateParams, $http) {
     if(nom != null && nom.length > 2) {
       return $http({
         method: 'GET',
-        url: 'api/index.php/v1/admin/tiers/'+nom
+        url: 'api/index.php/v1/admin/socpeople/'+nom
       }).then(function successCallback(response) {
         return response.data;
       }, function errorCallback(response) {

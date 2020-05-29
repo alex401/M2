@@ -29,9 +29,15 @@ function CommandeSearchCtrl($scope, $stateParams, $http, config) {
 
   $scope.getColor = function(commande) {
     if(commande.statut === config.cancelledStatus || commande.statut === config.refusedStatus) {
-      return '#F44336';
+      return '#6600CC';
+    };
+    if (commande.statut === config.waitingStatus){
+      return '#CC0000';
+    };
+    if (commande.statut === config.deliveredStatus){
+      return '#00CC00';
     } else {
-      return '#0275D8';
+      return '#FF8000';
     }
   }
 

@@ -46,7 +46,7 @@ $app->post('/v1/form/qualifications/{socpeopleid}', function ($request, $respons
     $result = $sth->fetchAll();
 
   } catch(\Exception $ex) {
-    return $response->withJson(array('error' => $ex->getMessage()), 422);
+    return $response->withJson(array('error1' => $ex->getMessage()), 422);
   }
   $tagid = $result[0]['rowid'];
 
@@ -54,14 +54,14 @@ $app->post('/v1/form/qualifications/{socpeopleid}', function ($request, $respons
   $sth = $this->dbdoll->prepare(
     "SELECT fk_categorie, fk_socpeople
     FROM llx_categorie_contact
-    WHERE fk_socpeople = $socpeopleid AND fk_categorie = $tagid;"
+    WHERE fk_socpeople = $socpeopleid AND fk_categorie = $tagid"
   );
 
   try {
     $sth->execute();
     $result = $sth->fetchAll();
   } catch(\Exception $ex) {
-    return $response->withJson(array('error' => $ex->getMessage()), 422);
+    return $response->withJson(array('erro2' => $ex->getMessage()), 422);
   }
 
   if($result) {
@@ -75,7 +75,7 @@ $app->post('/v1/form/qualifications/{socpeopleid}', function ($request, $respons
     try {
       $sth->execute();
     } catch(\Exception $ex) {
-      return $response->withJson(array('error' => $ex->getMessage()), 422);
+      return $response->withJson(array('error3' => $ex->getMessage()), 422);
     }
 
     // Log and send qualifications by email.

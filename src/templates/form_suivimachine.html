@@ -9,7 +9,7 @@
   <form ng-submit="submit('suivimachine')" ng-if="status==0">
     <div class="form-group">
       <label for="formGroupNom">{{'machine.nom' | translate}}</label>
-      <input type="text" ng-model="form.nom" class="form-control" id="formGroupNom"  required>
+      <input autocomplete="off" uib-typeahead="tier.nom for tier in loadTiers($viewValue)" type="text" ng-model="form.nom" class="form-control" id="formGroupNom"  required>
     </div>
     <div class="form-group">
       <label for="formGroupChantier">{{'machine.site' | translate}}</label>

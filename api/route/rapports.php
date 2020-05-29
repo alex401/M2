@@ -409,7 +409,7 @@ h1, h2, h3, h4, h5, h6 {
   $file = "rapports/".date("Ymd-h:i:s")."-$filename.html";
   //Build HTML
   file_put_contents("../$file", $content, FILE_APPEND);
-  return "https://pci-fr.ch/m2/$file";
+  return "https://pci-fr.ch/m4/$file";
 }
 
 $app->post('/v1/rapport/journalier', function ($request,$response) {
@@ -745,6 +745,6 @@ h1, h2, h3, h4, h5, h6 {
   $file = "rapports/".date("Ymd-h:i:s")."-$filename.html";
   //Build HTML
    file_put_contents("../$file",$content, FILE_APPEND);
-   return "https://pci-fr.ch/m2/$file";
+   return "https://pci-fr.ch/m4/$file";
 
 }

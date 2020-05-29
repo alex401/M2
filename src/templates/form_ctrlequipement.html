@@ -10,12 +10,12 @@
 
     <div class="form-group">
       <label for="formGroupNom">{{'equipement.lieutenant' | translate}}</label>
-      <input type="text" ng-model="form.nomLieut" class="form-control" id="formGroupNom" placeholder="" required>
+      <input autocomplete="off" type="text" ng-model="form.nomLieut" class="form-control" uib-typeahead="tier.nom for tier in loadTiers($viewValue)" id="formGroupNom" placeholder="" required>
     </div>
 
     <div class="form-group">
       <label for="formGroupNom">{{'equipement.name' | translate}}</label>
-      <input type="text" ng-model="form.nomSoldat" class="form-control" id="formGroupNom" placeholder="" required>
+      <input autocomplete="off" uib-typeahead="tier.nom for tier in loadTiers($viewValue)" type="text" ng-model="form.nomSoldat" class="form-control" id="formGroupNom" placeholder="" required>
     </div>
 
 <!--   Prévu pour entrer le nom de l'astreint   -->
