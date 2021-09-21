@@ -133,7 +133,7 @@ echo "$mailContent </p>";
 // Send email
 $emailFrom = "info.sud@pci-fr.ch";
 
-$emailTo = "sud.commandement@pci-fr.ch";
+$emailTo = "info.sud@pci-fr.ch";
 $emailCc = "alex401@gmail.com, info.sud@pci-fr.ch";
 
 $sujet = $mailSubject;

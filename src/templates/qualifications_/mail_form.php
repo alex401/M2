@@ -75,7 +75,7 @@ if ($Stagiairerowid != "") {
 
 	// Send email
 	$emailFrom = "info.sud@pci-fr.ch";
-        $emailTo = "sud.commandement@pci-fr.ch";
+        $emailTo = "info.sud@pci-fr.ch";
 	//$emailTo = "sud.rh@pci-fr.ch";
 	$sujet = $mailSubject;
 	$message = $mailContent;

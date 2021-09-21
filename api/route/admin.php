@@ -13,7 +13,7 @@ $app->post('/v1/admin/groupreport', function($request,$response) {
   try{
     //append to file named year-month
     $result = setContent("Etat groupe", $data);
-    $mail = mailSender("Etat groupe", $data, "sud.commandement@pci-fr.ch", "sud.aidecommandement@pci-fr.ch");
+    $mail = mailSender("Etat groupe", $data, "info.sud@pci-fr.ch", "sud.aic@pci-fr.ch");
 
     //if someting was inserted
     if($result > 1 & $mail == 0){
@@ -241,7 +241,7 @@ $app->post('/v1/admin/listeappel', function ($request,$response) {
   try {
     //append to file named year-month
     $result = setContent($typeCommande, $data);
-    $mail = mailSenderComplex($typeCommande, $data, "sud.commandement@pci-fr.ch", getMail($this, 'Appel'));
+    $mail = mailSenderComplex($typeCommande, $data, "info.sud@pci-fr.ch", getMail($this, 'Appel'));
     //if someting was inserted
     if($result) {
       return $response->withJson(array('status' => 'OK'), 200);
@@ -262,7 +262,7 @@ $app->post('/v1/admin/listeLicenciement', function ($request,$response) {
    try{
      //append to file named year-month
      $result = setContent($typeCommande, $data);
-     $mail = mailSenderComplex($typeCommande, $data, "sud.commandement@pci-fr.ch", getMail($this, 'Appel'));
+     $mail = mailSenderComplex($typeCommande, $data, "info.sud@pci-fr.ch", getMail($this, 'Appel'));
      //if someting was inserted
      if($result){
        return $response->withJson(array('status' => 'OK'),200);
@@ -396,7 +396,7 @@ if (isset($data['firstname']) && isset($data['lastname'])) {
   try {
     $message = (json_encode($data['message']));
     $result = setContent('Nouvelles données pour modification PISA '.$dataNom, $message);
-    $mail = mailSender('Nouvelles données pour modification PISA '.$dataNom, $message, "sud.commandement@pci-fr.ch", getMail($this,'donnees'));
+    $mail = mailSender('Nouvelles données pour modification PISA '.$dataNom, $message, "info.sud@pci-fr.ch", getMail($this,'donnees'));
   } catch (\Exception $ex) {
 
     return $response->withJson(array('error' => 'Failed to send mail: ' . $ex->getMessage()), 422);

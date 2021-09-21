@@ -15,7 +15,7 @@ $app->post('/v1/form/demandeassistance', function ($request,$response) {
    try{
      //append to file named year-month
      $result = setContent($typeCommande, $data);
-     $mail = mailSender($typeCommande, $data, "sud.commandement@pci-fr.ch", "sud.commandement@pci-fr.ch");
+     $mail = mailSender($typeCommande, $data, "info.sud@pci-fr.ch", "info.sud@pci-fr.ch");
 
      //if someting was inserted
      if($result > 1 & $mail == 0){
@@ -53,7 +53,7 @@ $app->post('/v1/form/demandeconge', function ($request,$response) {
    try{
      //append to file named year-month
      $result = setContent($typeCommande, $data);
-     $mail = mailSender($typeCommande, $data, "sud.commandement@pci-fr.ch", getMail($this,'Conge'));
+     $mail = mailSender($typeCommande, $data, "info.sud@pci-fr.ch", getMail($this,'Conge'));
 
      //if someting was inserted
      if($result > 1 & $mail == 0){
@@ -86,7 +86,7 @@ $app->post('/v1/form/etatcirculation', function ($request,$response) {
    try{
      //append to file named year-month
      $result = setContent($typeCommande, $data);
-     $mail = mailSender($typeCommande, $data, "sud.commandement@pci-fr.ch", getMail($this,'Circulation'));
+     $mail = mailSender($typeCommande, $data, "info.sud@pci-fr.ch", getMail($this,'Circulation'));
      //if someting was inserted
      if($result > 1 & $mail == 0){
        return $response->withJson(array('status' => 'OK'),200);
@@ -140,7 +140,7 @@ $app->post('/v1/form/ctrlequipement', function ($request,$response) {
    try{
      //append to file named year-month
      $result = setContent($typeCommande, $dataForMail);
-     $mail = mailSender($typeCommande, $dataForMail, "sud.commandement@pci-fr.ch", getMail($this,'Equipement'));
+     $mail = mailSender($typeCommande, $dataForMail, "info.sud@pci-fr.ch", getMail($this,'Equipement'));
      //if someting was inserted
      if($result > 1 & $mail == 0){
        return $response->withJson(array('status' => 'OK'),200);
@@ -173,7 +173,7 @@ $app->post('/v1/form/suivimachine', function ($request,$response) {
    try{
      //append to file named year-month
      $result = setContent($typeCommande, $data);
-     $mail = mailSender($typeCommande, $data, "sud.commandement@pci-fr.ch", getMail($this,'Suivimachine'));
+     $mail = mailSender($typeCommande, $data, "info.sud@pci-fr.ch", getMail($this,'Suivimachine'));
      //if someting was inserted
      if($result > 1 & $mail == 0){
        return $response->withJson(array('status' => 'OK'),200);
@@ -204,7 +204,7 @@ $app->post('/v1/form/suivichantier', function ($request,$response) {
    try{
      //append to file named year-month
      $result = setContent($typeCommande, $data);
-     $mail = mailSender($typeCommande, $data, "sud.commandement@pci-fr.ch", getMail($this,'Suivichantier'));
+     $mail = mailSender($typeCommande, $data, "info.sud@pci-fr.ch", getMail($this,'Suivichantier'));
      //if someting was inserted
      if($result > 1 & $mail == 0){
        return $response->withJson(array('status' => 'OK'),200);
@@ -235,7 +235,7 @@ $app->post('/v1/form/premierentree', function ($request,$response) {
    try{
      //append to file named year-month
      $result = setContent($typeCommande, $data);
-     $mail = mailSender($typeCommande, $data, "sud.commandement@pci-fr.ch", "sud.commandement@pci-fr.ch");
+     $mail = mailSender($typeCommande, $data, "info.sud@pci-fr.ch", "info.sud@pci-fr.ch");
      //if someting was inserted
      if($result > 1 & $mail == 0){
        return $response->withJson(array('status' => 'OK'),200);
@@ -267,7 +267,7 @@ $app->post('/v1/form/demandeavance', function ($request,$response) {
    try{
      //append to file named year-month
      $result = setContent($typeCommande, $data);
-     $mail = mailSender($typeCommande, $data, "sud.commandement@pci-fr.ch", getMail($this,'Avancement'));
+     $mail = mailSender($typeCommande, $data, "info.sud@pci-fr.ch", getMail($this,'Avancement'));
      //if someting was inserted
      if($result > 1 & $mail == 0){
        return $response->withJson(array('status' => 'OK'),200);
@@ -298,7 +298,7 @@ $app->post('/v1/form/rapportparking', function ($request,$response) {
    try{
      //append to file named year-month
      $result = setContent($typeCommande, $data);
-     $mail = mailSender($typeCommande, $data, "sud.commandement@pci-fr.ch", getMail($this,'Parking'));
+     $mail = mailSender($typeCommande, $data, "info.sud@pci-fr.ch", getMail($this,'Parking'));
      //if someting was inserted
      if($result > 1 & $mail == 0){
        return $data;
@@ -338,7 +338,7 @@ $app->post('/v1/form/radios', function ($request,$response) {
    try{
      //append to file named year-month
      $result = setContent("Radios", $dataForMail);
-     $mail = mailSender("Radios", $dataForMail, "sud.commandement@pci-fr.ch", getMail($this,'Radios'));
+     $mail = mailSender("Radios", $dataForMail, "info.sud@pci-fr.ch", getMail($this,'Radios'));
 
      //if someting was inserted
      if($result > 1 & $mail == 0){
