@@ -48,16 +48,20 @@
           {{'appel.presence.present' | translate}}
         </label>
         <label class="btn btn-outline-secondary">
-          <input ng-change="onChange($index)" type="radio" ng-model="personne.status"  value="Absent">
+          <input ng-change="onChange($index)" type="radio" ng-model="personne.status" value="Défaillant">
+          {{'appel.presence.defect' | translate}}
+        </label>
+        <label class="btn btn-outline-secondary">
+          <input ng-change="onChange($index)" type="radio" ng-model="personne.status" value="Congé">
+          {{'appel.presence.leave' | translate}}
+        </label>
+        <label class="btn btn-outline-secondary">
+          <input ng-change="onChange($index)" type="radio" ng-model="personne.status" value="Repos">
+          {{'appel.presence.rest' | translate}}
+        </label>
+        <label class="btn btn-outline-secondary">
+          <input ng-change="onChange($index)" type="radio" ng-model="personne.status" value="Absent">
           {{'appel.presence.absent' | translate}}
-        </label>
-        <label class="btn btn-outline-secondary">
-          <input ng-change="onChange($index)" type="radio" ng-model="personne.status" value="Congé">
-          {{'appel.presence.conge' | translate}}
-        </label>
-        <label class="btn btn-outline-secondary">
-          <input ng-change="onChange($index)" type="radio" ng-model="personne.status" value="Congé">
-          {{'appel.presence.visite' | translate}}
         </label>
       </div>
 
