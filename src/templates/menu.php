@@ -38,8 +38,8 @@
 
 {{'menu.admin.title' | translate}}
 <!-- <a class="btn btn-outline-secondary btn-block" href="#/rapport/service" role="button">Rapport Journalier Section</a> -->
-<a class="btn btn-outline-secondary btn-block" href="#/rapport/journalier" role="button">{{'menu.admin.daily_report' | translate}}</a>
-<a class="btn btn-outline-secondary btn-block" href="#/rapport/journalier/assistance" role="button">{{'menu.admin.daily_report_assist' | translate}}</a>
+<!-- <a class="btn btn-outline-secondary btn-block" href="#/rapport/journalier" role="button">{{'menu.admin.daily_report' | translate}}</a> -->
+<!-- <a class="btn btn-outline-secondary btn-block" href="#/rapport/journalier/assistance" role="button">{{'menu.admin.daily_report_assist' | translate}}</a> -->
 <a class="btn btn-outline-secondary btn-block" href="#/admin/listeappel" role="button">{{'menu.admin.appel' | translate}}</a>
 <a class="btn btn-outline-secondary btn-block" href="#/admin/listeLicenciement" role="button"> {{'menu.admin.liberation' | translate}}</a>
 <a class="btn btn-outline-secondary btn-block" href="#/admin/qualifications" role="button">{{'menu.admin.qualif' | translate}}</a>
