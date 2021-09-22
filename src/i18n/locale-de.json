@@ -1,579 +1,579 @@
 {
-    "navbar": {
-        "command": "Bestellung",
-        "admin": "Admin",
-        "language": "Sprache",
-        "search":"Suchen",
-        "superadmin" : {
-          "messages":"Nachricht des Kommandanten",
-          "logins":"Logins",
-          "attribution":"Mail Zuteilung",
-          "parametres":"allgemeine Einstellungen"
-        }
-      },
-    "recherche": {
-      "tiers": {
-        "title": "Suche nach Dritter",
-        "name": "Name"
-      },
-      "tags": {
-        "title": "Suche nach Tags",
-        "tags": "Tags"
-      },
-      "contact": {
-        "title": "Suche nach Kontakt",
-        "name": "Name",
-        "employeur":"Arbeitgeber / Unternehmung",
-        "emplTelephone":"Telefonnummer des Arbeitsgebers"
-      }
+  "navbar": {
+    "command": "Bestellung",
+    "admin": "Admin",
+    "language": "Sprache",
+    "search": "Suchen",
+    "superadmin": {
+      "messages": "Nachricht des Kommandanten",
+      "logins": "Logins",
+      "attribution": "Mail Zuteilung",
+      "parametres": "allgemeine Einstellungen"
+    }
+  },
+  "recherche": {
+    "tiers": {
+      "title": "Suche nach Dritter",
+      "name": "Name"
     },
-    "pisa": {
-      "firstname":"Vorname",
-      "lastname":"Nachname"
+    "tags": {
+      "title": "Suche nach Tags",
+      "tags": "Tags"
     },
-    "menu": {
-        "commands": {
-            "title": "Schnellzugriff für Bestellungen",
-            "meal": "Essen",
-            "transport": "Transport",
-            "material": "Material",
-            "fuel": "Treibstoff",
-            "radios": "Radios",
-            "management": "Auftragsmanagement",
-            "search": "Auftragsuche",
-            "radios":"Radios"
-        },
-        "recherche":"Schnellzugriff für Suchen",
-        "rapide":"Schellzugriff",
-        "conge":"Urlaubsanfrage",
-        "assistance":"Betreuungsanfrage",
-        "avancement":"Aufstiegsanfrage",
-        "parking":"Parkplatzbericht",
-        "circulation":"Zustand der Zirkulation",
-        "machine":"Baumaschinen Nachlauf",
-        "competences": "Aktualisierung persönlicher Daten",
-        "equipement":"Ausrüstungskontrolle",
-        "admin": {
-            "title": "Admin",
-            "daily_report": "Täglicher Bericht (Abteilung und SPPAM)",
-            "daily_report_assist": "Tagesbericht Unterstützung",
-            "appel":"Anrufsliste",
-            "liberation":"Freigabe-/Entlassungsliste",
-            "qualif":"Qualifizierung",
-            "attrib":"Mail Zuteilung"
-        },
-        "search": {
-          "title":"Bestellungssuche",
-          "number":"Bestellungsnummer",
-          "client":"Kunde",
-          "type":"Bestellungstyp",
-          "date":"Datum",
-          "site":"Baustelle",
-          "selectionsite":"-- Auswahl der Baustelle --",
-          "showDelivered":"Ausgelieferte Bestellungen anzeigen",
-          "showRefused":"Abgelehnte Bestellungen anzeigen",
-          "showCanceled":"Annullierte Bestellungen anzeigen",
-          "status":"Status"
-        }
+    "contact": {
+      "title": "Suche nach Kontakt",
+      "name": "Name",
+      "employeur": "Arbeitgeber / Unternehmung",
+      "emplTelephone": "Telefonnummer des Arbeitsgebers"
+    }
+  },
+  "pisa": {
+    "firstname": "Vorname",
+    "lastname": "Nachname"
+  },
+  "menu": {
+    "commands": {
+      "title": "Schnellzugriff für Bestellungen",
+      "meal": "Essen",
+      "transport": "Transport",
+      "material": "Material",
+      "fuel": "Treibstoff",
+      "management": "Auftragsmanagement",
+      "search": "Auftragsuche",
+      "radios": "Radios"
     },
-    "assistance" : {
-      "title": "Betreuungsanfrage",
+    "recherche": "Schnellzugriff für Suchen",
+    "rapide": "Schellzugriff",
+    "conge": "Urlaubsanfrage",
+    "assistance": "Betreuungsanfrage",
+    "avancement": "Aufstiegsanfrage",
+    "parking": "Parkplatzbericht",
+    "circulation": "Zustand der Zirkulation",
+    "machine": "Baumaschinen Nachlauf",
+    "competences": "Aktualisierung persönlicher Daten",
+    "equipement": "Ausrüstungskontrolle",
+    "admin": {
+      "title": "Admin",
+      "daily_report": "Täglicher Bericht (Abteilung und SPPAM)",
+      "daily_report_assist": "Tagesbericht Unterstützung",
+      "appel": "Anrufsliste",
+      "liberation": "Freigabe-/Entlassungsliste",
+      "qualif": "Qualifizierung",
+      "attrib": "Mail Zuteilung"
+    },
+    "search": {
+      "title": "Bestellungssuche",
+      "number": "Bestellungsnummer",
+      "client": "Kunde",
+      "type": "Bestellungstyp",
+      "date": "Datum",
+      "site": "Baustelle",
+      "selectionsite": "-- Auswahl der Baustelle --",
+      "showDelivered": "Ausgelieferte Bestellungen anzeigen",
+      "showRefused": "Abgelehnte Bestellungen anzeigen",
+      "showCanceled": "Annullierte Bestellungen anzeigen",
+      "status": "Status"
+    }
+  },
+  "assistance": {
+    "title": "Betreuungsanfrage",
+    "message": {
+      "success": "Anfrage gesendet!",
+      "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+      "loading": "Ladevorgang läuft"
+    },
+    "lieutenant": "Name des Leutnants",
+    "nom": "Name der anfragende Person",
+    "date": "Gewünschtes Datum für das Termin",
+    "raison": "Grund für die Anfrage",
+    "comment": "Kommentar",
+    "send": "Senden"
+  },
+  "avancement": {
+    "title": "Aufstiegsanfrage",
+    "message": {
+      "success": "Anfrage gesendet!",
+      "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+      "loading": "Ladevorgang läuft"
+    },
+    "lieutenant": "Name des Leutnants",
+    "nom": "Name der Person",
+    "actuelle": "Aktuelle Funktion",
+    "prevue": "Geplante Funktion",
+    "comment": "Kommentar",
+    "send": "Senden"
+  },
+  "conge": {
+    "title": "Urlaubsanfrage",
+    "message": {
+      "success": "Anfrage gesendet!",
+      "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+      "loading": "Ladevorgang läuft"
+    },
+    "lieutenant": "Name des Leutnants",
+    "nom": "Name der Person",
+    "date": "Gewünschtes Datum und Uhrzeit des Urlaubs",
+    "raison": "Grund der Anfrage",
+    "comment": "Kommentar",
+    "send": "Senden"
+  },
+  "circulation": {
+    "title": "Zustand der Zirkulation",
+    "message": {
+      "success": "Gesendet!",
+      "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+      "loading": "Ladevorgang läuft"
+    },
+    "nom": "Name",
+    "chantier": "Baustelle",
+    "selectChantier": "-- Wahl der Baustelle --",
+    "etat": {
+      "title": "Zustand",
+      "vert": "Grün - fliessend",
+      "orange": "Orange - gesättigt",
+      "rouge": "Rot - blockiert"
+    },
+    "detail": "Details falls nötig",
+    "send": "Senden"
+  },
+  "qualif": {
+    "title": "Qualifizierung",
+    "message": {
+      "success": "Gesendet!",
+      "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+      "loading": "Ladevorgang läuft"
+    },
+    "search": "Suche Person:",
+    "connaissances": "Grundkenntnisse:",
+    "comportement": "Verhalten",
+    "motivation": "Motivation, Engagement, Unternehmungsgeist",
+    "technique": "Technisches Wissen",
+    "expression": "Ausdrucksfähigkeit",
+    "aptitude": "Eignung für den Dienst",
+    "appreciation": "Situationsbewusstsein",
+    "specialistes": "Fach- und Führungskräfte",
+    "globale": "Gesamtbeurteilung",
+    "decision": "Entscheidungsfähigkeit",
+    "instruction": "Fähigkeit zur Bildung",
+    "conduite": "Fähigkeit zu führen",
+    "comment": "Kommentar",
+    "send": "Senden",
+    "qualif": {
+      "TB": "Sehr gut",
+      "B": "Gut",
+      "S": "Genügend",
+      "I": "Ungenügend"
+    }
+  },
+  "parking": {
+    "title": "Parkplatzbericht",
+    "message": {
+      "success": "Gesendet!",
+      "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+      "loading": "Ladevorgang läuft"
+    },
+    "nom": "Namen",
+    "parking": "Parkplatz",
+    "selectParking": "-- Auswahl des Parkplatzes --",
+    "etat": {
+      "title": "Zustand",
+      "bon": "Gut",
+      "moyen": "Mittelmässig",
+      "mauvais": "Schlecht",
+      "impraticable": "Unzugänglich"
+    },
+    "detailEtat": "Detail für den Zustand falls nötig",
+    "remplissage": "Füllung",
+    "detailRemplissage": "Detail für die Füllung falls nötig",
+    "eclairage": "Beleuchtung",
+    "existant": "Bestehend",
+    "inexistant": "Unbestehend",
+    "comment": "Kommentar",
+    "send": "Senden"
+  },
+  "chantier": {
+    "title": "Baustelle Nachlauf",
+    "message": {
+      "success": "Gesendet!",
+      "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+      "loading": "Ladevorgang läuft"
+    },
+    "nom": "Name",
+    "site": "Baustelle",
+    "selectSite": "-- Baustellenauswahl --",
+    "avancement": "Fortschritt",
+    "selectAvancement": "-- FORTSCHRITT --",
+    "estimation": "Geschätzte verbleibende Zeit",
+    "tasks": "Noch zu erledigende Aufgaben",
+    "send": "Senden"
+  },
+  "machine": {
+    "title": "Baumaschinen Nachlauf",
+    "message": {
+      "success": "Gesendet!",
+      "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+      "loading": "Ladevorgang läuft"
+    },
+    "nom": "Namen",
+    "site": "Baustelle",
+    "selectSite": "-- Baustellenauswahl --",
+    "number": "Telefonnumer der Kontaktperson",
+    "type": {
+      "title": "Typ der Meldung",
+      "demande": "Maschinenanfrage",
+      "reception": "Maschinen-Abnahme",
+      "panne": "Ausfall",
+      "deplacement": "Antrag auf Verschiebung der Maschine",
+      "retour": "Rückgabe der Maschine"
+    },
+    "machine": "Maschine",
+    "serie": "Seriennummer",
+    "destSite": "Zielbaustelle",
+    "heures": "Anzahl der Maschinenstunden",
+    "comment": "Kommentar",
+    "send": "Senden"
+  },
+  "appel": {
+    "title": "Anrufliste",
+    "disclaimer": "Durch Ankreuzen bestätige ich, dass das gesamte Bereitschaftspersonal auf die folgenden Punkte aufmerksam gemacht wurde:",
+    "message": {
+      "success": "Gesendet!",
+      "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+      "loading": "Ladevorgang läuft"
+    },
+    "formation": "Ausbildung",
+    "selectFormation": "-- Auswahl Ausbildung --",
+    "session": "Sitzung",
+    "selectSession": "-- Auswahl Sitzung --",
+    "date": "Datum",
+    "selectDate": "-- Auswahl Datum --",
+    "presence": {
+      "present": "Anwesend",
+      "defect": "Defekt",
+      "leave": "Urlaub (ohne APG)",
+      "rest": "Rest (mit APG)",
+      "absent": "Nicht anwesend (krank, Unfall)"
+    },
+    "send": "Senden"
+  },
+  "licenciement": {
+    "title": "Freigabe-/Entlassungsliste",
+    "disclaimer": "Durch Ankreuzen bestätige ich, dass das gesamte Bereitschaftspersonal auf die folgenden Punkte aufmerksam gemacht wurde:",
+    "message": {
+      "success": "Gesendet!",
+      "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+      "loading": "Ladevorgang läuft"
+    },
+    "libere": "Befreit: am Ende des Tages zu wählen, wenn die Person den auf dem Laufbefehl geplanten Dienst noch nicht vollständig beendet hat.",
+    "licencie": "Entlasst: zu wählen, wenn die Person seinen Dienst vollständig beendet hat.",
+    "formation": "Ausbildung",
+    "selectFormation": "-- Auswahl Ausbildung --",
+    "session": "Sitzung",
+    "selectSession": "-- Auswahl Sitzung --",
+    "date": "Datum",
+    "selectDate": "-- Auswahl Datum --",
+    "liberation": {
+      "libere": "Befreit",
+      "licencie": "Entlasst"
+    },
+    "send": "Senden"
+  },
+  "commands": {
+    "radios": {
+      "title": "Radiobestellung",
       "message": {
-          "success": "Anfrage gesendet!",
+        "success": "Auftrag Nummer <b>{{id}}</b> erfolgreich erstellt!<br><br> <i>Hinweis: Sie können die Bestellnummer zur späteren Suche verwenden.</i>",
+        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+        "loading": "Ladevorgang läuft"
+      },
+      "name": "Name",
+      "rank": {
+        "title": "Grad",
+        "choose": "Auswählen Sie einen Grad",
+        "h-p": "Nicht aus dem Zivilschutz",
+        "std": "Soldat",
+        "app": "Gefreiter",
+        "cpl": "Korporal",
+        "sgt": "Wachtmeister",
+        "sgtm": "Feldweibel",
+        "four": "Fourier",
+        "lt": "Leutnant",
+        "plt": "Oberleutnant",
+        "cap": "Hauptmann",
+        "maj": "Major"
+      },
+      "section": "Abteilung",
+      "from": "Ab",
+      "to": "Bis",
+      "amount": "Anzahl",
+      "phone": "Telefonnummer",
+      "comment": "Kommentar",
+      "button_send": "Senden"
+    },
+    "meal": {
+      "title": "Essensbestellung",
+      "message": {
+        "success": "Auftrag Nummer <b>{{id}}</b> erfolgreich erstellt!<br><br> <i>Hinweis: Sie können die Bestellnummer zur späteren Suche verwenden.</i>",
+        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+        "loading": "Ladevorgang läuft"
+      },
+      "name": "Name",
+      "site": "Baustelle",
+      "site_selection": "-- Baustellenauswahl --",
+      "delivery_date": "Gewünschtes Lieferdatum",
+      "breakfast_nbr": "Anzahl der Frühstücke",
+      "lunch_nbr": "Anzahl der Mittagessen",
+      "dinner_nbr": "Anzahl der Abendessen",
+      "night_snack_nbr": "Anzahl der nächtlichen Snacks",
+      "vegetarian_nbr": "Anzahl von Vegetariern",
+      "comment": "Kommentar",
+      "button_send": "Senden"
+    },
+    "material": {
+      "title": "Materialbestellung",
+      "message": {
+        "success": "Auftrag Nummer <b>{{id}}</b> erfolgreich erstellt!<br><br> <i>Hinweis: Sie können die Bestellnummer zur späteren Suche verwenden.</i>",
+        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+        "loading": "Ladevorgang läuft"
+      },
+      "name": "Name",
+      "site": "Baustelle",
+      "site_selection": "-- Baustellenauswahl --",
+      "delivery_date": "Gewünschtes Lieferdatum",
+      "hour": "Tageszeit",
+      "hour_morning": "Am Morgen",
+      "hour_midday": "Mittag",
+      "hour_evening": "Abend",
+      "material_1": "Material 1",
+      "material_2": "Material 2",
+      "material_3": "Material 3",
+      "comment": "Kommentar",
+      "button_send": "Senden"
+    },
+    "fuel": {
+      "title": "Treibstoffbestellung",
+      "message": {
+        "success": "Auftrag Nummer <b>{{id}}</b> erfolgreich erstellt!<br><br> <i>Hinweis: Sie können die Bestellnummer zur späteren Suche verwenden.</i>",
+        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
+        "loading": "Ladevorgang läuft"
+      },
+      "name": "Name",
+      "site": "Baustelle",
+      "site_selection": "-- Baustellenauswahl --",
+      "diesel": "Diesel",
+      "gasoline": "Benzin",
+      "gasoline_2T": "Benzin 2T",
+      "liter": "Liter",
+      "comment": "Kommentar",
+      "button_send": "Senden"
+    },
+    "transport": {
+      "title": "Transportbestellung",
+      "message": {
+        "message": {
+          "success": "Auftrag Nummer <b>{{id}}</b> erfolgreich erstellt!<br><br> <i>Hinweis: Sie können die Bestellnummer zur späteren Suche verwenden.</i>",
           "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
           "loading": "Ladevorgang läuft"
+        },
+        "name": "Name",
+        "departure": "Abfahrt",
+        "site_selection": "-- Baustellenauswahl --",
+        "destination": "Reiseziel",
+        "transport_date": "Datum des Transportes",
+        "hour": "Tageszeit",
+        "hour_morning": "Am Morgen",
+        "hour_midday": "Mittag",
+        "hour_evening": "Abend",
+        "hour_details": "Details für die Zeit (falls erforderlich)",
+        "men_nbr": "Anzahl Männer",
+        "material_to_transport": "Material zu transportieren",
+        "comment": "Kommentar",
+        "button_send": "Senden"
       },
-      "lieutenant":"Name des Leutnants",
-      "nom":"Name der anfragende Person",
-      "date":"Gewünschtes Datum für das Termin",
-      "raison":"Grund für die Anfrage",
-      "comment":"Kommentar",
-      "send":"Senden"
-    },
-    "avancement" : {
-      "title": "Aufstiegsanfrage",
-      "message": {
-        "success": "Anfrage gesendet!",
-        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
-        "loading": "Ladevorgang läuft"
-      },
-      "lieutenant":"Name des Leutnants",
-      "nom":"Name der Person",
-      "actuelle":"Aktuelle Funktion",
-      "prevue":"Geplante Funktion",
-      "comment":"Kommentar",
-      "send":"Senden"
-    },
-    "conge" : {
-      "title": "Urlaubsanfrage",
-      "message": {
-        "success": "Anfrage gesendet!",
-        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
-        "loading": "Ladevorgang läuft"
-      },
-      "lieutenant":"Name des Leutnants",
-      "nom":"Name der Person",
-      "date":"Gewünschtes Datum und Uhrzeit des Urlaubs",
-      "raison":"Grund der Anfrage",
-      "comment":"Kommentar",
-      "send":"Senden"
-    },
-    "circulation" : {
-      "title": "Zustand der Zirkulation",
-      "message": {
-        "success": "Gesendet!",
-        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
-        "loading": "Ladevorgang läuft"
-      },
-      "nom":"Name",
-      "chantier":"Baustelle",
-      "selectChantier":"-- Wahl der Baustelle --",
-      "etat": {
-        "title":"Zustand",
-        "vert":"Grün - fliessend",
-        "orange":"Orange - gesättigt",
-        "rouge": "Rot - blockiert"
-      },
-      "detail":"Details falls nötig",
-      "send":"Senden"
-    },
-    "qualif":{
-      "title": "Qualifizierung",
-      "message": {
-        "success": "Gesendet!",
-        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
-        "loading": "Ladevorgang läuft"
-      },
-      "search": "Suche Person:",
-      "connaissances":"Grundkenntnisse:",
-      "comportement":"Verhalten",
-      "motivation":"Motivation, Engagement, Unternehmungsgeist",
-      "technique":"Technisches Wissen",
-      "expression":"Ausdrucksfähigkeit",
-      "aptitude":"Eignung für den Dienst",
-      "appreciation":"Situationsbewusstsein",
-      "specialistes":"Fach- und Führungskräfte",
-      "globale":"Gesamtbeurteilung",
-      "decision":"Entscheidungsfähigkeit",
-      "instruction":"Fähigkeit zur Bildung",
-      "conduite":"Fähigkeit zu führen",
-      "comment":"Kommentar",
-      "send":"Senden",
-      "qualif" : {
-        "TB":"Sehr gut",
-        "B":"Gut",
-        "S":"Genügend",
-        "I":"Ungenügend"
+      "position": {
+        "title": "Arbeitsstelle",
+        "leadassistance": "Stabsassistent",
+        "kitchen": "Küche",
+        "material": "Material",
+        "fuel": "Treibstoff",
+        "transport": "Transport"
       }
     },
-    "parking":{
-      "title":"Parkplatzbericht",
-      "message": {
-        "success": "Gesendet!",
-        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
-        "loading": "Ladevorgang läuft"
-      },
-      "nom":"Namen",
-      "parking":"Parkplatz",
-      "selectParking":"-- Auswahl des Parkplatzes --",
-      "etat": {
-        "title":"Zustand",
-        "bon":"Gut",
-        "moyen":"Mittelmässig",
-        "mauvais":"Schlecht",
-        "impraticable":"Unzugänglich"
-        },
-      "detailEtat":"Detail für den Zustand falls nötig",
-      "remplissage":"Füllung",
-      "detailRemplissage":"Detail für die Füllung falls nötig",
-      "eclairage":"Beleuchtung",
-      "existant":"Bestehend",
-      "inexistant":"Unbestehend",
-      "comment":"Kommentar",
-      "send":"Senden"
-    },
-    "chantier": {
-      "title":"Baustelle Nachlauf",
-      "message": {
-        "success": "Gesendet!",
-        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
-        "loading": "Ladevorgang läuft"
-      },
-      "nom":"Name",
-      "site":"Baustelle",
-      "selectSite":"-- Baustellenauswahl --",
-      "avancement":"Fortschritt",
-      "selectAvancement":"-- FORTSCHRITT --",
-      "estimation":"Geschätzte verbleibende Zeit",
-      "tasks":"Noch zu erledigende Aufgaben",
-      "send":"Senden"
-    },
-    "machine": {
-      "title":"Baumaschinen Nachlauf",
-      "message": {
-        "success": "Gesendet!",
-        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
-        "loading": "Ladevorgang läuft"
-      },
-      "nom":"Namen",
-      "site":"Baustelle",
-      "selectSite":"-- Baustellenauswahl --",
-      "number":"Telefonnumer der Kontaktperson",
-      "type": {
-        "title":"Typ der Meldung",
-        "demande":"Maschinenanfrage",
-        "reception":"Maschinen-Abnahme",
-        "panne":"Ausfall",
-        "deplacement":"Antrag auf Verschiebung der Maschine",
-        "retour":"Rückgabe der Maschine"
-        },
-      "machine":"Maschine",
-      "serie":"Seriennummer",
-        "destSite":"Zielbaustelle",
-      "heures":"Anzahl der Maschinenstunden",
-      "comment":"Kommentar",
-      "send":"Senden"
-    },
-    "appel":{
-      "title":"Anrufliste",
-      "disclaimer":"Durch Ankreuzen bestätige ich, dass das gesamte Bereitschaftspersonal auf die folgenden Punkte aufmerksam gemacht wurde:",
-      "message": {
-        "success": "Gesendet!",
-        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
-        "loading": "Ladevorgang läuft"
-      },
-      "formation":"Ausbildung",
-      "selectFormation":"-- Auswahl Ausbildung --",
-      "session":"Sitzung",
-      "selectSession":"-- Auswahl Sitzung --",
-      "date":"Datum",
-      "selectDate":"-- Auswahl Datum --",
-      "presence": {
-        "present":"Anwesend",
-        "absent":"Nicht anwesend",
-        "conge":"Urlaub",
-        "visite":"Arztbesuch"
-      },
-      "send":"Senden"
-    },
-    "licenciement":{
-      "title":"Freigabe-/Entlassungsliste",
-      "disclaimer":"Durch Ankreuzen bestätige ich, dass das gesamte Bereitschaftspersonal auf die folgenden Punkte aufmerksam gemacht wurde:",
-      "message": {
-        "success": "Gesendet!",
-        "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
-        "loading": "Ladevorgang läuft"
-      },
-      "libere":"Befreit: am Ende des Tages zu wählen, wenn die Person den auf dem Laufbefehl geplanten Dienst noch nicht vollständig beendet hat.",
-      "licencie":"Entlasst: zu wählen, wenn die Person seinen Dienst vollständig beendet hat.",
-      "formation":"Ausbildung",
-      "selectFormation":"-- Auswahl Ausbildung --",
-      "session":"Sitzung",
-      "selectSession":"-- Auswahl Sitzung --",
-      "date":"Datum",
-      "selectDate":"-- Auswahl Datum --",
-      "liberation": {
-        "libere":"Befreit",
-        "licencie":"Entlasst"
-      },
-      "send":"Senden"
-    },
-    "commands": {
-      "radios": {
-          "title" : "Radiobestellung",
-          "message": {
-              "success": "Auftrag Nummer <b>{{id}}</b> erfolgreich erstellt!<br><br> <i>Hinweis: Sie können die Bestellnummer zur späteren Suche verwenden.</i>",
-              "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
-              "loading": "Ladevorgang läuft"
-          },
-          "name": "Name",
-          "rank": {
-            "title":"Grad",
-            "choose":"Auswählen Sie einen Grad",
-            "h-p":"Nicht aus dem Zivilschutz",
-            "std":"Soldat",
-            "app":"Gefreiter",
-            "cpl":"Korporal",
-            "sgt":"Wachtmeister",
-            "sgtm":"Feldweibel",
-            "four":"Fourier",
-            "lt":"Leutnant",
-            "plt":"Oberleutnant",
-            "cap":"Hauptmann",
-            "maj":"Major"
-          },
-          "section": "Abteilung",
-          "from": "Ab",
-          "to": "Bis",
-          "amount":"Anzahl",
-          "phone":"Telefonnummer",
-          "comment": "Kommentar",
-          "button_send": "Senden"
-      },
-        "meal": {
-            "title" : "Essensbestellung",
-            "message": {
-                "success": "Auftrag Nummer <b>{{id}}</b> erfolgreich erstellt!<br><br> <i>Hinweis: Sie können die Bestellnummer zur späteren Suche verwenden.</i>",
-                "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
-                "loading": "Ladevorgang läuft"
-            },
-            "name": "Name",
-            "site": "Baustelle",
-            "site_selection": "-- Baustellenauswahl --",
-            "delivery_date": "Gewünschtes Lieferdatum",
-            "breakfast_nbr": "Anzahl der Frühstücke",
-            "lunch_nbr": "Anzahl der Mittagessen",
-            "dinner_nbr": "Anzahl der Abendessen",
-            "night_snack_nbr": "Anzahl der nächtlichen Snacks",
-            "vegetarian_nbr": "Anzahl von Vegetariern",
-            "comment": "Kommentar",
-            "button_send": "Senden"
-        },
-        "material": {
-            "title" : "Materialbestellung",
-            "message": {
-                "success": "Auftrag Nummer <b>{{id}}</b> erfolgreich erstellt!<br><br> <i>Hinweis: Sie können die Bestellnummer zur späteren Suche verwenden.</i>",
-                "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
-                "loading": "Ladevorgang läuft"
-            },
-            "name": "Name",
-            "site": "Baustelle",
-            "site_selection": "-- Baustellenauswahl --",
-            "delivery_date": "Gewünschtes Lieferdatum",
-            "hour": "Tageszeit",
-            "hour_morning": "Am Morgen",
-            "hour_midday": "Mittag",
-            "hour_evening": "Abend",
-            "material_1": "Material 1",
-            "material_2": "Material 2",
-            "material_3": "Material 3",
-            "comment": "Kommentar",
-            "button_send": "Senden"
-        },
-        "fuel": {
-            "title": "Treibstoffbestellung",
-            "message": {
-                "success": "Auftrag Nummer <b>{{id}}</b> erfolgreich erstellt!<br><br> <i>Hinweis: Sie können die Bestellnummer zur späteren Suche verwenden.</i>",
-                "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
-                "loading": "Ladevorgang läuft"
-            },
-            "name": "Name",
-            "site": "Baustelle",
-            "site_selection": "-- Baustellenauswahl --",
-            "diesel": "Diesel",
-            "gasoline": "Benzin",
-            "gasoline_2T": "Benzin 2T",
-            "liter": "Liter",
-            "comment": "Kommentar",
-            "button_send": "Senden"
-        },
-        "transport": {
-            "title": "Transportbestellung",
-            "message": {
-              "message": {
-                  "success": "Auftrag Nummer <b>{{id}}</b> erfolgreich erstellt!<br><br> <i>Hinweis: Sie können die Bestellnummer zur späteren Suche verwenden.</i>",
-                  "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
-                  "loading": "Ladevorgang läuft"
-              },
-            "name": "Name",
-            "departure": "Abfahrt",
-            "site_selection": "-- Baustellenauswahl --",
-            "destination": "Reiseziel",
-            "transport_date": "Datum des Transportes",
-            "hour": "Tageszeit",
-            "hour_morning": "Am Morgen",
-            "hour_midday": "Mittag",
-            "hour_evening": "Abend",
-            "hour_details": "Details für die Zeit (falls erforderlich)",
-            "men_nbr": "Anzahl Männer",
-            "material_to_transport": "Material zu transportieren",
-            "comment": "Kommentar",
-            "button_send": "Senden"
-        },
-        "position": {
-          "title": "Arbeitsstelle",
-          "leadassistance": "Stabsassistent",
-          "kitchen": "Küche",
-          "material": "Material",
-          "fuel": "Treibstoff",
-          "transport": "Transport"
-        }
-    },
     "daily_report_assist": {
-        "title": "Tagesbericht Betreu",
-        "site": {
-            "title": "Arbeitsort",
-            "selection": "-- Auswahl Arbeitsort --"
+      "title": "Tagesbericht Betreu",
+      "site": {
+        "title": "Arbeitsort",
+        "selection": "-- Auswahl Arbeitsort --"
+      },
+      "comment": "Betreffendes Datum",
+      "situation": "Aktuelle Situation",
+      "meteo": {
+        "title": "Wetter",
+        "showers": "Regenguss",
+        "lightshowers": "Kleinen Regenguss",
+        "stormy": "Stürmisch",
+        "cloudy": "bewölkt",
+        "cloudsunny": "wenig bewölkt",
+        "sunny": "sonnig",
+        "description": "Beschreibung",
+        "city": "Stadt"
+      },
+      "means": {
+        "title": "Verwendete Mittel",
+        "men": "Männer",
+        "rank": {
+          "choose": "Auswählen Sie einen Grad",
+          "std": "Soldat",
+          "app": "Gefreiter",
+          "cpl": "Korporal",
+          "sgt": "Wachtmeister",
+          "sgtm": "Feldweibel",
+          "four": "Fourier",
+          "lt": "Leutnant",
+          "plt": "Oberleutnant",
+          "cap": "Hauptmann",
+          "maj": "Major"
         },
-        "comment":"Betreffendes Datum",
-        "situation": "Aktuelle Situation",
-        "meteo": {
-            "title": "Wetter",
-            "showers": "Regenguss",
-            "lightshowers": "Kleinen Regenguss",
-            "stormy": "Stürmisch",
-            "cloudy": "bewölkt",
-            "cloudsunny": "wenig bewölkt",
-            "sunny": "sonnig",
-            "description": "Beschreibung",
-            "city": "Stadt"
+        "resp": "Namen der verantwortliche Person",
+        "amount": "Anzahl Männer",
+        "add_field": "Feld hinzufügen"
+      },
+      "vehicles": {
+        "title": "Transportmitteln",
+        "amount": "Anzahl",
+        "type": "Typ",
+        "add_field": "Feld hinzufügen"
+      },
+      "material": {
+        "title": "Material",
+        "amount": "Anzahl",
+        "description": "Beschreibung",
+        "add_field": "Feld hinzufügen"
+      },
+      "missions": {
+        "title": "Mission",
+        "by": {
+          "title": "Erfüllt von:",
+          "e-m": "Stab",
+          "AICrens": "FU 1 - Lage",
+          "AICmed": "FU 1 - Medien",
+          "AICchanc": "FU 1 - Kanzlerei",
+          "AICtele": "FU 2 - Telematik",
+          "AICinfo": "FU 2 - Informatik",
+          "circ": "Verkehr",
+          "logfour": "Logistik - Fourier",
+          "loginfra": "Logistik - Infrastruktur",
+          "logsub": "Logistik - Lebensunterhalt",
+          "logmat": "Logistik - Material",
+          "logtrans": "Logistik - Transport",
+          "Assist": "Betreu",
+          "Appui": "Unterstützung"
         },
-        "means": {
-            "title": "Verwendete Mittel",
-            "men": "Männer",
-            "rank": {
-              "choose":"Auswählen Sie einen Grad",
-              "std":"Soldat",
-              "app":"Gefreiter",
-              "cpl":"Korporal",
-              "sgt":"Wachtmeister",
-              "sgtm":"Feldweibel",
-              "four":"Fourier",
-              "lt":"Leutnant",
-              "plt":"Oberleutnant",
-              "cap":"Hauptmann",
-              "maj":"Major"
-            },
-            "resp": "Namen der verantwortliche Person",
-            "amount": "Anzahl Männer",
-            "add_field": "Feld hinzufügen"
-        },
-        "vehicles": {
-            "title": "Transportmitteln",
-            "amount": "Anzahl",
-            "type": "Typ",
-            "add_field": "Feld hinzufügen"
-        },
-        "material": {
-            "title": "Material",
-            "amount": "Anzahl",
-            "description": "Beschreibung",
-            "add_field": "Feld hinzufügen"
-        },
-        "missions": {
-            "title": "Mission",
-            "by": {
-              "title":"Erfüllt von:",
-              "e-m":"Stab",
-              "AICrens":"FU 1 - Lage",
-              "AICmed":"FU 1 - Medien",
-              "AICchanc":"FU 1 - Kanzlerei",
-              "AICtele":"FU 2 - Telematik",
-              "AICinfo":"FU 2 - Informatik",
-              "circ":"Verkehr",
-              "logfour":"Logistik - Fourier",
-              "loginfra":"Logistik - Infrastruktur",
-              "logsub":"Logistik - Lebensunterhalt",
-              "logmat":"Logistik - Material",
-              "logtrans":"Logistik - Transport",
-              "Assist":"Betreu",
-              "Appui":"Unterstützung"
-            },
-            "task": "Aufgabe",
-            "description": "Beschreibung",
-            "location": "Ort",
-            "add_field": "Feld hinzufügen"
-        },
-        "sanitaryStatus": {
-            "title": "Gesundheitszustand",
-            "good":"Gut",
-            "mean":"Mittelmässig",
-            "bad":"Schlecht",
-            "comment": "Kommentar"
-        },
-        "troopStatus": {
-            "title": "Truppenzustand",
-            "good":"Gut",
-            "mean":"Mittelmässig",
-            "bad":"Schlecht",
-            "comment": "Kommentar"
-        },
-        "email": {
-            "title": "Email",
-            "zone": "-- Gegend --",
-            "note": "Der Bericht wird an der Mailadresse der Gegend gesendet."
-        },
-        "send": "Senden"
+        "task": "Aufgabe",
+        "description": "Beschreibung",
+        "location": "Ort",
+        "add_field": "Feld hinzufügen"
+      },
+      "sanitaryStatus": {
+        "title": "Gesundheitszustand",
+        "good": "Gut",
+        "mean": "Mittelmässig",
+        "bad": "Schlecht",
+        "comment": "Kommentar"
+      },
+      "troopStatus": {
+        "title": "Truppenzustand",
+        "good": "Gut",
+        "mean": "Mittelmässig",
+        "bad": "Schlecht",
+        "comment": "Kommentar"
+      },
+      "email": {
+        "title": "Email",
+        "zone": "-- Gegend --",
+        "note": "Der Bericht wird an der Mailadresse der Gegend gesendet."
+      },
+      "send": "Senden"
     },
     "daily_report": {
-        "title": "Tagesbericht",
-        "formation": "Truppe",
-        "selectFormation": "-- Wahl Truppe --",
-        "situation": "Aktuelle situation",
-        "meteo": {
-            "title": "Wetter",
-            "showers": "Regenguss",
-            "lightshowers": "Kleinen Regenguss",
-            "stormy": "Stürmisch",
-            "cloudy": "bewölkt",
-            "cloudsunny": "wenig bewölkt",
-            "sunny": "sonnig",
-            "description": "Beschreibung",
-            "city": "Stadt"
+      "title": "Tagesbericht",
+      "formation": "Truppe",
+      "selectFormation": "-- Wahl Truppe --",
+      "situation": "Aktuelle situation",
+      "meteo": {
+        "title": "Wetter",
+        "showers": "Regenguss",
+        "lightshowers": "Kleinen Regenguss",
+        "stormy": "Stürmisch",
+        "cloudy": "bewölkt",
+        "cloudsunny": "wenig bewölkt",
+        "sunny": "sonnig",
+        "description": "Beschreibung",
+        "city": "Stadt"
+      },
+      "means": {
+        "title": "Verwendete Mittel",
+        "men": "Männer",
+        "rank": {
+          "choose": "Auswählen Sie einen Grad",
+          "std": "Soldat",
+          "app": "Gefreiter",
+          "cpl": "Korporal",
+          "sgt": "Wachtmeister",
+          "sgtm": "Feldweibel",
+          "four": "Fourier",
+          "lt": "Leutnant",
+          "plt": "Oberleutnant",
+          "cap": "Hauptmann",
+          "maj": "Major"
         },
-        "means": {
-            "title": "Verwendete Mittel",
-            "men": "Männer",
-            "rank": {
-              "choose":"Auswählen Sie einen Grad",
-              "std":"Soldat",
-              "app":"Gefreiter",
-              "cpl":"Korporal",
-              "sgt":"Wachtmeister",
-              "sgtm":"Feldweibel",
-              "four":"Fourier",
-              "lt":"Leutnant",
-              "plt":"Oberleutnant",
-              "cap":"Hauptmann",
-              "maj":"Major"
-            },
-            "resp": "Namen der verantwortliche Person",
-            "amount": "Anzahl Männer",
-            "add_field": "Feld hinzufügen"
+        "resp": "Namen der verantwortliche Person",
+        "amount": "Anzahl Männer",
+        "add_field": "Feld hinzufügen"
+      },
+      "vehicles": {
+        "title": "Transportmitteln",
+        "amount": "Anzahl",
+        "type": "Typ",
+        "add_field": "Feld hinzufügen"
+      },
+      "material": {
+        "title": "Material",
+        "amount": "Anzahl",
+        "description": "Beschreibung",
+        "add_field": "Feld hinzufügen"
+      },
+      "missions": {
+        "title": "Mission",
+        "by": {
+          "title": "Erfüllt von:",
+          "e-m": "Stab",
+          "AICrens": "FU 1 - Lage",
+          "AICmed": "FU 1 - Medien",
+          "AICchanc": "FU 1 - Kanzlerei",
+          "AICtele": "FU 2 - Telematik",
+          "AICinfo": "FU 2 - Informatik",
+          "circ": "Verkehr",
+          "logfour": "Logistik - Fourier",
+          "loginfra": "Logistik - Infrastruktur",
+          "logsub": "Logistik - Lebensunterhalt",
+          "logmat": "Logistik - Material",
+          "logtrans": "Logistik - Transport",
+          "Assist": "Betreu",
+          "Appui": "Unterstützung"
         },
-        "vehicles": {
-            "title": "Transportmitteln",
-            "amount": "Anzahl",
-            "type": "Typ",
-            "add_field": "Feld hinzufügen"
-        },
-        "material": {
-            "title": "Material",
-            "amount": "Anzahl",
-            "description": "Beschreibung",
-            "add_field": "Feld hinzufügen"
-        },
-        "missions": {
-            "title": "Mission",
-            "by": {
-              "title":"Erfüllt von:",
-              "e-m":"Stab",
-              "AICrens":"FU 1 - Lage",
-              "AICmed":"FU 1 - Medien",
-              "AICchanc":"FU 1 - Kanzlerei",
-              "AICtele":"FU 2 - Telematik",
-              "AICinfo":"FU 2 - Informatik",
-              "circ":"Verkehr",
-              "logfour":"Logistik - Fourier",
-              "loginfra":"Logistik - Infrastruktur",
-              "logsub":"Logistik - Lebensunterhalt",
-              "logmat":"Logistik - Material",
-              "logtrans":"Logistik - Transport",
-              "Assist":"Betreu",
-              "Appui":"Unterstützung"
-            },
-            "progress": "Fortschritt",
-            "description": "Beschreibung",
-            "location": "Ort",
-            "add_field": "Feld hinzufügen"
-        },
-        "missionsTransmises": {
-          "title": "Übertragten Aufträge",
-          "description": "Beschreibung",
-          "location": "Ort",
-          "add_field": "Feld hinzufügen"
-        },
-        "send": "Senden"
+        "progress": "Fortschritt",
+        "description": "Beschreibung",
+        "location": "Ort",
+        "add_field": "Feld hinzufügen"
+      },
+      "missionsTransmises": {
+        "title": "Übertragten Aufträge",
+        "description": "Beschreibung",
+        "location": "Ort",
+        "add_field": "Feld hinzufügen"
+      },
+      "send": "Senden"
     },
     "competences": {
       "message": {
@@ -582,32 +582,32 @@
         "loading": "Ladevorgang läuft"
       },
       "search": "Suche der Person:",
-      "name":"Name",
-      "address":"Adresse",
-      "zip":"PLZ",
-      "location":"Stadt",
-      "mail":"e-mail",
-      "phone":"Telefonnummer",
-      "emergency":"Notfallkontaktnummer",
-      "relationship":"Beziehung",
-      "selectRelation":"-- Auswahl Beziehung --",
+      "name": "Name",
+      "address": "Adresse",
+      "zip": "PLZ",
+      "location": "Stadt",
+      "mail": "e-mail",
+      "phone": "Telefonnummer",
+      "emergency": "Notfallkontaktnummer",
+      "relationship": "Beziehung",
+      "selectRelation": "-- Auswahl Beziehung --",
       "allergie": {
-        "title":"Allergie?",
+        "title": "Allergie?",
         "yes": "Ja",
         "no": "Nein"
       },
       "selectAllergie": "Wenn ja, welche?",
       "third": {
-        "name":"Namen des Unternehmens",
-        "address":"Adresse des Unternehmens",
-        "zip":"PLZ",
-        "town":"Stadt",
-        "phone":"Telefonnummer",
-        "email":"Email"
+        "name": "Namen des Unternehmens",
+        "address": "Adresse des Unternehmens",
+        "zip": "PLZ",
+        "town": "Stadt",
+        "phone": "Telefonnummer",
+        "email": "Email"
       },
       "iban": "IBAN",
-      "send":"Senden",
-      "tags":{
+      "send": "Senden",
+      "tags": {
         "compagnie": "Kompagnie",
         "grade": "Grad",
         "section": "Grundfunktion",
@@ -645,65 +645,66 @@
       "shoes": "Kampfschuhe",
       "PPI": "kleiner Verband",
       "badge": "Badge PCI",
-      "bonnet":"Rollmütze",
-      "comment":"Kommentar",
-      "options" : {
+      "bonnet": "Rollmütze",
+      "comment": "Kommentar",
+      "options": {
         "yes": "ja",
         "missing": "fehlend",
         "defective": "defekt",
         "size": "Grösse",
         "amount": "Anzahl"
       },
-      "send":"Senden"
+      "send": "Senden"
     },
     "superadmin": {
-      "logins":{
-        "title":"Hinzufügen von Benutzern Formular",
+      "logins": {
+        "title": "Hinzufügen von Benutzern Formular",
         "message": {
           "success": "Benutzer hinzugefügt",
           "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
           "loading": "Ladevorgang läuft"
         },
-        "login":"Benutzername",
-        "delete":"Benutzername löschen",
-        "password":"Passwort",
-        "name":"Name",
-        "prenom":"Vorname",
-        "usertype":"Benutzertyp",
-        "member":"Mitglied (zur Aktualisierung Pisa)",
-        "user":"Benutzer",
-        "admin":"Admin",
-        "mail":"Email",
-        "send":"Senden",
-        "edit":"Ändern / Löschen"
+        "login": "Benutzername",
+        "delete": "Benutzername löschen",
+        "password": "Passwort",
+        "name": "Name",
+        "prenom": "Vorname",
+        "usertype": "Benutzertyp",
+        "member": "Mitglied (zur Aktualisierung Pisa)",
+        "user": "Benutzer",
+        "admin": "Admin",
+        "mail": "Email",
+        "send": "Senden",
+        "edit": "Ändern / Löschen"
       },
-      "mails":{
-        "title":"Mail Zuteilung",
-        "enCours":"In Wiederholungskurs",
-        "horsCours":"Ausserhalb des Wiederholungskurs",
-        "destEnCours":"Formular-Destination in Wiederholungskurs",
-        "destHorsCours":"Formular-Destination ausserhalb des Wiederholungskurs",
-        "validate":"Bestätigen"
+      "mails": {
+        "title": "Mail Zuteilung",
+        "enCours": "In Wiederholungskurs",
+        "horsCours": "Ausserhalb des Wiederholungskurs",
+        "destEnCours": "Formular-Destination in Wiederholungskurs",
+        "destHorsCours": "Formular-Destination ausserhalb des Wiederholungskurs",
+        "validate": "Bestätigen"
       },
-      "warnings":{
-        "title":"Hinzufügen/Ändern von Warnmeldungen",
+      "warnings": {
+        "title": "Hinzufügen/Ändern von Warnmeldungen",
         "message": {
           "success": "Neue Warnung erfolgreich hinzugefügt",
           "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
           "loading": "Ladevorgang läuft"
         },
-        "save":"Speichern",
-        "delete":"Löschen",
-        "add":"Hinzufügen"
+        "save": "Speichern",
+        "delete": "Löschen",
+        "add": "Hinzufügen"
       },
-      "params":{
-        "title":"Allgemeine Parameter ändern",
+      "params": {
+        "title": "Allgemeine Parameter ändern",
         "message": {
           "success": "Parameter erfolgreich geändert",
           "error": "Verarbeitungsfehler, bitte versuchen Sie es gleich noch einmal.",
           "loading": "Ladevorgang läuft"
         },
-        "save":"Speichern"
+        "save": "Speichern"
       }
     }
+  }
 }
