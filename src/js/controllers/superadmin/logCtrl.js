@@ -6,6 +6,7 @@ function LogCtrl($scope, $http) {
   $scope.data = {};
   $scope.status = 0;
   $scope.log = {};
+  $scope.log.usertype = "user";
   $scope.logs = {};
   $scope.errorMessage = "Unknown error";
   $scope.log.login = '';
