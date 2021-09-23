@@ -80,11 +80,15 @@ $app->post('/v1/commande/{type}', function ($request, $response, $args) {
   // Logging and mailing.
   $mailData = (json_encode($mailData));
   try {
-    //append to file named year-month
-    $result = setContent($type, $mailData);
-    $mail = mailSender($type, $mailData, "info.sud@pci-fr.ch", getMail($this,'Tickets'));
 
-    //if someting was inserted
+    $result = setContent($type, $mailData);
+    if($type == 'repas') {
+      $mail = mailSender($type, $mailData, "info.sud@pci-fr.ch", getMail($this,'Repas'));
+    } else {
+      $mail = mailSender($type, $mailData, "info.sud@pci-fr.ch", getMail($this,'Tickets'));
+    }
+
+    // If something was inserted.
     if($result > 1 & $mail == 0) {
       return $response->withJson(array('status' => 'OK', 'id' => $id), 200);
     } else {
