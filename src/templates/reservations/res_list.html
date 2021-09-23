@@ -1,0 +1,42 @@
+<main class="col-sm-9 col-md-12" ng-controller="ReservationListCtrl">
+
+  <h1>{{'reservations.list.title' | translate}}</h1>
+
+  <table ng-show="status==0" style="width:100%" class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">{{'reservations.list.product' | translate}}</th>
+      <th scope="col">{{'reservations.list.contact' | translate}}</th>
+      <th scope="col">{{'reservations.list.start_date' | translate}}</th>
+      <th scope="col">{{'reservations.list.end_date' | translate}}</th>
+      <th scope="col">{{'reservations.list.quantity' | translate}}</th>
+      <th class="text-center" scope="col">{{'reservations.list.recup' | translate}}</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="reservation in reservations">
+      <td>{{reservation.product}}</td>
+      <td>{{reservation.contact}}</td>
+      <td>{{reservation.startDate}}</td>
+      <td>{{reservation.endDate}}</td>
+      <td>{{reservation.quantity}}</td>
+      <td class="text-center">
+        <span ng-if="reservation.missing == 1" class="oi oi-x" style="color:red"></span>
+        <span ng-if="reservation.missing == 0" class="oi oi-check" style="color:green"></span>
+      </td>
+      <td>
+        <div class="btn-group" role="group">
+          <a class="btn btn-outline-dark" href="#/reservations/edit/{{reservation.rowid}}" role="button">
+            <span class="oi oi-pencil"></span>
+          </a>
+          <button type="button" class="btn btn-outline-dark" ng-click="deleteReservation(reservation.rowid)">
+            <span class="oi oi-trash"></span>
+          </button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</main>

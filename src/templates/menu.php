@@ -45,6 +45,11 @@
 <a class="btn btn-outline-secondary btn-block" href="#/admin/qualifications" role="button">{{'menu.admin.qualif' | translate}}</a>
 <!-- <a class="btn btn-outline-secondary btn-block" href="#/form/etatgroupe" role="button"> Etat groupe </a> -->
 
+{{'menu.reservation.title' | translate}}
+<a class="btn btn-outline-secondary btn-block" href="#/reservations/list" role="button">{{'menu.reservation.list' | translate}}</a>
+<a class="btn btn-outline-secondary btn-block" href="#/reservations/add" role="button">{{'menu.reservation.add' | translate}}</a>
+<a class="btn btn-outline-secondary btn-block" href="#/reservations/missing" role="button">{{'menu.reservation.missing' | translate}}</a>
+
 </div>
 <?php endif; ?>
 

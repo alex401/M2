@@ -61,6 +61,12 @@
       "qualif": "Qualifications",
       "attrib": "Attribution mail"
     },
+    "reservation": {
+      "title": "Réservations",
+      "list": "Liste des réservations",
+      "add": "Ajouter une réservation",
+      "missing": "Matériel non récupéré"
+    },
     "search": {
       "title": "Recherche de commande",
       "number": "Numéro de commande",
@@ -703,6 +709,55 @@
         "loading": "Chargement en cours"
       },
       "save": "Enregistrer"
+    }
+  },
+  "reservations": {
+    "add": {
+      "title": "Ajouter une réservation",
+      "success": "Réservation ajoutée avec succès",
+      "error": "Erreur lors de l'ajout de la réservation",
+      "material": "Matériel",
+      "name": "Nom",
+      "no_results": "Aucun résultat",
+      "start_date": "Date début",
+      "end_date": "Date fin",
+      "quantity": "Quantité",
+      "button": {
+        "send": "Valider"
+      }
+    },
+    "list": {
+      "title": "Liste des réservations",
+      "product": "Matériel",
+      "contact": "Nom",
+      "start_date": "Date début",
+      "end_date": "Date fin",
+      "quantity": "Quantité",
+      "recup": "Récupéré"
+    },
+    "edit": {
+      "title": "Éditer une réservation",
+      "success": "Réservation modifiée avec succès",
+      "error": "Erreur lors de la mise à jour de la réservation",
+      "material": "Matériel",
+      "name": "Nom",
+      "no_results": "Aucun résultat",
+      "start_date": "Date début",
+      "end_date": "Date fin",
+      "quantity": "Quantité",
+      "missing": "Récupéré",
+      "button": {
+        "save": "Enregistrer"
+      }
+    },
+    "missing": {
+      "title": "Matériel en attente de récupération",
+      "product": "Matériel",
+      "contact": "Nom",
+      "start_date": "Date début",
+      "end_date": "Date fin",
+      "quantity": "Quantité",
+      "missing": "Récupéré"
     }
   }
 }

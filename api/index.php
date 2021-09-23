@@ -58,6 +58,8 @@ include 'route/commandes.php';
 
 include 'route/superadmin.php';
 
+include 'route/reservations.php';
+
 
 //******************************
 // UTILS

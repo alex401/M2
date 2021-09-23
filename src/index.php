@@ -17,6 +17,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="components/bootstrap4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="components/open-iconic/font/css/open-iconic-bootstrap.min.css" rel="stylesheet">
     <script src="components/jquery/dist/jquery.min.js"></script>
     <script src="components/mustache/dist/mustache.min.js"></script>
     <script src="components/tether/dist/js/tether.min.js"></script>

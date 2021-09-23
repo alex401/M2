@@ -191,6 +191,22 @@ angular.module('PCIM2').config(['$stateProvider', '$urlRouterProvider','$locatio
             .state('params', {
                 url: '/superadmin/params',
                 templateUrl: 'templates/superadmin/params.html'
+            })
+            .state('resadd', {
+                url: '/reservations/add',
+                templateUrl: 'templates/reservations/res_add.html'
+            })
+            .state('reslist', {
+                url: '/reservations/list',
+                templateUrl: 'templates/reservations/res_list.html'
+            })
+            .state('resmissing', {
+                url: '/reservations/missing',
+                templateUrl: 'templates/reservations/res_missing.html'
+            })
+            .state('resedit', {
+                url: '/reservations/edit/{id}',
+                templateUrl: 'templates/reservations/res_edit.html'
             });
     }
 ]);
